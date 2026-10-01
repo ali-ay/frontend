@@ -1,0 +1,43 @@
+{
+  "name": "fe-starter-kit",
+  "type": "module",
+  "version": "4.0.0",
+  "description": "İyzico - UI Dev. Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp:start": "gulp run-all",
+    "gulp:watch": "gulp run",
+    "gulp:kill": "gulp kill-all"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "iyzico frontend team",
+  "license": "ISC",
+  "homepage": "",
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/register": "^7.23.7",
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-shell": "^0.8.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-stylus": "^2.7.1",
+    "gulp-terser": "^2.1.0",
+    "gulp.spritesmith": "^6.13.0",
+    "merge-stream": "^2.0.0",
+    "nib": "^1.2.0",
+    "sharp": "^0.35.5",
+    "vinyl-buffer": "^1.0.1",
+    "yamljs": "^0.3.0"
+  }
+}
