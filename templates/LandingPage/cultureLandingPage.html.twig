@@ -1,0 +1,30 @@
+{% extends "businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}newWhoWeAre whoWeAre helpCenterCategory culture mainMenu{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_cultureHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_cultureContent.html.twig'%}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

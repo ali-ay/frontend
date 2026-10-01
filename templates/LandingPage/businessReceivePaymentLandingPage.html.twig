@@ -1,0 +1,33 @@
+{% extends "businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business businessReceivePayment{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePaymentHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_referancessBrandsNew.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePaymentEasy.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePaymentWhyiyzico.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePaymentPriviliges.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_pricing.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePAymentScreens.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessReceivePaymentTestimonial.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends "personalLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}pPwiBrands{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_personalPwiBrandsHeader.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_popularBrands.html.twig' with {'allbrand':widgets.buyerprotectionfeaturelistwidget} %}
+  {% include '@root/LandingPage/Widgets/_popularBrandss.html.twig' with {'allbrand':widgets.buyerprotectionfeaturelistwidget} %}
+  {% include '@root/LandingPage/Widgets/_iyziRegisterPwiBrands.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newwhoIsiyzicoPwiBrands.html.twig' %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+        $('.brandItem').click(function() {
+
+        var getDomain = $(this).children('a').attr('data-url');
+        var getUrl = 'https://' + getDomain;
+
+        $('.brandDomain').text(getDomain);
+        $('.brandUrl').attr('href',getUrl);
+
+        });
+    </script>
+    <script type="text/javascript">
+        var lastId,
+            topMenu = $("#top-menu"),
+            topMenuHeight = topMenu.outerHeight()+15,
+            // All list items
+            menuItems = topMenu.find("a"),
+            // Anchors corresponding to menu items
+            scrollItems = menuItems.map(function(){
+            var item = $($(this).attr("href"));
+            if (item.length) { return item; }
+            });
+
+        menuItems.click(function(e){
+        var href = $(this).attr("href"),
+            offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+        $('html, body').stop().animate({
+            scrollTop: offsetTop
+        }, 300);
+        e.preventDefault();
+        });
+
+        $(window).scroll(function(){
+
+        var fromTop = $(this).scrollTop()+topMenuHeight;
+
+        var cur = scrollItems.map(function(){
+            if ($(this).offset().top < fromTop)
+            return this;
+        });
+
+        cur = cur[cur.length-1];
+        var id = cur && cur.length ? cur[0].id : "";
+
+        if (lastId !== id) {
+            lastId = id;
+
+            menuItems
+                .parent().removeClass("active")
+                .end().filter("[href='#"+id+"']").parent().addClass("active");
+        }
+        });
+    </script>
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        console.log(sticky);
+
+        function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+            $('#myDiv').addClass("stickyTop");
+        } else {
+            header.classList.remove("sticky");
+            $('#myDiv').removeClass("stickyTop");
+        }
+        }
+    </script>
+    <script>
+        $(window).scroll(function(){
+        var liste = $("#top-menu").find('.active').index();
+        var wWidth = $("#listCategory").width();
+
+        if(wWidth >= 737){
+            var slideStart = Math.floor( wWidth / 136 );
+            var mleft = ((liste + 1 ) - slideStart) * 146;
+        }else{
+            var slideStart = Math.floor(( wWidth / 72 ) -1);
+            var mleft = ((liste + 1 ) - slideStart) * 80;
+        }
+
+        $('#top-menu').animate( { scrollLeft: mleft + 'px' }, 1);
+
+        });
+    </script>
+    <script type="text/javascript">
+        function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+
+        setCookie('iyzicosection','personal',1000)
+
+
+        window.lazyLoadOptions = {
+                threshold: 50
+            };
+            window.addEventListener('LazyLoad::Initialized', function (e) {
+                console.log(e.detail.instance);
+            }, false);
+
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    };
+
+
+        function changeMerchantUrls(){
+        setTimeout(function(){
+        $('.brandItem').each(function( index ) {
+        var itemUrl=$(this).find('a').attr('data-url');
+        $(this).find('a').attr('target', '_blank')
+        $(this).find('a').attr('href','https://'+itemUrl);
+        });
+        }, 1000)
+        }
+        var mercahantUrls = getCookie("merchantOopupClicked");
+        if( mercahantUrls !== null){
+        changeMerchantUrls();
+        }else{
+        $('.brandItem').click(function(){
+        changeMerchantUrls();
+            setcookie("merchantOopupClicked","clicked");
+        });
+        }
+    </script>
+{% endblock %}

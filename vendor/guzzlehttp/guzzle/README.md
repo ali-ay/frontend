@@ -1,74 +1,96 @@
-Guzzle, PHP HTTP client and webservice framework
-================================================
+![Guzzle](.github/logo.png?raw=true)
 
-[![Build Status](https://secure.travis-ci.org/guzzle/guzzle.png?branch=master)](http://travis-ci.org/guzzle/guzzle)
+# Guzzle, PHP HTTP Client
 
 Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and
 trivial to integrate with web services.
 
-- Manages things like persistent connections, represents query strings as
-  collections, simplifies sending streaming POST requests with fields and
-  files, and abstracts away the underlying HTTP transport layer.
-- Can send both synchronous and asynchronous requests using the same interface
-  without requiring a dependency on a specific event loop.
-- Pluggable HTTP adapters allows Guzzle to integrate with any method you choose
-  for sending HTTP requests over the wire (e.g., cURL, sockets, PHP's stream
-  wrapper, non-blocking event loops like ReactPHP.
-- Guzzle makes it so that you no longer need to fool around with cURL options,
-  stream contexts, or sockets.
+- Simple interface for building query strings, POST requests, streaming large
+  uploads, streaming large downloads, using HTTP cookies, uploading JSON data,
+  etc...
+- Can send both synchronous and asynchronous requests using the same interface.
+- Uses PSR-7 interfaces for requests, responses, and streams. This allows you
+  to utilize other PSR-7 compatible libraries with Guzzle.
+- Supports PSR-18, allowing interoperability with other PSR-18 HTTP clients.
+- Abstracts away the underlying HTTP transport, allowing you to write
+  environment and transport agnostic code; i.e., no hard dependency on cURL,
+  PHP streams, sockets, or non-blocking event loops.
+- Middleware system allows you to augment and compose client behavior.
 
-```php
-$client = new GuzzleHttp\Client();
-$response = $client->get('http://guzzlephp.org');
-$res = $client->get('https://api.github.com/user', ['auth' =>  ['user', 'pass']]);
-echo $res->getStatusCode();
-// "200"
-echo $res->getHeader('content-type');
-// 'application/json; charset=utf8'
-echo $res->getBody();
-// {"type":"User"...'
-var_export($res->json());
-// Outputs the JSON decoded data
-
-// Send an asynchronous request.
-$req = $client->createRequest('GET', 'http://httpbin.org', ['future' => true]);
-$client->send($req)->then(function ($response) {
-    echo 'I completed! ' . $response;
-});
-```
-
-Get more information and answers with the
-[Documentation](http://guzzlephp.org/),
-[Forums](https://groups.google.com/forum/?hl=en#!forum/guzzle),
-and [Gitter](https://gitter.im/guzzle/guzzle).
-
-### Installing via Composer
+## Installation
 
 The recommended way to install Guzzle is through
-[Composer](http://getcomposer.org).
+[Composer](https://getcomposer.org/).
 
 ```bash
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
+composer require guzzlehttp/guzzle
 ```
 
-Next, update your project's composer.json file to include Guzzle:
+## Version Guidance
 
-```javascript
-{
-    "require": {
-        "guzzlehttp/guzzle": "~5.0"
-    }
-}
-```
+| Version | Status       | PHP Version  |
+|---------|--------------|--------------|
+| 8.2     | Latest       | >=7.4,<8.7   |
+| 7.15    | Maintenance  | >=7.2.5,<8.7 |
+| 6.5     | End of Life  | >=5.5,<8.0   |
 
-After installing, you need to require Composer's autoloader:
+## Quick Start
 
 ```php
-require 'vendor/autoload.php';
+$client = new \GuzzleHttp\Client();
+$response = $client->request('GET', 'https://api.example.com/users/123');
+
+echo $response->getStatusCode(); // 200
+echo $response->getHeaderLine('content-type'); // 'application/json'
+echo $response->getBody(); // '{"id": 123, "name": "Ada"}'
 ```
 
-### Documentation
+For more examples, see the [Quick Start](docs/quick-start.md).
 
-More information can be found in the online documentation at
-http://guzzlephp.org/.
+## Documentation
+
+- [Quick Start](docs/quick-start.md)
+- [Overview](docs/overview.md)
+- [Request Options](docs/request-options.md)
+- [Uploading Data](docs/uploading-data.md)
+- [Cookies](docs/cookies.md)
+- [Exceptions](docs/exceptions.md)
+- [Guzzle and PSR-7](docs/guzzle-and-psr-7.md)
+- [Handlers](docs/handlers.md)
+- [Middleware](docs/middleware.md)
+- [Testing Guzzle Clients](docs/testing-guzzle-clients.md)
+- [FAQ](docs/faq.md)
+- [Package Ecosystem](docs/package-ecosystem.md)
+- [Upgrade Guide](UPGRADING.md)
+- [Changelog](CHANGELOG.md)
+
+We use GitHub issues only to discuss bugs and new features. For support, use
+[Stack Overflow](https://stackoverflow.com/questions/tagged/guzzle), the
+[#guzzle](https://app.slack.com/client/T0D2S9JCT/CE6UAAKL4) channel on
+[PHP-HTTP Slack](https://slack.httplug.io/), or
+[Gitter](https://gitter.im/guzzle/guzzle).
+
+## Security
+
+If you discover a security vulnerability within this package, please send an
+email to security@tidelift.com. All security vulnerabilities will be promptly
+addressed. Please do not disclose security-related issues publicly until a fix
+has been announced. Please see
+[Security Policy](https://github.com/guzzle/guzzle/security/policy) for more
+information.
+
+## License
+
+Guzzle is made available under the MIT License (MIT). Please see
+[License File](LICENSE) for more information.
+
+## For Enterprise
+
+Available as part of the Tidelift Subscription
+
+The maintainers of Guzzle and thousands of other packages are working with
+Tidelift to deliver commercial support and maintenance for the open source
+dependencies you use to build your applications. Save time, reduce risk, and
+improve code health, while paying the maintainers of the exact dependencies you
+use.
+[Learn more.](https://tidelift.com/subscription/pkg/packagist-guzzlehttp-guzzle?utm_source=packagist-guzzlehttp-guzzle&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)

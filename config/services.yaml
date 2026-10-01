@@ -1,0 +1,114 @@
+parameters:
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    translations.yaml: "%kernel.project_dir%/src/translations.yml"
+    wp_api_url: 'http://localhost:8081/wp-json/'
+    blog_url: 'https://www.iyzico.com/blog'
+    geo_ip_path: '%kernel.project_dir%/geoip/GeoIP.dat'
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: null
+    mailer_transport: sendmail
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 9g*C^Z@Mp9k1#TzAWWQi#0TFhHEK$q
+    merchant_api:
+        url: https://merchant.iyzipay.com/api/merchant/
+        developerKey: 7K1prU3EkworCTMdioau8poopGI4bU9F
+        salt: twB9m=!?yZcO!T16
+        stgKey: CHcmuVVbJtuxgtGlYyOJZgPyVP3fI05V
+        stgSalt: xyZ4m!=?yZcO!j75
+    menu_ids:
+        top_menu: 3
+        footer_products: 6
+        footer_about: 7
+        footer_resources: 8
+        footer_social_media: 9
+        who_we_are: 3
+        integration: 26
+    email_addresses:
+        basvuru: basvuru@iyzico.com
+        destek: destek@iyzico.com
+        sikayet: sikayet@iyzico.com
+        entegrasyon: entegrasyon@iyzico.com
+        odeme: odeme@iyzico.com
+        hr: career@iyzico.com
+        partners: partners@iyzico.com
+        internationalSales: intsales@iyzico.com
+        teleSales: telesales@iyzico.com
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+        bind:
+            $wpApiUrl: '%wp_api_url%'
+            $blogUrl: '%blog_url%'
+            $translations: '%translations.yaml%'
+            $defaultLocale: '%kernel.default_locale%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/RequestHandler/Request.php'
+            - '../src/RequestHandler/Response.php'
+            - '../src/RequestHandler/Event/'
+
+    GuzzleHttp\Client: ~
+    
+    Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
+    
+    App\Gateway\MenuGateway:
+        arguments:
+            $url: '%wp_api_url%'
+    App\Gateway\PageGateway:
+        arguments:
+            $url: '%wp_api_url%'
+    App\Gateway\QuestionGateway:
+        arguments:
+            $url: '%wp_api_url%'
+    App\Gateway\TranslationsGateway:
+        arguments:
+            $url: '%wp_api_url%'
+    App\Gateway\WidgetGateway:
+        arguments:
+            $url: '%wp_api_url%'
+    App\Gateway\RssGateway:
+        arguments:
+            $url: '%blog_url%'
+
+    App\RequestHandler\Middleware\GuzzleRequestHandler:
+        arguments:
+            $client: '@GuzzleHttp\Client'
+
+    App\RequestHandler\Middleware\EventRequestHandler:
+        arguments:
+            $requestHandler: '@App\RequestHandler\Middleware\GuzzleRequestHandler'
+
+    web.guzzle_request_handler: '@App\RequestHandler\Middleware\GuzzleRequestHandler'
+    web.event_request_handler: '@App\RequestHandler\Middleware\EventRequestHandler'
+    App\RequestHandler\RequestHandler: '@App\RequestHandler\Middleware\EventRequestHandler'
+    web.request_handler: '@App\RequestHandler\Middleware\EventRequestHandler'
+    
+    web.page_gateway: '@App\Gateway\PageGateway'
+    web.menu_gateway: '@App\Gateway\MenuGateway'
+    web.status_gateway: '@App\Gateway\StatusGateway'
+    web.instagram_gateway: '@App\Gateway\InstagramGateway'
+    web.question_gateway: '@App\Gateway\QuestionGateway'
+    web.translations_gateway: '@App\Gateway\TranslationsGateway'
+    web.widget_gateway: '@App\Gateway\WidgetGateway'
+    web.rss_gateway: '@App\Gateway\RssGateway'
+    
+    web.consumer_service: '@App\Service\ConsumerService'
+    web.utils_service: '@App\Service\UtilsService'
+    web.aes_service: '@App\Service\AES128Encryptor'
+
+    snc_redis_cache_public:
+        alias: snc_redis.cache
+        public: true

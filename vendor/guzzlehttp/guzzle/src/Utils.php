@@ -1,145 +1,297 @@
 <?php
+
+declare(strict_types=1);
+
 namespace GuzzleHttp;
 
-/**
- * Utility methods used throughout Guzzle.
- */
+use GuzzleHttp\Exception\InvalidArgumentException;
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\Handler\CurlMultiHandler;
+use GuzzleHttp\Handler\CurlShareHandleState;
+use GuzzleHttp\Handler\CurlVersion;
+use GuzzleHttp\Handler\Proxy;
+use GuzzleHttp\Handler\StreamHandler;
+use GuzzleHttp\Handler\StreamTlsSessionCache;
+use GuzzleHttp\Promise\PromiseInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+
 final class Utils
 {
-    /**
-     * Gets a value from an array using a path syntax to retrieve nested data.
-     *
-     * This method does not allow for keys that contain "/". You must traverse
-     * the array manually or using something more advanced like JMESPath to
-     * work with keys that contain "/".
-     *
-     *     // Get the bar key of a set of nested arrays.
-     *     // This is equivalent to $collection['foo']['baz']['bar'] but won't
-     *     // throw warnings for missing keys.
-     *     GuzzleHttp\get_path($data, 'foo/baz/bar');
-     *
-     * @param array  $data Data to retrieve values from
-     * @param string $path Path to traverse and retrieve a value from
-     *
-     * @return mixed|null
-     */
-    public static function getPath($data, $path)
+    private function __construct()
     {
-        $path = explode('/', $path);
+    }
 
-        while (null !== ($part = array_shift($path))) {
-            if (!is_array($data) || !isset($data[$part])) {
-                return null;
+    /**
+     * Parses an array of header lines into an associative array of headers.
+     *
+     * @param iterable $lines Header lines array of strings in the following
+     *                        format: "Name: Value"
+     */
+    public static function headersFromLines(iterable $lines): array
+    {
+        $headers = [];
+
+        foreach ($lines as $line) {
+            $parts = \explode(':', $line, 2);
+            $headers[\trim($parts[0], " \n\r\t\0\x0B")][] = isset($parts[1]) ? \trim($parts[1], " \n\r\t\0\x0B") : null;
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Returns a debug stream based on the provided variable.
+     *
+     * @param mixed $value Optional value
+     *
+     * @return resource
+     */
+    public static function debugResource($value = null)
+    {
+        if (\is_resource($value)) {
+            return $value;
+        }
+        if (\defined('STDOUT')) {
+            return \STDOUT;
+        }
+
+        return Psr7\Utils::tryFopen('php://output', 'w');
+    }
+
+    /**
+     * Chooses and creates a default handler to use based on the environment.
+     *
+     * The returned handler is not wrapped by any default middlewares.
+     *
+     * @param array{transport_sharing?: mixed, max_host_connections?: mixed, max_total_connections?: mixed, multiplex?: mixed} $handlerOptions Handler constructor options.
+     *
+     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface<ResponseInterface, mixed> Returns the best handler for the given system.
+     *
+     * @throws \RuntimeException if no viable Handler is available.
+     */
+    public static function chooseHandler(array $handlerOptions = []): callable
+    {
+        $sharingMode = CurlShareHandleState::normalizeMode($handlerOptions['transport_sharing'] ?? null, 'transport_sharing');
+        $sharingRequired = self::isTransportSharingRequired($sharingMode);
+        $connectionCapsRequired = self::hasConnectionCapOptions($handlerOptions);
+
+        $sharedPoolCapsSupported = CurlVersion::supportsSharedPoolConnectionCaps();
+
+        if ($connectionCapsRequired && !$sharedPoolCapsSupported && $sharingMode === TransportSharing::PERSISTENT_REQUIRE) {
+            throw new InvalidArgumentException(\sprintf('The "max_host_connections" and "max_total_connections" options cannot be combined with required persistent transport sharing because applying connection caps to shared connection pools requires libcurl %s or higher.', CurlVersion::SHARED_POOL_CONNECTION_CAP_VERSION));
+        }
+
+        if ($connectionCapsRequired && !$sharedPoolCapsSupported && $sharingMode === TransportSharing::PERSISTENT_PREFER) {
+            // libcurl below 8.22.0 does not apply cURL multi connection caps to
+            // transfers using a shared connection pool (curl #22265), so the
+            // best honorable offer for preferred persistent sharing is a
+            // handler-lifetime share.
+            $sharingMode = TransportSharing::HANDLER_PREFER;
+        }
+
+        $handler = self::createCurlHandler($sharingMode, $handlerOptions);
+
+        // Handler-scoped required sharing can also be satisfied by the stream
+        // handler's TLS session resumption (PHP 8.6+); persistent required
+        // sharing is cURL-only.
+        $streamCanShareSessions = (bool) \ini_get('allow_url_fopen') && StreamTlsSessionCache::isSupported();
+
+        if ($sharingRequired && $handler === null) {
+            if ($sharingMode === TransportSharing::PERSISTENT_REQUIRE) {
+                throw new \RuntimeException('Required persistent transport sharing requires the PHP cURL extension, curl_exec() or curl_multi_exec(), and a supported libcurl version with SSL support.');
             }
-            $data = $data[$part];
-        }
 
-        return $data;
-    }
-
-    /**
-     * Set a value in a nested array key. Keys will be created as needed to set
-     * the value.
-     *
-     * This function does not support keys that contain "/" or "[]" characters
-     * because these are special tokens used when traversing the data structure.
-     * A value may be prepended to an existing array by using "[]" as the final
-     * key of a path.
-     *
-     *     GuzzleHttp\get_path($data, 'foo/baz'); // null
-     *     GuzzleHttp\set_path($data, 'foo/baz/[]', 'a');
-     *     GuzzleHttp\set_path($data, 'foo/baz/[]', 'b');
-     *     GuzzleHttp\get_path($data, 'foo/baz');
-     *     // Returns ['a', 'b']
-     *
-     * @param array  $data  Data to modify by reference
-     * @param string $path  Path to set
-     * @param mixed  $value Value to set at the key
-     *
-     * @throws \RuntimeException when trying to setPath using a nested path
-     *     that travels through a scalar value.
-     */
-    public static function setPath(&$data, $path, $value)
-    {
-        $current =& $data;
-        $queue = explode('/', $path);
-        while (null !== ($key = array_shift($queue))) {
-            if (!is_array($current)) {
-                throw new \RuntimeException("Trying to setPath {$path}, but "
-                    . "{$key} is set and is not an array");
-            } elseif (!$queue) {
-                if ($key == '[]') {
-                    $current[] = $value;
-                } else {
-                    $current[$key] = $value;
-                }
-            } elseif (isset($current[$key])) {
-                $current =& $current[$key];
-            } else {
-                $current[$key] = [];
-                $current =& $current[$key];
+            if (!$streamCanShareSessions) {
+                throw new \RuntimeException('Required transport sharing requires the PHP cURL extension (curl_exec()/curl_multi_exec()) with a supported libcurl version and SSL support, or PHP 8.6+ with the OpenSSL TLS session API and the allow_url_fopen ini setting.');
             }
         }
+
+        if (\ini_get('allow_url_fopen')) {
+            return self::addStreamHandler($handler, $sharingMode, self::connectionCapOptions($handlerOptions));
+        }
+
+        if ($handler !== null) {
+            return $handler;
+        }
+
+        if ($connectionCapsRequired) {
+            throw new \RuntimeException('Connection cap options require a cap-capable cURL multi handler or the allow_url_fopen ini setting for stream fallback.');
+        }
+
+        throw new \RuntimeException('GuzzleHttp requires a supported cURL version with SSL support, the allow_url_fopen ini setting, or a custom HTTP handler.');
+    }
+
+    private static function isTransportSharingRequired(string $sharingMode): bool
+    {
+        return \in_array($sharingMode, [TransportSharing::HANDLER_REQUIRE, TransportSharing::PERSISTENT_REQUIRE], true);
     }
 
     /**
-     * Expands a URI template
-     *
-     * @param string $template  URI template
-     * @param array  $variables Template variables
-     *
-     * @return string
+     * @param array{max_host_connections?: mixed, max_total_connections?: mixed} $handlerOptions
      */
-    public static function uriTemplate($template, array $variables)
+    private static function hasConnectionCapOptions(array $handlerOptions): bool
     {
-        if (function_exists('\\uri_template')) {
-            return \uri_template($template, $variables);
-        }
-
-        static $uriTemplate;
-        if (!$uriTemplate) {
-            $uriTemplate = new UriTemplate();
-        }
-
-        return $uriTemplate->expand($template, $variables);
+        return self::connectionCapOptions($handlerOptions) !== [];
     }
 
     /**
-     * Wrapper for JSON decode that implements error detection with helpful
-     * error messages.
+     * @param array{max_host_connections?: mixed, max_total_connections?: mixed, multiplex?: mixed} $handlerOptions
      *
-     * @param string $json    JSON data to parse
-     * @param bool $assoc     When true, returned objects will be converted
-     *                        into associative arrays.
-     * @param int    $depth   User specified recursion depth.
-     * @param int    $options Bitmask of JSON decode options.
-     *
-     * @return mixed
-     * @throws \InvalidArgumentException if the JSON cannot be parsed.
-     * @link http://www.php.net/manual/en/function.json-decode.php
+     * @return (callable(RequestInterface, array<array-key, mixed>): PromiseInterface<ResponseInterface, mixed>)|null
      */
-    public static function jsonDecode($json, $assoc = false, $depth = 512, $options = 0)
+    private static function createCurlHandler(string $sharingMode, array $handlerOptions): ?callable
     {
-        static $jsonErrors = [
-            JSON_ERROR_DEPTH => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',
-            JSON_ERROR_STATE_MISMATCH => 'JSON_ERROR_STATE_MISMATCH - Underflow or the modes mismatch',
-            JSON_ERROR_CTRL_CHAR => 'JSON_ERROR_CTRL_CHAR - Unexpected control character found',
-            JSON_ERROR_SYNTAX => 'JSON_ERROR_SYNTAX - Syntax error, malformed JSON',
-            JSON_ERROR_UTF8 => 'JSON_ERROR_UTF8 - Malformed UTF-8 characters, possibly incorrectly encoded'
-        ];
-
-        $data = \json_decode($json, $assoc, $depth, $options);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            $last = json_last_error();
-            throw new \InvalidArgumentException(
-                'Unable to parse JSON data: '
-                . (isset($jsonErrors[$last])
-                    ? $jsonErrors[$last]
-                    : 'Unknown error')
-            );
+        if (!CurlVersion::supportsCurlHandler()) {
+            return null;
         }
 
-        return $data;
+        if ($sharingMode === TransportSharing::HANDLER_REQUIRE && !CurlShareHandleState::supportsHandlerRequireShare()) {
+            // Required handler sharing can also be satisfied by the stream
+            // handler's TLS session resumption, so a cURL install that cannot
+            // share is skipped instead of failing handler selection.
+            return null;
+        }
+
+        $connectionCapOptions = self::connectionCapOptions($handlerOptions);
+        if ($connectionCapOptions !== [] && !\function_exists('curl_multi_exec')) {
+            return null;
+        }
+
+        $curlHandlerOptions = self::createCurlHandlerOptions($sharingMode);
+        $curlMultiHandlerOptions = $curlHandlerOptions + $connectionCapOptions;
+        if (($handlerOptions['multiplex'] ?? null) === Multiplexing::NONE) {
+            // Forwarded to the CurlMultiHandler only: CurlHandler and
+            // StreamHandler validate known options, and both satisfy NONE
+            // per-request without a handler option.
+            $curlMultiHandlerOptions['multiplex'] = Multiplexing::NONE;
+        }
+
+        if (\function_exists('curl_multi_exec') && \function_exists('curl_exec')) {
+            $multiHandler = new CurlMultiHandler($curlMultiHandlerOptions);
+
+            if ($connectionCapOptions !== []) {
+                // Connection caps only govern transfers on the multi handle, so
+                // the synchronous CurlHandler fast path would escape them.
+                return $multiHandler;
+            }
+
+            return Proxy::wrapSync($multiHandler, new CurlHandler($curlHandlerOptions));
+        }
+
+        if ($connectionCapOptions === [] && \function_exists('curl_exec')) {
+            return new CurlHandler($curlHandlerOptions);
+        }
+
+        if (\function_exists('curl_multi_exec')) {
+            return new CurlMultiHandler($curlMultiHandlerOptions);
+        }
+
+        return null;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function createCurlHandlerOptions(string $sharingMode): array
+    {
+        if ($sharingMode === TransportSharing::NONE) {
+            return [];
+        }
+
+        $shareState = CurlShareHandleState::fromOption($sharingMode);
+
+        return $shareState === null ? [] : ['transport_sharing' => $shareState];
+    }
+
+    /**
+     * @param array{max_host_connections?: mixed, max_total_connections?: mixed} $handlerOptions
+     *
+     * @return array{max_host_connections?: int, max_total_connections?: int}
+     */
+    private static function connectionCapOptions(array $handlerOptions): array
+    {
+        $options = [];
+        foreach (['max_host_connections', 'max_total_connections'] as $capOption) {
+            $value = $handlerOptions[$capOption] ?? null;
+            if ($value === null) {
+                continue;
+            }
+
+            if (!\is_int($value) || $value < 1) {
+                throw new InvalidArgumentException(\sprintf('%s must be a positive integer.', $capOption));
+            }
+
+            $options[$capOption] = $value;
+        }
+
+        return $options;
+    }
+
+    /**
+     * @param (callable(RequestInterface, array<array-key, mixed>): PromiseInterface<ResponseInterface, mixed>)|null $handler
+     * @param array{max_host_connections?: int, max_total_connections?: int}                                         $connectionCapOptions
+     *
+     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface<ResponseInterface, mixed>
+     */
+    private static function addStreamHandler(?callable $handler, string $sharingMode, array $connectionCapOptions): callable
+    {
+        $streamHandler = new StreamHandler(['transport_sharing' => $sharingMode] + $connectionCapOptions);
+
+        return $handler
+            ? Proxy::wrapStreaming($handler, $streamHandler)
+            : $streamHandler;
+    }
+
+    /**
+     * Get the default User-Agent string to use with Guzzle.
+     */
+    public static function defaultUserAgent(): string
+    {
+        return sprintf('GuzzleHttp/%d', ClientInterface::MAJOR_VERSION);
+    }
+
+    /**
+     * Creates an associative array of lowercase header names to the actual
+     * header casing.
+     */
+    public static function normalizeHeaderKeys(array $headers): array
+    {
+        $result = [];
+        foreach (\array_keys($headers) as $key) {
+            $result[Psr7\Utils::asciiToLower((string) $key)] = $key;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param mixed $protocols
+     *
+     * @return string[]
+     *
+     * @throws InvalidArgumentException
+     */
+    public static function normalizeProtocols($protocols): array
+    {
+        if (!\is_array($protocols) || $protocols === []) {
+            throw new InvalidArgumentException('protocols must be a non-empty array of "http" and/or "https"');
+        }
+
+        $normalized = [];
+
+        foreach ($protocols as $protocol) {
+            if (!\is_string($protocol)) {
+                throw new InvalidArgumentException('protocols must contain only strings');
+            }
+
+            if ($protocol !== 'http' && $protocol !== 'https') {
+                throw new InvalidArgumentException('protocols may only contain "http" and "https"');
+            }
+
+            $normalized[$protocol] = true;
+        }
+
+        return \array_keys($normalized);
     }
 }

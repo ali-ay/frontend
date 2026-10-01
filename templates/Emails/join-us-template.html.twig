@@ -1,0 +1,88 @@
+{% extends "Emails/layout.html.twig" %}
+{% block content %}
+<table class="main" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-radius: 3px; border-spacing: 0; background-color: #fff;" bgcolor="#fff">
+    <tr>
+        <td class="wrapper-without-padding" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box;" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-spacing: 0;">
+                <tr>
+                    <td class="only-padding" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding: 80px 50px 60px;" valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-spacing: 0;">
+                            <tr>
+                                <td class="centered" style="font-family: sans-serif; font-size: 14px; vertical-align: top; text-align: center;" align="center" valign="top">
+                                    <img src="https://static.iyzipay.com/mailassets/sozlesme-onayi-unutma.png" style="-ms-interpolation-mode: bicubic; max-width: 100%; border: none;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-header centered" style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 28px; vertical-align: top; text-align: center; font-weight: normal; font-style: normal; font-stretch: normal; color: #434343; padding-top: 50px; padding-bottom: 20px;" align="center" valign="top">
+                                    Yeni İş Başvurusu
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-text" style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;" valign="top">
+                                    Merhaba,<br/><br/>
+                                    {% if isPositionSelected %}
+                                        <span class="bold-text" style="font-weight: 600;">{{position}}</span> pozisyonu yeni bir başvuru var!
+                                    {% else %}
+                                        Pozisyon seçilmeden yapılmış yeni bir başvuru var!
+                                    {% endif %}
+
+                                    <br/><br/>
+
+                                    <p style="font-family: 'Source Sans Pro', arial, sans-serif;font-size: 20px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 1.1;color: #434343;">Başvuru Detayları</p>
+                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-spacing: 0;background-color: rgba(248, 242, 171, 0.4);margin:0 auto;padding:20px;margin-bottom:30px;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: 600; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;border-bottom: 1px solid #efedd2;" valign="top">
+                                                İsim Soyisim:
+                                            </td>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;text-align: right;border-bottom: 1px solid #efedd2;" valign="top">
+                                                {{ name }}
+                                            </td>
+                                        </tr>
+                                        {% if isPositionSelected %}
+                                        <tr>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: 600; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;border-bottom: 1px solid #efedd2;" valign="top">
+                                                Başvurulan Posizyon
+                                            </td>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;text-align: right;border-bottom: 1px solid #efedd2;" valign="top">
+                                                {{ position }}
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                        <tr>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: 600; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px; border-bottom: 1px solid #efedd2;" valign="top">
+                                                Telefon
+                                            </td>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;text-align: right; border-bottom: 1px solid #efedd2;" valign="top">
+                                                {{ phone }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: 600; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px; border-bottom: 1px solid #efedd2;" valign="top">
+                                                E-Posta
+                                            </td>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;text-align: right; border-bottom: 1px solid #efedd2;" valign="top">
+                                                {{ mail }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: 600; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;" valign="top">
+                                                CV
+                                            </td>
+                                            <td style="font-family: 'Source Sans Pro', arial, sans-serif; font-size: 14px; vertical-align: top; font-weight: normal; font-style: normal; font-stretch: normal; color: #4c4c4c;padding:10px;text-align: right;" valign="top">
+                                                E-posta ekindedir.
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{% endblock %}

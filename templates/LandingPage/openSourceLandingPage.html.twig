@@ -1,0 +1,36 @@
+{% extends "businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.title }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.description }}" />
+{% endblock %}
+{% block bodyClass %}whoWeAre openSource mainMenu{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_openSourceHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_referancessBrandsOpenSource.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_openSourceWhyiyzico.html.twig' with {'partnersolutions':widgets.partnersolutionfeaturelistwidget } %}
+  {% include '@root/LandingPage/Widgets/_openSourceProgress.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_iyziLifeOpenSource.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newBusinessVirtualPosPricing.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newAdress.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newwhoIsiyzico.html.twig' %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+            threshold: 50
+        };
+        window.addEventListener('LazyLoad::Initialized', function (e) {
+            console.log(e.detail.instance);
+        }, false);
+    </script>
+{% endblock %}

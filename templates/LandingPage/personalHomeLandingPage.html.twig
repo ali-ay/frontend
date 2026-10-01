@@ -1,0 +1,60 @@
+{% extends "personalLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}personalHome{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_personalHomeHeaderContent.html.twig' with {'header':widgets.personalhomeheaderwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalHomeFeatureList.html.twig' with {'featureList':widgets.personalhomefeaturelistwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalMobileAppSlider.html.twig' with {'sliderList':widgets.personalhomemobileappsliderwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalHomePwi.html.twig' with {'cardfeaturesscreen':widgets.personalhomepwiwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalHomeAppDownload.html.twig' with {'appdownload':widgets.personalhomeappdownloadwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalHomeShopList.html.twig' with {'shoplist':widgets.personalhomeshoplistwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalHomeCampaign.html.twig' with {'campaign':widgets.personalhomecampaignwidget, 'allbrand':widgets.buyerprotectionfeaturelistwidget } %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    setCookie('iyzicosection','personal',1000)
+
+
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+    <script>
+        function formSubmit (token) {
+                $('#consumer-app-form').submit();
+                return true;
+            }
+        </script>
+    <script src='https://www.google.com/recaptcha/api.js?hl={{app.request.attributes.get('_locale')}}' async defer></script>
+
+{% endblock %}

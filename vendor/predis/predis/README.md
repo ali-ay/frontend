@@ -1,26 +1,20 @@
 # Predis #
 
 [![Software license][ico-license]](LICENSE)
-[![Latest stable][ico-version-stable]][link-packagist]
-[![Latest development][ico-version-dev]][link-packagist]
+[![Latest stable][ico-version-stable]][link-releases]
+[![Latest development][ico-version-dev]][link-releases]
 [![Monthly installs][ico-downloads-monthly]][link-downloads]
-[![Build status][ico-travis]][link-travis]
-[![HHVM support][ico-hhvm]][link-hhvm]
-[![Gitter room][ico-gitter]][link-gitter]
+[![Build status][ico-build]][link-actions]
+[![Coverage Status][ico-coverage]][link-coverage]
 
-Flexible and feature-complete [Redis](http://redis.io) client for PHP >= 5.3 and HHVM >= 2.3.0.
-
-Predis does not require any additional C extension by default, but it can be optionally paired with
-[phpiredis](https://github.com/nrk/phpiredis) to lower the overhead of the serialization and parsing
-of the [Redis RESP Protocol](http://redis.io/topics/protocol). For an __experimental__ asynchronous
-implementation of the client you can refer to [Predis\Async](https://github.com/nrk/predis-async).
+A flexible and feature-complete [Redis](http://redis.io) / [Valkey](https://github.com/valkey-io/valkey) client for PHP 7.2 and newer.
 
 More details about this project can be found on the [frequently asked questions](FAQ.md).
 
 
 ## Main features ##
 
-- Support for different versions of Redis (from __2.0__ to __3.2__) using profiles.
+- Support for Redis from __3.0__ to __8.0__.
 - Support for clustering using client-side sharding and pluggable keyspace distributors.
 - Support for [redis-cluster](http://redis.io/topics/cluster-tutorial) (Redis >= 3.0).
 - Support for master-slave replication setups and [redis-sentinel](http://redis.io/topics/sentinel).
@@ -28,20 +22,23 @@ More details about this project can be found on the [frequently asked questions]
 - Command pipelining on both single nodes and clusters (client-side sharding only).
 - Abstraction for Redis transactions (Redis >= 2.0) and CAS operations (Redis >= 2.2).
 - Abstraction for Lua scripting (Redis >= 2.6) and automatic switching between `EVALSHA` or `EVAL`.
+- Abstraction for Hinted Hash Templates (`HIMPORT`, Redis >= 8.10) with automatic per-connection fieldset replay.
 - Abstraction for `SCAN`, `SSCAN`, `ZSCAN` and `HSCAN` (Redis >= 2.8) based on PHP iterators.
 - Connections are established lazily by the client upon the first command and can be persisted.
 - Connections can be established via TCP/IP (also TLS/SSL-encrypted) or UNIX domain sockets.
-- Support for [Webdis](http://webd.is) (requires both `ext-curl` and `ext-phpiredis`).
 - Support for custom connection classes for providing different network or protocol backends.
-- Flexible system for defining custom commands and profiles and override the default ones.
+- Flexible system for defining custom commands and override the default ones.
 
 
 ## How to _install_ and use Predis ##
 
 This library can be found on [Packagist](http://packagist.org/packages/predis/predis) for an easier
-management of projects dependencies using [Composer](http://packagist.org/about-composer) or on our
-[own PEAR channel](http://pear.nrk.io) for a more traditional installation using PEAR. Ultimately,
-compressed archives of each release are [available on GitHub](https://github.com/nrk/predis/tags).
+management of projects dependencies using [Composer](http://packagist.org/about-composer).
+Compressed archives of each release are [available on GitHub](https://github.com/predis/predis/releases).
+
+```shell
+composer require predis/predis
+```
 
 
 ### Loading the library ###
@@ -57,10 +54,6 @@ require 'Predis/Autoloader.php';
 
 Predis\Autoloader::register();
 ```
-
-It is also possible to create a [phar](http://www.php.net/manual/en/intro.phar.php) archive directly
-from the repository by launching the `bin/create-phar` script. The generated phar already contains a
-stub defining its own autoloader, so you just need to `require()` it to start using the library.
 
 
 ### Connecting to Redis ###
@@ -90,6 +83,9 @@ $client = new Predis\Client([
 $client = new Predis\Client('tcp://10.0.0.1:6379');
 ```
 
+Password protected servers can be accessed by adding `password` to the parameters set. When ACLs are
+enabled on Redis >= 6.0, both `username` and `password` are required for user authentication.
+
 It is also possible to connect to local instances of Redis using UNIX domain sockets, in this case
 the parameters must use the `unix` scheme and specify a path for the socket file:
 
@@ -108,7 +104,7 @@ of suitable [options](http://php.net/manual/context.ssl.php) passed via the `ssl
 $client = new Predis\Client([
   'scheme' => 'tls',
   'ssl'    => ['cafile' => 'private.pem', 'verify_peer' => true],
-]
+]);
 
 // Same set of parameters, but using an URI string:
 $client = new Predis\Client('tls://127.0.0.1?ssl[cafile]=private.pem&ssl[verify_peer]=1');
@@ -119,17 +115,53 @@ The connection schemes [`redis`](http://www.iana.org/assignments/uri-schemes/pro
 also supported, with the difference that URI strings containing these schemes are parsed following
 the rules described on their respective IANA provisional registration documents.
 
+Since Redis 8.6, you can authenticate a client using the Subject CN from its TLS client certificate (mTLS).
+When this is enabled on the server, the client is authenticated during the TLS handshake, so you don’t need
+to send an AUTH command.
+
+To use this, configure:
+
+- a CA certificate used to verify the server certificate (cafile),
+- a client certificate (local_cert) signed by a CA trusted by the Redis server for client authentication,
+- the corresponding private key (local_pk).
+
+Make sure:
+
+- the Redis server certificate is signed by a CA trusted by the client, and
+- the client certificate is signed by a CA trusted by the Redis server (mTLS).
+
+```php
+// Named array of connection parameters:
+$client = new Predis\Client([
+    'scheme' => 'tls',
+    'ssl' => [
+        'cafile'      => 'ca.pem',          // CA used to verify the server certificate
+        'local_cert'  => 'client.crt',      // client certificate (Subject CN maps to ACL user)
+        'local_pk'    => 'client.key',      // client private key
+        'verify_peer' => true,
+    ],
+]);
+
+// ACL user must exist and match the certificate Subject CN (example: CN=CN_NAME).
+// Enable the user and grant permissions as needed:
+$client->acl->setUser('CN_NAME', 'on', '>clientpass', 'allcommands', 'allkeys')
+
+echo $client->acl->whoami() // CN_NAME
+```
+
 The actual list of supported connection parameters can vary depending on each connection backend so
 it is recommended to refer to their specific documentation or implementation for details.
 
-When an array of connection parameters is provided, Predis automatically works in cluster mode using
-client-side sharding. Both named arrays and URI strings can be mixed when providing configurations
+Predis can aggregate multiple connections when providing an array of connection parameters and the
+appropriate option to instruct the client about how to aggregate them (clustering, replication or a
+custom aggregation logic). Named arrays and URI strings can be mixed when providing configurations
 for each node:
 
 ```php
 $client = new Predis\Client([
-    'tcp://10.0.0.1?alias=first-node',
-    ['host' => '10.0.0.2', 'alias' => 'second-node'],
+    'tcp://10.0.0.1?alias=first-node', ['host' => '10.0.0.2', 'alias' => 'second-node'],
+], [
+    'cluster' => 'predis',
 ]);
 ```
 
@@ -141,6 +173,50 @@ it is still desired to have control of when the connection is opened or closed: 
 achieved by invoking `$client->connect()` and `$client->disconnect()`. Please note that the effect
 of these methods on aggregate connections may differ depending on each specific implementation.
 
+#### Persistent connections ####
+
+To increase a performance of your application you may set up a client to use persistent TCP connection, this way
+client saves a time on socket creation and connection handshake. By default, connection is created on first-command
+execution and will be automatically closed by GC before the process is being killed.
+However, if your application is backed by PHP-FPM the processes are idle, and you may set up it to be persistent and
+reusable across multiple script execution within the same process.
+
+To enable the persistent connection mode you should provide following configuration:
+
+```php
+// Standalone
+$client = new Predis\Client(['persistent' => true]);
+
+// Cluster
+$client = new Predis\Client(
+    ['tcp://host:port', 'tcp://host:port', 'tcp://host:port'],
+    ['cluster' => 'redis', 'parameters' => ['persistent' => true]]
+);
+```
+
+**Important**
+
+If you operate on multiple clients within the same application, and they communicate with the same resource, by default
+they will share the same socket (that's the default behaviour of persistent sockets). So in this case you would need
+to additionally provide a `conn_uid` identifier for each client, this way each client will create its own socket so
+the connection context won't be shared across clients. This socket behaviour explained
+[here](https://www.php.net/manual/en/function.stream-socket-client.php#105393)
+
+```php
+// Standalone
+$client1 = new Predis\Client(['persistent' => true, 'conn_uid' => 'id_1']);
+$client2 = new Predis\Client(['persistent' => true, 'conn_uid' => 'id_2']);
+
+// Cluster
+$client1 = new Predis\Client(
+    ['tcp://host:port', 'tcp://host:port', 'tcp://host:port'],
+    ['cluster' => 'redis', 'parameters' => ['persistent' => true, 'conn_uid' => 'id_1']]
+);
+$client2 = new Predis\Client(
+    ['tcp://host:port', 'tcp://host:port', 'tcp://host:port'],
+    ['cluster' => 'redis', 'parameters' => ['persistent' => true, 'conn_uid' => 'id_2']]
+);
+```
 
 ### Client configuration ###
 
@@ -148,20 +224,21 @@ Many aspects and behaviors of the client can be configured by passing specific c
 second argument of `Predis\Client::__construct()`:
 
 ```php
-$client = new Predis\Client($parameters, ['profile' => '2.8', 'prefix' => 'sample:']);
+$client = new Predis\Client($parameters, ['prefix' => 'sample:']);
 ```
 
 Options are managed using a mini DI-alike container and their values can be lazily initialized only
 when needed. The client options supported by default in Predis are:
 
-  - `profile`: specifies the profile to use to match a specific version of Redis.
-  - `prefix`: prefix string automatically applied to keys found in commands.
+  - `prefix`: prefix string applied to every key found in commands.
   - `exceptions`: whether the client should throw or return responses upon Redis errors.
   - `connections`: list of connection backends or a connection factory instance.
-  - `cluster`: specifies a cluster backend (`predis`, `redis` or callable object).
-  - `replication`: specifies a replication backend (`TRUE`, `sentinel` or callable object).
-  - `aggregate`: overrides `cluster` and `replication` to provide a custom connections aggregator.
+  - `cluster`: specifies a cluster backend (`predis`, `redis` or callable).
+  - `replication`: specifies a replication backend (`predis`, `sentinel` or callable).
+  - `aggregate`: configures the client with a custom aggregate connection (callable).
   - `parameters`: list of default connection parameters for aggregate connections.
+  - `commands`: specifies a command factory instance to use through the library.
+  - `readTimeout`: (cluster only) Timeout between read operations while loop over connections.
 
 Users can also provide custom options with values or callable objects (for lazy initialization) that
 are stored in the options container for later use through the library.
@@ -172,18 +249,18 @@ are stored in the options container for later use through the library.
 Aggregate connections are the foundation upon which Predis implements clustering and replication and
 they are used to group multiple connections to single Redis nodes and hide the specific logic needed
 to handle them properly depending on the context. Aggregate connections usually require an array of
-connection parameters when creating a new client instance.
+connection parameters along with the appropriate client option when creating a new client instance.
 
 #### Cluster ####
 
-By default, when no specific client options are set and an array of connection parameters is passed
-to the client's constructor, Predis configures itself to work in clustering mode using a traditional
-client-side sharding approach to create a cluster of independent nodes and distribute the keyspace
-among them. This approach needs some form of external health monitoring of nodes and requires manual
-operations to rebalance the keyspace when changing its configuration by adding or removing nodes:
+Predis can be configured to work in clustering mode with a traditional client-side sharding approach
+to create a cluster of independent nodes and distribute the keyspace among them. This approach needs
+some sort of external health monitoring of nodes and requires the keyspace to be rebalanced manually
+when nodes are added or removed:
 
 ```php
 $parameters = ['tcp://10.0.0.1', 'tcp://10.0.0.2', 'tcp://10.0.0.3'];
+$options    = ['cluster' => 'predis'];
 
 $client = new Predis\Client($parameters);
 ```
@@ -203,6 +280,26 @@ $options    = ['cluster' => 'redis'];
 $client = new Predis\Client($parameters, $options);
 ```
 
+#### Redis Gears with cluster ####
+
+Since Redis v7.2, Redis Gears module is a part of Redis Stack bundle. Client supports a variety of
+Redis Gears commands that can be used with OSS cluster API. Currently, before using any Redis
+Gears commands against OSS cluster Redis server needs to be aware of cluster topology.
+
+`REDISGEARS_2.REFRESHCLUSTER` command should be called against **each master node** (read replicas
+should be ignored) **on cluster creation and each time cluster topology changes**.
+
+In most cases this actions should be performed from the CLI interface by the administrator, DevOPS
+or even Kubernetes, depends on your infrastructure managing process. However, client provides an API
+to do this programmatically.
+
+```php
+/** @var \Predis\Connection\Cluster\ClusterInterface $connection */
+$connection->executeCommandOnEachNode(
+    new \Predis\Command\RawCommand('REDISGEARS_2.REFRESHCLUSTER')
+);
+```
+
 #### Replication ####
 
 The client can be configured to operate in a single master / multiple slaves setup to provide better
@@ -213,12 +310,12 @@ the value of a key. Instead of raising a connection error when a slave fails, th
 fall back to a different slave among the ones provided in the configuration.
 
 The basic configuration needed to use the client in replication mode requires one Redis server to be
-identified as the master (this can be done via connection parameters using the `alias` parameter set
-to `master`) and one or more servers acting as slaves:
+identified as the master (this can be done via connection parameters by setting the `role` parameter
+to `master`) and one or more slaves (in this case setting `role` to `slave` for slaves is optional):
 
 ```php
-$parameters = ['tcp://10.0.0.1?alias=master', 'tcp://10.0.0.2', 'tcp://10.0.0.3'];
-$options    = ['replication' => true];
+$parameters = ['tcp://10.0.0.1?role=master', 'tcp://10.0.0.2', 'tcp://10.0.0.3'];
+$options    = ['replication' => 'predis'];
 
 $client = new Predis\Client($parameters, $options);
 ```
@@ -259,13 +356,13 @@ when certain Lua scripts do not perform write operations it is possible to provi
 the client to stick with slaves for their execution:
 
 ```php
-$parameters = ['tcp://10.0.0.1?alias=master', 'tcp://10.0.0.2', 'tcp://10.0.0.3'];
+$parameters = ['tcp://10.0.0.1?role=master', 'tcp://10.0.0.2', 'tcp://10.0.0.3'];
 $options    = ['replication' => function () {
     // Set scripts that won't trigger a switch from a slave to the master node.
     $strategy = new Predis\Replication\ReplicationStrategy();
     $strategy->setScriptReadOnly($LUA_SCRIPT);
 
-    return new Predis\Connection\Aggregate\MasterSlaveReplication($strategy);
+    return new Predis\Connection\Replication\MasterSlaveReplication($strategy);
 }];
 
 $client = new Predis\Client($parameters, $options);
@@ -318,13 +415,109 @@ This abstraction can perform check-and-set operations thanks to `WATCH` and `UNW
 automatic retries of transactions aborted by Redis when `WATCH`ed keys are touched. For an example
 of a transaction using CAS you can see [the following example](examples/transaction_using_cas.php).
 
+#### Support for clustered connections ####
+
+Since Predis v3.0 transactions could be used with clustered connections. However, it has some limitations due to the
+fact that Redis doesn't support distributed transactions. All keys in the transaction context should operate on the same
+hash slot, due to this limitation it's recommended to use `{}` syntax to make sure that all keys will be mapped to the same hash
+slot. Apart from it no additional configuration needed on a client side.
+
+```php
+$redis = $this->getClient();
+
+$response = $redis->transaction(function (MultiExec $tx) {
+    $tx->set('{foo}foo', 'value');
+    $tx->set('{foo}bar', 'value');
+    $tx->set('{foo}baz', 'value');
+});
+
+// ['OK', 'OK', 'OK']
+```
+
+
+### Hinted Hash Templates (HIMPORT) ###
+
+> **Experimental:** this feature is experimental and its API (the `himport` container and option) may
+> change in a future release.
+
+`HIMPORT` (Redis >= 8.10) speeds up loading many hashes that share the same field names. The field
+names are sent once with `HIMPORT PREPARE`, registering them under a fieldset name, and hashes are
+then created with `HIMPORT SET` by sending only the values. The server stores such hashes in a
+memory-efficient encoding where the field names are kept only once; the resulting keys are ordinary
+hashes that work with every regular hash command.
+
+Predis exposes the command family through the `himport` container:
+
+```php
+$client->himport->prepare('users', ['name', 'email', 'age']);
+
+$client->himport->set('user:1', 'users', ['alice', 'alice@example.com', '25']);
+$client->himport->set('user:2', 'users', ['bob', 'bob@example.com', '30']);
+
+$client->himport->discard('users');   // 1
+$client->himport->discardAll();        // number of fieldsets removed
+```
+
+Values are paired by position with the fields supplied to `prepare()`, in the caller's order — Predis
+never reorders them. Hash enumeration order (e.g. `HGETALL`) is not guaranteed to match the `PREPARE`
+order, only the value-to-field pairing is.
+
+A fieldset is **server-side session state that lives on a single physical connection** and is lost when
+that connection is dropped (reconnect, `RESET`, cluster failover). To keep this transparent, Predis
+tracks the fieldsets prepared through the container and:
+
+- replays each `PREPARE` automatically when a connection is re-established (at most once per physical
+  connection); this always happens and does not depend on retries;
+- if a `HIMPORT SET` still reports `no such fieldset` (for example on a connection created after a
+  cluster redirection), re-prepares the fieldset on the executing connection and retries the write.
+
+The re-prepare-and-retry step **reuses the client's configured retry policy** — it is not a separate
+mechanism. It therefore only happens when retries are enabled (via the `retry` connection parameter),
+and never more than the configured number of attempts; with retries disabled the `no such fieldset`
+error propagates unchanged. It can additionally be turned off, even when retries are enabled, with the
+`himport` option:
+
+```php
+$client = new Predis\Client(
+    $parameters + ['retry' => new Predis\Retry\Retry(new Predis\Retry\Strategy\ExponentialBackoff(), 3)],
+    ['himport' => ['auto_prepare' => false]] // opt out of HIMPORT re-prepare specifically
+);
+```
+
+Fieldsets can also be declared up front through the `himport` option. Fieldsets declared this way are
+prepared on demand the first time a `HIMPORT SET` references them on a connection, so the application
+never has to call `prepare()` for them (this uses the re-prepare-and-retry path above, so it requires
+retries to be enabled):
+
+```php
+$client = new Predis\Client($parameters + ['retry' => new Predis\Retry\Retry(new Predis\Retry\Strategy\ExponentialBackoff(), 3)], [
+    'himport' => [
+        'fieldsets' => [
+            'users' => ['name', 'email', 'age'],
+        ],
+    ],
+]);
+
+// No prepare() call needed — "users" is known from configuration:
+$client->himport->set('user:1', 'users', ['alice', 'alice@example.com', '25']);
+```
+
+On a cluster, `prepare()`, `discard()` and `discardAll()` fan out to every master shard, while `set()`
+is routed by the hash slot of its key like any other write. This ensures a `HIMPORT SET` succeeds on
+whichever shard owns its key.
+
+The raw command form (`$client->himport('PREPARE', 'users', 'name', 'email')`) is also available and is
+the one to use inside pipelines and transactions; it performs no client-side tracking or recovery, so
+`PREPARE` and the dependent `SET` commands must run on the same connection (which pipelines and
+transactions guarantee).
+
 
 ### Adding new commands ###
 
 While we try to update Predis to stay up to date with all the commands available in Redis, you might
 prefer to stick with an old version of the library or provide a different way to filter arguments or
 parse responses for specific commands. To achieve that, Predis provides the ability to implement new
-command classes to define or override commands in the default server profiles used by the client:
+command classes to define or override commands in the default command factory used by the client:
 
 ```php
 // Define a new command by extending Predis\Command\Command:
@@ -336,9 +529,12 @@ class BrandNewRedisCommand extends Predis\Command\Command
     }
 }
 
-// Inject your command in the current profile:
-$client = new Predis\Client();
-$client->getProfile()->defineCommand('newcmd', 'BrandNewRedisCommand');
+// Inject your command in the current command factory:
+$client = new Predis\Client($parameters, [
+    'commands' => [
+        'newcmd' => 'BrandNewRedisCommand',
+    ],
+]);
 
 $response = $client->newcmd();
 ```
@@ -357,7 +553,7 @@ $response = $client->executeRaw(['SET', 'foo', 'bar']);
 While it is possible to leverage [Lua scripting](http://redis.io/commands/eval) on Redis 2.6+ using
 directly [`EVAL`](http://redis.io/commands/eval) and [`EVALSHA`](http://redis.io/commands/evalsha),
 Predis offers script commands as an higher level abstraction built upon them to make things simple.
-Script commands can be registered in the server profile used by the client and are accessible as if
+Script commands can be registered in the command factory used by the client and are accessible as if
 they were plain Redis commands, but they define Lua scripts that get transmitted to the server for
 remote execution. Internally they use [`EVALSHA`](http://redis.io/commands/evalsha) by default and
 identify a script by its SHA1 hash to save bandwidth, but [`EVAL`](http://redis.io/commands/eval)
@@ -383,9 +579,12 @@ LUA;
     }
 }
 
-// Inject the script command in the current profile:
-$client = new Predis\Client();
-$client->getProfile()->defineCommand('lpushrand', 'ListPushRandomValue');
+// Inject the script command in the current command factory:
+$client = new Predis\Client($parameters, [
+    'commands' => [
+        'lpushrand' => 'ListPushRandomValue',
+    ],
+]);
 
 $response = $client->lpushrand('random_values', $seed = mt_rand());
 ```
@@ -393,17 +592,13 @@ $response = $client->lpushrand('random_values', $seed = mt_rand());
 
 ### Customizable connection backends ###
 
-Predis can use different connection backends to connect to Redis. Two of them leverage a third party
-extension such as [phpiredis](https://github.com/nrk/phpiredis) resulting in major performance gains
-especially when dealing with big multibulk responses. While one is based on PHP streams, the other
-is based on socket resources provided by `ext-socket`. Both support TCP/IP and UNIX domain sockets:
+Predis can use different connection backends to connect to Redis. The builtin Relay integration
+leverages the [Relay](https://github.com/cachewerk/relay) extension for PHP for major performance
+gains, by caching a partial replica of the Redis dataset in PHP shared runtime memory.
 
 ```php
 $client = new Predis\Client('tcp://127.0.0.1', [
-    'connections' => [
-        'tcp'  => 'Predis\Connection\PhpiredisStreamConnection',  // PHP stream resources
-        'unix' => 'Predis\Connection\PhpiredisSocketConnection',  // ext-socket resources
-    ],
+    'connections' => 'relay',
 ]);
 ```
 
@@ -426,16 +621,193 @@ $client = new Predis\Client('tcp://127.0.0.1', [
 For a more in-depth insight on how to create new connection backends you can refer to the actual
 implementation of the standard connection classes available in the `Predis\Connection` namespace.
 
+### Retry exceptions
 
+You can enable automatic retry that is disabled by default, to be able to reduce the amount of
+false-positives in case of network issues. By default, we're retrying on any connection,
+timeout or socket initialization exception, but you can update the list of retry
+exceptions. For now `EqualBackoff` and `ExponentialBackoff` strategies are available,
+but you may provide your custom one. Retry may be configured with any type of communication
+(standalone node, cluster, pipeline, transaction, replication). Here's an example of
+configuration:
+
+```php
+// Standalone client
+$client = new Predis\Client([
+    'retry' => new \Predis\Retry\Retry(
+        new \Predis\Retry\Strategy\ExponentialBackoff(1000, 10000), // Base and cap configuration in microseconds
+        3                                                           // Number of retries
+    ),
+]);
+
+// Cluster configuration
+$options = [
+    'parameters' => [
+        'retry' => new \Predis\Retry\Retry(new \Predis\Retry\Strategy\ExponentialBackoff(1000, 10000), 3),
+    ],
+];
+
+$client = new Predis\Client(['tcp://host:port', 'tcp://host:port', 'tcp://host:port'], $options);
+
+$retry = new \Predis\Retry\Retry(
+    new \Predis\Retry\Strategy\ExponentialBackoff(1000, 10000),
+    3
+);
+
+// Update a list of exceptions to catch
+$retry->updateCatchableExceptions([Exception::class]);
+```
+
+## RESP3 ##
+
+### Connection ###
+To establish the connection using the [RESP3](https://github.com/redis/redis-specifications/blob/master/protocol/RESP3.md) protocol, you need to set parameter `protocol => 3`. The default protocol is RESP2.
+
+You can pass parameter as configuration option in array or as a query parameter in `redis_url`
+
+```php
+  // Configuration option
+  $client = new \Predis\Client(['protocol' => 3]);
+
+  // Redis URL
+  $client = new \Predis\Client('redis://localhost:6379?protocol=3');
+
+  // ["proto" => "3"]
+  $client->executeRaw(['HELLO']);
+```
+
+### Command responses ###
+RESP3 protocol introduce a variety of new [response types](https://github.com/redis/redis-specifications/blob/master/protocol/RESP3.md#resp3-types),
+so on the client-side we have more explicit understanding on data types we retrieve from server. Here's some examples to show the difference
+between RESP2 and RESP3 responses.
+
+#### Float responses ####
+``` php
+// RESP2 connection
+$client = new \Predis\Client();
+
+$client->geoadd('my_geo', 11.111, 22.222, 'member1');
+
+// [[0 => string(20) "11.11099988222122192", 1 => string(20) "22.22200052541037252"]]
+// RESP2 returns float values as simple strings.
+var_dump($client->geopos('my_geo', ['member1']));
+
+// RESP3 connection
+$client = new \Predis\Client(['protocol' => 3]);
+
+// [[0 => float(11.110999882221222), 1 => float(22.222000525410373)]]
+// RESP3 introduces new double type, that corresponds to PHP float.
+var_dump($client->geopos('my_geo', ['member1']));
+```
+
+#### Aggregate types ####
+In RESP3 new aggregate type [Map](https://github.com/redis/redis-specifications/blob/master/protocol/RESP3.md#map-type)
+was introduced, that represents the sequence of field-value pairs. So it simplifies parsing, since we don't need to specify
+parsing strategy per command (RESP2) and instead relies on the type defined by protocol (RESP3).
+
+In most cases RESP2 responses shouldn't differ from RESP3, since we added additional parsing for those
+command that return field-value pairs. However, since RESP2 requires additional parsing, it could be that some commands
+had lack of it and return unhandled responses. In this case there would be difference like this:
+
+```php
+$client = new \Predis\Client();
+
+// RESP2: ['field', 'value]
+$client->commandThatReturnsFieldValuePair('key');
+
+$client = new \Predis\Client(['protocol' => 3]);
+
+// RESP3: ['field' => 'value]
+$client->commandThatReturnsFieldValuePair('key');
+```
+
+Feel free to open PR or GitHub issue if you face those protocol mismatching.
+
+### Push notifications ###
+RESP3 introduce a concept of [push connection](https://github.com/redis/redis-specifications/blob/master/protocol/RESP3.md#push-type),
+is the one where server could send asynchronous data to client which was not explicitly requested. Predis 3.0 provides
+an API to establish this kind of connection as separate blocking process (worker) and invoke callbacks depends on push
+notification message type.
+
+#### Consumer ####
+First of all, you need to set up a consumer connection and provide an optional callback that will be executed before
+event loop will be started. It allows you to subscribe on channels, enable keys invalidations tracking or enable monitor
+connection, any Redis command to let server know that you want to receive push notification within this connection.
+
+```php
+// Make sure that RESP3 protocol enabled and read_write_timeout set 0,
+// so connection won't be killed by timeout.
+$client = new Predis\Client(['read_write_timeout' => 0, 'protocol' => 3]);
+
+// Create push notifications consumer.
+// Provides callback where current consumer subscribes to few channels before
+// enter the loop.
+$push = $client->push(function (ClientInterface $client) {
+    $response = $client->subscribe('channel', 'control');
+    $status = ($response[2] === 1) ? 'OK' : 'FAILED';
+    echo "Channel subscription status: {$status}\n";
+});
+```
+
+#### Dispatcher loop ####
+Dispatcher object allows you to attach a callback to given push notification type and run the actual worker process that
+listen for incoming push notifications. To be able to stop blocking process in runtime you can specify a condition and
+call `$dispatcher->stop()` method from given callback. In this example we're waiting for specific message `terminate`
+within `control` channel that we subscribed to before entering the loop.
+
+```php
+// Storage for incoming notifications.
+$messages = [];
+
+// Create dispatcher for push notifications.
+$dispatcher = new Predis\Consumer\Push\DispatcherLoop($push);
+
+$dispatcher->attachCallback(
+    PushResponseInterface::MESSAGE_DATA_TYPE,
+    static function (array $payload, DispatcherLoopInterface $dispatcher) {
+        global $messages;
+        [$channel, $message] = $payload;
+
+        if ($channel === 'control' && $message === 'terminate') {
+            echo "Terminating notification consumer.\n";
+            $dispatcher->stop();
+
+            return;
+        }
+
+        $messages[] = $message;
+        echo "Received message: {$message}\n";
+    }
+);
+
+// Run consumer loop with attached callbacks.
+$dispatcher->run();
+
+// Count all messages that were received during consumer loop.
+$messagesCount = count($messages);
+echo "We received: {$messagesCount} messages\n";
+```
+
+This example shows a simple script to count all incoming messages from push notifications that we receive from
+subscribed channels until stop condition will be met. Examples available in `examples/` folder.
+
+### Sharded pub/sub ###
+From Redis 7.0, sharded Pub/Sub is introduced in which shard channels are assigned to slots by the same algorithm used
+to assign keys to slots.
+
+Predis 3.0 provides an API that allows to use pub/sub for Cluster connections using sharded pub/sub from Redis.
+You don't need to specify any additional configuration to enable sharded pub/sub, it will be automatically enabled if
+Cluster connection is using.
+
+Implementation looks pretty much the same as Push notification, so you need to set up consumer
+and run it over Dispatcher loop object. All examples available in `examples/` folder.
 ## Development ##
 
 
 ### Reporting bugs and contributing code ###
 
 Contributions to Predis are highly appreciated either in the form of pull requests for new features,
-bug fixes, or just bug reports. We only ask you to adhere to a [basic set of rules](CONTRIBUTING.md)
-before submitting your changes or filing bugs on the issue tracker to make it easier for everyone to
-stay consistent while working on the project.
+bug fixes, or just bug reports. We only ask you to adhere to issue and pull request templates.
 
 
 ### Test suite ###
@@ -443,50 +815,27 @@ stay consistent while working on the project.
 __ATTENTION__: Do not ever run the test suite shipped with Predis against instances of Redis running
 in production environments or containing data you are interested in!
 
-Predis has a comprehensive test suite covering every aspect of the library. This test suite performs
-integration tests against a running instance of Redis (>= 2.4.0 is required) to verify the correct
-behavior of the implementation of each command and automatically skips commands not defined in the
-specified Redis profile. If you do not have Redis up and running, integration tests can be disabled.
-By default the test suite is configured to execute integration tests using the profile for Redis 3.2
-(which is the current stable version of Redis) but can optionally target a Redis instance built from
-the `unstable` branch by modifying `phpunit.xml` and setting `REDIS_SERVER_VERSION` to `dev` so that
-the development server profile will be used. You can refer to [the tests README](tests/README.md)
-for more detailed information about testing Predis.
+Predis has a comprehensive test suite covering every aspect of the library and that can optionally
+perform integration tests against a running instance of Redis (required >= 2.4.0 in order to verify
+the correct behavior of the implementation of each command. Integration tests for unsupported Redis
+commands are automatically skipped. If you do not have Redis up and running, integration tests can
+be disabled. See [the tests README](tests/README.md) for more details about testing this library.
 
-Predis uses Travis CI for continuous integration and the history for past and current builds can be
-found [on its project page](http://travis-ci.org/nrk/predis).
-
-
-## Other ##
-
-
-### Project related links ###
-
-- [Source code](https://github.com/nrk/predis)
-- [Wiki](https://wiki.github.com/nrk/predis)
-- [Issue tracker](https://github.com/nrk/predis/issues)
-- [PEAR channel](http://pear.nrk.io)
-
-
-### Author ###
-
-- [Daniele Alessandri](mailto:suppakilla@gmail.com) ([twitter](http://twitter.com/JoL1hAHN))
-
+Predis uses GitHub Actions for continuous integration and the history for past and current builds can be
+found [on its actions page](https://github.com/predis/predis/actions).
 
 ### License ###
 
 The code for Predis is distributed under the terms of the MIT license (see [LICENSE](LICENSE)).
 
-[ico-license]: https://img.shields.io/github/license/nrk/predis.svg?style=flat-square
-[ico-version-stable]: https://img.shields.io/packagist/v/predis/predis.svg?style=flat-square
-[ico-version-dev]: https://img.shields.io/packagist/vpre/predis/predis.svg?style=flat-square
+[ico-license]: https://img.shields.io/github/license/predis/predis.svg?style=flat-square
+[ico-version-stable]: https://img.shields.io/github/v/tag/predis/predis?label=stable&style=flat-square
+[ico-version-dev]: https://img.shields.io/github/v/tag/predis/predis?include_prereleases&label=pre-release&style=flat-square
 [ico-downloads-monthly]: https://img.shields.io/packagist/dm/predis/predis.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/nrk/predis.svg?style=flat-square
-[ico-hhvm]: https://img.shields.io/hhvm/predis/predis.svg?style=flat-square
-[ico-gitter]: https://img.shields.io/gitter/room/nrk/predis.svg?style=flat-square
+[ico-build]: https://img.shields.io/github/actions/workflow/status/predis/predis/tests.yml?branch=main&style=flat-square
+[ico-coverage]: https://img.shields.io/coverallsCoverage/github/predis/predis?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/predis/predis
-[link-travis]: https://travis-ci.org/nrk/predis
+[link-releases]: https://github.com/predis/predis/releases
+[link-actions]: https://github.com/predis/predis/actions
 [link-downloads]: https://packagist.org/packages/predis/predis/stats
-[link-hhvm]: http://hhvm.h4cc.de/package/predis/predis
-[link-gitter]: https://gitter.im/nrk/predis
+[link-coverage]: https://coveralls.io/github/predis/predis

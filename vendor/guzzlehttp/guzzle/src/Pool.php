@@ -1,264 +1,524 @@
 <?php
+
+declare(strict_types=1);
+
 namespace GuzzleHttp;
 
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Ring\Core;
-use GuzzleHttp\Ring\Future\FutureInterface;
-use GuzzleHttp\Event\ListenerAttacherTrait;
-use GuzzleHttp\Event\EndEvent;
-use React\Promise\Deferred;
-use React\Promise\PromiseInterface;
+use GuzzleHttp\Cookie\CookieJarInterface;
+use GuzzleHttp\Promise\EachPromise;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Promise\PromisorInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UriFactoryInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
- * Sends and iterator of requests concurrently using a capped pool size.
+ * Sends an iterator of requests concurrently using a capped pool size.
  *
- * The Pool object implements FutureInterface, meaning it can be used later
- * when necessary, the requests provided to the pool can be cancelled, and
- * you can check the state of the pool to know if it has been dereferenced
- * (sent) or has been cancelled.
+ * The pool will read from an iterator until it is cancelled or until the
+ * iterator is consumed. When a request is yielded, the request is sent after
+ * applying the "options" request options (if provided in the ctor). Any
+ * observer callbacks in "options" (on_headers, on_trailers, on_stats,
+ * progress, and allow_redirects.on_redirect) also receive the request's
+ * iterable key as a trailing argument.
  *
- * When sending the pool, keep in mind that no results are returned: callers
- * are expected to handle results asynchronously using Guzzle's event system.
- * When requests complete, more are added to the pool to ensure that the
- * requested pool size is always filled as much as possible.
+ * When a function is yielded by the iterator, the function is provided the
+ * "options" array that should be merged on top of any existing options, and
+ * the function MUST then return a response or a wait-able response promise.
  *
- * IMPORTANT: Do not provide a pool size greater that what the utilized
- * underlying RingPHP handler can support. This will result is extremely poor
- * performance.
+ * @final
+ *
+ * @implements PromisorInterface<mixed, mixed>
  */
-class Pool implements FutureInterface
+class Pool implements PromisorInterface
 {
-    use ListenerAttacherTrait;
-
-    /** @var \GuzzleHttp\ClientInterface */
-    private $client;
-
-    /** @var \Iterator Yields requests */
-    private $iter;
-
-    /** @var Deferred */
-    private $deferred;
-
-    /** @var PromiseInterface */
-    private $promise;
-
-    private $waitQueue = [];
-    private $eventListeners = [];
-    private $poolSize;
-    private $isRealized = false;
+    use NonSerializableTrait;
 
     /**
-     * The option values for 'before', 'after', and 'error' can be a callable,
-     * an associative array containing event data, or an array of event data
-     * arrays. Event data arrays contain the following keys:
-     *
-     * - fn: callable to invoke that receives the event
-     * - priority: Optional event priority (defaults to 0)
-     * - once: Set to true so that the event is removed after it is triggered
-     *
-     * @param ClientInterface $client   Client used to send the requests.
-     * @param array|\Iterator $requests Requests to send in parallel
-     * @param array           $options  Associative array of options
-     *     - pool_size: (int) Maximum number of requests to send concurrently
-     *     - before:    (callable|array) Receives a BeforeEvent
-     *     - after:     (callable|array) Receives a CompleteEvent
-     *     - error:     (callable|array) Receives a ErrorEvent
+     * @var EachPromise<array-key, ResponseInterface, mixed>
+     */
+    private EachPromise $each;
+
+    /**
+     * @param ClientInterface                                                                                                                         $client   Client used to send the requests.
+     * @param iterable<array-key, RequestInterface|callable(array<array-key, mixed>): (ResponseInterface|PromiseInterface<ResponseInterface, mixed>)> $requests Requests or functions that return responses or response promises.
+     * @param array{
+     *     concurrency?: int|(callable(int): int),
+     *     options?: array{
+     *         base_uri?: string|UriInterface,
+     *         allow_redirects?: bool|array{
+     *             max?: int,
+     *             strict?: bool,
+     *             referer?: bool,
+     *             protocols?: non-empty-array<array-key, string>,
+     *             on_redirect?: callable(RequestInterface, ResponseInterface, UriInterface, int|string): mixed,
+     *             track_redirects?: bool
+     *         },
+     *         auth?: array{
+     *             0: string,
+     *             1: string,
+     *             2?: string|null
+     *         }|string|false|null,
+     *         body?: resource|string|null|StreamInterface|(callable&object)|\Iterator|\Stringable,
+     *         cert?: string|array{
+     *             0: string,
+     *             1?: string|null
+     *         },
+     *         cert_type?: string,
+     *         connect_timeout?: int|float,
+     *         cookies?: false|CookieJarInterface,
+     *         crypto_method?: int,
+     *         crypto_method_max?: int,
+     *         debug?: bool|resource,
+     *         decode_content?: bool|string,
+     *         delay?: int|float,
+     *         expect?: bool|int,
+     *         form_params?: array<array-key, string|int|float|bool|null|array>,
+     *         force_ip_resolve?: string,
+     *         headers?: array<array-key, string|non-empty-array<array-key, string>>|null,
+     *         http_errors?: bool,
+     *         idn_conversion?: bool|int|null,
+     *         json?: mixed,
+     *         multipart?: array<array-key, array{
+     *             name: string|int,
+     *             contents: mixed,
+     *             headers?: array<array-key, string>,
+     *             filename?: string
+     *         }>,
+     *         multiplex?: string,
+     *         on_headers?: callable(ResponseInterface, RequestInterface, int|string): mixed,
+     *         on_stats?: callable(TransferStats, int|string): mixed,
+     *         on_trailers?: callable(array<string, list<string>>, ResponseInterface, RequestInterface, int|string): mixed,
+     *         progress?: callable(int, int, int, int, int|string): mixed,
+     *         protocols?: non-empty-array<array-key, string>,
+     *         proxy?: string|array{
+     *             http?: string|null,
+     *             https?: string|null,
+     *             no?: string|array<array-key, string>|null
+     *         },
+     *         query?: array<array-key, mixed>|string,
+     *         read_timeout?: int|float,
+     *         retries?: int,
+     *         request_factory?: RequestFactoryInterface,
+     *         response_factory?: ResponseFactoryInterface,
+     *         sink?: resource|string|StreamInterface,
+     *         ssl_key?: string|array{
+     *             0: string,
+     *             1?: string|null
+     *         },
+     *         ssl_key_type?: string,
+     *         stream?: bool,
+     *         stream_factory?: StreamFactoryInterface,
+     *         stream_context?: array<array-key, mixed>,
+     *         synchronous?: bool,
+     *         timeout?: int|float,
+     *         uri_factory?: UriFactoryInterface,
+     *         verify?: bool|string,
+     *         version?: string|int|float,
+     *         curl?: array<int|string, mixed>,
+     *         ...
+     *     },
+     *     fulfilled?: callable(ResponseInterface, int|string, PromiseInterface<mixed, mixed>): mixed,
+     *     rejected?: callable(mixed, int|string, PromiseInterface<mixed, mixed>): mixed
+     * } $config Pool configuration.
      */
     public function __construct(
         ClientInterface $client,
-        $requests,
-        array $options = []
+        iterable $requests,
+        #[\SensitiveParameter]
+        array $config = []
     ) {
-        $this->client = $client;
-        $this->iter = $this->coerceIterable($requests);
-        $this->deferred = new Deferred();
-        $this->promise = $this->deferred->promise();
-        $this->poolSize = isset($options['pool_size'])
-            ? $options['pool_size'] : 25;
-        $this->eventListeners = $this->prepareListeners(
-            $options,
-            ['before', 'complete', 'error', 'end']
-        );
+        if (!isset($config['concurrency'])) {
+            $config['concurrency'] = 25;
+        }
+
+        if (isset($config['options'])) {
+            $opts = $config['options'];
+            unset($config['options']);
+        } else {
+            $opts = [];
+        }
+
+        $requestGenerator = static function () use ($requests, $client, $opts): \Generator {
+            foreach ($requests as $key => $rfn) {
+                $keyedOpts = self::keyedRequestOptions($opts, $key);
+
+                if ($rfn instanceof RequestInterface) {
+                    yield $key => $client->sendAsync($rfn, $keyedOpts);
+                } elseif (\is_callable($rfn)) {
+                    yield $key => $rfn($keyedOpts);
+                } else {
+                    throw new \InvalidArgumentException('Each value yielded by the iterator must be a Psr\Http\Message\RequestInterface or a callable that returns a promise that fulfills with a Psr\Http\Message\ResponseInterface object.');
+                }
+            }
+        };
+
+        $this->each = new EachPromise($requestGenerator(), $config);
     }
 
     /**
-     * Sends multiple requests in parallel and returns an array of responses
+     * Get promise
+     *
+     * @return PromiseInterface<mixed, mixed>
+     */
+    public function promise(): PromiseInterface
+    {
+        return $this->each->promise();
+    }
+
+    /**
+     * Sends multiple requests concurrently and returns an array of responses
      * and exceptions that uses the same ordering as the provided requests.
      *
      * IMPORTANT: This method keeps every request and response in memory, and
      * as such, is NOT recommended when sending a large number or an
      * indeterminate number of requests concurrently.
      *
-     * @param ClientInterface $client   Client used to send the requests
-     * @param array|\Iterator $requests Requests to send in parallel
-     * @param array           $options  Passes through the options available in
-     *                                  {@see GuzzleHttp\Pool::__construct}
+     * @param ClientInterface                                                                                                                         $client   Client used to send the requests
+     * @param iterable<array-key, RequestInterface|callable(array<array-key, mixed>): (ResponseInterface|PromiseInterface<ResponseInterface, mixed>)> $requests Requests or functions that return responses or response promises.
+     * @param array{
+     *     concurrency?: int|(callable(int): int),
+     *     options?: array{
+     *         base_uri?: string|UriInterface,
+     *         allow_redirects?: bool|array{
+     *             max?: int,
+     *             strict?: bool,
+     *             referer?: bool,
+     *             protocols?: non-empty-array<array-key, string>,
+     *             on_redirect?: callable(RequestInterface, ResponseInterface, UriInterface, int|string): mixed,
+     *             track_redirects?: bool
+     *         },
+     *         auth?: array{
+     *             0: string,
+     *             1: string,
+     *             2?: string|null
+     *         }|string|false|null,
+     *         body?: resource|string|null|StreamInterface|(callable&object)|\Iterator|\Stringable,
+     *         cert?: string|array{
+     *             0: string,
+     *             1?: string|null
+     *         },
+     *         cert_type?: string,
+     *         connect_timeout?: int|float,
+     *         cookies?: false|CookieJarInterface,
+     *         crypto_method?: int,
+     *         crypto_method_max?: int,
+     *         debug?: bool|resource,
+     *         decode_content?: bool|string,
+     *         delay?: int|float,
+     *         expect?: bool|int,
+     *         form_params?: array<array-key, string|int|float|bool|null|array>,
+     *         force_ip_resolve?: string,
+     *         headers?: array<array-key, string|non-empty-array<array-key, string>>|null,
+     *         http_errors?: bool,
+     *         idn_conversion?: bool|int|null,
+     *         json?: mixed,
+     *         multipart?: array<array-key, array{
+     *             name: string|int,
+     *             contents: mixed,
+     *             headers?: array<array-key, string>,
+     *             filename?: string
+     *         }>,
+     *         multiplex?: string,
+     *         on_headers?: callable(ResponseInterface, RequestInterface, int|string): mixed,
+     *         on_stats?: callable(TransferStats, int|string): mixed,
+     *         on_trailers?: callable(array<string, list<string>>, ResponseInterface, RequestInterface, int|string): mixed,
+     *         progress?: callable(int, int, int, int, int|string): mixed,
+     *         protocols?: non-empty-array<array-key, string>,
+     *         proxy?: string|array{
+     *             http?: string|null,
+     *             https?: string|null,
+     *             no?: string|array<array-key, string>|null
+     *         },
+     *         query?: array<array-key, mixed>|string,
+     *         read_timeout?: int|float,
+     *         retries?: int,
+     *         request_factory?: RequestFactoryInterface,
+     *         response_factory?: ResponseFactoryInterface,
+     *         sink?: resource|string|StreamInterface,
+     *         ssl_key?: string|array{
+     *             0: string,
+     *             1?: string|null
+     *         },
+     *         ssl_key_type?: string,
+     *         stream?: bool,
+     *         stream_factory?: StreamFactoryInterface,
+     *         stream_context?: array<array-key, mixed>,
+     *         synchronous?: bool,
+     *         timeout?: int|float,
+     *         uri_factory?: UriFactoryInterface,
+     *         verify?: bool|string,
+     *         version?: string|int|float,
+     *         curl?: array<int|string, mixed>,
+     *         ...
+     *     },
+     *     fulfilled?: callable(ResponseInterface, int|string): mixed,
+     *     rejected?: callable(mixed, int|string): mixed
+     * } $options Passes through the options available in {@see Pool::__construct}.
      *
-     * @return BatchResults Returns a container for the results.
+     * @return array<array-key, mixed> Returns an array containing the response or rejection reason in the same order that the requests were sent.
+     *
      * @throws \InvalidArgumentException if the event format is incorrect.
      */
     public static function batch(
         ClientInterface $client,
-        $requests,
+        iterable $requests,
+        #[\SensitiveParameter]
         array $options = []
-    ) {
-        $hash = new \SplObjectStorage();
-        foreach ($requests as $request) {
-            $hash->attach($request);
-        }
+    ): array {
+        $res = [];
+        self::cmpCallback($options, 'fulfilled', $res);
+        self::cmpCallback($options, 'rejected', $res);
+        $pool = new static($client, $requests, $options);
+        $pool->promise()->wait();
+        \ksort($res);
 
-        // In addition to the normally run events when requests complete, add
-        // and event to continuously track the results of transfers in the hash.
-        (new self($client, $requests, RequestEvents::convertEventArray(
-            $options,
-            ['end'],
-            [
-                'priority' => RequestEvents::LATE,
-                'fn'       => function (EndEvent $e) use ($hash) {
-                    $hash[$e->getRequest()] = $e->getException()
-                        ? $e->getException()
-                        : $e->getResponse();
-                }
-            ]
-        )))->wait();
-
-        return new BatchResults($hash);
-    }
-
-    public function wait()
-    {
-        if ($this->isRealized) {
-            return false;
-        }
-
-        // Seed the pool with N number of requests.
-        for ($i = 0; $i < $this->poolSize; $i++) {
-            if (!$this->addNextRequest()) {
-                break;
-            }
-        }
-
-        // Stop if the pool was cancelled while transferring requests.
-        if ($this->isRealized) {
-            return false;
-        }
-
-        // Wait on any outstanding FutureResponse objects.
-        while ($response = array_pop($this->waitQueue)) {
-            try {
-                $response->wait();
-            } catch (\Exception $e) {
-                // Eat exceptions because they should be handled asynchronously
-            }
-        }
-
-        // Clean up no longer needed state.
-        $this->isRealized = true;
-        $this->waitQueue = $this->eventListeners = [];
-        $this->client = $this->iter = null;
-        $this->deferred->resolve(true);
-
-        return true;
+        return $res;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * Attempt to cancel all outstanding requests (requests that are queued for
-     * dereferencing). Returns true if all outstanding requests can be
-     * cancelled.
-     *
-     * @return bool
+     * Execute callback(s)
      */
-    public function cancel()
+    private static function cmpCallback(array &$options, string $name, array &$results): void
     {
-        if ($this->isRealized) {
-            return false;
+        if (!isset($options[$name])) {
+            $options[$name] = static function (
+                #[\SensitiveParameter]
+                $v,
+                $k
+            ) use (&$results): void {
+                $results[$k] = $v;
+            };
+        } else {
+            $currentFn = $options[$name];
+            $options[$name] = static function (
+                #[\SensitiveParameter]
+                $v,
+                $k
+            ) use (&$results, $currentFn): void {
+                $currentFn($v, $k);
+                $results[$k] = $v;
+            };
         }
-
-        $success = $this->isRealized = true;
-        foreach ($this->waitQueue as $response) {
-            if (!$response->cancel()) {
-                $success = false;
-            }
-        }
-
-        return $success;
     }
 
     /**
-     * Returns a promise that is invoked when the pool completed. There will be
-     * no passed value.
+     * Returns the request options with any observer callbacks wrapped so that
+     * they also receive the request's iterable key as a trailing argument.
      *
-     * {@inheritdoc}
+     * @param array{
+     *     base_uri?: string|UriInterface,
+     *     allow_redirects?: bool|array{
+     *         max?: int,
+     *         strict?: bool,
+     *         referer?: bool,
+     *         protocols?: non-empty-array<array-key, string>,
+     *         on_redirect?: callable(RequestInterface, ResponseInterface, UriInterface, int|string): mixed,
+     *         track_redirects?: bool
+     *     },
+     *     auth?: array{
+     *         0: string,
+     *         1: string,
+     *         2?: string|null
+     *     }|string|false|null,
+     *     body?: resource|string|null|StreamInterface|(callable&object)|\Iterator|\Stringable,
+     *     cert?: string|array{
+     *         0: string,
+     *         1?: string|null
+     *     },
+     *     cert_type?: string,
+     *     connect_timeout?: int|float,
+     *     cookies?: false|CookieJarInterface,
+     *     crypto_method?: int,
+     *     crypto_method_max?: int,
+     *     debug?: bool|resource,
+     *     decode_content?: bool|string,
+     *     delay?: int|float,
+     *     expect?: bool|int,
+     *     form_params?: array<array-key, string|int|float|bool|null|array>,
+     *     force_ip_resolve?: string,
+     *     headers?: array<array-key, string|non-empty-array<array-key, string>>|null,
+     *     http_errors?: bool,
+     *     idn_conversion?: bool|int|null,
+     *     json?: mixed,
+     *     multipart?: array<array-key, array{
+     *         name: string|int,
+     *         contents: mixed,
+     *         headers?: array<array-key, string>,
+     *         filename?: string
+     *     }>,
+     *     multiplex?: string,
+     *     on_headers?: callable(ResponseInterface, RequestInterface, int|string): mixed,
+     *     on_stats?: callable(TransferStats, int|string): mixed,
+     *     on_trailers?: callable(array<string, list<string>>, ResponseInterface, RequestInterface, int|string): mixed,
+     *     progress?: callable(int, int, int, int, int|string): mixed,
+     *     protocols?: non-empty-array<array-key, string>,
+     *     proxy?: string|array{
+     *         http?: string|null,
+     *         https?: string|null,
+     *         no?: string|array<array-key, string>|null
+     *     },
+     *     query?: array<array-key, mixed>|string,
+     *     read_timeout?: int|float,
+     *     retries?: int,
+     *     request_factory?: RequestFactoryInterface,
+     *     response_factory?: ResponseFactoryInterface,
+     *     sink?: resource|string|StreamInterface,
+     *     ssl_key?: string|array{
+     *         0: string,
+     *         1?: string|null
+     *     },
+     *     ssl_key_type?: string,
+     *     stream?: bool,
+     *     stream_factory?: StreamFactoryInterface,
+     *     stream_context?: array<array-key, mixed>,
+     *     synchronous?: bool,
+     *     timeout?: int|float,
+     *     uri_factory?: UriFactoryInterface,
+     *     verify?: bool|string,
+     *     version?: string|int|float,
+     *     curl?: array<int|string, mixed>,
+     *     ...
+     * } $options
+     * @param int|string $key
+     *
+     * @return array{
+     *     base_uri?: string|UriInterface,
+     *     allow_redirects?: bool|array{
+     *         max?: int,
+     *         strict?: bool,
+     *         referer?: bool,
+     *         protocols?: non-empty-array<array-key, string>,
+     *         on_redirect?: callable(RequestInterface, ResponseInterface, UriInterface): mixed,
+     *         track_redirects?: bool
+     *     },
+     *     auth?: array{
+     *         0: string,
+     *         1: string,
+     *         2?: string|null
+     *     }|string|false|null,
+     *     body?: resource|string|null|StreamInterface|(callable&object)|\Iterator|\Stringable,
+     *     cert?: string|array{
+     *         0: string,
+     *         1?: string|null
+     *     },
+     *     cert_type?: string,
+     *     connect_timeout?: int|float,
+     *     cookies?: false|CookieJarInterface,
+     *     crypto_method?: int,
+     *     crypto_method_max?: int,
+     *     debug?: bool|resource,
+     *     decode_content?: bool|string,
+     *     delay?: int|float,
+     *     expect?: bool|int,
+     *     form_params?: array<array-key, string|int|float|bool|null|array>,
+     *     force_ip_resolve?: string,
+     *     headers?: array<array-key, string|non-empty-array<array-key, string>>|null,
+     *     http_errors?: bool,
+     *     idn_conversion?: bool|int|null,
+     *     json?: mixed,
+     *     multipart?: array<array-key, array{
+     *         name: string|int,
+     *         contents: mixed,
+     *         headers?: array<array-key, string>,
+     *         filename?: string
+     *     }>,
+     *     multiplex?: string,
+     *     on_headers?: callable(ResponseInterface, RequestInterface): mixed,
+     *     on_stats?: callable(TransferStats): mixed,
+     *     on_trailers?: callable(array<string, list<string>>, ResponseInterface, RequestInterface): mixed,
+     *     progress?: callable(int, int, int, int): mixed,
+     *     protocols?: non-empty-array<array-key, string>,
+     *     proxy?: string|array{
+     *         http?: string|null,
+     *         https?: string|null,
+     *         no?: string|array<array-key, string>|null
+     *     },
+     *     query?: array<array-key, mixed>|string,
+     *     read_timeout?: int|float,
+     *     retries?: int,
+     *     request_factory?: RequestFactoryInterface,
+     *     response_factory?: ResponseFactoryInterface,
+     *     sink?: resource|string|StreamInterface,
+     *     ssl_key?: string|array{
+     *         0: string,
+     *         1?: string|null
+     *     },
+     *     ssl_key_type?: string,
+     *     stream?: bool,
+     *     stream_factory?: StreamFactoryInterface,
+     *     stream_context?: array<array-key, mixed>,
+     *     synchronous?: bool,
+     *     timeout?: int|float,
+     *     uri_factory?: UriFactoryInterface,
+     *     verify?: bool|string,
+     *     version?: string|int|float,
+     *     curl?: array<int|string, mixed>,
+     *     ...
+     * }
      */
-    public function then(
-        callable $onFulfilled = null,
-        callable $onRejected = null,
-        callable $onProgress = null
-    ) {
-        return $this->promise->then($onFulfilled, $onRejected, $onProgress);
-    }
-
-    public function promise()
+    private static function keyedRequestOptions(array $options, $key): array
     {
-        return $this->promise;
-    }
-
-    private function coerceIterable($requests)
-    {
-        if ($requests instanceof \Iterator) {
-            return $requests;
-        } elseif (is_array($requests)) {
-            return new \ArrayIterator($requests);
+        if (\is_array($options['allow_redirects'] ?? null)
+            && \is_callable($options['allow_redirects']['on_redirect'] ?? null)
+        ) {
+            $onRedirect = $options['allow_redirects']['on_redirect'];
+            $options['allow_redirects']['on_redirect'] = static function (
+                #[\SensitiveParameter]
+                RequestInterface $request,
+                #[\SensitiveParameter]
+                ResponseInterface $response,
+                #[\SensitiveParameter]
+                UriInterface $uri
+            ) use ($onRedirect, $key): void {
+                $onRedirect($request, $response, $uri, $key);
+            };
         }
 
-        throw new \InvalidArgumentException('Expected Iterator or array. '
-            . 'Found ' . Core::describeType($requests));
-    }
-
-    /**
-     * Adds the next request to pool and tracks what requests need to be
-     * dereferenced when completing the pool.
-     */
-    private function addNextRequest()
-    {
-        if ($this->isRealized || !$this->iter || !$this->iter->valid()) {
-            return false;
+        if (\is_callable($options['on_headers'] ?? null)) {
+            $onHeaders = $options['on_headers'];
+            $options['on_headers'] = static function (
+                #[\SensitiveParameter]
+                ResponseInterface $response,
+                #[\SensitiveParameter]
+                RequestInterface $request
+            ) use ($onHeaders, $key): void {
+                $onHeaders($response, $request, $key);
+            };
         }
 
-        $request = $this->iter->current();
-        $this->iter->next();
-
-        if (!($request instanceof RequestInterface)) {
-            throw new \InvalidArgumentException(sprintf(
-                'All requests in the provided iterator must implement '
-                . 'RequestInterface. Found %s',
-                Core::describeType($request)
-            ));
+        if (\is_callable($options['on_stats'] ?? null)) {
+            $onStats = $options['on_stats'];
+            $options['on_stats'] = static function (TransferStats $stats) use ($onStats, $key): void {
+                $onStats($stats, $key);
+            };
         }
 
-        // Be sure to use "lazy" futures, meaning they do not send right away.
-        $request->getConfig()->set('future', 'lazy');
-        $this->attachListeners($request, $this->eventListeners);
-        $response = $this->client->send($request);
-        $hash = spl_object_hash($request);
-        $this->waitQueue[$hash] = $response;
+        if (\is_callable($options['on_trailers'] ?? null)) {
+            $onTrailers = $options['on_trailers'];
+            $options['on_trailers'] = static function (
+                array $trailers,
+                #[\SensitiveParameter]
+                ResponseInterface $response,
+                #[\SensitiveParameter]
+                RequestInterface $request
+            ) use ($onTrailers, $key): void {
+                $onTrailers($trailers, $response, $request, $key);
+            };
+        }
 
-        // Use this function for both resolution and rejection.
-        $fn = function ($value) use ($request, $hash) {
-            unset($this->waitQueue[$hash]);
-            $result = $value instanceof ResponseInterface
-                ? ['request' => $request, 'response' => $value, 'error' => null]
-                : ['request' => $request, 'response' => null, 'error' => $value];
-            $this->deferred->progress($result);
-            $this->addNextRequest();
-        };
+        if (\is_callable($options['progress'] ?? null)) {
+            $progress = $options['progress'];
+            $options['progress'] = static function (int $downloadTotal, int $downloadedBytes, int $uploadTotal, int $uploadedBytes) use ($progress, $key) {
+                return $progress($downloadTotal, $downloadedBytes, $uploadTotal, $uploadedBytes, $key);
+            };
+        }
 
-        $response->then($fn, $fn);
-
-        return true;
+        return $options;
     }
 }

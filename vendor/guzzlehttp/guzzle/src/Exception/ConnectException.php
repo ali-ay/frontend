@@ -1,4 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 namespace GuzzleHttp\Exception;
 
-class ConnectException extends RequestException {}
+/**
+ * Exception thrown when connection establishment fails.
+ */
+class ConnectException extends NetworkException
+{
+}

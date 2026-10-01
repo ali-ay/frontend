@@ -1,0 +1,33 @@
+{% extends "businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business subscriptionLP{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+	{% include '@root/LandingPage/Widgets/_subscriptionHeaderContent.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_referancessBrandsNew.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_whySubscription.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_subscriptionLeadWidget.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_aboutSubscription.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_subscriptionPricing.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_whichSectorsSubscription.html.twig' %}
+  {{ render(controller('App\\Controller\\PartialsController::_offerModalAction')) }}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+  <script>
+    window.lazyLoadOptions = {
+  		threshold: 50
+  	};
+  	window.addEventListener('LazyLoad::Initialized', function (e) {
+  		console.log(e.detail.instance);
+  	}, false);
+  </script>
+{% endblock %}

@@ -1,0 +1,811 @@
+homepage:
+    path:
+        tr: '/'
+        en: '/en'
+    controller: 'App\Controller\LandingPageController::mainLandingPageAction'
+
+homepage_eu:
+    path:
+        tr: '/'
+        en: '/en'
+    controller: 'App\Controller\LandingPageController::mainLandingPageAction'
+
+remove_trailing_slash:
+    path: /{url}
+    controller: 'App\Controller\RedirectingController::removeTrailingSlashAction'
+    requirements:
+        url: .*/$
+    methods: [GET]
+
+hesap_olustur_landing_page:
+    path:
+        tr: '/isim-icin/hesap-olustur'
+        en: '/en/business/signup'
+    controller: 'App\Controller\LandingPageController::selectMerchantTypeAction'
+    defaults: {source: "regular"}
+
+kurumsal_hesap_landing_page:
+    path:
+        tr: '/isim-icin/kurumsal-hesap-olustur'
+        en: '/en/business/signup-business-account'
+    controller: 'App\Controller\LandingPageController::registerNewMerchantAction'
+    defaults: {memberType: "BUSINESS", source: "regular"}
+bireysel_hesap_landing_page:
+    path:
+        tr: '/isim-icin/bireysel-hesap-olustur'
+        en: '/en/business/signup-personal-account'
+    controller: 'App\Controller\LandingPageController::registerNewMerchantAction'
+    defaults: {memberType: "PERSONAL", source: "regular"}
+sandbox_landing_page:
+    path:
+        tr: '/sandbox'
+        en: '/en/sandbox'
+    controller: 'App\Controller\LandingPageController::registerNewMerchantAction'
+    defaults: {memberType: "SANDBOX", source: "regular"}
+female_register_lp:
+    path:
+        tr: '/isim-icin/kadin-girisimci-hesap-olustur'
+        en: '/en/business/signup-female-entrepreneur-account'
+    controller: 'App\Controller\LandingPageController::registerNewMerchantAction'
+    defaults: {memberType: "FEMALEENT", source: "regular"}
+
+form_new_member_signup:
+    path:
+        tr: '/forms/new-member-sign-up'
+        en: '/en/forms/new-member-sign-up'
+    controller: 'App\Controller\FormsController::newMemberSignupAction'
+
+form_get_offer:
+    path:
+        tr: '/forms/offer'
+        en: '/en/forms/offer'
+    controller: 'App\Controller\FormsController::offerAction'
+
+form_get_cash_package_offer:
+    path:
+        tr: '/forms/cash-package-offer'
+        en: '/en/forms/cash-package-offer'
+    controller: 'App\Controller\FormsController::cashPackageOfferAction'
+
+cep_pos_offer:
+    path:
+        tr: '/forms/cep-pos-offer'
+        en: '/en/forms/cep-pos-offer'
+    controller: 'App\Controller\FormsController::cepPosOfferAction'
+
+form_get_buyer_protected_money_transfer:
+    path:
+        tr: '/forms/buyer-protected-money-transfer'
+        en: '/en/forms/buyer-protected-money-transfer'
+    controller: 'App\Controller\FormsController::buyerProtectedMoneyTransferAction'
+
+form_get_mass_pay_out:
+    path:
+        tr: '/forms/mass-pay-out'
+        en: '/en/forms/mass-pay-out'
+    controller: 'App\Controller\FormsController::massPayOutLeadFormAction'
+
+form_get_business_pwi:
+    path:
+        tr: '/forms/business-pwi'
+        en: '/en/forms/business-pwi'
+    controller: 'App\Controller\FormsController::businessPwiLeadFormAction'
+
+subscription_form_get_offer:
+    path:
+        tr: '/forms/subscription-offer'
+        en: '/en/forms/subscription-offer'
+    controller: 'App\Controller\FormsController::subscriptionOfferAction'
+
+mass_pay_out_form_get_offer:
+    path:
+        tr: '/forms/mass-pay-out-offer'
+        en: '/en/forms/mass-pay-out-offer'
+    controller: 'App\Controller\FormsController::massPayOutOfferAction'
+
+business:
+    path:
+        tr: '/isim-icin'
+        en: '/en/business'
+    controller: 'App\Controller\LandingPageController::businessMainLandingPageAction'
+
+business_virtual_pos:
+    path:
+        tr: '/isim-icin/sanal-pos'
+        en: '/en/business/get-online-payment'
+    controller: 'App\Controller\LandingPageController::businessVirtualPosLandingPageAction'
+
+iyzicoCardLP:
+    path:
+        tr: '/kendim-icin/iyzico-kart'
+        en: '/en/personal/iyzico-card'
+    controller: 'App\Controller\LandingPageController::iyzicoCardLandingPageAction'
+
+business_bank_transfer:
+    path:
+        tr: '/isim-icin/korumali-havale-eft'
+        en: '/en/business/buyer-protected-bank-transfer'
+    controller: 'App\Controller\LandingPageController::businessBuyerProtectedBankTransferLandingPageAction'
+
+business_marketplace:
+    path:
+        tr: '/isim-icin/pazaryeri-pos'
+        en: '/en/business/marketplace-payment-methods'
+    controller: 'App\Controller\LandingPageController::businessMarketplaceLandingPageAction'
+
+business_receive_payment:
+    path:
+        tr: '/isim-icin/link-ile-odeme-al'
+        en: '/en/business/get-paid-by-link'
+    controller: 'App\Controller\LandingPageController::businessReceivePaymentLandingPageAction'
+
+female_entrepreneur:
+    path:
+        tr: '/isim-icin/kadin-girisimci'
+        en: '/en/business/female-entrepreneur'
+    controller: 'App\Controller\LandingPageController::femaleEntrepreneurLandingPageAction'
+
+fail_landingpage:
+    path:
+        tr: '/404'
+        en: '/en/404'
+    controller: 'App\Controller\LandingPageController::failLandingPageAction'
+
+survey_landingpage:
+    path:
+        tr: '/tesekkurler'
+        en: '/en/thankyou'
+    controller: 'App\Controller\LandingPageController::surveyLandingPageAction'
+
+privacy_policy:
+    path:
+        tr: '/gizlilik-politikasi'
+        en: '/en/privacy-policy'
+    controller: 'App\Controller\SupportController::privacyPolicyAction'
+
+privacy_personal_data_policy:
+    path:
+        tr: '/gizlilik-politikasi/gizlilik-ve-kisisel-veri-politikasi'
+        en: '/en/privacy-policy/privacy-personal-data-policy'
+    controller: 'App\Controller\SupportController::pPPrivacyPersonalDataPolicyAction'
+
+consent_from_regarding_personal_data_processing:
+    path:
+        tr: '/gizlilik-politikasi/kisisel-verilerin-islenmesine-iliskin-riza-metni'
+        en: '/en/privacy-policy/consent-from-regarding-personal-data-processing'
+    controller: 'App\Controller\SupportController::consentFromRegardingPersonalDataProcessingAction'
+
+information_notice_regarding_personal_data_processing:
+    path:
+        tr: '/gizlilik-politikasi/kisisel-verilerin-islenmesine-iliskin-aydinlatma-metni'
+        en: '/en/privacy-policy/information-notice-regarding-personal-data-processing'
+    controller: 'App\Controller\SupportController::informationNoticeRegardingPersonalDataProcessingAction'
+
+consent_letter_of_commercial_communication:
+    path:
+        tr: '/gizlilik-politikasi/ticari-iletisim-riza-metni'
+        en: '/en/privacy-policy/consent-letter-of-commercial-communication'
+    controller: 'App\Controller\SupportController::consentLetterOfCommercialCommunicationAction'
+
+customer_information_security_awareness:
+    path:
+        tr: '/gizlilik-politikasi/musteri-bilgi-guvenligi-farkindaligi'
+        en: '/en/privacy-policy/customer-information-security-awareness'
+    controller: 'App\Controller\SupportController::customerInformationSecurityAwarenessAction'
+
+user_agreement:
+    path:
+        tr: '/kendim-icin/kullanici-sozlesmesi'
+        en: '/en/personal/user-agreement'
+    controller: 'App\Controller\SupportController::userAgreementAction'
+
+mobile_application_user_agreement:
+    path:
+        tr: '/kendim-icin/kullanici-sozlesmesi/iyzico-mobil-kullanici-sozlesmesi'
+        en: '/en/personal/user-agreement/iyzico-mobile-application-user-agreement'
+    controller: 'App\Controller\SupportController::iyzicoMobileApplicationUserAgreementAction'
+
+framework_emoney_issuance_and_payment_service_user_agreement:
+    path:
+        tr: '/kendim-icin/kullanici-sozlesmesi/cerceve-e-para-ihracati-ve-odeme-hizmeti-sozlesmesi'
+        en: '/en/personal/user-agreement/framework-e-money-issuance-and-payment-service-agreement'
+    controller: 'App\Controller\SupportController::frameworkEmoneyIssuanceAndPaymentServiceAgreementAction'
+
+iyzico_card_storage_end_user_agreementuser_agreement:
+    path:
+        tr: '/kendim-icin/kullanici-sozlesmesi/iyzico-yan-hizmetler-sozlesmesi'
+        en: '/en/personal/user-agreement/iyzico-card-storage-end-user-agreement'
+    controller: 'App\Controller\SupportController::iyzicoCardStorageEndUserAgreementAction'
+
+business_online_proceeds_payment:
+    path:
+        tr: '/isim-icin/online-tahsilat'
+        en: '/en/business/collect-online-payments'
+    controller: 'App\Controller\LandingPageController::businessOnlineProceedsLandingPageAction'
+
+business_etsy:
+    path:
+        tr: '/isim-icin/etsy-satisi'
+        en: '/en/business/etsy-sales'
+    controller: 'App\Controller\LandingPageController::businessEtsyLandingPageAction'
+
+business_social_media:
+    path:
+        tr: '/isim-icin/sosyal-medya-satisi'
+        en: '/en/business/social-media-sales'
+    controller: 'App\Controller\LandingPageController::businessSocialMediaLandingPageAction'
+
+business_stand_sales:
+    path:
+        tr: '/isim-icin/stand-satisi'
+        en: '/en/business/stall-sales'
+    controller: 'App\Controller\LandingPageController::businessStandSalesLandingPageAction'
+
+business_fraud:
+    path:
+        tr: '/isim-icin/fraud'
+        en: '/en/business/fraud'
+    controller: 'App\Controller\LandingPageController::businessFraudLandingPageAction'
+
+business_buyer_protection:
+    path:
+        tr: '/isim-icin/korumali-alisveris'
+        en: '/en/business/buyer-protection'
+    controller: 'App\Controller\LandingPageController::businessBuyerProtectionLandingPageAction'
+
+business_references:
+    path:
+        tr: '/isim-icin/referanslar'
+        en: '/en/business/references'
+    controller: 'App\Controller\LandingPageController::businessReferencessLandingPageAction'
+
+personal_home:
+    path:
+        tr: '/kendim-icin'
+        en: '/en/personal'
+    controller: 'App\Controller\LandingPageController::personalHomeLandingPageAction'
+
+personal:
+    path:
+        tr: '/kendim-icin/iyzico-ile-ode'
+        en: '/en/personal/pay-with-iyzico'
+    controller: 'App\Controller\LandingPageController::personalMainLandingPageAction'
+
+brands:
+    path:
+        tr: '/kendim-icin/markalar'
+        en: '/en/personal/brands'
+    controller: 'App\Controller\LandingPageController::personalBrandsLandingPageAction'
+
+local_brands:
+    path:
+        tr: '/kendim-icin/yerel-magazalar'
+        en: '/en/personal/local-brands'
+    controller: 'App\Controller\LandingPageController::personalLocaleBrandsLandingPageAction'
+
+blackfriday:
+    path:
+        tr: '/kendim-icin/kasim-indirimleri'
+        en: '/en/personal/november-discounts'
+    controller: 'App\Controller\LandingPageController::personalBlackFriday21LandingPageAction'
+
+backtoschool:
+    path:
+        tr: '/kendim-icin/okuladonus'
+        en: '/en/personal/backtoschool'
+    controller: 'App\Controller\LandingPageController::backtoschoolLandingPageAction'
+
+pwi_brands:
+    path:
+        tr: '/kendim-icin/gecerli-magazalar'
+        en: '/en/personal/applicable-stores'
+    controller: 'App\Controller\LandingPageController::personalPwiBrandsLandingPageAction'
+
+mothersday:
+    path:
+        tr: '/kendim-icin/annelergunu'
+        en: '/en/personal/mothersday'
+    controller: 'App\Controller\LandingPageController::personalMothersdayLandingPageAction'
+
+personal_buyer_protection:
+    path:
+        tr: '/kendim-icin/korumali-alisveris'
+        en: '/en/personal/buyer-protection'
+    controller: 'App\Controller\LandingPageController::personalBuyerProtectionLandingPageAction'
+
+deercase:
+    path:
+        tr: '/kendim-icin/deercase-hediye-tl'
+        en: '/en/personal/deercase-hediye-tl'
+    controller: 'App\Controller\LandingPageController::personalDeercaseAction'
+
+finish_campaign:
+    path:
+        tr: '/kendim-icin/finish-subat'
+        en: '/en/personal/finish-subat'
+    controller: 'App\Controller\LandingPageController::personalFinishAction'
+
+finish_campaign_January:
+    path:
+        tr: '/kendim-icin/finish-ocak'
+        en: '/en/personal/finish-ocak'
+    controller: 'App\Controller\LandingPageController::personalFinishJanuaryAction'
+
+finish_campaign_december:
+    path:
+        tr: '/kendim-icin/finish-aralik'
+        en: '/en/personal/finish-aralik'
+    controller: 'App\Controller\LandingPageController::personalFinishDecemberAction'
+
+wwf_campaign:
+    path:
+        tr: '/kendim-icin/wwf-market'
+        en: '/en/personal/wwf-market'
+    controller: 'App\Controller\LandingPageController::personalwwfAction'
+
+camper_campaign:
+    path:
+        tr: '/kendim-icin/camper'
+        en: '/en/personal/camper'
+    controller: 'App\Controller\LandingPageController::personalCamperAction'
+
+camper_may_campaign:
+    path:
+        tr: '/kendim-icin/camper-mayis'
+        en: '/en/personal/camper-may'
+    controller: 'App\Controller\LandingPageController::personalCamperMayAction'
+
+camper_september_campaign:
+    path:
+        tr: '/kendim-icin/camper-eylul'
+        en: '/en/personal/dkdukkan-september'
+    controller: 'App\Controller\LandingPageController::personalCamperSeptemberAction'
+
+camper_october_campaign:
+    path:
+        tr: '/kendim-icin/camper-ekim'
+        en: '/en/personal/dkdukkan-october'
+    controller: 'App\Controller\LandingPageController::personalCamperOctoberAction'
+
+beto_campaign:
+    path:
+        tr: '/kendim-icin/beto'
+        en: '/en/personal/beto'
+    controller: 'App\Controller\LandingPageController::personalBetoAction'
+
+elcacosmetics_campaign:
+    path:
+        tr: '/kendim-icin/kozmetik'
+        en: '/en/personal/kozmetik'
+    controller: 'App\Controller\LandingPageController::personalelcaCosmeticsAction'
+
+elcacosmetics_october_campaign:
+    path:
+        tr: '/kendim-icin/kozmetik-ekim'
+        en: '/en/personal/kozmetik-ekim'
+    controller: 'App\Controller\LandingPageController::personalelcaCosmeticsOctoberAction'
+
+sportime_campaign:
+    path:
+        tr: '/kendim-icin/sportime'
+        en: '/en/personal/sportime'
+    controller: 'App\Controller\LandingPageController::personalSportimeAction'
+
+flavus_campaign:
+    path:
+        tr: '/kendim-icin/flavus'
+        en: '/en/personal/flavus'
+    controller: 'App\Controller\LandingPageController::personalFlavusAction'
+
+flavus_september_campaign:
+    path:
+        tr: '/kendim-icin/flavus-eylul'
+        en: '/en/personal/flavus-september'
+    controller: 'App\Controller\LandingPageController::personalFlavusSeptemberAction'
+
+flavus_november_campaign:
+    path:
+        tr: '/kendim-icin/flavus-kasim'
+        en: '/en/personal/flavus-november'
+    controller: 'App\Controller\LandingPageController::personalFlavusNovemberAction'
+
+shopigo_campaign:
+    path:
+        tr: '/kendim-icin/shopigo'
+        en: '/en/personal/shopigo'
+    controller: 'App\Controller\LandingPageController::personalShopigoAction'
+
+miniso_august_campaign:
+    path:
+        tr: '/kendim-icin/miniso-agustos'
+        en: '/en/personal/miniso-august'
+    controller: 'App\Controller\LandingPageController::personalMinisoAugustAction'
+
+miniso_campaign:
+    path:
+        tr: '/kendim-icin/miniso'
+        en: '/en/personal/miniso'
+    controller: 'App\Controller\LandingPageController::personalMinisoAction'
+
+guzel_kelimeler_dukkani_campaign:
+    path:
+        tr: '/kendim-icin/guzel-kelimeler-dukkani'
+        en: '/en/personal/guzel-kelimeler-dukkani'
+    controller: 'App\Controller\LandingPageController::personalGuzelKelimelerDukkaniAction'
+
+dkdukkan_campaign:
+    path:
+        tr: '/kendim-icin/dkdukkan'
+        en: '/en/personal/dkdukkan'
+    controller: 'App\Controller\LandingPageController::personaldkDukkanAction'
+
+dkdukkan_august_campaign:
+    path:
+        tr: '/kendim-icin/dkdukkan-agustos'
+        en: '/en/personal/dkdukkan-august'
+    controller: 'App\Controller\LandingPageController::personaldkDukkanAugustAction'
+
+vitruta_campaign:
+    path:
+        tr: '/kendim-icin/vitruta'
+        en: '/en/personal/vitruta'
+    controller: 'App\Controller\LandingPageController::personalVitrutaAction'
+
+milagron_campaign:
+    path:
+        tr: '/kendim-icin/milagron'
+        en: '/en/personal/milagron'
+    controller: 'App\Controller\LandingPageController::personalMilagronAction'
+
+justinbeauty_campaign:
+    path:
+        tr: '/kendim-icin/justin-beauty'
+        en: '/en/personal/justin-beauty'
+    controller: 'App\Controller\LandingPageController::personalJustinBeautyAction'
+
+slazenger_campaign:
+    path:
+        tr: '/kendim-icin/slazenger'
+        en: '/en/personal/slazenger'
+    controller: 'App\Controller\LandingPageController::personalSlazengerAction'
+
+new_personal_lp:
+    path:
+        tr: '/kendim-icin/hesap-olustur'
+        en: '/en/personal/signup-account'
+    controller: 'App\Controller\LandingPageController::registerNewPersonalMerchantAction'
+
+business_register_result:
+    path:
+        tr: '/isim-icin/hesap-olustur/basarili'
+        en: '/en/business/signup/success'
+    controller: 'App\Controller\LandingPageController::businessRegisterResultAction'
+
+business_register_result_fail:
+    path:
+        tr: '/isim-icin/hesap-olustur/hatali'
+        en: '/en/business/signup/fail'
+    controller: 'App\Controller\LandingPageController::businessRegisterResultAction'
+
+open_source:
+    path:
+        tr: '/acik-kaynak'
+        en: '/en/open-source'
+    controller: 'App\Controller\LandingPageController::openSourceLandingPageAction'
+
+february14:
+    path:
+        tr: '/kendim-icin/14-subat'
+        en: '/en/personal/february-14'
+    controller: 'App\Controller\LandingPageController::february14LandingPageAction'
+
+kgySupport:
+    path:
+        tr: '/kendim-icin/kadin-girisimciye-destek'
+        en: '/en/personal/kadin-girisimciye-destek'
+    controller: 'App\Controller\LandingPageController::kgySupportLandingPageAction'
+
+personalBrands:
+    path:
+        tr: '/kendim-icin/markalar'
+        en: '/en/personal/brands'
+    controller: 'App\Controller\LandingPageController::personalBrandsLandingPageAction'
+
+ready_integration_landing_page:
+    path:
+        tr: '/cozum-ortaklarimiz'
+        en: '/en/partner-solutions'
+    controller: 'App\Controller\LandingPageController::readyIntegrationLandingPageAction'
+
+campaign_landing_page:
+    path:
+        tr: '/isim-icin/kampanyalar'
+        en: '/en/business/campaigns'
+    controller: 'App\Controller\LandingPageController::campaignLandingPageAction'
+
+personal_campaign_landing_page:
+    path:
+        tr: '/kendim-icin/kampanyalar'
+        en: '/en/personal/campaigns'
+    controller: 'App\Controller\LandingPageController::personalCampaignLandingPageAction'
+
+personal_cashback10_landing_page:
+    path:
+        tr: '/kendim-icin/sana-ozel-10'
+        en: '/en/personal/sana-ozel-10'
+    controller: 'App\Controller\LandingPageController::personalCashBackTenAction'
+
+personal_cashback20_landing_page:
+    path:
+        tr: '/kendim-icin/sana-ozel-20'
+        en: '/en/personal/sana-ozel-20'
+    controller: 'App\Controller\LandingPageController::personalCashBackTwentyAction'
+
+dynamic3ds_landing_page:
+    path:
+        tr: '/isim-icin/dynamic-3ds-sistemi'
+        en: '/en/business/dynamic-3ds'
+    controller: 'App\Controller\LandingPageController::dynamic3dsLandingPageAction'
+
+smart_payment_landing_page:
+    path:
+        tr: '/isim-icin/akilli-odeme-yonlendirme-servisi'
+        en: '/en/business/smart-payment-routing-service'
+    controller: 'App\Controller\LandingPageController::smartPaymentLandingPageAction'
+
+other_integration:
+    path:
+        tr: '/diger-entegrasyonlar'
+        en: '/en/other-integration'
+    controller: 'App\Controller\LandingPageController::otherIntegrationLandingPageAction'
+
+personal_contracted_sites:
+    path:
+        tr: '/kendim-icin/anlasmali-siteler'
+        en: '/en/personal/iyzico-buyer-protection-sites'
+    controller: 'App\Controller\LandingPageController::personalContractedSitesLandingPageAction'
+
+who_we_are:
+    path:
+        tr: '/hakkimizda/biz-kimiz'
+        en: '/en/about-us/who-we-are'
+    controller: 'App\Controller\LandingPageController::whoAreWeLandingPageAction'
+
+whyiyzico:
+    path:
+        tr: '/hakkimizda/neden-iyzico'
+        en: '/en/about-us/why-iyzico'
+    controller: 'App\Controller\LandingPageController::whyiyzicoLandingPageAction'
+
+team:
+    path:
+        tr: '/hakkimizda/ekip'
+        en: '/en/about-us/team'
+    controller: 'App\Controller\LandingPageController::teamLandingPageAction'
+
+career:
+    path:
+        tr: '/hakkimizda/kariyer'
+        en: '/en/about-us/career'
+    controller: 'App\Controller\LandingPageController::careerLandingPageAction'
+
+career_detail:
+    path:
+        tr: '/hakkimizda/kariyer/{detailId}'
+        en: '/en/about-us/career/{detailId'
+    controller: 'App\Controller\LandingPageController::careerDetailLandingPageAction'
+
+culture:
+    path:
+        tr: '/hakkimizda/kultur'
+        en: '/en/about-us/culture'
+    controller: 'App\Controller\LandingPageController::cultureLandingPageAction'
+
+press:
+    path:
+        tr: '/hakkimizda/basin'
+        en: '/en/about-us/press'
+    controller: 'App\Controller\LandingPageController::pressAction'
+
+brand:
+    path:
+        tr: '/hakkimizda/iyzico-marka-kilavuzu'
+        en: '/en/about-us/iyzico-brand-guide'
+    controller: 'App\Controller\LandingPageController::brandsLandingPageAction'
+
+newGraduate:
+    path:
+        tr: '/career/new-graduate'
+        en: '/en/career/new-graduate'
+    controller: 'App\Controller\LandingPageController::newGraduateLandingPageAction'
+
+merhantPanelLogin:
+    path:
+        tr: 'https://merchant.iyzipay.com/auth/login'
+        en: 'https://merchant.iyzipay.com/auth/login'
+
+help_center:
+    path:
+        tr: '/destek/yardim-merkezi'
+        en: '/en/support/help-center'
+    controller: 'App\Controller\LandingPageController::helpCenterLandingPageAction'
+
+help_center_category:
+    path:
+        tr: '/destek/yardim-merkezi/{categorySlug}'
+        en: '/en/support/help-center/{categorySlug'
+    controller: 'App\Controller\LandingPageController::helpCenterCategoryAction'
+
+help_center_sub_category:
+    path:
+        tr: '/destek/yardim-merkezi/{categorySlug}/{subCategorySlug}'
+        en: '/en/support/help-center/{categorySlug'
+    controller: 'App\Controller\LandingPageController::helpCenterSubCategoryAction'
+
+contact_us:
+    path:
+        tr: '/destek/iletisim'
+        en: '/en/support/contact-us'
+    controller: 'App\Controller\LandingPageController::contactUsLandingPageAction'
+
+contact_us_success:
+    path:
+        tr: '/destek/iletisim/basarili'
+        en: '/en/contact-us-success'
+    controller: 'App\Controller\LandingPageController::contactUsSuccessLandingPageAction'
+
+contact_us_fail:
+    path:
+        tr: '/iletisim-basarisiz'
+        en: '/en/contact-us-fail'
+    controller: 'App\Controller\LandingPageController::contactUsFailLandingPageAction'
+
+general_conditions:
+    path:
+        tr: '/genel-sartlar'
+        en: '/en/general-conditions'
+    controller: 'App\Controller\SupportController::generalTermsAction'
+
+service_status:
+    path:
+        tr: '/destek/servis-durumu'
+        en: '/en/support/service-status'
+    controller: 'App\Controller\ServerStatusController::indexAction'
+
+service_status_logs:
+    path:
+        tr: '/destek/servis-ay/{ruleName}'
+        en: '/en/support/service-month/{ruleName'
+    controller: 'App\Controller\ServerStatusController::getLogAction'
+
+service_status_days:
+    path:
+        tr: '/destek/servis-gun/{ruleName}/{datetime}'
+        en: '/en/support/service-day/{ruleName'
+    controller: 'App\Controller\ServerStatusController::getDayAction'
+
+form_contact_us:
+    path:
+        tr: '/forms/contact-us'
+        en: '/en/forms/contact-us'
+    controller: 'App\Controller\FormsController::contactUsAction'
+
+form_join_us:
+    path:
+        tr: '/forms/join-us'
+        en: '/en/forms/join-us'
+    controller: 'App\Controller\FormsController::joinUsAction'
+
+form_sign_up:
+    path:
+        tr: '/forms/sign-up'
+        en: '/en/forms/sign-up'
+    controller: 'App\Controller\FormsController::signupAction'
+
+aras_kargo_campaign:
+    path:
+        tr: '/isim-icin/iyzico-aras-kargo-kampanyasi'
+        en: '/en/business/'
+    controller: 'App\Controller\LandingPageController::arasCargoCampaignLandingPageAction'
+
+subscription_landing_page:
+    path:
+        tr: '/isim-icin/abonelik-yontemi'
+        en: '/en/business/subscription-system'
+    controller: 'App\Controller\LandingPageController::subscriptionLandingPageAction'
+
+brandWeek_landing_page:
+    path:
+        tr: '/brandweek'
+        en: '/en/brandweek'
+    controller: 'App\Controller\LandingPageController::brandweekLandingPageAction'
+
+registerResultSuccess:
+    path:
+        tr: '/kendim-icin/basarili'
+        en: '/en/personal/success'
+    controller: 'App\Controller\LandingPageController::registerResultSuccessAction'
+
+registerResultFail:
+    path:
+        tr: '/kendim-icin/hatali'
+        en: '/en/personal/fail'
+    controller: 'App\Controller\LandingPageController::registerResultFailAction'
+
+consumer_new_member_signup:
+    path:
+        tr: '/forms/consumer-new-member-signup'
+        en: '/en/forms/consumer-new-member-signup'
+    controller: 'App\Controller\FormsController::consumerNewMemberSignupAction'
+
+register_new_member_signup:
+    path:
+        tr: '/forms/register-new-member-signup'
+        en: '/en/forms/register-new-member-signup'
+    controller: 'App\Controller\FormsController::registerNewMemberSignupAction'
+
+consumer_otp_check:
+    path:
+        tr: '/forms/consumer-otp-check'
+        en: '/en/forms/consumer-otp-check'
+    controller: 'App\Controller\FormsController::otpCheckAction'
+
+consumer_otp_re_send_check:
+    path:
+        tr: '/forms/consumer-otp-re-send-check'
+        en: '/en/forms/consumer-otp-re-send-check'
+    controller: 'App\Controller\FormsController::otpReSendCheckAction'
+
+new_member_register_signup:
+    path:
+        tr: '/forms/new-member-register-signup'
+        en: '/en/forms/new-member-register-signup'
+    controller: 'App\Controller\FormsController::newMemberRegisterAction'
+
+mass_pay_out_landingpage:
+    path:
+        tr: '/isim-icin/coklu-para-gonderimi'
+        en: '/en/business/mass-pay-out'
+    controller: 'App\Controller\LandingPageController::businessMassPayOutLandingPageAction'
+
+pay_with_iyzico_landingpage:
+    path:
+        tr: '/isim-icin/iyzico-ile-ode'
+        en: '/en/business/pay-with-iyzico'
+    controller: 'App\Controller\LandingPageController::businessPayWithiyzicoLandingPageAction'
+
+iyzico_cep_pos_landingpage:
+    path:
+        tr: '/isim-icin/iyzico-cep-pos'
+        en: '/en/business/iyzico-cep-pos'
+    controller: 'App\Controller\LandingPageController::businessiyzicoCepPosLandingPageAction'
+
+ihtiyacharitasi_landing_page:
+    path:
+        tr: '/hakkimizda/sosyal-sorumluluk/ihtiyac-haritasi'
+        en: '/en/about-us/social-responsibilty/ihtiyac-haritasi'
+    controller: 'App\Controller\LandingPageController::ihtiyacHaritasiLandingPageAction'
+
+massPayOutRegister_landing_page:
+    path:
+        tr: '/coklu-para-gonderimi/hesap-olustur'
+        en: '/en/coklu-para-gonderimi/hesap-olustur'
+    controller: 'App\Controller\LandingPageController::massPayOutRegisterLandingPageAction'
+
+privileges_landing_page:
+    path:
+        tr: '/isim-icin/ayricaliklar'
+        en: '/en/business/privileges'
+    controller: 'App\Controller\LandingPageController::privilegesLandingPageAction'
+
+sme_landing_page:
+    path:
+        tr: '/kobi'
+        en: '/en'
+    controller: 'App\Controller\LandingPageController::smeLandingPageAction'
+
+goodToGood_landing_page:
+    path:
+        tr: '/hakkimizda/sosyal-sorumluluk'
+        en: '/en/about-us/social-responsibilty'
+    controller: 'App\Controller\LandingPageController::goodToGoodLandingPageAction'

@@ -1,0 +1,10 @@
+snc_redis:
+    clients:
+        cache:
+            type: predis
+            alias: cache
+            dsn: redis://localhost
+        session:
+            type: predis
+            alias: session
+            dsn: redis://localhost

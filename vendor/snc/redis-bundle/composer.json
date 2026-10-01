@@ -1,43 +1,90 @@
 {
     "name": "snc/redis-bundle",
-    "type": "symfony-bundle",
     "description": "A Redis bundle for Symfony",
-    "keywords": ["redis", "nosql", "symfony"],
-    "homepage": "https://github.com/snc/SncRedisBundle",
     "license": "MIT",
-    "authors": [{
-        "name": "Henrik Westphal",
-        "email": "henrik.westphal@gmail.com"
-    },{
-        "name": "Community contributors",
-        "homepage": "https://github.com/snc/SncRedisBundle/contributors"
-    }],
+    "type": "symfony-bundle",
+    "keywords": [
+        "redis",
+        "nosql",
+        "symfony"
+    ],
+    "authors": [
+        {
+            "name": "Henrik Westphal",
+            "email": "henrik.westphal@gmail.com"
+        },
+        {
+            "name": "Community contributors",
+            "homepage": "https://github.com/snc/SncRedisBundle/contributors"
+        }
+    ],
+    "homepage": "https://github.com/snc/SncRedisBundle",
     "require": {
-        "php": ">=5.3.3",
-        "symfony/framework-bundle": "^2.7 || ^3.0",
-        "symfony/yaml": "^2.7 || ^3.0"
+        "php": "^8.2",
+        "symfony/deprecation-contracts": "^2 || ^3",
+        "symfony/framework-bundle": "^6.4 || ^7.3 || ^8.0",
+        "symfony/http-foundation": "^6.4 || ^7.3 || ^8.0",
+        "symfony/service-contracts": "^2.0 || ^3.0",
+        "symfony/var-dumper": "^6.4 || ^7.3 || ^8.0"
     },
     "require-dev": {
-        "doctrine/cache": "1.*",
-        "predis/predis": "^1.0",
-        "symfony/console": "^2.7 || ^3.0",
-        "symfony/phpunit-bridge": "^2.7 || ^3.0",
-        "phpunit/phpunit": "4.8.*"
+        "ext-pdo_sqlite": "*",
+        "ext-redis": "*",
+        "doctrine/annotations": "^2.0",
+        "doctrine/coding-standard": "^12.0",
+        "friendsofphp/proxy-manager-lts": "^1.0.6",
+        "monolog/monolog": "*",
+        "phpunit/phpunit": "^9.6.34 || ^10.5.63",
+        "predis/predis": "^3.1",
+        "psalm/plugin-phpunit": "^0.19.3",
+        "psalm/plugin-symfony": "^5.0",
+        "psr/http-message": "^2",
+        "seec/phpunit-consecutive-params": "^1.1.4",
+        "symfony/browser-kit": "^6.4 || ^7.3 || ^8.0",
+        "symfony/cache": "^6.4 || ^7.3 || ^8.0",
+        "symfony/config": "^6.4 || ^7.3 || ^8.0",
+        "symfony/console": "^6.4 || ^7.3 || ^8.0",
+        "symfony/dom-crawler": "^6.4 || ^7.3 || ^8.0",
+        "symfony/filesystem": "^6.4 || ^7.3 || ^8.0",
+        "symfony/stopwatch": "^6.4 || ^7.3 || ^8.0",
+        "symfony/twig-bundle": "^6.4 || ^7.3 || ^8.0",
+        "symfony/web-profiler-bundle": "^6.4 || ^7.3 || ^8.0",
+        "symfony/yaml": "^6.4 || ^7.3 || ^8.0",
+        "vimeo/psalm": "^6 || ^7"
+    },
+    "conflict": {
+        "ext-redis": "<6.1.0",
+        "predis/predis": "<3.1"
     },
     "suggest": {
         "monolog/monolog": "If you want to use the monolog redis handler.",
         "predis/predis": "If you want to use predis.",
         "symfony/console": "If you want to use commands to interact with the redis database"
     },
+    "minimum-stability": "beta",
     "autoload": {
-        "psr-4": { "Snc\\RedisBundle\\": "" }
+        "psr-4": {
+            "Snc\\RedisBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Snc\\RedisBundle\\Tests\\": "tests/"
+        }
     },
     "config": {
-        "bin-dir": "bin/"
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "symfony/flex": true
+        },
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
+    },
+    "scripts": {
+        "test": "@php ./vendor/bin/phpunit"
     }
 }

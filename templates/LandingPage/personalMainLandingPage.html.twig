@@ -1,0 +1,63 @@
+{% extends "personalLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}personalMainPage iyzico-app{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_newpersonalHeaderContent.html.twig' with {'header':widgets.personalmainheaderwidget} %}
+  {% include '@root/LandingPage/Widgets/_referancessBrandsNew.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_personalPwi.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_iyziLife.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_personalPwiShoplist.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_iyziLifePartTwo.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_easyManageAccount.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_iyziRegister.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_personalPwiSss.html.twig' with {'pwiSss':widgets.personalpwissswidget} %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    setCookie('iyzicosection','personal',1000)
+
+
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+    <script>
+        function formSubmit (token) {
+                $('#consumer-app-form').submit();
+                return true;
+            }
+        </script>
+    <script src='https://www.google.com/recaptcha/api.js?hl={{app.request.attributes.get('_locale')}}' async defer></script>
+
+{% endblock %}

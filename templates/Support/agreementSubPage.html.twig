@@ -1,0 +1,29 @@
+{% extends "agreementPage.html.twig" %}
+{% block pageTitle %}{{ pageInfo.seo.title }}{% endblock %}
+{% block description %}{{ pageInfo.seo.description }}{% endblock %}
+{% block openGraph %}
+    {% if pageInfo.seo.ogTitle is null %}
+        <meta property="og:title" content="{{ pageInfo.seo.title }}" />
+    {% else %}
+        <meta property="og:title" content="{{ pageInfo.seo.ogTitle }}" />
+    {% endif %}
+    <meta property="og:image" content="{{ pageInfo.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageInfo.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}personal whoWeAre helpCenterCategory businessReferencess{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block headStyle %}{% endblock %}
+{% block headerStyleIncludes %}
+{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_newAgreementHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_agreementSubPageContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newAdress.html.twig' %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+{% block bodyBottomScripts %}{% endblock %}
