@@ -1,0 +1,22 @@
+<section class="cultureContent collageMTop">
+	<div class="container">
+		<h1><strong>Life at iyzico</strong></h1>
+	</div>
+	{% if pageContents.instagramChunks|length > 0 %}
+      <section class="culture-photos culture-carousel">
+        {% for chunk in pageContents.instagramChunks %}
+          <div class="culture-photos__item">
+            {% set class = 'culture-photos__large' %}
+            {% if chunk|length > 1 %}
+              {% set class = 'culture-photos__small' %}
+            {% endif %}
+            {% for item in chunk %}
+              <div class="{{ class }}">
+                <img src="{{ item.image.file }}@2x.{{ item.image.extension }}"/>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </section>
+    {% endif %}
+</section>

@@ -1,0 +1,31 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}newWhoWeAre whoWeAre helpCenterCategory mainMenu aboutUs{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_newAboutUsHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newWhoAreWeContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newAdress.html.twig' %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

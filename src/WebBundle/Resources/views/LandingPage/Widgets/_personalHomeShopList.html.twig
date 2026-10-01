@@ -1,0 +1,38 @@
+{% for items in shoplist.features %}
+	<section class="newWhoIsiyzico gray-100-bg">
+  	<div class="container">
+			<div class="header">
+				<div class="headerTop">
+					<img src="{{ asset('assets/images/content/newArrow.svg')}}"/>
+					<p class="title">{{ items.title|raw }} <span class="clear-blue">{{ items.colorTitle|raw }}</span></p>
+				</div>
+				<div class="headerSubMenu">
+					<span>{{ items.content }}</span>
+					<div class="buttonGroup">
+						<a href="{{ items.buttonUrl }}" target="_blank" class="button buttonText">{{ items.buttonText }}<i class="icon icon--text-basic-icn-rightarrow"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="brandsBox">
+		<div id="brandBox" class="iyzi-container">
+			<div class="brandsWrap">
+				<div class="ulCenter">
+					<ul>
+						{% for item in items.logos %}
+							<li class="brandItem">
+								<a href="" class="itemUrl">
+									<img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="{{item.desktopimgalt}}" />
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="buttonGroup">
+						<a href="{{ items.buttonUrl }}" target="_blank" class="button buttonText">{{ items.buttonText }}<i class="icon icon--text-basic-icn-rightarrow"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endfor %}

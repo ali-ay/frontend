@@ -1,0 +1,70 @@
+<section class="iyziLife">
+	<div class="iyzi-container">
+	{% for items in cardfeaturesscreen.features %}
+		<ul>
+
+		{% set itemIndex = 1 %}
+		{% for item in items.logos %}
+			{% if itemIndex is divisible by(2) %}
+
+			{% if item.appdownload == "True" %}
+			<li class="{{ item.class }}">
+			{% else %}
+			<li>
+			{% endif %}
+				<div class="itemimg">
+					<img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="{{item.desktopimgalt}}" class="mH" />
+					<img src="{{ item.mobileimg.file }}.{{ item.mobileimg.extension }}" srcset="{{ item.mobileimg.file }}@2x.{{ item.mobileimg.extension }} 2x" alt="{{item.mobileimgalt}}" class="dH"/>
+					{% if item.appdownload == "True" %}
+						<div class="appDownload">
+
+								<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank">
+									<img src="{{ asset('assets/images/content/new-app-store-en.png')}}" srcset="{{ asset('assets/images/content/new-app-store-en@2x.png')}} 2x" alt="iyzico ios app"/>
+								</a>
+								<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank">
+									<img src="{{ asset('assets/images/content/new-google-play-en.png')}}" srcset="{{ asset('assets/images/content/new-google-play-en@2x.png')}} 2x" alt="iyzico android app"/>
+								</a>
+
+						</div>
+					{% endif %}
+				</div>
+				<div class="itemContent">
+					{{ item.title|raw }}
+					{{ item.alt|raw }}
+					{% if item.appdownload == "True" %}
+					<div class="appDownload">
+
+							<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank">
+								<img src="{{ asset('assets/images/content/new-app-store-en.png')}}" srcset="{{ asset('assets/images/content/new-app-store-en@2x.png')}} 2x" alt="iyzico ios app"/>
+							</a>
+							<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank">
+								<img src="{{ asset('assets/images/content/new-google-play-en.png')}}" srcset="{{ asset('assets/images/content/new-google-play-en@2x.png')}} 2x" alt="iyzico android app"/>
+							</a>
+
+					</div>
+					{% endif %}
+				</div>
+			</li>
+
+			{% else %}
+
+			<li>
+				<div class="itemContent">
+					{{ item.title|raw }}
+					{{ item.alt|raw }}
+				</div>
+				<div class="itemimg">
+					<img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="{{item.desktopimgalt}}" class="mH"/>
+					<img src="{{ item.mobileimg.file }}.{{ item.mobileimg.extension }}" srcset="{{ item.mobileimg.file }}@2x.{{ item.mobileimg.extension }} 2x" alt="{{item.mobileimgalt}}" class="dH"/>
+				</div>
+			</li>
+
+			{% endif %}
+			{% set itemIndex = itemIndex + 1 %}
+		{% endfor %}
+
+		</ul>
+		{% endfor %}
+	</div>
+</section>
+

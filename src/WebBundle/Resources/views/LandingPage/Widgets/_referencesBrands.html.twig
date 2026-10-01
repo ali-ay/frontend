@@ -1,0 +1,7 @@
+<section class="referencessBrands">
+	<div class="container">
+		{% for reference in references.references %}
+			<img src="{{ reference.file }}.{{ reference.extension }}" srcset="{{ reference.file }}@2x.{{ reference.extension }} 2x" />
+		{% endfor %}
+	</div>
+</section>

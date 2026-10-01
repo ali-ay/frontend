@@ -1,0 +1,39 @@
+<div class="iyzicoCardLP">
+<div class="iyziTabs">
+  <div class="iyzi-container">
+    <div class="tab-content">
+			<ul id="menu1" class="tab-pane fade in active">
+				<li>
+					{% for items in cardpricelist.features %}
+						<ul>
+							<div class="secHeader">
+								{% if items.title != "" %}
+									<div class="headerTitle">{{ items.title|raw }}</div>
+								{% endif %}
+								{% if items.title != "" %}
+									<div class="headerDesc">{{ items.content }}</div>
+								{% endif %}
+							</div>
+							{% for item in items.logos %}
+							<li>
+								<div class="containerWrap">
+									<div class="content">
+										<div class="title">{{ item.title }}</div>
+										<div class="description">{{ item.alt }}</div>
+									</div>
+									<div class="price">{{ item.class }}</div>
+								</div>
+							</li>
+							{% endfor %}
+							<div class="buttonGroup">
+								<a href="{{ items.buttonUrl }}" class="button primary">{{ items.buttonText }}</a>
+							</div>
+						</ul>
+					{% endfor %}
+
+				</li>
+			</ul>
+    </div>
+  </div>
+</div>
+</div>

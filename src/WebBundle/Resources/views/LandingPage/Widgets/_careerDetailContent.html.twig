@@ -1,0 +1,9 @@
+{% set positionDetails = pageContents.positionDetails %}
+<section class="pressHeaderContent">
+	<div class="container">
+		<h1><strong>{{ positionDetails.title|raw }}</strong></h1>
+		<div class="careerDetail">
+			 {{ positionDetails.content|raw }}
+		</div>
+	</div>
+</section>

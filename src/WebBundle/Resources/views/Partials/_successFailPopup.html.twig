@@ -1,0 +1,47 @@
+{% set successMessages = app.session.flashbag.get('success') %}
+{% set failMessages = app.session.flashbag.get('error') %}
+
+{% if  successMessages %}
+<div class="modal" id="successModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        {% for flashMessage in successMessages %}
+            <i class="icon icon--popup-close mL-auto" data-dismiss="modal"></i>
+            <i class="icon icon--contactus-success"></i>
+            <p class="title">
+                {{ flashMessage|raw }}
+            </p>
+            <p class="description">{{ translations.successFailPopup.description }}</p>
+            <a href="#" data-dismiss="modal" class="button default">{{ translations.successFailPopup.button }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#successModal").modal()
+    })
+</script>
+{% endif %}
+{% if failMessages  %}
+<div class="modal" id="failModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        {% for flashMessage in failMessages %}
+            <p>
+                {{ flashMessage|raw }}
+            </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#failModal").modal()
+    })
+</script>
+{% endif %}

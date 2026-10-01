@@ -1,0 +1,63 @@
+<section class="mainHeaderBanner">
+  <div class="container-hero">
+    <div class="headerL">
+      {% if deviceType == 'mobile' %}
+
+        <img src="{{ asset('assets/images/content/new-main-left-img-hero.png')}}" alt="iyzico Kendim İçin"/>
+
+      {% else %}
+
+        <img src="{{ asset('assets/images/content/new-main-left-img-hero@2x.png')}}" alt="iyzico Kendim İçin"/>
+
+      {% endif %}
+
+
+      <div class="headerBox">
+        <h1>
+          <strong>{{ translations.mainHeaderContent.boxOneTitleBold }}<br>
+              <span>{{ translations.mainHeaderContent.boxOneTitleLight }}</span>
+            </strong>
+        </h1>
+        <ul>
+          <li>{{ translations.mainHeaderContent.boxOneBulletOne }}</li>
+          <li>{{ translations.mainHeaderContent.boxOneBulletTwo }}</li>
+          <li>{{ translations.mainHeaderContent.boxOneBulletThree }}</li>
+          <li>{{ translations.mainHeaderContent.boxOneBulletFour }}</li>
+        </ul>
+        <div class="buttonGroup">
+          <a href="{{ path('personal') }}" class="button primary" title="Kurumsal">{{ translations.mainHeaderContent.boxOneButton }}</a>
+          <a href="{{ path('pwi_brands') }}" class="button basic"><i class="icon icon--icn-shop"></i> Mağazalar</a>
+        </div>
+      </div>
+    </div>
+    <div class="headerR">
+      {% if deviceType == 'mobile' %}
+
+        <img src="{{ asset('assets/images/content/new-main-right-img-hero.png')}}" alt="iyzico İşim İçin"/>
+
+      {% else %}
+
+        <img src="{{ asset('assets/images/content/new-main-right-img-hero@2x.png')}}" alt="iyzico İşim İçin"/>
+
+      {% endif %}
+
+      <div class="headerBox">
+        <h2>
+          <strong>{{ translations.mainHeaderContent.boxTwoTitleBold }}<br>
+              <span>{{ translations.mainHeaderContent.boxTwoTitleLight }}</span>
+          </strong>
+        </h2>
+        <ul>
+          <li>{{ translations.mainHeaderContent.boxTwoBulletOne }}</li>
+          <li>{{ translations.mainHeaderContent.boxTwoBulletTwo }}</li>
+          <li>{{ translations.mainHeaderContent.boxTwoBulletThree }}</li>
+          <li>{{ translations.mainHeaderContent.boxTwoBulletFour }}</li>
+        </ul>
+        <div class="buttonGroup">
+          <a href="{{ path('business') }}" class="button default">{{ translations.mainHeaderContent.boxTwoButton }}</a>
+          <a href="{{ translations.iyzicoNewMerchant.newFormLoginUrl }}" class="button basic"><i class="icon icon--icn-shop"></i> {{ translations.businessHeaderNavigation.login }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

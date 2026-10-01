@@ -1,0 +1,27 @@
+{% extends "::landingPage.html.twig" %}
+{% block pageTitle %}{{ pageContents.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="{{ pageContents.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.seo.ogDescription }}" />
+{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block bodyStyle %}background-color:transparent{% endblock %}
+{% block parallaxBackgroundHolder %}
+    <div class="cover-background" style="background-image:url({{ asset('assets/images/content/merchant-type-bg.jpg')}});"></div>
+{% endblock %}
+
+{% block bodyClass %} merchant-type mainMenu{% endblock %}
+{% block headContent %}
+{% include '@root/Partials/_registerHeader.html.twig' %}
+{% endblock %}
+
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_merchantTypeSection.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newwhoIsiyzicoMini.html.twig' %}
+{% endblock %}
+{% block footerContent %}
+  {% include '@root/Partials/_footerShort.html.twig' %}
+{% endblock %}

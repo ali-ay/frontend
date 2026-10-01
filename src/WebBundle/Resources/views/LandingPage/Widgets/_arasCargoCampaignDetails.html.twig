@@ -1,0 +1,11 @@
+<section class="campaignDetail">
+	<div class="container">
+		<div class="campaignWrap">
+		{% for term in pageContents.data.contents.terms.list  %}
+			<h3>{{pageContents.data.contents.terms.title}}</h3>
+			<h2>{{ term.title }}</h2>
+				{{ term.content|raw}}
+		{% endfor %}
+		</div>
+	</div>
+</section>

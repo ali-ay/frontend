@@ -1,0 +1,32 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+	<meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+	<meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+	<meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business iyzicoCepPos{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+
+	{% include '@root/LandingPage/Widgets/_iyzicoCepPosHeaderContent.html.twig' with {'header':widgets.personalhomeheaderwidget} %}
+	{% include '@root/LandingPage/Widgets/_businessiyzicoCepPosScreens.html.twig' with {'cardfeaturesscreen':widgets.personalhomepwiwidget} %}
+  {% include '@root/LandingPage/Widgets/_personalMobileAppSlider.html.twig' with {'sliderList':widgets.personalhomemobileappsliderwidget} %}
+	{% include '@root/LandingPage/Widgets/_businessiyzicoCepPosPrice.html.twig' with {'cardpricelist':widgets.cardpricelistwidget} %}
+  {% include '@root/LandingPage/Widgets/_businessiyzicoCepPosSignup.html.twig' with {'appdownload':widgets.personalhomeappdownloadwidget} %}
+	{% include '@root/LandingPage/Widgets/_bueisnessiyzicoCepPosSss.html.twig' with {'cardsss':widgets.personalcardssswidget} %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+	<script>
+		window.lazyLoadOptions = {
+			threshold: 50
+		};
+		window.addEventListener('LazyLoad::Initialized', function (e) {
+			console.log(e.detail.instance);
+		}, false);
+	</script>
+{% endblock %}

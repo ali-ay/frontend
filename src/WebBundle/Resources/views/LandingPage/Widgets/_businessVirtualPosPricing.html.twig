@@ -1,0 +1,34 @@
+<section class="pricing">
+	<div class="container mT--130">
+		<h2><span>{{ translations.businessVirtualPosPricing.title }}</span>
+		{{ translations.businessVirtualPosPricing.subTitle }}</h2>
+		<div class="widgetMainDescription">{{ translations.businessVirtualPosPricing.description }}</div>
+	</div>
+	<div class="container">
+		<div class="pricingWrap">
+			<div class="bullet">
+				<div class="title">{{ translations.personalPricing.bulletOne }}<i class="icon icon--pricing-check"></i></div>
+				<div class="title">{{ translations.personalPricing.bulletTwo }}<i class="icon icon--pricing-check"></i></div>
+				<div class="title">{{ translations.personalPricing.bulletThree }}<i class="icon icon--pricing-check"></i></div>
+			</div>
+			<div class="pricingBoxWrap">
+				<div class="pricingBox">
+					<div class="subTitle">{{ translations.personalPricing.pricingBoxTitle }}</div>
+					<div class="subTitlePricing">{{ translations.personalPricing.pricingBoxPrice }}</div>
+					<div class="subDescription">{{ translations.personalPricing.pricingBoxDescription }}</div>
+				</div>
+			</div>
+			<a href="{{ path('hesap_olustur_landing_page') }}" class="button primary">{{ translations.personalPricing.pricingBoxButton }}</a>
+			<div class="subTitle">{{ translations.personalPricing.pricingBoxButtonDescription }}</div>
+			<a href="javascript:openOfferModal();" id="Button_Lead_Hacim" class="button basic align-items-center mR--30">{{ translations.personalPricing.pricingBoxButtonTwo }}</a>
+		</div>
+	</div>
+</section>
+<div class="container pricingBrandLogo">
+<img src="{{ asset('assets/images/footer/MerkezBankasi_Logo-blue.svg')}}" alt="Merkez Banksı" height="56">
+<img src="{{ asset('assets/images/content/pci-logo.png')}}" srcset="{{ asset('assets/images/content/pci-logo@2x.png')}} 2x" alt="iyzico Pci"/>
+<img src="{{ asset('assets/images/content/mastercard-logo.png')}}" srcset="{{ asset('assets/images/content/mastercard-logo@2x.png')}} 2x" alt="iyzico MasterCard"/>
+<img src="{{ asset('assets/images/content/visa-logo.png')}}" srcset="{{ asset('assets/images/content/visa-logo@2x.png')}} 2x" alt="iyzico Visa"/>
+<img src="{{ asset('assets/images/content/amex-logo.png')}}" srcset="{{ asset('assets/images/content/amex-logo@2x.png')}} 2x" alt="iyzico American Express"/>
+<img src="{{ asset('assets/images/content/troy-logo.png')}}" srcset="{{ asset('assets/images/content/troy-logo@2x.png')}} 2x" alt="iyzico Troy"/>
+</div>

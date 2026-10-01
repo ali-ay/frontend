@@ -1,0 +1,86 @@
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			<ul>
+				<li>
+					<a href="{{ path('who_we_are') }}">{{ translations.aboutUsSubMenu.whoIsiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('whyiyzico') }}">{{ translations.aboutUsSubMenu.whyiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('career') }}">{{ translations.aboutUsSubMenu.career }}</a>
+				</li>
+				<li class="active">
+					<a href="{{ path('culture') }}">{{ translations.aboutUsSubMenu.culture }}</a>
+				</li>
+				<li>
+					<a href="{{ path('press') }}">{{ translations.aboutUsSubMenu.pressiyzico }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="newWhoWeAreContent">
+				<li>
+					<p>{{ translations.cultureContent.contentDesc|raw }}</p>
+          {% if pageContents.instagramChunks|length > 0 %}
+              <section class="culture-photos culture-carousel">
+                {% for chunk in pageContents.instagramChunks %}
+                  <div class="culture-photos__item">
+                    {% set class = 'culture-photos__large' %}
+                    {% if chunk|length > 1 %}
+                      {% set class = 'culture-photos__small' %}
+                    {% endif %}
+                    {% for item in chunk %}
+                      <div class="{{ class }}">
+                        <img src="{{ item.image.file }}@2x.{{ item.image.extension }}"/>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </section>
+            {% endif %}
+            <p>{{ translations.cultureContent.contentDescTwo|raw }}</p>
+            {% if pageContents.instagramChunks|length > 0 %}
+                <section class="culture-photos culture-carousel">
+                  {% for chunk in pageContents.instagramChunks %}
+                    <div class="culture-photos__item">
+                      {% set class = 'culture-photos__large' %}
+                      {% if chunk|length > 1 %}
+                        {% set class = 'culture-photos__small' %}
+                      {% endif %}
+                      {% for item in chunk %}
+                        <div class="{{ class }}">
+                          <img src="{{ item.image.file }}@2x.{{ item.image.extension }}"/>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </section>
+              {% endif %}
+				</li>
+        <li>
+          <section class="easyFastHappy events">
+            <div class="container">
+              <div class="title">{{ translations.events.title }}</div>
+              {% if app.request.attributes.get('_locale') == "tr" %}
+                <p>{{ translations.events.description }}</p>
+              {% else %}
+                <p>{{ translations.events.description }}</p>
+              {% endif %}
+              <ul>
+                <li>
+                  <div class="openPosition orange-pink-bg">
+                      <h4><span class="light-peach">{{ translations.teamJoinUs.title }} </span>{{ translations.teamJoinUs.sTitle }}</h4>
+                      <p>{{ translations.teamJoinUs.desc }}</p>
+                      <a href="https://jobs.eu.lever.co/payu?location=Istanbul%2C%20Turkey" class="button default" title="Bireysel">{{ translations.teamJoinUs.button }}</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </li>
+			</ul>
+		</div>
+	</div>
+</section>

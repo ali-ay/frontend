@@ -1,0 +1,19 @@
+<div class="newHeaderComponent">
+  <div class="iyzi-container">
+    {% for items in header.headers %}
+    <div class="content">
+      <h1>
+        <strong>{{ items.title }}</strong>
+        <span>{{ items.colorTitle }}</span>
+      </h1>
+      {{ items.content|raw }}
+      <div class="buttonGroup">
+        <a href="{{ path('new_personal_lp') }}" class="button primary" title="{{ items.buttonOneTitle }}" >{{ items.buttonOneText|raw }}</a>
+      </div>
+    </div>
+    <div class="imgResp">
+      <img src="{{ items.image.file }}.{{ items.image.extension }}" srcset="{{ items.image.file }}@2x.{{ items.image.extension }} 2x" alt="{{items.imgalt}}" />
+    </div>
+    {% endfor %}
+  </div>
+</div>

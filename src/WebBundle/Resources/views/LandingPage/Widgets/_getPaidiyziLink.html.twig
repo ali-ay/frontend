@@ -1,0 +1,16 @@
+<section class="widget widgetBgBlue">
+	<div class="container">
+		<div class="contentImage">
+			<img src="{{ asset('assets/images/content/getPaidiyziLink.png')}}" srcset="{{ asset('assets/images/content/getPaidiyziLink@2x.png')}} 2x" />
+		</div>
+		<div class="content">
+      <div class="widgetTitle">{{ translations.getPaidIyziLink.title }}</div>
+      <h2>{{ translations.getPaidIyziLink.subTitle }}</h2>
+      <p>{{ translations.getPaidIyziLink.description|raw }}</p>
+			<div class="buttonGroup">
+				<a href="{{ path('business_stand_sales') }}" class="button buttonText">{{ translations.getPaidIyziLink.stantSalesButton }}<i class="icon icon--left-arrow"></i></a>
+				<a href="{{ path('business_etsy') }}" class="button buttonText">{{ translations.getPaidIyziLink.etsyButton }}<i class="icon icon--left-arrow"></i></a>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,24 @@
+<section class="brandsBox">
+	<div id="brandBox" class="iyzi-container">
+
+		{% for items in allbrand.features %}
+			<div class="brandsWrap">
+				<div class="locationhref" id="{{ items.buttonUrl }}anch"></div>
+				<div class="location" id="{{ items.buttonUrl }}"></div>
+				<div class="ulCenter">
+					<h3>{{ items.title }}</h3>
+					<ul>
+						{% for item in items.logos %}
+							<li class="brandItem">
+								<a href="javascript:openPwiBrandsModal();" class="itemUrl" id="{{ item.alt }}" value="{{ item.url }}" data-url="{{ item.url }}" onclick="ga('send', 'event', 'MagazaClick', 'Click', 'Kategori: {{ items.title }}', 'Magaza: {{ item.alt }}');">
+									<img src="{{ item.image.file }}.{{ item.image.extension }}" srcset="{{ item.image.file }}@2x.{{ item.image.extension }} 2x" alt="{{ item.alt }}" />
+									<p>{{ item.alt }}</p>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>

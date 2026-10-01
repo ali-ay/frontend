@@ -1,0 +1,22 @@
+<div class="newHeaderComponent">
+  <div class="iyzi-container">
+    <div class="content">
+      {% for items in header.headers %}
+        <h1>
+         {{ items.colorTitle|raw }} {{ items.title|raw }}
+        </h1>
+        <p>{{ items.subDesc }}</p>
+        <div class="buttonGroup">
+          <div class="appDownload">
+            <a href="{{ items.buttonOneUrl }}" target="_blank">
+              <img src="{{ asset('assets/images/content/new-google-play-en.png')}}" srcset="{{ asset('assets/images/content/new-google-play-en@2x.png')}} 2x" alt="iyzico android app"/>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="imgResp">
+        <img src="{{ items.image.file }}@2x.{{ items.image.extension }}"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>

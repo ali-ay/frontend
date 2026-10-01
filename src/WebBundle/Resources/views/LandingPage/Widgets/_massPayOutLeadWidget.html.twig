@@ -1,0 +1,29 @@
+<section class="iyziRegister clear-blue-bg">
+	<div class="container">
+		<h2 class="pale-blue">{{ translations.massPayOutLeadWidget.title }}<span class="gray-100">{{ translations.massPayOutLeadWidget.subTitle }}</span></h2>
+			<div class="form offer-modal">
+				<div class="offerForm">
+					<div class="signup-modal__form">
+						<form name="offer-form" id="Popup_Lead_Form" class="offer-form-mass-pay-out-widget subForm" action="{{ path('mass_pay_out_form_get_offer') }}" method="POST">
+							<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('mass-pay-out-offer') }}">
+							<div class="inputWrap">
+								<input type="tel" pattern="[0-9]*" name="phone" autocomplete="off" id="phone" class="input-form input-form--large" value="" placeholder="{{ translations.massPayOutLeadWidget.phoneNumber }}" required />
+							</div>
+							{% if shouldShowCaptcha %}
+								<div class="buttonGroup" id="submit-button-holder-offer" style="display:none;">
+									<input type="hidden" name="recaptcha-response" value="" id="recaptcha-value-offer" />
+									<button onclick="javascript:$('.offer-form-mass-pay-out-widget')" type="submit" title="" class="button default">{{ translations.buttonText.applyNow }}</button>
+								</div>
+								<div class="" style="margin-left:-20px !important;" id="recaptcha-holder-offer"></div>
+							{% else %}
+								<div class="buttonGroup">
+									<button onclick="javascript:$('.offer-form-mass-pay-out-widget')" type="submit" title="" class="button primary">{{ translations.buttonText.applyNow }}</button>
+								</div>
+							{% endif %}
+								<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>

@@ -1,0 +1,55 @@
+<div class="modal fade offer-modal-cep-pos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog signup-modal__wrapper" role="document">
+
+        <div class="iyzi-modal aliay">
+        <button type="button" class="modal-close" data-dismiss="modal">
+            <i class="icon icon--popup-close" aria-hidden="true"></i>
+        </button>
+            <div class="iyzi-modal-wrapper">
+                <div class="offerContent">
+                    <div class="signup-modal__info">
+                        <h2><strong>{{ translations.iyzicoOM.oMTitle|raw }}</strong></h2>
+                        <p>
+                            {{ translations.iyzicoOM.oMDescription|raw }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="offerForm">
+                    <div class="signup-modal__form">
+                        <form name="offer-form" id="Popup_Lead_Form" class="cep-pos-offer" action="{{ path('cep_pos_offer') }}" method="POST">
+                            <input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('cep-pos-offer') }}">
+                            <div class="row">
+                                <input type="text" id="name" name="name" class="input-form input-form--large" minlength="2" autocomplete="off" placeholder="{{ translations.iyzicoNewMerchant.newOwnerName|raw }}">
+                            </div>
+                            <div class="row">
+                                <input type="text" id="email" name="email" class="input-form input-form--large" value="" minlength="2" autocomplete="off" placeholder="{{ translations.iyzicoOM.oMEmail }}">
+                            </div>
+                            <div class="row">
+                                <input type="tel" autocomplete="off" class="input-form input-form--large" id="phone" name="phone" value="" minlength="7" onkeypress="return phoneControl(event)" placeholder="{{ translations.iyzicoOM.oMPhone }}">
+                            </div>
+                            <div class="row">
+                                <input type="text" id="website" name="website" class="input-form input-form--large" minlength="2" autocomplete="off" placeholder="{{ translations.iyzicoOM.oMWebsite }}">
+                            </div>
+                            {% if shouldShowCaptcha %}
+                                <div class="row" id="submit-button-holder-offer" style="display:none;">
+                                    <input type="hidden" name="recaptcha-response" value="" id="recaptcha-value-offer" />
+                                    <button onclick="javascript:$('.cep-pos-offer')" type="submit" title="" class="button primary">{{ translations.iyzicoOM.oMGonder }}</button>
+                                </div>
+                                <div class="row" style="margin-left:-20px !important;" id="recaptcha-holder-offer">
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <button onclick="javascript:$('.cep-pos-offer')" type="submit" title="" class="button primary">{{ translations.iyzicoOM.oMGonder }}</button>
+                                </div>
+                            {% endif %}
+                            <input type="submit"
+                                   style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+                                   tabindex="-1" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

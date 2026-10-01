@@ -1,0 +1,22 @@
+<div class="forBusiness">
+  <div class="container">
+    <div class="headerContent">
+      <div class="businessNewBadge"><span class="newBadge">{{ translations.iyziBadge.newBadge }}</span>
+      <a href="{{ path('pay_with_iyzico_landingpage')}}" class="button buttonText align-items-center">{{ translations.fBheader.businessPwi }}<i class="icon icon--left-arrow"></i></a></div>
+      <h1>
+        <strong>
+          {{ translations.fBheader.titleBold }}
+        </strong>
+          {{ translations.fBheader.titleLight }}
+      </h1>
+      <p>{{ translations.fBheader.description }}</p>
+      <div class="buttonGroup">
+        <a href="{{ path('hesap_olustur_landing_page') }}" class="button primary">{{ translations.buttonText.signUpNow }}</a>
+      </div>
+    </div>
+
+    <div class="headerImage">
+      <img src="{{ asset('assets/images/content/business-banner.png')}}" srcset="{{ asset('assets/images/content/business-banner@2x.png')}} 2x" alt="İşiniz için İşinize Gelen Ödeme Sistemi"/>
+    </div>
+  </div>
+</div>

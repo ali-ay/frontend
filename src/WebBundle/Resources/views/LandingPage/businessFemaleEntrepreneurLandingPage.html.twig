@@ -1,0 +1,37 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business femaleEntrepreneur{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_businessFemaleEntHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleExplanation.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femalePrivilege.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleHowtoSupport.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleHowtoSupportContent.html.twig' with {'femaleSupport':widgets.buyerprotectionfeaturelistwidget} %}
+  {% include '@root/LandingPage/Widgets/_femaleHowtoGrowYourBusiness.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleAppealInformation.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleContact.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleReferences.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleiyziRegister.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_newwhoIsiyzico.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_femaleSss.html.twig' with {'femaleLPSss':widgets.businessfemaleentssswidget} %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

@@ -1,0 +1,18 @@
+<section class="iyziRegister orange-pink-bg">
+	<div class="container">
+      {% for items in appdownload.headers %}
+
+			<div class="imgResp">
+        <img src="{{ items.image.file }}@2x.{{ items.image.extension }}"/>
+      </div>
+
+			<h2 class="very-light-pink dHide">{{ items.colorTitle|raw }} <span class="gray-100">{{ items.title|raw }}</span></h2>
+			<h2 class="very-light-pink mHide">{{ items.subDesc|raw }} <span class="gray-100">{{ items.subTwoDesc|raw }}</span></h2>
+
+			<a href="{{ items.buttonOneUrl }}" target="_blank" class="button primary mHide">{{ items.buttonOneText }}</a>
+    {% endfor %}
+
+	</div>
+</section>
+
+

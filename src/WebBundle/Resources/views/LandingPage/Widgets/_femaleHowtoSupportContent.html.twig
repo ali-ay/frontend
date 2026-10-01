@@ -1,0 +1,45 @@
+<section class="iyziLife">
+	<div class="iyzi-container">
+	{% for items in femaleSupport.features %}
+		<ul>
+
+						{% set itemIndex = 1 %}
+						{% for item in items.logos %}
+							{% if itemIndex is divisible by(2) %}
+
+							<li>
+								<div class="itemContent">
+									<img src="{{ item.logo.file }}.{{ item.logo.extension }}" srcset="{{ item.logo.file }}@2x.{{ item.logo.extension }} 2x" alt="{{ item.alt }}" />
+									<p>{{ item.alt|raw }}</p>
+									<div class="buttonGroup">
+										<a href="{{ item.url }}" class="button basic merchant" target="_blank">{{ item.buttontext }}</a>
+									</div>
+								</div>
+								<div class="itemimg">
+									<img src="{{ item.image.file }}.{{ item.image.extension }}" srcset="{{ item.image.file }}@2x.{{ item.image.extension }} 2x" alt="{{ item.alt }}" />
+								</div>
+							</li>
+
+							{% else %}
+
+							<li>
+								<div class="itemimg">
+									<img src="{{ item.image.file }}.{{ item.image.extension }}" srcset="{{ item.image.file }}@2x.{{ item.image.extension }} 2x" alt="{{ item.alt }}" />
+								</div>
+								<div class="itemContent">
+									<img src="{{ item.logo.file }}.{{ item.logo.extension }}" srcset="{{ item.logo.file }}@2x.{{ item.logo.extension }} 2x" alt="{{ item.alt }}" />
+									<p>{{ item.alt|raw }}</p>
+									<div class="buttonGroup">
+										<a href="{{ item.url }}" class="button basic merchant" target="_blank">{{ item.buttontext }}</a>
+									</div>
+								</div>
+							</li>
+
+							{% endif %}
+							{% set itemIndex = itemIndex + 1 %}
+						{% endfor %}
+
+		</ul>
+		{% endfor %}
+	</div>
+</section>

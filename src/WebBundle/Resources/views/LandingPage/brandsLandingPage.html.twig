@@ -1,0 +1,31 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}mainMenu{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_brandKitHeaderContent.html.twig' with {'header':widgets.personalbrandskitheaderwidget} %}
+  {% include '@root/LandingPage/Widgets/_allBrnadsKit.html.twig' with {'downloadKit':widgets.personalbrandskitdownloadwidget} %}
+  {% include '@root/LandingPage/Widgets/_alliyzicoLogo.html.twig' with {'brandkit':widgets.personalbrandslogopackdownloadwidget} %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

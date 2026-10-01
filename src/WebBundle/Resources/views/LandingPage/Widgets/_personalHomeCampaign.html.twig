@@ -1,0 +1,43 @@
+{% for items in campaign.features %}
+	<section class="newWhoIsiyzico gray-100-bg">
+  	<div class="container">
+			<div class="header">
+				<div class="headerTop">
+					<p class="title">{{ items.title|raw }} <span class="clear-blue">{{ items.colorTitle|raw }}</span></p>
+				</div>
+				<div class="headerSubMenu">
+					<span>{{ items.content }}</span>
+					<div class="buttonGroup">
+						<a href="{{ items.buttonUrl }}" target="_blank" class="button buttonText">{{ items.buttonText }}<i class="icon icon--text-basic-icn-rightarrow"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="campaignLP">
+		<div class="iyziTabs">
+			<div class="iyzi-container">
+				<div class="tab-content">
+					<ul id="menu1" class="tab-pane fade in active">
+						{% for item in pageContents.campaign.activeCampaign %}
+							<li>
+								<div class="containerWrap">
+									<div class="image">
+										<img src="{{ item.image.file }}@2x.{{ item.image.extension }}" alt="partner" />
+									</div>
+									<div class="title">{{ item.title|raw }}</div>
+									<div class="description">{{ item.content|raw }}</div>
+									<div class="subDesc">{{ item.endDate|raw }}</div>
+								</div>
+								<a href="{{item.link}}" class="button basic">{{item.linkTitle}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="buttonGroup">
+					<a href="{{ items.buttonUrl }}" target="_blank" class="button buttonText">{{ items.buttonText }}<i class="icon icon--text-basic-icn-rightarrow"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}

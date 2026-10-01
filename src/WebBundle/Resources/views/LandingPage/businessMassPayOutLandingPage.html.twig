@@ -1,0 +1,31 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+	<meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+	<meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+	<meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business massPayOut{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_businessMassPayOutHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_referancessBrandsNew.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_massPayOutAdvantage.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_massPayOutLeadWidget.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_massPayOutHowWork.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_businessMPOutSss.html.twig' with {'businessMPOutSss':widgets.businessmpoutssswidget} %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+	<script>
+		window.lazyLoadOptions = {
+			threshold: 50
+		};
+		window.addEventListener('LazyLoad::Initialized', function (e) {
+			console.log(e.detail.instance);
+		}, false);
+	</script>
+{% endblock %}

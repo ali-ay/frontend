@@ -1,0 +1,192 @@
+{% set successMessages = app.session.flashBag.get('success') %}
+{% set consumerRegisterSuccessMessages = app.session.flashBag.get('consumerRegisterSuccess') %}
+{% set consumerRegisterOtpMessages = app.session.flashBag.get('consumerRegisterOtp') %}
+{% set consumerRegisterFailMessages = app.session.flashBag.get('consumerRegisterFail') %}
+{% set newConsumerRegisterSuccessMessages = app.session.flashBag.get('newConsumerRegisterSuccess') %}
+
+{% if  successMessages %}
+<!-- Success Modal: Begin -->
+
+<div class="modal fade fail-modal successModalPopup" tabindex="-1" role="dialog" id="flash-modal" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog fail-modal__wrapper" role="document">
+        <div class="modal-content">
+            <div class="row full-height text-center">
+                <button type="button" class="modal-close mR-auto" data-dismiss="modal">
+                    <i class="icon icon--popup-close" aria-hidden="true"></i>
+                </button>
+                <i class="icon icon--contactus-success"></i>
+                <h2><strong>{{ translations.newiyzicoNotifications.newIslemBasarili }}</strong></h2>
+                {% for flashMessage in successMessages %}
+                    <p style="margin-bottom:40px">
+                        {{ flashMessage|raw }}
+                    </p>
+                {% endfor %}
+                <a href="javascript:;" title="" class="button primary" data-dismiss="modal">
+                    {{ translations.newiyzicoNotifications.newTamam }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Success Modal: End -->
+{% endif %}
+{% if  consumerRegisterSuccessMessages %}
+<!-- Success Modal: Begin -->
+<div class="iyziModal open-personal-onboard-modal modal otpPopup otpSuccessModal" tabindex="-1" role="dialog" id="flash-modal" aria-labelledby="myLargeModalLabel">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<div class="modalContent">
+				<button type="button" class="modal-close" data-dismiss="modal">
+					<i class="icon icon--popup-close" aria-hidden="true"></i>
+				</button>
+				<div class="modalContent">
+					<i class="icon icon--contactus-success"></i>
+					<h2><strong>{{ translations.consumerQuickRegister.title }}</strong></h2>
+							<p>{{ translations.consumerQuickRegister.descriptiom }}</p>
+							<p><strong>{{ translations.consumerQuickRegister.subDescription }}</strong></p>
+						<div class="buttonGroup">
+						{% if app.request.attributes.get('_locale') == "tr" %}
+							<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store"></i></a>
+							<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play"></i></a>
+						{% else %}
+							<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store-en"></i></a>
+							<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play-en"></i></a>
+						{% endif %}
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Success Modal: End -->
+{% endif %}
+{% if consumerRegisterFailMessages  %}
+<!-- Fail Modal: Begin -->
+<div class="modal fade fail-modal" tabindex="-1" role="dialog" id="flash-modal" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog fail-modal__wrapper" role="document">
+        <div class="modal-content">
+            <div class="row full-height text-center">
+                <button type="button" class="modal-close mR-auto" data-dismiss="modal">
+                    <i class="icon icon--popup-close" aria-hidden="true"></i>
+                </button>
+                <i class="icon icon--contactus-fail"></i>
+                <h2><strong>{{ translations.newiyzicoNotifications.newBirHataOlustu }}</strong></h2>
+                {% for flashMessage in consumerRegisterFailMessages %}
+                    <p>
+                        {{ flashMessage|raw }}
+                    </p>
+                {% endfor %}
+                <div class="buttonGroup">
+                    <button type="button" class="button primary" data-dismiss="modal">
+                        {{ translations.newiyzicoNotifications.newKapat }}
+                    </button>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fail Modal: End -->
+{% endif %}
+{% if consumerRegisterOtpMessages  %}
+<script type="text/javascript">
+
+
+{% set memberUserId = app.session.get('memberUserId') %}
+{% set referenceCode = app.session.get('referenceCode') %}
+
+var memberUserId = {{ memberUserId }};
+var referenceCode = "{{ referenceCode }}";
+
+console.log("ASLSLLALSLSLSLSLSLLSLSL",memberUserId,referenceCode)
+
+
+</script>
+<!-- OTP Modal: Begin -->
+<div class="iyziModal open-personal-onboard-modal modal otpPopup" tabindex="-1" role="dialog" id="flash-modal" aria-labelledby="myLargeModalLabel">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<button type="button" class="modal-close" data-dismiss="modal">
+				<i class="icon icon--popup-close" aria-hidden="true"></i>
+			</button>
+			<div class="iyziModalContent">
+				<div class="contentWrap">
+					<div class="content">
+						<h2><strong>{{ translations.consumerQuickRegisterOtp.title }}</strong></h2>
+						<p>{{ translations.consumerQuickRegisterOtp.description }}</p>
+					</div>
+				</div>
+				<div class="formWrap">
+				  <button type="button" class="modal-close" data-dismiss="modal" style="display:none;">
+          	<i class="icon icon--popup-close" aria-hidden="true"></i>
+          </button>
+					<div class="newForm">
+						<div class="offerForm">
+							<div class="">
+								<form name="consumer-otp-popup" id="consumer-app-form" class="consumer-otp-popup" action="{{ path('consumer_otp_check') }}" method="POST">
+									<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('consumer-otp-check') }}">
+									<div class="inputWrap">
+										<span>{{ translations.consumerQuickRegisterOtp.inputTitle }}</span>
+											<input type="tel" pattern="[0-9]*" name="phone" minlength="6" autocomplete="off" id="phone" class="input-form input-form--large" required />
+									</div>
+									<div class="reSend">
+										<div class="countdown">
+											<i id="countdown-icon" class="icon icon--icon-clock" style="display:none;"></i>
+											<span id="countdown"></span>
+										</div>
+										<a href="javascript:void(0);" id="reSend" title="" class="">{{ translations.consumerQuickRegisterOtp.reSendButtonText }}</a>
+									</div>
+									<div class="messagebox">
+										<div id="alertMessage"></div>
+									</div>
+									<div class="buttonGroup">
+										<button onclick="javascript:$('.consumer-otp-popup')" type="submit" title="" class="button default">{{ translations.consumerQuickRegisterOtp.checkButtonText }}</button>
+									</div>
+									<input type="submit" class="g-recaptcha" data-sitekey="6LcdQz4UAAAAAC2WQlZInj-6cmv3GwZR1bGg4S8J" data-size="invisible" data-callback="formSubmit"  style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Modal: End -->
+{% endif %}
+
+
+
+{% if newConsumerRegisterSuccessMessages %}
+<div class="iyziModal consumer-register-success-modal modal consumerRegisterSucsess">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<div class="modalContent">
+				<button type="button" class="modal-close" data-dismiss="modal">
+					<i class="icon icon--popup-close" aria-hidden="true"></i>
+				</button>
+				<div class="modalContent">
+					<i class="icon icon--contactus-success"></i>
+					<h2><strong>{{ translations.consumerRegisterSuccess.title }}</strong></h2>
+					<p>{{ translations.consumerRegisterSuccess.description }}</p>
+					<p><strong>{{ translations.consumerRegisterSuccess.subTitle }}</strong></p>
+					<div class="buttonGroup">
+					{% if app.request.attributes.get('_locale') == "tr" %}
+						<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store"></i></a>
+						<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play"></i></a>
+					{% else %}
+						<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store-en"></i></a>
+						<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play-en"></i></a>
+					{% endif %}
+					</div>
+					<div class="qrCode">
+						<img src="{{ asset('assets/images/content/consumerAppQrcode.png')}}" srcset="{{ asset('assets/images/content/consumerAppQrcode@2x.png')}} 2x" alt=""/>
+					</div>
+					<p><span>{{ translations.consumerRegisterSuccess.subDescription }}</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}

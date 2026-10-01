@@ -1,0 +1,51 @@
+<div class="iyziModal pwi-brands-modal modal">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<button type="button" class="modal-close" data-dismiss="modal">
+				<svg class="icon">
+					<use xlink:href="/assets/images/sprite/icons.svg#basic-close"></use>
+				</svg>
+			</button>
+			<div class="iyziModalContent">
+				<img class="popupPwiLogo" src="/assets/images/icons/iyzico-logo-subbrands-pwi.svg" alt="iyzico ile Öde Geçerli Mağazalar">
+				<img src="{{ asset('assets/images/content/pwi-brand-popup-banner.png')}}" srcset="{{ asset('assets/images/content/pwi-brand-popup-banner@2x.png')}} 2x" alt="pwi brand popup banner" />
+				<div class="pwiBrandModalContent">
+					<div class="title">{{ translations.pwiBrandsLPpopup.titleTwo|raw }}</div>
+					<ul>
+						<li>
+							<svg class="icon">
+  							<use xlink:href="/assets/images/sprite/icons.svg#mcc-icn-shopping"></use>
+							</svg>
+							<p>{{ translations.pwiBrandsLPpopup.secFive }}</p>
+						</li>
+						<li>
+							<svg class="icon">
+  							<use xlink:href="/assets/images/sprite/icons.svg#basic-icn-support"></use>
+							</svg>
+							<p>{{ translations.pwiBrandsLPpopup.secSix }}</p>
+						</li>
+						<li>
+							<svg class="icon">
+  							<use xlink:href="/assets/images/sprite/icons.svg#mcc-refund"></use>
+							</svg>
+							<p>{{ translations.pwiBrandsLPpopup.secSeven }}</p>
+						</li>
+						<li class="note">
+							<svg class="icon">
+  							<use xlink:href="/assets/images/sprite/icons.svg#informative-info"></use>
+							</svg>
+							<p>{{ translations.pwiBrandsLPpopup.secEight|raw }}
+						</li>
+					</ul>
+					<div class="brandDomain"></div>
+					<a href="#" class="button primary brandUrl" title="Kurumsal" target="_blank">
+						<svg class="icon">
+  							<use xlink:href="/assets/images/sprite/icons.svg#icons-basic-icn-web"></use>
+						</svg>
+						{{ translations.pwiBrandsLPpopup.buttonText }}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

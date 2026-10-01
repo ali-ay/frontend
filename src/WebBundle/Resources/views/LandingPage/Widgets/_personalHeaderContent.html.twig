@@ -1,0 +1,16 @@
+<div class="headerImageComponent">
+  <div class="container">
+    <div class="content">
+      <h1>
+        <strong>{{ headerWidget.boldTitle }}</strong>{{ headerWidget.lightTitle }}
+      </h1>
+      <p>{{ headerWidget.description }}</p>
+      <div class="buttonGroup">
+        <a href="{{ headerWidget.primaryButtonUrl|raw }}" class="button primary">{{ headerWidget.primaryButtonText|raw }}</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="{{ headerWidget.image.file }}.{{ headerWidget.image.extension }}" srcset="{{ headerWidget.image.file }}@2x.{{ headerWidget.image.extension }} 2x" alt="{{ headerWidget.headerImageAlt}}"/>
+    </div>
+  </div>
+</div>

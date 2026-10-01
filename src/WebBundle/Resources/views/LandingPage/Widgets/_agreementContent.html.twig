@@ -1,0 +1,40 @@
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			<ul>
+				<div class="title gray-900">{{ pageInfo.contents.terms.title }}</div>
+        {% for itemTitle in pageInfo.contents.terms.list  %}
+          <li>
+            <a href="#{{ itemTitle.title|slugify }}" class="scroller"   title="{{ itemTitle.title }}">{{ itemTitle.title }}</a>
+          </li>
+        {% endfor %}
+			</ul>
+		</div>
+    <div class="dropdownMenu">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ translations.personalContractedSitesHeaderContent.button }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for itemTitle in pageInfo.contents.terms.list  %}
+            <a class="dropdown-item sites-category-filter" href="#{{ itemTitle.title|slugify }}" data-category-id="{{ itemTitle.title|slugify }}" >{{ itemTitle.title }}</a>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+		<div class="content">
+			<ul>
+        {% for term in pageInfo.contents.terms.list  %}
+				  <li id="{{ term.title|slugify }}">
+            <div class="agreement__content--box">
+              <h3>{{ term.title }}</h3>
+              <p>
+                {{ term.content|raw|nl2br}}
+              </p>
+            </div>
+          </li>
+        {% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

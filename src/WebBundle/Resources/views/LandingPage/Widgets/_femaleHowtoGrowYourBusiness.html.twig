@@ -1,0 +1,40 @@
+<section class="iyziLife iyziLifeCenter">
+	<div class="iyzi-container">
+		<h2>{{ translations.femaleHowtoGrowYourBusiness.title|raw }}</h2>
+		<ul>
+			<li>
+				<div class="itemimg">
+					<img src="{{ asset('assets/images/content/pay-with-iyzico-new-consumer.png')}}" srcset="{{ asset('assets/images/content/pay-with-iyzico-new-consumer@2x.png')}} 2x" alt="iyzico ile Öde Sayesinde Milyonlarca Yeni Müşteri"/>
+				</div>
+				<div class="itemContent">
+					{{ translations.femaleHowtoGrowYourBusiness.secOne|raw }}
+					<div class="buttonGroup">
+						<a href="{{ path('pay_with_iyzico_landingpage')}}" class="button basic" target="_blank">{{ translations.femaleHowtoGrowYourBusiness.buttonText }}</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="itemContent">
+					{{ translations.femaleHowtoGrowYourBusiness.secTwo|raw }}
+					<div class="buttonGroup">
+						<a href="{{ path('business_bank_transfer')}}" class="button basic" target="_blank">{{ translations.femaleHowtoGrowYourBusiness.buttonText }}</a>
+					</div>
+				</div>
+				<div class="itemimg">
+					<img src="{{ asset('assets/images/content/pay-with-iyzico-buyer-protection.png')}}" srcset="{{ asset('assets/images/content/pay-with-iyzico-buyer-protection@2x.png')}} 2x" alt="iyzico Korumalı Alışveriş Güvencesi"/>
+				</div>
+			</li>
+			<li>
+				<div class="itemimg">
+					<img src="{{ asset('assets/images/content/iyzico-pay-with-link.png')}}" srcset="{{ asset('assets/images/content/iyzico-pay-with-link@2x.png')}} 2x" alt="iyzico link yöntemi"/>
+				</div>
+				<div class="itemContent">
+					{{ translations.femaleHowtoGrowYourBusiness.secThree|raw }}
+					<div class="buttonGroup">
+						<a href="{{ path('business_receive_payment')}}" class="button basic" target="_blank">{{ translations.femaleHowtoGrowYourBusiness.buttonText }}</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>

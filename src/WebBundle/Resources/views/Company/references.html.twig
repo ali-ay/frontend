@@ -1,0 +1,101 @@
+    <div>
+        <div class="reference-container">
+        {% set videoIndex = 0 %}
+        {% set mainIndex = 0 %}
+        {% for referencesWithContentChunk in referencesWithContentChunks %}
+            {% set mainIndex = loop.index-1 %}
+            <section class="references">
+                <div class="iyzi-container">
+                    <div class="row references-carousel">
+                        {% for referencesWithContent in referencesWithContentChunk %}
+                            <div class="references__item-wrapper">
+                                <div class="references__item">
+                                    <div class="references__item--photo">
+                                        <img src="{{ referencesWithContent.portrait.file }}.{{ referencesWithContent.portrait.extension }}" style="width:140px" alt="{{ referencesWithContent.personName }}" />
+                                    </div>
+                                    <div class="references__item--content">
+                                        <p>{{ referencesWithContent.content|raw }}</p>
+                                    </div>
+                                    <div class="references__item--info">
+                                        <h3>{{ referencesWithContent.personName }}</h3>
+                                        <img src="{{ referencesWithContent.logo.file }}.{{ referencesWithContent.logo.extension }}" alt="{{ referencesWithContent.personName }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            {% if referencesWithoutContentChunks[mainIndex] is defined %}
+                <div class="iyzi-container full-height">
+                     <div class="iyzi-brands-carousel-custom-length m-b-60" data-length="{{referencesWithoutContentChunks[mainIndex]|length}}">
+                         {% for referenceWithoutContent in referencesWithoutContentChunks[mainIndex] %}
+                             <div class="head__brands--list__item">
+                                 <img src="{{ referenceWithoutContent.logo.file }}.{{ referenceWithoutContent.logo.extension }}"
+                                      srcset="{{ referenceWithoutContent.logo.file }}@2x.{{ referenceWithoutContent.logo.extension }} 2x"
+                                 />
+                             </div>
+                         {% endfor %}
+                     </div>
+                </div>
+            {% endif %}
+            <!--
+            {% if loop.index is divisible by(2) %}
+                {% if referencesWithVideoChunks[videoIndex] is defined %}
+                    {% set referenceWithVideo = referencesWithVideoChunks[videoIndex][0] %}
+                    {% set videoIndex = videoIndex+1 %}
+                    <section class="references__video">
+                        <div style="position: relative;">
+                            <div class="parallax-background" style="background-image:url({{ asset('assets/images/content/texture.png')}});"></div>
+                            <div class="iyzi-container" style="padding-top:60px;">
+                                <div class="iyzi-big-video" style="box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);">
+                                    <video id="iyzi-video" class="video-js vjs-default-skin vjs-fluid" controls
+                                           poster="" data-setup="" preload="none">
+                                        <source src="{{ referenceWithVideo.videomp4.file }}.{{ referenceWithVideo.videomp4.extension }}" type="video/mp4">
+                                        <source src="{{ referenceWithVideo.videowebm.file }}.{{ referenceWithVideo.videowebm.extension }}" type="video/webm">
+                                        <p class="vjs-no-js">
+                                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                        </p>
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                {% endif %}
+            {% endif %}
+            -->
+        {% endfor %}
+            {% set mainIndex = mainIndex+1 %}
+            {% if mainIndex <=  referencesWithoutContentChunks|length-1%}
+                {% for remainingSets in mainIndex..referencesWithoutContentChunks|length-1 %}
+                    <div class="iyzi-container full-height">
+                        <div class="iyzi-brands-carousel-custom-length m-b-60" data-length="{{referencesWithoutContentChunks[mainIndex]|length}}">
+                            {% for referenceWithoutContent in referencesWithoutContentChunks[remainingSets] %}
+                                <div class="head__brands--list__item">
+                                    <img src="{{ referenceWithoutContent.logo.file }}.{{ referenceWithoutContent.logo.extension }}"
+                                         srcset="{{ referenceWithoutContent.logo.file }}@2x.{{ referenceWithoutContent.logo.extension }} 2x"
+                                    />
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+<section class="referencessBrands">
+	<div class="container">
+		<img src="{{ asset('assets/images/content/references/muhiku.png')}}" srcset="{{ asset('assets/images/content/references/muhiku@2x.png')}} 2x" alt="Muhiku" />
+		<img src="{{ asset('assets/images/content/references/stickker.png')}}" srcset="{{ asset('assets/images/content/references/stickker@2x.png')}} 2x" alt="Stickker" />
+		<img src="{{ asset('assets/images/content/references/socks.png')}}" srcset="{{ asset('assets/images/content/references/socks@2x.png')}} 2x" alt="Socks" />
+		<img src="{{ asset('assets/images/content/references/bikutukalem.png')}}" srcset="{{ asset('assets/images/content/references/bikutukalem@2x.png')}} 2x" alt="bikutukalem" />
+		<img src="{{ asset('assets/images/content/references/dogaladres.png')}}" srcset="{{ asset('assets/images/content/references/dogaladres@2x.png')}} 2x" alt="Doğal Adres" />
+		<img src="{{ asset('assets/images/content/references/sevgilibebek.png')}}" srcset="{{ asset('assets/images/content/references/sevgilibebek@2x.png')}} 2x" alt="Sevgilibebek" />
+		<img src="{{ asset('assets/images/content/references/juno.png')}}" srcset="{{ asset('assets/images/content/references/juno@2x.png')}} 2x" alt="Juno" />
+		<img src="{{ asset('assets/images/content/references/dearcase.png')}}" srcset="{{ asset('assets/images/content/references/dearcase@2x.png')}} 2x" alt="Dear-Case" />
+	</div>
+</section>

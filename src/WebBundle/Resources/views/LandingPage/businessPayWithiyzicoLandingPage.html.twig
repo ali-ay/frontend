@@ -1,0 +1,34 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+	<meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+	<meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+	<meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business virtualPosTablet businessPwi{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+
+	{% include '@root/LandingPage/Widgets/_newBPwiHeaderContent.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_newBPwiWhoIsiyzico.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_bPwiIyziLife.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_bPwiRegister.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_newBPwiWhyiyzico.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_businessPwiSss.html.twig' with {'businessPwiSss':widgets.businesspwissswidget} %}
+	{% include '@root/LandingPage/Widgets/_businessPwiTestimonial.html.twig' %}
+
+{% endblock %}
+
+{% block bodyBottomScripts %}
+	<script>
+		window.lazyLoadOptions = {
+			threshold: 50
+		};
+		window.addEventListener('LazyLoad::Initialized', function (e) {
+			console.log(e.detail.instance);
+		}, false);
+	</script>
+{% endblock %}

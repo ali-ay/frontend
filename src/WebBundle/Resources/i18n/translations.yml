@@ -1,0 +1,1334 @@
+iyzicoJoinForm:
+  IslemBasariliMesaji: "Sizinle en kısa sürede iletişime geçeceğiz!"
+  IslemHataliMesaji: "Başvuru alınırken bir sorun oluştu. Yükleyebileceğiniz CV formatları: (JPG, PNG, PDF, DOCX)"
+
+iyzicoMerchantType:
+  title: "Şimdi iyzico hesabınızı oluşturun"
+  corparateTitle: "Şirketim Var"
+  corparateContentOne: "Vergi Mükellefi Şirketler"
+  corparateContentOneDesc: "(Anonim, Limited veya Şahıs)"
+  corparateContentTwo: "Dernekler"
+  corparateButtonText: "Kurumsal Hesap Oluştur"
+  personalTitle: "Şirketim Yok"
+  personalContent: "Bireysel Satıcılar"
+  personalContentDesc: "(Şirket sahibi olmayan kişiler)"
+  personalButtonText: "Bireysel Hesap Oluştur "
+  subTitle: "iyzico; e-ticaret şirketleri, bireysel kullanıcılar ve pazar yerleri için sanal POS ve güvenli ödeme çözümleri sunan finans teknolojileri şirketidir."
+
+personalContractedSitesHeaderContent:
+  button: "Genel Bilgiler"
+
+iyzicoNewMerchant:
+  newFormTitle: "Hesabınızı Oluşturun"
+  newOwnerName: "Adınız"
+  newOwnerSurname: "Soyadınız"
+  newEposta: "E-mail Adresiniz"
+  newPhoneNumber: "Cep Telefonunuz"
+  newPassword: "Pin Belirle"
+  newFormButtonBusiness: "Kurumsal Hesap Oluştur"
+  newFormButtonPersonal: "Bireysel Hesap Oluştur"
+  newContentTitleOne: "3 adımda "
+  newContentTitleTwo: "ödeme almaya başla"
+  newSectionOne: "Hesabınızı oluşturun"
+  newSectionTwo: "Bilgilerinizi tamamlayın"
+  newSectionThree: "Sözleşmeyi onaylayın ve ödeme almaya başlayın"
+  newFormLoginButton: "Zaten hesabın var mı?"
+  newFormLoginUrl: "https://merchant.iyzipay.com/login?lang=tr"
+  newFormPrivacyPolicy: "Gizlilik & Kişisel Veri Politikamız"
+  newFormClarificationText: "“Devam ederek"
+  newFormClarificationButtonText: "KVKK Aydınlatma Metni"
+  newFormClarificationTextTwo: "'ni okuduğunuzu kabul etmektesiniz."
+
+iyzicoSignupModal:
+  SignupModalTitle: "Hemen iyzico<br>hesabınızı oluşturun"
+  SignupModalDescription: "24 saat içinde, yerinizden kalkmadan tüm kredi kartlarına taksitli satış yapın."
+  SingupModalAlreadyMember: "Zaten üye misiniz?"
+  SignupModalLogin: "Giriş yapın"
+  SignupModalEmail: "E-Posta Adresiniz"
+  SignupModalPhone: "Telefon Numaranız"
+  SignupModalWebsite: "Web Siteniz"
+  SignupModalPassword: "Şifreniz"
+  SignupModalPasswordRepeat: "Şifreniz (Tekrar)"
+  SignupModalStartMembership: "ÜYELİĞİMİ BAŞLAT"
+  SignupBasariliBaslik: "Üyeliğiniz başarıyla oluşturuldu!"
+  IslemBasariliMesaji: "adresine aktivasyon e-postası gönderildi"
+  IslemHataliMesaji: "Lütfen farklı bir e-posta adresi ile kayıt olmayı deneyiniz.<br><br> Tüm sorularınız için <strong>+90 216 599 01 00</strong> telefon numarasından bizimle iletişime geçebilir, destek ekibimize ulaşabilirsiniz."
+  isSixDigit: "6 adet rakamdan oluşmalıdır."
+  hasUniqueNumbers: "En fazla 2 ardışık rakam yan yana bulunabilir."
+  hasThreeTimesRepeatedOneBlock: "Aynı rakam arka arkaya en fazla 2 kere kullanılabilir."
+  hasThreeTimesRepeatedTwoBlock: "Tekrarlı 2 rakam en fazla 2 kez yan yana gelebilir."
+  isFirstThreeAndLastThreeSame: "En az 3 farklı rakam içermelidir."
+  hasConsecutiveNumbers: "İlk 3 hane ile son 3 hane aynı olmamalıdır."
+  SimdiNeOlacakTitle: "Şimdi ne yapmam gerekiyor?"
+  SekizKarakter: "1"
+  BirKucukHarf: "2"
+  BirBuyukHarf: "3"
+  BirRakam: "4"
+  secOne: "<div class='sub'>E-Posta Adresinizi <span class='green-800'>Doğrulayın</span></div><div class='desc'>Size gönderdiğimiz e-posta üzerinden üyeliğinizi aktifleştirin.</div>"
+  secTwo: "<div class='sub'>Başvuru Formunu ve <span class='clear-blue'>Evraklarınızı Yükleyin</span></div><div class='desc'>Başvuru formunu doldurarak gerekli evraklarınızı yükleyin.</div>"
+  secThree: "<div class='sub'>Ödeme Almaya <span class='yellow-orange'>Hazırsınız!</span></div><div class='desc'>Başvurunuz sonuçlandığında panelinizden sözleşmenizi onaylayın ve ödeme almaya başlayın.</div>"
+  SimdiNeOlacak: "<h3>Şimdi ne yapmam gerekiyor?</h3><ul><li>Size gönderdiğimiz e-posta üzerinden üyeliğinizi aktifleştirin.</li><li>Başvuru formunu doldurarak gerekli evraklarınızı yükleyin.</li><li>Başvurunuz sonuçlandığında panelinizden sözleşmenizi onaylayın ve ödeme almaya başlayın.</li></ul>"
+  SimdiNeOlacakiyziLink: "<h3>Şimdi ne yapmam gerekiyor?</h3><ul><li>Size gönderdiğimiz e-posta üzerinden üyeliğinizi aktifleştirin.</li><li>Başvuru formunu doldurarak gerekli evraklarınızı yükleyin.</li><li>En az bir adet iyziLink oluşturun.</li><li>Başvurunuz sonuçlandığında panelinizden sözleşmenizi onaylayın ve ödeme almaya başlayın.</li></ul>"
+
+newiyzicoNotifications:
+  newIslemBasarili: "Başvurunuz Alındı"
+  newTamam: "Tamam"
+  newBirHataOlustu: "Bir Hata Oluştu"
+  newKapat: "Kapat"
+  newCookieBilgilendirmeYazisi: "Size daha iyi hizmet sunabilmek için sitemizde çerezlerden faydalanıyor, kişisel verilerinizi mevzuata uygun olarak toplayıp işliyoruz. İnternet sitemizi kullanmaya devam ederek çerezleri ve diğer kişisel verilerinizi kullanmamıza izin vermiş oluyorsunuz. Çerezler ve kişisel verilerinizin işlenmesi hakkında daha ayrıntılı bilgiye <a href='https://www.iyzico.com/gizlilik-politikasi' target='blank'>Gizlilik & Kişisel Veri Politikası</a>'dan ulaşabilirsiniz."
+
+popupFormField:
+  nameSurname: "Adınız Soyadınız"
+  email: "E-Posta Adresiniz"
+  phone: "Telefon Numaranız"
+  webSite: "Web Siteniz"
+
+cashPackagePopup:
+  newtitle: "Bir Kere Öde, Gerisini Düşünme"
+  newdescription: "İşinize ilk adımlarınızı atarken, ödemeleriniz için ne kadar komisyon ödeyeceğinizi hesaplamakla uğraşmayın. E-ticarete giriş paketi ile ilk 3 ay için sadece tek bir ödeme yapın ve kazancınız hiçbir komisyon kesintisine uğramadan cebinize kalsın."
+  newsubDescription: "*E-Ticarete giriş paket limiti 3 aylık 5.000 TL’dir. Limit aşımında Standart Paket devreye girer. Haftalık ödemeler, risk politikası gereği değişkenlik gösterebilir."
+
+buyerProtectedMoneyTransfer:
+  title: "iyzico Korumalı Havale/EFT Yöntemi ile Ödeme Alın"
+  descriptiom: "Şimdi iyzico Korumalı Havale/EFT Yöntemi ile yepyeni bir ödeme deneyimi yaşayın ve daha fazla kazanın. <br><br> Siz de iyzico'nun yeni ödeme metodundan yararlanmak istiyorsanız, iletişim bilgilerinizi bırakın sizi arayalım."
+
+buyerProtectedMoneyTransferHowWork:
+  title: "Satıcılar İçin;"
+  titleTwo: "iyzico Korumalı Havale/EFT Yöntemi Nasıl Çalışır?"
+  secOneDesc: "iyzico, aynı iş günü içerisinde müşterinin ödeme talebi ile havale/EFT işlemini eşleştirir ve onaylar."
+  secTwoDesc: "Ödemenizin alındığına dair size bir bilgilendirme e-postası gönderilir."
+  secThreeDesc: "Müşterilerinizin satın aldığı ürünü, ödemenizin alındığı bilgisi size iletildikten sonra kargoya verebilirsiniz."
+
+iyzicoOM:
+  oMTitle: "Size Özel Bir Teklifimiz Var"
+  oMDescription: "24 saat içinde, yerinizden kalkmadan tüm kredi kartlarından taksitli veya peşin ödeme almaya başlayın."
+  oMNameSurname: "Adınız Soyadınız"
+  oMEmail: "E-Posta Adresiniz"
+  oMPhone: "Telefon Numaranız"
+  oMWebsite: "Web Siteniz"
+  oMGonder: "GÖNDER"
+  IslemBasariliMesaji: "Talebinizi aldık, en yakın zamanda sizinle iletişime geçeceğiz."
+  IslemHataliMesaji: "Mesaj alınamadı. Lütfen tekrar deneyiniz."
+
+fBheader:
+  titleBold: "İşiniz için"
+  titleLight: "İşinize Gelen Ödeme Sistemi"
+  description: "iyzico’yla dünyanın her yerinden ödeme alın, taksitli satışlar yapın. Siz işlerinize odaklanın, ödemelerinizi bize bırakın."
+  businessPwi: "iyzico ile Öde"
+
+businessHeaderNavigation:
+  forBusiness: "İşim İçin"
+  forPersonal: "Kendim İçin"
+  support: "Destek"
+  bP: "Korumalı Alışveriş"
+  pwi: "iyzico ile Öde"
+  pwiBrands: "Mağazalar"
+  iyzicoCard: "iyzico Kart"
+  rPMainTitle: "Ödeme Alma Yolları"
+  privileges: "Ayrıcalıklar"
+  referancess: "Referanslar"
+  developer: "Geliştirici"
+  signUp: "Üye Ol"
+  login: "Panele Giriş Yap"
+  rPSubTitle: "Web Sitesinden Ödeme Al"
+  virtualPos: "Sanal POS"
+  marketPlace: "Pazaryeri Ödeme Çözümü"
+  subscription: "Abonelik Yöntemi"
+  businessBuyerProtectedMoneyTransfer: "Korumalı Havale/EFT Yöntemi"
+  businessPayWithiyzico: "iyzico İle Ödeme Al"
+  paymentForLink: "Link İle Ödeme Al"
+  stantSales: "Stant Satışları"
+  socialMedia: "Sosyal Medya Satışları"
+  onlineProceeds: "E-Tahsilat"
+  massPayoutTitle: "En İyisiyle Para Gönder"
+  massPayoutSubTitle: "Çoklu Para Gönderimi"
+  iyzicoTechnology: "Yapay Zeka Tabanlı iyzico Teknolojileri"
+  fraud: "Sahtecilik Önleme Sistemi"
+  dynamic3DS: "Dynamic 3DS Sistemi"
+  smartPayment: "Akıllı Ödeme Yönlendirme Servisi"
+  businessBuyerProtection: "İşim İçin Korumalı Alışveriş"
+  campaginTitle: "Kampanyalar"
+  developerPage: "Geliştirici Sayfası"
+  gitHub: "GitHub"
+  solutionsParner: "Çözüm Ortaklarımız"
+  sandBox: "SandBox"
+  engineeringBlog: "Engineering Blog"
+  help: "Desteğe mi ihtiyacınız var?"
+  contactUs: "Bize Ulaşın"
+  contactUsDescription: "Tüm sorularınızı cevaplamak için sizi bekliyoruz."
+  contactUsPhone: "+90 216 599 01 00"
+  contactUsEmail: "info@iyzico.com"
+  aboutUs: "Hakkımızda"
+  whoIs: "Biz Kimiz?"
+  career: "Kariyer"
+  culture: "Kültür"
+  press: "Basın"
+  languageTurkish: "TR"
+  languageEnglish: "ENG"
+  businessPwi: "En İyisiyle Ödeme Al"
+  businessPwiSubTitle: "iyzico ile Öde"
+  businessPwiDescription: "Farklı metodlarla tüm müşterilerinizden ödeme alın."
+  cepPos: "iyzico Cep POS"
+
+aboutUsSubMenu:
+  whoIsiyzico: "iyzico Hakkında"
+  whyiyzico: "Neden iyzico?"
+  career: "Kariyer"
+  culture: "Kültür"
+  press: "Basın"
+  pressiyzico: "Basında iyzico"
+  corporateIdentity: "Kurumsal Kimlik"
+
+integrationSubMenu:
+  openSource: "Açık Kaynak"
+  readyIntegration: "Hazır Alt Yapı"
+
+newWhyiyzico:
+  titleOne: "Tüm Dünya"
+  titleOneColor: "Sizin Müşteriniz"
+  descriptionOne: "Ürünlerinizi dünyanın her yerine satmak ve saniyeler içinde farklı para birimleriyle ödeme almak şimdi kolay."
+  titleTwo: "İşiniz İçin"
+  titleTwoColor: "Üstün Güvenlik"
+  descriptionTwo: "PCI-DSS 1. Seviye sertifikasıyla tüm sahtecilik işlemlerine karşı hem siz hem müşterileriniz her zaman güvendesiniz."
+  titleThree: "Satışlarınızı"
+  titleThreeColor: "Artırın"
+  descriptionThree: "Tüm müşterilerimiz iyzico avantajlarıyla satışlarını artırdı. Siz de onların arasına katılmaya ne dersiniz?"
+
+whyiyzicoContent:
+  title: "Online Alışveriş Varsa, Orada iyzico Vardır"
+  desc: "H&M, Sahibinden.com, Zara, Adidas, Nike ve Ofix gibi 40 binden fazla web sitesinden yaptığın alışverişlerin ardından, bu markalar iyzico ödeme altyapısını kullandığı için kart ekstrende “iyzico” ismini görürsün."
+  subtitle: "Nasıl Fark Yaratıyoruz?"
+  figureOne: "<h4>Banka Hesabın Olmadan <span class='tiffany-blue'>Alışveriş Yap</span></h4><p>iyzico bakiyeni oluştur ve 40 binden fazla sitede banka hesabın olmadan alışverişe başla.</p>"
+  figureTwo: "<h4>7/24 <br/><span class='clear-blue'>Canlı Destek</span></h4><p>iyzico Korumalı Alışveriş kapsamındaki tüm alışverişlerinde, 7/24 canlı destek seninle.</p>"
+  figureThree: "<h4>İptal/İade <span class='yellow-orange'>Süreçlerinde Kolaylık</span></h4><p>İadelerin satıcı onayının ardından anında iyzico hesabınızda!</p>"
+  subDesc: "Tüm bu avantajlar için şimdi iyzico hesabını aç; kolay ve güvenli alışverişin keyfini sen de yaşa."
+  button: "iyzico Hesabı Aç"
+
+getPaidVirtualPos:
+  title: "SANAL POS İLE"
+  subTitle: "Web Sitenizden Ödeme Alın"
+  description : "24 saat içerisinde web sitenizden ödeme almaya başlamak mı istiyorsunuz? Öyleyse Sanal POS ile tanışmanızın şimdi tam zamanı."
+  virtualPosButton: "Sanal POS Çözümleri"
+  marketPlaceButton: "Pazar Yeri Çözümleri"
+
+getPaidIyziLink:
+  title: "ENTEGRASYONSUZ"
+  subTitle: "Link ile ödeme alın"
+  description : "&quot;Şu ürünlerimizi internetten satalım da nasıl ödeme alacağız?&quot; diyorsanız, doğru yerdesiniz. Kurumsal ve bireysel binlerce satıcı link ile ödemelerini güvenle alıyor. Üstelik bunun için hiçbir entegrasyona ihtiyacınız yok."
+  stantSalesButton: "Stand Satışı Yap"
+
+privileges:
+  secOneTitle: "iyzico İşlerinizi Büyütür"
+  secOneDesc: "Müşterilerimize sunduğumuz birebir destekten yararlanan avantajlı üye iş yerleri, satışlarını artırıyor. Siz de iyzico ile işlerinizi büyütün."
+  secTwoTitle: "Sahteciliğe Geçit Yok!"
+  secTwoDesc: "Kendi kendine öğrenen yapay zekâ ve uzman ekibimizle, ödemelerinizi sahteciliğe karşı 7/24 koruyor, gelirinizi artırıyoruz."
+
+whoIsiyzico:
+  titleLight: "iyzico"
+  titleBold: "Kimdir?"
+  description: "iyzico, bireysel ve kurumsal binlerce müşterisine ödeme altyapısı ve satış sonrası destek hizmeti sunan, BDDK ve PCI-DSS lisanslarına sahip bir finans teknolojileri şirketidir."
+  button: "Tüm Referansları Gör"
+  title: "iyzico;"
+  titleDesc: "İnternetten alışveriş deneyimini hem alıcılar hem de satıcılar için kolaylaştıran bir finansal teknolojiler şirketidir."
+  secOneTitle: "₺15 milyar"
+  secOneSub: "İşlem Hacmi"
+  secOneDesc: "iyzico ödeme altyapısı aracılığıyla gerçekleştirilen işlemlerin toplam tutarı."
+  secTwoTitle: "4 milyon"
+  secTwoSub: "Korumalı Alışveriş"
+  secTwoDesc: "Güvenli internet alışverişinin tanımı iyzico Korumalı Alışveriş ile gerçekleştirilen işlem sayısı."
+  secThreeTitle: "%91"
+  secThreeSub: "Müşteri Memnuniyeti"
+  secThreeDesc: "Ödemelerinde iyzico’yu tercih eden tüketicilerin memnuniyet oranı."
+
+footer:
+  whyiyzico: "Neden iyzico"
+  helpCenter: "Yardım Merkezi"
+  serviceStatus: "Servis Durumu"
+  contact: "İletişim"
+  integration: "ENTEGRASYON"
+  developer: "Geliştirici"
+  engBlog: "Engineering Blog"
+  gitHub: "GitHub"
+  sandbox: "Sandbox"
+  developersPage: "Geliştirici Sayfası"
+  solutionPartners: "Çözüm Ortaklarımız"
+  blog: "Blog"
+  iyziStart: "iyzico Start"
+  generalConditions: "Genel Şartlar"
+  privacyPolicy: "Gizlilik Politikası"
+  userAgreement: "Kullanıcı Sözleşmesi"
+  ethicsNotificationForm: "Etik Bildirim Formu"
+  socialResponsibility: "Sosyal Sorumluluk"
+  brandGuide: "Kurumsal Kimlik"
+
+appWidget:
+  title: "Alışveriş Süreçlerini Yönetmenin En Pratik Haliyle Tanış"
+  bulletOne: "Tüm alışverişlerin tek uygulamada."
+  bulletTwo: "Tüm kartların tek uygulamada."
+  bulletThree: "iyzico bakiyeni yönet."
+  bulletFour: "Alışveriş sonrası 7/24 destek hizmeti."
+
+consumerAppWidget:
+  title: "Alışverişe Tek Tıkla, Daha Hızlı Devam Et"
+  bulletOne: "Tüm alışverişlerin tek uygulamada."
+  bulletTwo: "7/24 canlı destek hizmeti."
+  bulletThree: "Hesabına kolayca para yükleme ve çekme imkanı."
+  bulletFour: "Saklı kartların ile tek tıkla öde."
+
+businessBPProgress:
+  title: "Güvenli İnternet Alışverişinin Simgesi: <br>iyzico Korumalı Alışveriş"
+  desc: "80 binden fazla iyzico üye iş yeri, müşterilerine iyzico Korumalı Alışveriş avantajlarını sunuyor. Binlerce genç marka, iyzico Korumalı Alışveriş sayesinde müşterileriyle güven ilişkisi kuruyor ve işlerini kısa süre içerisinde büyütüyor."
+
+businessBPPrivileges:
+  secOneTitle: "iyzico Korumalı Alışveriş ile "
+  secOneTitleColor: "Yeni Müşteriler Kazanın"
+  secOneDesc: "Üye iş yerleri, iyzico Korumalı Alışveriş avantajlarıyla müşteri sayısını artırdı."
+  secTwoTitle: "7/24 Canlı Destek İle "
+  secTwoTitleColor: "Hizmet Kalitenizi Yükseltin"
+  secTwoDesc: "Müşterilerin ödemeleriyle ilgili her konuda 7/24 iletişim kurabileceği bir destek servisine sahip olmaya, sanırız kimse hayır demezdi. iyzico Korumalı Alışveriş ile müşterilerinize 7/24 canlı destek hizmeti sunun ve hizmet kalitenizi yükseltin."
+  secThreeTitle: "Müşteri Memnuniyetini "
+  secThreeTitleColor: "Artırın"
+  secThreeDesc: "iyzico Korumalı Alışveriş kapsamında yapılan alışverişlerin müşteri memnuniyeti oranı <strong>%91!</strong>"
+
+businessBuyerProtectionHeaderContent:
+  titleBold: "iyzico Korumalı Alışveriş ile "
+  titleLight: "Daha Fazlasını Kazanın"
+  desc: "Müşterilerinize iyzico Korumalı Alışveriş ile 7/24 canlı destek vermek ve anında para iadesi yapmak şimdi kolay!<br>Siz de güvenli internet alışverişinin simgesi iyzico Korumalı Alışveriş ile hem müşteri memnuniyetinizi hem de kazancınızı artırın."
+
+fraudHeaderContent:
+  titleBold: "Sizi Sahteciliğe Karşı Koruyor, "
+  titleLight: "Gelirinizi Artırıyoruz"
+  desc: "iyzico tarafından geliştirilen yapay zekâ destekli sahtecilik önleme sistemimiz sayesinde, geçerli ödemeleri kaçırmadan şüpheli işlemlere karşı üye iş yerlerimizi koruyor, harcama itirazlarınızı düşürerek müşteri memnuniyetini artırıyoruz."
+
+fraudPrivileges:
+  secOneTitle: "Son Teknolojiyi "
+  secOneTitleColor: "Ücretsiz Kullanın"
+  secOneDesc: "BDDK Lisansı ve PCI - DSS sertifikasına sahip olan iyzico’nun uzman mühendisleri, TÜBİTAK destekli projeler kapsamında yeni nesil teknolojiler geliştiriyor. Yapay zeka tabanlı güvenlik sistemi ile sahtecilik işlemlerine karşı her zaman korunacak, harcama itirazı (chargeback) riskinizi en aza indirecek ve gelirinizi artırabileceksiniz."
+  secTwoTitle: "Başarılı Ödeme Oranınızı ve "
+  secTwoTitleColor: "Gelirinizi Artırın"
+  secTwoDesc: "Milyonlarca ödeme verisiyle eğitilen ve sürekli gelişen yapay zekâ sayesinde, gerçek ödemeler ve sahtecilik işlemleri arasındaki fark kolayca tespit edilir. Bu sayede, başarılı ödemeler kısıtlanmadan sadece şüpheli işlemlere karşı anlık olarak korunmuş olursunuz. Ödeme reddetme oranınız düşer, hem başarılı ödeme hem de satış dönüşüm oranlarınız artar."
+  secThreeTitle: "Yapay Zeka ile "
+  secThreeTitleColor: "Güvenliğinizi Sağlayın"
+  secThreeDesc: "Yeni saldırı yöntemleri geliştikçe öğrenen ve böylece güncel saldırılara karşı her zaman hazır olan yapay zekâ ile ödemelerinizin güvenliğini iyzico’ya bırakır, satışlarınıza odaklanabilirsiniz."
+
+fraudProgress:
+  title: "Frauctive Sahtecilik Önleme Sistemi Sizi Nasıl Korur?"
+  desc: "Tüm iyzico üye iş yerleri ilk günden itibaren yapay zekâ destekli sahtecilik önleme sistemi Frauctive’in güvenlik kontrolü altına girer ve hem siz hem müşterileriniz olası zararlara karşı korunur. Yüzlerce güvenlik filtresi, kara liste verisi (black list data), milyonlarca ödeme verisinden beslenip kendi kendine öğrenen yapay zekâ ve uzman ekibimizle 7/24 tüm kontroller yapılır, şüpheli işlemlere anında müdahale edilir. Bu sayede daha sonra oluşabilecek zararların önüne geçilmiş olur."
+
+businessMarketPlaceHowto:
+  secOneTitleColor: "Tüm Altyapılar İçin"
+  secOneTitle: "En Hızlı Entegrasyon"
+  secOneDesc: "Siteniz ister hazır altyapı, ister özel bir yazılıma sahip olsun; geliştirdiğimiz modüller sayesinde tüm entegrasyon sürecinizi kolayca tamamlayın ve iyzico Sanal POS ile online satışa başlayın."
+  secOneButtonOneText: "Geliştirici Sayfası"
+  secTwoTitleColor: "Yüzlerce Pazaryerinin"
+  secTwoTitle: "Çözüm Ortağı iyzico"
+  secTwoDesc: "Türkiye’de 100’den fazla pazaryeri, ödeme sistemleri çözüm ortağı olarak iyzico’yla çalışıyor ve ödemelerini güvenle alıyor.<br><br>“iyzico Hesabıma Aktar” ile Alt Satıcılarınızın Ödemeleri Artık Çok Kolay<br><br>Alt satıcılarınızın ödemelerinin iyzico hesaplarına 1 saat içerisinde otomatik olarak yansıtılmasına ne dersiniz? “iyzico Hesabıma Aktar” ile tüm nakit akışınız artık çok daha kolay!"
+  secTwoButtonOneText: "Sıkça Sorulan Sorular"
+  secTwoButtonTwoText: "Bize  Ulaşın"
+  secThreeTitleColor: "Güvenli Ödeme "
+  secThreeTitle: "Sistemi"
+  secThreeDesc: "iyzico, Merkez Bankası lisansı ve PCI-DSS 1. Seviye sertifikasına sahip bir finans teknolojileri kuruluşudur. iyzico Sanal POS ile tüm ödemelerinizi güvenle alabilirsiniz."
+  secFourTitleColor: "Tek Entegrasyonla Tüm Kredi Kartlarından "
+  secFourTitle: "Taksitli Ödeme Alın"
+  secFourDesc: "iyzico Sanal POS entegrasyonunun ardından Axess, World, Bonus, Cardfinans, Paraf, Maximum, Bankkart ve Advantage kartlarına taksitli satışlar yapabilir, tüm banka kartlarından da ödeme alabilirsiniz."
+  secFiveTitleColor: "Elinizin Altında"
+  secFiveTitle: "Ödemeler "
+  secFiveDesc: "Tüm ödemelerinizi iyzico kontrol paneliniz üzerinden ister mobil uygulama ile ister bilgisayarınızdan anlık olarak takip edebilirsiniz. Ayrıca alt satıcılarınızın ödemelerini iyzico hesaplarına aktarabilirsiniz."
+
+businessMarketPlaceProgress:
+  title: "Pazaryeri Ödeme Çözümü <br>ile Neler Yapabilirsiniz?"
+  desc: "Pazaryeri ödeme çözümü ile alt satıcılarınızla aranızdaki nakit akışını anlık olarak yönetir, hak ediş ve komisyon hesaplamalarını otomatik olarak gerçekleştirir, alt satıcılarınızın ödemelerini iyzico hesaplarına aktarabilir ve birçok finansal raporu tek tıkla oluşturabilirsiniz. Böylece iyzico kontrol paneli üzerinden alt satıcılarınızın performans takibini gerçekleştirebilir ve iş süreçlerinizi çok daha etkili bir biçimde yürütebilirsiniz."
+
+businessMPHeaderContent:
+  titleBold: "Her Şeyi Düşünen"
+  titleLight: "Pazaryeri Ödeme Çözümü"
+  desc: "Alt satıcıların komisyonları, para transferleri, yaklaşan ödeme tarihleri ve çok daha fazlası...  Aslında bunların hiçbiriyle uğraşmanıza gerek yok. iyzico Pazaryeri POS, tüm para akışınızı tek bir entegrasyonun ardından sizin yerinize yönetir."
+
+businessOnlineProceedsHeaderContent:
+  title: "E-Tahsilat İşlemlerinizi, "
+  titleTwo: "Hızla Yapın"
+  desc: "Mail order sistemi, havale/EFT gibi geleneksel yöntemleri unutun. Müşterileriniz tüm ödemelerini hiçbir kart bilgisini paylaşmadan, ister tek çekimle ister taksitle gerçekleştirsinler. Sadece linkinizi oluşturun ve müşterinizle paylaşın. Ödeme almak işte bu kadar basit!"
+
+howToGetOnlineProceedsPay:
+  title: "E-Tahsilat İşlemini"
+  titleTwo: "Nasıl Gerçekleştiririm?"
+  secOneNum: "01."
+  secOneDesc: "Merchant panelinizden işlem adını ve fiyat bilgisini girerek linkinizi oluşturun."
+  secOneButton: "Uygulamayı İndir"
+  secTwoNum: "02."
+  secTwoDesc: "Uygulamanın ana sayfasının orta bölümünde yer alan &quot;Ödeme Al&quot; butonuna tıklayın."
+  secThreeNum: "03."
+  secThreeDesc: "Müşteriniz, paylaştığınız link üzerinden ödeme işlemini güvenle tamamlasın.<br><br>E-tahsilat işleminizi gerçekleştirmek işte bu kadar kolay!"
+
+businessOnlineProceedsShared:
+  content: "Oluşturduğunuz linki, WhatsApp, SMS gibi dilediğiniz her yerden müşterinizle paylaşın."
+
+businessOnlineProceedsSuccess:
+  contentOne: "Müşteriniz, paylaştığınız link üzerinden ödeme işlemini güvenle tamamlasın."
+  contentTwo: "E-tahsilat işleminizi gerçekleştirmek işte bu kadar kolay!"
+
+businessReceivePaymentEasy:
+  title: "E-Ticarete Girişin En Kolay Yolu"
+  secOneNum: "01."
+  secOneDesc: "iyzico İşim İçin uygulamasını indirin ve hesabınızı oluşturun."
+  secTwoNum: "02."
+  secTwoDesc: "Ürününüzün fotoğrafını, fiyatını ve diğer bilgilerini sisteme girerek bir ödeme alma linki oluşturun."
+  secThreeNum: "03."
+  secThreeDesc: "Ürününüzün alıcılarıyla oluşturduğunuz linki paylaşın ve ödeme almaya başlayın!"
+
+businessReceivePaymentHeaderContent:
+  titleBold: "Entegrasyonsuz Link ile Ödeme Almak Şimdi Kolay"
+  desc: "Kurumsal veya bireysel satıcı mısınız? iyzico Link Yöntemi’ne hemen üye olun, oluşturduğunuz linkleri tüm dijital mecralarda paylaşın ve güvenle ödeme almaya başlayın. iyzico ile e-ticaret işte bu kadar kolay!"
+  subDesc: "Şirket sahibi olmanıza gerek yok."
+
+businessReceivePaymentPriviliges:
+  title: "Avantajlar"
+  desc: "Bugüne kadar birçok müşterimiz iyzico Link Yöntemi’nin sunduğu kolay ve güvenli ödeme deneyimi sayesinde satışlarını artırdı ve işlerini büyüttü. Hala bu ayrıcalıklı topluluğun bir üyesi değilseniz, bizce daha fazla vakit kaybetmeyin."
+  secOneTitle: "E-Tahsilat"
+  secOneDesc: "Mail order formları artık eskide kaldı. İşim için mobil uygulaması üzerinden oluşturacağınız güvenli ödeme linkleri ile tüm e-tahsilat işlemlerinizi kolayca gerçekleştirebilirsiniz."
+  secTwoTitle: "Sosyal Medya Satışları"
+  secTwoDesc: "Sosyal medya satışlarınızın ödemelerini iyzico Link Yöntemi ile almak için şirket sahibi olmanıza veya herhangi bir entegrasyona ihtiyacınız yok. Geleneksel yöntemleri artık bir kenara bırakın. Oluşturduğunuz linki sosyal medyadan alıcılarınızla paylaşın ve ödemelerinizi saniyeler içerisinde, kolayca alın!"
+  secThreeTitle: "Saha Satışı"
+  secThreeDesc: "Stant satışlarınızda ödeme almak iyzico Link Yöntemi ile şimdi kolay! Telefonunuzu iyzico İşim İçin uygulamasıyla bir POS cihazına dönüştürün ve ödeme almanın en pratik haliyle tanışın."
+
+businessReceivePAymentScreens:
+  bulletOne: "Satış takibi"
+  bulletTwo: "Destek alma"
+  bulletThree: "İade işlemi"
+  bulletFour: "Kolay analiz raporu"
+  bulletFive: "Ödeme linki oluştur"
+  bulletSix: "Tüm linkleri görüntüle"
+
+businessReceivePaymentWhyiyzico:
+  tabOne: "Satıcılar İçin"
+  tabTwo: "Alıcılar İçin"
+  tabOneBoxOneTitle: "Biz Hep <span class='clear-blue'>Yanınızdayız</span>"
+  tabOneBoxOneDescription: "Online ödeme alma sürecinizin her adımında yanınızdayız! iyzico destek ekibi, tüm sorularınızı cevaplamak için sizi bekliyor."
+  tabOneBoxTwoTitle: "Ödemelerinizi <span class='greyish-teal'>Güvenle</span> Alın"
+  tabOneBoxTwoDescription: "PCI-DSS 1. seviye sertifikasına sahip iyzico ile oluşturduğunuz linkler, hiçbir güvenlik riski taşımaz."
+  tabOneBoxThreeTitle: "Sizi <span style='color:#ff694a;'>Yapay Zeka</span> ile Koruyoruz"
+  tabOneBoxThreeDescription: "iyzico Sahtecilik Önleme Sistemi, sizi e-ticaret dünyasındaki tüm şüpheli işlemlere karşı 7/24 korur."
+  tabTwoBoxOneTitle: "Ödemelerinizi <span class='clear-blue'>Hızlı</span> Yapın"
+  tabTwoBoxOneDescription: "Tüm ödeme işlemlerinizi saniyeler içerisinde, sadece birkaç tıkla tamamlayın."
+  tabTwoBoxTwoTitle: "Ödemelerinizi <span class='greyish-teal'>Güvenle</span> Yapın"
+  tabTwoBoxTwoDescription: "iyzico Link Yöntemi üzerinden gerçekleştirdiğiniz tüm ödemeleriniz güvenlidir."
+  tabTwoBoxThreeTitle: "<span style='color:#ff694a;'>Tüm Para Birimleriyle</span> Ödeyin"
+  tabTwoBoxThreeDescription: "iyzico Link Yöntemi ile yapacağınız ödemelerinizi birçok farklı para birimiyle gerçekleştirebilirsiniz."
+
+businessSocialMediaCreateUrl:
+  content: "Ürününüzün fotoğrafını, fiyatını ve diğer bilgilerini sisteme girerek bir ödeme alma linki oluşturun."
+
+businessSocialMediaHeaderContent:
+  titleBold: "Sosyal Medyadan Ödeme Almanın"
+  titleLight: "En Kolay Yolu"
+  description: "Sosyal medya satışlarınızın ödemelerini almak için EFT, havale veya kapıda ödeme gibi geleneksel yöntemlere artık ihtiyacınız yok. Oluşturduğunuz linki sosyal medya üzerinden müşterinizle paylaşın, ödemelerinizi tek tıkla saniyeler içinde hiçbir entegrasyona ya da web sitesine ihtiyaç duymadan almaya başlayın."
+
+howToGetSocialMediaPay:
+  title: "Sosyal Medyadan "
+  titleTwo: "Nasıl Ödeme Alırım?"
+  content: "iyzico işim için hesabınızı oluşturun."
+  secOneNum: "01."
+  secOneDesc: "iyzico İşim İçin mobil uygulamasını telefonunuza indirin."
+  button: "Uygulamayı İndir"
+  secTwoNum: "02."
+  secTwoDesc: "Ürününüzün fotoğrafını, fiyatını ve diğer bilgilerini sisteme girerek bir ödeme alma linki oluşturun."
+  secThreeNum: "03."
+  secThreeDesc: "Ürününüzün alıcılarıyla oluşturduğunuz linki paylaşın.<br><br>Ürünlerinizi sosyal medya üzerinden satmak ve ödemelerinizi güvenle almak işte bu kadar kolay!"
+
+businessSocialMediaShareLink:
+  contentOne: "Ürününüzün alıcılarıyla oluşturduğunuz linki paylaşın."
+  contentTwo: "Ürünlerinizi sosyal medya üzerinden satmak ve ödemelerinizi güvenle almak işte bu kadar kolay!"
+
+howToGetStandPay:
+  title: "Nasıl Hızlı"
+  titleTwo: "Ödeme Alabilirim?"
+  secOneNum: "01."
+  secOneDesc: "iyzico İşim İçin mobil uygulamasını telefonunuza indirin."
+  secOneButton: "Uygulamayı İndir"
+  secTwoNum: "02."
+  secTwoDesc: "Uygulamanın ana sayfasının orta bölümünde yer alan &quot;Ödeme Al&quot; butonuna tıklayın."
+  secThreeNum: "03."
+  secThreeDesc: "Satmak istediğiniz ürünün fiyatını ve adını girin.<br><br> Artık stant satışlarınızda saniyeler içinde ödeme almaya hazırsınız!"
+
+businessStandSalesHeaderContent:
+  titleBold: "Stant Satışlarınız iyzico'yla "
+  titleLight: "Çok Daha Hızlı"
+  description: "Hız ve pratikliğe en çok ihtiyaç duyduğunuz stant satışlarınızda artık yeni bir yardımcınız var! iyzico mobil uygulamasından satmak istediğiniz ürünün adını ve fiyatını girin, telefonunuzu bir POS cihazına dönüştürün ve ödemenizi yalnızca birkaç saniyede alın."
+
+businessStandSalesIntegration:
+  title: "NASIL HIZLI"
+  subTitle: "Ödeme Alabilirim?"
+  content: "iyzico İşim İçin mobil uygulamasını telefonunuza indirin."
+  button: "Uygulamayı İndir"
+
+businessStandSalesIntegrationReady:
+  contentOne: "Satmak istediğiniz ürünün fiyatını ve adını girin."
+  contentTwo: "Artık stant satışlarınızda saniyeler içinde ödeme almaya hazırsınız!"
+
+businessSupport:
+  title: "BAŞVURUDAN ÖDEME ALMAYA KADAR"
+  subTitle: "Her Süreçte Yanınızdayız"
+  description: "Online başvurunuzda, entegrasyon sürecinizde ve ödeme almaya başladığınızda; kısacası her adımınızda destek ekibimiz sizinle olacak. Siz yalnızca iyzico Sanal POS ile güvenli ödeme dünyasına merhaba deyin. Geri kalan her şey için biz buradayız!"
+  buttonOne: "Sıkça Sorulan Sorular"
+  buttonTwo: "Bize Ulaşın"
+
+personaliyziLife:
+  title: "iyzico ile Öde hayatını nasıl kolaylaştırıyor?"
+  secOne: "<h3>İnternet alışverişlerinde<span class='clear-blue'> kontrolü ele al.</span></h3>"
+  secTwo: "<h3>iyzico hesabındaki bakiyenle, saklı kartınla ya da havale/EFT ile<span class='orange-pink'> ödeme yapmak şimdi kolay.</span></h3>"
+  secThree: "<h3><span class='greyish-teal'>7/24</span> canlı destek.</h3>"
+  secFour: "<h3>On binlerce web sitesinde tüm ödemeler<span class='dodger-blue'> iyzico Korumalı Alışveriş güvencesinde.</span></h3>"
+  secFive: "<h3>Tek adımda<span class='yellow-orange'> ödeme kolaylığı.</span></h3>"
+  secSix: "<h3>Ödemelerinin iadesi satıcı onayının ardından<span class='green-700'> anında iyzico hesabında.</span></h3>"
+
+businessVirtualPosHeaderContent:
+  titleBold: "<span>iyzico&nbsp;<h1>Sanal POS</h1></span>&nbsp;ile Ödeme Almaya Başlayın"
+  description: "Tek entegrasyonla tüm kredi kartlarından ödemelerinizi almak iyzico ile şimdi kolay! Oturduğunuz yerden iyzico Sanal POS’a başvurun ve 24 saat içinde online satış yapmaya başlayın."
+
+businessVirtualPosIntegration:
+  title: "iyzico SANAL POS"
+  subTitle: "Entegrasyonu"
+  description: "Siteniz ister hazır altyapı, ister özel bir yazılıma sahip olsun; geliştirdiğimiz modüller sayesinde tüm entegrasyon sürecinizi kolayca tamamlayabilir ve iyzico Sanal POS ile online satışa başlayabilirsiniz. Ödeme adımına gelen müşterileriniz, iyzico Sanal POS entegrasyonu sayesinde sitenizden ayrılmadan ödeme işlemini saniyeler içinde tamamlasın ve alışverişin tadını çıkartsın!"
+  buttonOne: "Geliştirici Sayfası"
+  buttonTwo: "Çözüm Ortağı Olun"
+
+businessWirtualPosWork:
+  title: "iyzico Sanal POS <br/> Nasıl Çalışır?"
+  boxOneDescription: "Ürünlerini sepetine ekleyen müşterileriniz, ödeme sayfası adımında sitenizden ayrılmadan iyzico check-out formunu görür."
+  boxTwoDescription: "Müşteriniz, açılan forma kart bilgilerini girerek iyzico Sanal POS altyapısı üzerinden ödeme işlemini gerçekleştirir."
+  boxThreeDescription: "Ödeme işlemi, milisaniyeler içerisinde iyzico sistemi tarafından incelenerek onaylanır ve alışveriş süreci tamamlanır."
+  buttonText: "GELİŞTİRİCİ SAYFASI"
+
+businessWirtualPosHowtoWork:
+  title: "iyzico Sanal POS İle Satışlarınızı Nasıl Artırırsınız?"
+  desc: "iyzico Sanal POS’un size sunduğu birçok avantajla satışlarınızı artırabilirsiniz. Gelin şimdi bu avantajları birlikte inceleyelim."
+  secOneTitleColor: "Farklı Para Birimleri "
+  secOneTitle: "ile Ödeme Alma"
+  secOneDesc: "Birçok farklı para biriminde kolayca ödeme alabilirsiniz. Euro, Dolar, Sterlin veya Ruble; artık tüm dünya sizin müşteriniz."
+  secTwoTitleColor: "Güvenli "
+  secTwoTitle: "Kart Saklama"
+  secTwoDesc: "Müşterilerinizin ödeme sayfasında dakikalarca kart bilgilerini girmelerine gerek yok. Ödemelerini tek tıkla, saniyeler içerisinde tamamlayabilirler."
+  secThreeTitleColor: "Kolay "
+  secThreeTitle: "Ödeme Formu"
+  secThreeDesc: "Binlerce test sonucunda güncel halini alan ödeme formumuzla, tüm kullanıcılarımıza pratik bir deneyim sunuyoruz."
+  secFourTitleColor: "Yapay Zeka ile "
+  secFourTitle: "Sahteciliğe Geçit Yok!"
+  secFourDesc: "Yapay zeka tabanlı iyzico Sahtecilik Önleme Sistemi ve uzman ekibimizle, tüm ödemelerinizi sahteciliğe karşı koruyor ve gelirinizi artırıyoruz."
+  secFiveTitleColor: "iyzico "
+  secFiveTitle: "İşlerinizi Büyütür"
+  secFiveDesc: "Müşterilerimize sunduğumuz birebir destekten yararlanan avantajlı üye iş yerleri, satışlarını artırıyor. Siz de işlerinizi kolayca büyütün."
+  secSixTitleColor: "Alternatif Ödeme "
+  secSixTitle: "Alma Yöntemleri"
+  secSixDesc: "Yurt dışından ödeme almak için tek alternatifiniz kredi kartları değil. Qiwi, Sofort, Giropay ve ideal ile ödeme alma repertuarınızı genişletin!"
+
+VirtualPosCollage:
+  secOneTitle: "iyzico Sanal Pos "
+  secOneTitleColor: "Entegrasyonu"
+  secOneDesc: "Siteniz ister hazır altyapı, ister özel bir yazılıma sahip olsun; geliştirdiğimiz modüller sayesinde tüm entegrasyon sürecinizi kolayca tamamlayabilir ve iyzico Sanal POS ile online satışa başlayabilirsiniz. Ödeme adımına gelen müşterileriniz, iyzico Sanal POS entegrasyonu sayesinde sitenizden ayrılmadan ödeme işlemini saniyeler içinde tamamlasın ve alışverişin tadını çıkartsın!"
+  secOneButtonOneText: "Geliştirici Sayfası"
+  secOneButtonOneUrl: "https://dev.iyzipay.com/tr"
+  secOneButtonTwoText: "Çözüm Ortağı Olun"
+  secOneButtonTwoUrl: ""
+  secTwoTitle: "Başvurudan Ödeme Almaya Kadar "
+  secTwoTitleColor: "Her Süreçte Yanınızdayız"
+  secTwoDesc: "Online başvurunuzda, entegrasyon sürecinizde ve ödeme almaya başladığınızda; kısacası her adımınızda destek ekibimiz sizinle olacak. Siz yalnızca iyzico Sanal POS ile güvenli ödeme dünyasına merhaba deyin. Geri kalan her şey için biz buradayız!"
+  secTwoButtonOneText: "Sıkça Sorulan Sorular"
+  secTwoButtonOneUrl: ""
+  secTwoButtonTwoText: "Bize Ulaşın"
+  secTwoButtonTwoUrl: ""
+  secThreeTitle: "Sistemi"
+  secThreeTitleColor: "Güvenli Ödeme "
+  secThreeDesc: "iyzico, Merkez Bankası lisansı ve PCI-DSS 1. Seviye sertifikasına sahip bir finans teknolojileri kuruluşudur. iyzico Sanal POS ile tüm ödemelerinizi güvenle alabilirsiniz."
+  secFourTitle: "Tek Entegrasyonla Tüm Kredi Kartlarından "
+  secFourTitleColor: "Taksitli Ödeme Alın"
+  secFourDesc: "iyzico Sanal POS entegrasyonunun ardından Axess, World, Bonus, Cardfinans, Paraf, Maximum, Bankkart ve Advantage kartlarına taksitli satışlar yapabilir, tüm banka kartlarından da ödeme alabilirsiniz."
+  secFiveTitle: "Ödemeler "
+  secFiveTitleColor: "Elinizin Altında"
+  secFiveDesc: "Tüm ödemelerinizi iyzico kontrol paneliniz üzerinden ister mobil uygulama ile ister bilgisayarınızdan anlık olarak takip edebilirsiniz. Ayrıca alt satıcılarınızın ödemelerini iyzico hesaplarına aktarabilirsiniz."
+
+howToVirtualPos:
+  secOneTitle: "Müşterilerinize Nasıl Bir Ödeme Ekranı Sunacaksınız?"
+  secOneDesc: "<li>Mobil Sistemlerle Uyumlu</li><li>Farklı Arayüzlerle Uyumlu</li><li>Açık Kaynak Uyumlu</li><li>Wallet Sistemi İle Uyumlu</li><li>Kredi/Debit Kart İle Uyumlu</li><li>Yurt Dışı Ödeme Sistemleri İle Uyumlu</li>"
+  secTwoTitle: "Ödeme Alma Esnasında Sizin için Neler Yapıyoruz?"
+  secTwoDesc: "<li>Yapay Zeka İle Sahtecilik Engelleme</li><li>3D Secure</li><li>iyzico Korumalı Alışveriş</li><li>Kolay İade İşlemi</li>"
+  secThreeTitle: "Ödeme Sonrası İşlemlerinizi Nasıl Yönetebilirsiniz?"
+  secThreeDesc: "<li>Satış Raporları</li><li>Para Gönderim Raporları</li><li>Destek Ekibi"
+
+businessWirtualPosApply:
+  title: "iyzico Sanal POS"
+  subTitle: "Başvurusu Nasıl Yapılır?"
+  boxOneDescription: "iyzico Sanal POS üyelik başvurusu yapmak için açılan ekranda, eğer şirket sahibiyseniz “Kurumsal Hesap Oluştur” butonuna tıklayın. "
+  boxTwoDescription: "Ad, soyad, e-mail, telefon bilgilerinizi girdikten ve şifrenizi belirledikten sonra, mail adresinize gönderilen aktivasyon maili üzerinden hesabınızı doğrulayın. "
+  boxThreeDescription: "iyzico Sanal POS üyeliğiniz için kontrol paneliniz üzerinden gerekli belgeleri bizimle paylaşın ve başvurunuzu tamamlayın."
+  boxFourDescription: "Başvurunuzun onaylanması halinde geriye sadece son bir adım kalıyor. Sözleşmemizi imzalayın ve siz de iyzico Sanal POS avantajlarından yararlanmaya hemen başlayın!"
+
+careerContent:
+  title: "Açık Pozisyonlar"
+  description: "Arayışımızın devam etmekte olduğu pozisyonlarımızı sizin için listeledik. Kendiniz için uygun bir pozisyon göremediyseniz; aşağıdaki alandan CV’nizi bize gönderin, önümüzdeki dönemde sizinle tanışma fırsatı yakalayalım."
+  buttonOne: "DETAYLARI ÖĞREN"
+  buttonTwo: "DETAYLARI ÖĞREN"
+  buttonThree: "TÜM POZİSYONLAR"
+
+careerHeaderContent:
+  title: "Finansal Hizmetleri Demokratikleştirmek İçin Aramıza Katıl!"
+  desc: "Türkiye’nin en büyük 5 finansal kuruluşundan biri olma yolunda aramıza katılmaya ne dersin?"
+
+certificates:
+  title: "Sertifika ve Lisanslar"
+  description: "iyzico olarak ulusal ve uluslararası standartlar çerçevesinde, BDDK lisansımız ile PCI Veri Güvenliği Standardı sertifikasyonumuzla üye iş yerlerimize hizmet sunuyoruz. Lisanslarımıza ait dokümanları aşağıda bulabilirsiniz."
+  contentOneTitle: "PCI DSS Sertifikası"
+  contentOneDescription: "iyzico olarak, PCI Veri Güvenliği Standardı sertifikasyonunun en yüksek seviyesi olan Level 1 sertifikasına sahibiz."
+  contentOneButton: "Sertifikayı Gör"
+  contentTwoTitle: "BDDK Lisansı"
+  contentTwoDescription: "Bankacılık Düzenleme ve Denetleme Kurumu (BDDK) lisansımız ile, 6493 sayılı kanun çerçevesinde lisanslı ödeme kuruluşu olarak hizmet veriyoruz.<br><br>BDDK İletişim: +90 212 214 5000"
+  contentTwoButton: "Lisansı Gör"
+
+contactUsHeaderContent:
+  title: "Bize ulaşın"
+  desc: "Her konuda bizimle iletişime geçebilir, düşünce ve görüşlerinizi bizimle paylaşabilirsiniz."
+
+contactWidget:
+  title: "iyzi Ödeme ve Elektronik Para Hizmetleri A.Ş."
+  description: "Maslak Mah. AOS 55. Sok. 42 Maslak A Blok Sitesi No:2/140 Sarıyer İstanbul"
+  ticariScilNo: "Ticari Sicil No"
+  vergiDairesi: "Vergi No"
+  mersisNo: "Mersis No"
+
+cultureContent:
+  title: "iyzico Kültürü"
+  desc: "Bizi daima geleceğe taşıyan kültürümüz hakkında daha fazlasını keşfedin."
+  contentTitle: "Finansal Hizmetleri Demokratikleştirmek İçin Takım Oyununun Gücüne İnanıyoruz."
+  contentDesc: "Finansal hizmetleri demokratikleştirmek ve herkes için ulaşılabilir kılmak için çıktığımız bu yolda, gücümüzü iyzico kültüründen alıyoruz. Şeffaf, çözüm odaklı ve özgürlükçü kültürümüzle geleceğe sağlam adımlar atıyoruz.<br><br><b>Şeffaf</b><br><br>Şeffaflık, iyzico kültürünün taşıyıcı kolonlarından biri. Şirket içerisinde alınan tüm kararlar sebepleriyle birlikte açıklanıyor, aylık şirket toplantılarında son gelişmeler tüm detaylarıyla ekip ile paylaşılıyor. Birbirimize duyduğumuz karşılıklı güven, bizi daha güçlü kılıyor."
+  contentDescTwo: "<b>Çözüm Odaklı</b><br><br>Çözüm odaklı yapımız, işlerimizi kolaylaştırıyor. Farklı departmanlardan üyelerin bir araya gelerek oluşturduğu “circle” yapısı, iyzico çatısı altındaki küçük şirketler gibi çalışıyor ve hedeflerimizi daha kolay elde etmemizi sağlıyor.<br><br><b>Özgürlükçü</b><br><br>iyzico’da “freedom under responsibility” kavramına inanıyoruz. Tüm iyzinatorler sorumluluklarının bilinciyle özgürce çalışıyorlar ve bundan keyif alıyorlar. "
+  contentTwo: "2010 yılında Almanya’da başlayan bir dostluk, bir sene sonra bir akşam yemeğinde tamamen şekillenerek iş ortaklığına dönüşeceğinin sinyallerini verdi. Ne istediğimizi, ne yapacağımızı ve hepsinden önemlisi nerede yapacağımızı biliyorduk. İyi olacak, işimizi iyi yapacak, iyi insanlarla bir arada olacak, iyi bilinecek ve en güzel hali ile Türkiye’de devam edecektik! 2012 yılının Ekim ayı bizim için ortak hayallerimizin ve bugünkü iyzico’nun başlangıcı oldu."
+
+cultureKit:
+  title: "iyzico"
+  subTitle: "Kültür Rehberi"
+  button: "Rehberi İndir"
+  desc: "iyzico Kültürü hakkında daha fazla bilgiye sahip olmak istiyorsanız, işte sizin için eşsiz bir kaynak: iyzico Kültür Rehberi"
+  iframeTitle: "iyzico Park 360 Tur"
+  iframeDescription: "iyzico Park’ı adım adım gezin ve iyzico kültürü hakkında daha fazlasını keşfedin!"
+
+easyFastHappy:
+  title: "Farklıyız, Çözüm Odaklıyız ve Sizi Anlıyoruz"
+  description: "Ekip olarak odak noktamız, finansal hizmetleri herkes için daha ulaşılabilir hale getirecek çözümler üretmek."
+  contentOneTitle: "Farklıyız"
+  contentOneDescription: "Hepimiz, farklı yeteneklerimizi bir araya getiriyoruz ve bir Voltran oluşturuyoruz."
+  contentTwoTitle: "Çözüm Odaklıyız"
+  contentTwoDescription: "Gole gitmeyi, yani sonuç almayı çok iyi biliyoruz ve bunun için tüm taktiklerimizi uyguluyoruz."
+  contentThreeTitle: "Sizin Tarafınızdayız"
+  contentThreeDescription: "Sizinle aynı dili konuşuyoruz ve bize ihtiyaç duyduğunuz her anda yanınızda oluyoruz."
+
+events:
+  title: "iyzico Dünyası"
+  description: "Birlikte çalışıyoruz, birlikte üretiyoruz ve birlikte eğleniyoruz!"
+  pressKitDescription: "Kurum kültürümüz hakkında daha fazlasını öğrenmek istiyorsanız, kültür rehberimize"
+  boxOneTitle: "iyzievent 2018: "
+  boxOneTitleTwo: "Daha İyisi İçin Dönüşüyoruz"
+  boxOneDescription: "iyzievent 2018, olduğumuzdan daha fazlasına dönüştüğümüz gece ve finansal hizmetleri demokratikleştirme yolunda atılan önemli bir adım olarak tarihe geçti. Bu videoda; iyzico mobil uygulamasını ve alışveriş asistanımız Zihni’yi ilk kez paylaştığımız iyzievent 2018’in önemli anlarını izleyebilirsiniz."
+  boxTwoTitle: "iyzico "
+  boxTwoTitleTwo: "Mühendislik Kültürü"
+  boxTwoDescription: "Hayalleri olan bir şirkette hayalleri olan tutkulu yazılımcılar ile çalışıyoruz. Agile kültür ve anlayışı ile yönetilip gelişiyoruz. iyzico'nun bu alanda Türkiye'de ve dünyada ender görülen şirketler arasına girmesi bizi gururlandırıyor."
+
+generalConditionsHeader:
+  title: "Kişisel Veri Gizliliğiniz Bizim için Önemli!"
+  description: "Özel hayatınızın gizliliği ve kişisel verilerinizin korunması amacıyla düzenlenen iyzico Gizlilik & Kişisel Veri Politikası hakkındaki detayları bu sayfada bulabilirsiniz."
+
+helpCenterCategoryHeader:
+  title: "Sizlere yardımcı olmaktan mutluluk duyuyoruz."
+  description: "Merak ettiğiniz soruları ya da yaşadığınız problemleri yardım merkezinde arayabilir ya da aşağıdaki kategorilerden başlıkları seçerek örnek sorulara ulaşabilirsiniz."
+
+howToSalesIncrease:
+  title: "iyzico Sanal POS İle Satışlarınızı Nasıl Artırırsınız?"
+  description: "iyzico Sanal POS’un size sunduğu birçok avantajla satışlarınızı artırabilirsiniz. Gelin şimdi bu avantajları birlikte inceleyelim. "
+  boxOneTitle: "FARKLI PARA BİRİMLERİ İLE"
+  boxOneSubTitle: "Ödeme Alma"
+  boxOneDescription: "iyzico Sanal POS ile birçok farklı para biriminde ödeme alabilirsiniz. Euro, Dolar, Sterlin veya Ruble; artık tüm dünya sizin müşteriniz."
+  boxTwoTitle: "GÜVENLİ"
+  boxTwoSubTitle: "Kart Saklama"
+  boxTwoDescription: "Müşterilerinizin ödeme sayfasında dakikalarca kart bilgilerini girmelerine gerek yok. Kart saklama özelliği sayesinde iyzico Sanal POS altyapısı üzerinden ödemelerini yalnızca tek tıkla tamamlayabilirler."
+  boxThreeTitle: "KOLAY"
+  boxThreeSubTitle: "Ödeme Formu"
+  boxThreeDescription: "Binlerce test sonucunda güncel halini alan ödeme formumuzla, tüm kullanıcılarımıza pratik bir deneyim sunuyoruz."
+  boxFourTitle: "YAPAY ZEKA İLE"
+  boxFourSubTitle: "Sahteciliğe Geçit Yok!"
+  boxFourDescription: "Kendi kendine öğrenen yapay zekâ ve uzman ekibimizle, tüm ödemelerinizi sahteciliğe karşı 7/24 koruyor, gelirinizi artırıyoruz."
+  boxFiveTitle: "iyzico"
+  boxFiveSubTitle: "İşlerinizi Büyütür"
+  boxFiveDescription: "Müşterilerimize sunduğumuz birebir destekten yararlanan avantajlı üye iş yerleri, satışlarını artırıyor. Siz de iyzico ile işlerinizi büyütün."
+  boxSixTitle: "ALTERNATİF ÖDEME ALMA"
+  boxSixSubTitle: "Yöntemleri"
+  boxSixDescription: "Eğer iyzico Sanal POS kullanıcısıysanız, yurt dışından ödeme almak için tek alternatifiniz kredi kartları değil. Qiwi, Sofort, Giropay ve ideal ile ödeme alma repertuarınızı genişletin!"
+
+mainHeaderContent:
+  boxOneTitleBold: "Alışverişlerini"
+  boxOneTitleLight: "iyzico ile Öde"
+  boxOneBulletOne: "Banka kartsız kolay alışveriş"
+  boxOneBulletTwo: "Saklı kart ile tek tıkla ödeme"
+  boxOneBulletThree: "7/24 canlı destek"
+  boxOneBulletFour: "İptal/iade süreçlerinde kolaylık"
+  boxOneButton: "Keşfet"
+  boxTwoTitleBold: "iyzico ile"
+  boxTwoTitleLight: "E-Ticarete Başla"
+  boxTwoBulletOne: "iyzico ile Öde’yle yeni iş kapıları açın"
+  boxTwoBulletTwo: "Web sitenizden Sanal POS ile ödeme alın"
+  boxTwoBulletThree: "Link Yöntemi ile ödeme alın"
+  boxTwoBulletFour: "7/24 iyzico Korumalı Alışveriş desteği sunun"
+  boxTwoButton: "İncele"
+
+openSourceHeaderContent:
+  titleBold: "Kod yazmadan iyzico ile hızlıca ödeme almaya başlayın!"
+  titleLight: "Hızlıca Entegrasyona Başlayın"
+  description: "<strong>iyzico ile Öde avantajları;</strong> kod yazmadan iyzico Ödeme Formu ve iyzico ile Öde entegrasyonunuzu hızlıca tamamlayın, müşterilerinize daha iyi bir deneyim sunun."
+
+personalEasyPay:
+  title: "<span>iyzico ile Öde</span>Ödemenin en kolay haliyle tanış!"
+  description: "On binlerce web sitesinde “iyzico ile Öde” yöntemini tercih ederek ödemeni ister iyzico hesabındaki bakiyenle, ister saklı kartınla, istersen de havale/EFT yöntemi ile güvenle yapabilirsin.<br><br>Üstelik “iyzico ile Öde”yi seçerek yaptığın tüm alışverişlerin, iyzico Korumalı Alışveriş güvencesinde! Yani 7/24 canlı destek ve iade süreçlerinde kolaylık seninle!"
+
+personalBPAppWidget:
+  title: "iyzico Hesabını Kolayca Yönet"
+  desc: "Tüm iyzico hesabını ve diğer banka kartlarını yönetmek için, iyzico mobil uygulaması sana yeter!"
+  bulletOne: "<div class='sub'>Hesabını Yönet</div><div class='desc'>iyzico hesabında yaptığın tüm işlemleri tek ekranda gör.</div>"
+  bulletTwo: "<div class='sub'>İster Para Yatır</div><div class='desc'>Akbank ATM’lerinden iyzico hesabına istediğin zaman para yatır.</div>"
+  bulletThree: "<div class='sub'>İster Para Çek</div><div class='desc'>iyzico hesabındaki parayı istediğin zaman banka hesabına çek.</div>"
+
+personalBPConversion:
+  title: "iyzico Korumalı Alışveriş Hangi Sitelerde Geçerli?"
+  desc: "Sunduğu hizmetlerle Türkiye’de “güvenli internet alışverişi” tanımının sözlük karşılığı olan iyzico Korumalı Alışveriş, binlerce sitede seni bekliyor.<br><br>Bugüne kadar 4 milyondan fazla tüketicinin güvenle tercih ettiği iyzico Korumalı Alışveriş’in bulunduğu site sayısı ise her geçen gün artıyor."
+
+personalBuyerProtectionHeaderContent:
+  title: "<strong>iyzico Korumalı Alışveriş ile </strong><span>Şimdi Kolay</span>"
+  desc: "İnternet alışverişlerinde endişe duyuyorsan, iyzico Korumalı Alışveriş senin için var. Güvenli ödeme altyapısı, 7/24 canlı destek ve iptal iade süreçlerindeki kolaylıklarıyla iyzico Korumalı Alışveriş’le binlerce sitede alışveriş şimdi kolay!"
+
+personalBPHowTo:
+  title: "<span>iyzico Korumalı Alışveriş</span>Seni Nasıl Koruyor?"
+  description: "iyzico Korumalı Alışveriş hizmetini seçerek yaptığın alışverişlerde “Siparişim istediğim gibi gelir mi?”, “Kredi kartım kopyalanır mı?” gibi endişelerin olmaz.<br><br>Herhangi bir sorunla karşılaşırsan 7/24 ulaşabileceğin bir destek hizmeti ve iptal/iade süreçlerinde kolaylık seninle olur. İşte iyzico Korumalı Alışveriş, tam olarak bu yüzden internette güvenli alışverişin tanımı."
+
+personalBuyerProtectionMerchantSupport:
+  title: "iyzico KORUMALI ALIŞVERİŞ"
+  subTitle: "Hangi Sitelerde Geçerli?"
+  description: "iyzico Korumalı Alışveriş hizmetinden faydalanabileceğin site sayısı şu an için 17.000’den fazla ve bu sayı her geçen gün artıyor. Şimdi bu sitelerden “Korumalı Alışveriş” seçeneğini işaretleyerek alışveriş yap, iyzico asistanın olsun."
+
+personalCardSave:
+  title: "iyzico Bakiyeni Oluştur ve"
+  subTitle: "Güvenle Harca"
+  description: "İnternet alışverişlerinde hiçbir karta ihtiyaç duymadan iyzico bakiyen ile hızlıca ödemeni yapabilirsin. iyzico bakiyen ile yaptığın ödemelerin iadesini, banka hesabına geçmesini beklemeden anında iyzico bakiyende görebilir ve on binlerce web sitesinde yeniden kullanabilirsin. Bakiyene mobil uygulamadan para yükleyebilir veya kendi hesabına bakiyendeki tutarı çekebilirsin.<br><br>"
+  subDescription: "*Çok yakında, iyzico ödeme altyapısını kullanan tüm web sitelerinden bakiyenle ödeme yapabilmeni sağlayacağız."
+  buttonText: "Uygulamayı İndir"
+
+personalFullSupport:
+  title: "7/24"
+  subTitle: "Destek Seninle"
+  description: "Pazartesi gecesi 3’te ya da Cumartesi sabahı 6’da; biz ne zaman istersen yanındayız! Alışverişlerinle ilgili tüm soruların için 7/24 seni bekliyoruz."
+
+personalHeaderContent:
+  content: "<h1><strong>Şimdi Kolay:<br></strong><span>iyzico ile Öde</span></h1><p>Banka hesabın veya kredi kartın olmadan 17 binden fazla web sitesinden güvenle alışveriş yapmak mı? Bunu ancak iyzico kullanıcıları başarabilir! Sen de iyzico uygulamasını indir, 7/24 chat desteği ile iyzico’nun korumalı alışveriş dünyasına katıl.</p><div class='sub'>iyzico sizin için var!</div>"
+
+whyiyzicoLP:
+  title: "Türkiye’nin Online Alışverişlerinde iyzico İmzası Var!"
+  desc: "Türkiye’nin online ödeme sistemleri iyzico, 80 binden fazla web sitesinde yapay zeka tabanlı teknolojileriyle alışverişlerinin ödeme altyapısını sağlıyor ve çok daha hızlı, güvenli bir alışveriş deneyimi yaşaman için çalışıyor."
+  contentDescription: "Altyapısıyla, online alışverişte riski sıfıra indiren Korumalı Alışveriş özelliğiyle, <strong>7 gün 24 saat</strong> canlı desteğiyle iyzico; Türkiye’nin online alışveriş deneyimi için çalışmaya devam ediyor!"
+
+iyzicoOnlineShop:
+  title: "ONLİNE ALIŞVERİŞ VARSA,"
+  subTitle: "Orada iyzico Vardır"
+  description: "<strong>H&M, Sahibinden.com, Zara, Çiçeksepeti</strong> ve <strong>Ofix</strong> gibi <strong>binlerce</strong> web sitesinden ve uygulama üzerinden yaptığınız alışverişin altında iyzico ismini görürsünüz. Ekstrenizde <strong>iyzico imzası</strong> gördüğünüz alışverişleriniz, iyzico’nun <strong>güvenli altyapısını</strong> kullanmayı tercih eden 29.000 web sitesinin birinden yapılmıştır."
+  buttonOne: "İşim İçin iyzico"
+  buttonTwo: "Kendim İçin iyzico"
+
+personalMerchantCount:
+  title: "ENDİŞELERİNİ BİR KENARA BIRAK"
+  subTitle: "17.000’den Fazla Sitede Tek Tıkla Ödeme Avantajıyla Biz Varız"
+  description: "Her yerde aradığın o ürünü sonunda buldun. Ama endişelerin var ve alıp almamak konusunda kararsız mısın? Düşünmene gerek bile yok! Biz senin yerine tüm süreçlerle ilgileniriz. Sen yalnızca tek tıkla ödemeni yap ve alışverişini tamamla."
+
+businessVirtualPosPricing:
+  title: "iyzico Sanal POS"
+  subTitle: "Ücretleri ve Komisyon Oranları"
+  description: "Sizin için sunduğumuz avantajlı iyzico Sanal POS oranlarına göz atın ve güvenli ödeme ile tanışın."
+
+newBusinessVirtualPosPricing:
+  title: "iyzico Sanal POS<br/>Ücretleri ve Komisyon Oranları"
+  description: "Sizin için sunduğumuz avantajlı oranlara göz atın."
+  bulletOne: "Ertesi gün ödeme imkanı"
+  bulletTwo: "Başlangıç ücreti yok"
+  bulletThree: "Aylık sabit ücret yok"
+  pricingBoxTitle: "Başarılı İşlem Başına"
+  pricingBoxPrice: "%2,99 + 0,25 TL'den"
+  pricingBoxDescription: "Başlayan Fiyatlar ile"
+  pricingBoxButton: "Hemen Hesap Aç"
+  pricingBoxButtonDescription: "Aylık 20.000 TL üzeri Satışlar için."
+  pricingBoxButtonTwo: "Hemen Teklif Al"
+
+personalPricing:
+  title: "Fiyatlandırma"
+  description: "Sizin için sunduğumuz avantajlı oranlara göz atın."
+  bulletOne: "Ertesi gün ödeme imkanı"
+  bulletTwo: "Başlangıç ücreti yok"
+  bulletThree: "Aylık sabit ücret yok"
+  pricingBoxTitle: "Başarılı İşlem Başına"
+  pricingBoxPrice: "%2,99 + 0,25 TL'den"
+  pricingBoxDescription: "Başlayan Fiyatlar ile"
+  pricingBoxButton: "Ücretsiz Hesap Aç"
+  pricingBoxButtonDescription: "Aylık 20.000 TL üzeri Satışlar için."
+  pricingBoxButtonTwo: "Hemen Teklif Al"
+
+pricing:
+  title: "Fiyatlandırma"
+  desc: "Sizin için sunduğumuz avantajlı oranlara göz atın."
+  bulletOne: "Ertesi gün ödeme imkanı"
+  bulletTwo: "Başlangıç ücreti yok"
+  bulletThree: "Aylık sabit ücret yok"
+  pricingB2BTitle: "Kurumsal Satıcılar"
+  pricingB2BPrice: "%2,99 + 0,25 TL'den"
+  pricingDesc: "başlayan fiyatlar ile"
+  pricingB2CTitle: "Bireysel Satıcılar"
+  pricingB2CPrice: "%3,49 + 0,25 TL"
+  pricingBoxTwoDescription: "başarılı işlem başına komisyon."
+  pricingB2BButton: "Hemen Teklif Al"
+  pricingB2CButton: "Üye Ol"
+  pricingBoxButtonDescription: "Aylık 20.000 TL üzeri Satışlar için."
+
+personalWhyiyzico:
+  boxOneTitle: "Bildiğin ödeme yöntemlerini unut!"
+  boxOneDescription: "Bir banka hesabın veya kartın olmasa bile bakiyene para yükleyebilir, dilediğin web sitesinde ödeme yapabilirsin. Satın aldığın üründe bir problem mi çıktı? iyzico bakiye sayesinde iadeni anında alabilirsin."
+  boxTwoTitle: "Alışverişlerin arasında kaybolma!"
+  boxTwoDescription: "Farklı web sitelerinden yaptığın alışverişleri takip etmek zor geliyorsa iyzico mobil uygulamasıyla hepsini bir arada görebilir ve takip edebilirsin."
+  boxThreeTitle: "7/24 canlı destek dilediğin anda yanında!"
+  boxThreeDescription: "iyzico ile yaptığın tüm alışverişler sen son onayı verene kadar güvence altında tutulur. Canlı chat desteğiyle de 7 gün 24 saat soruların için yanındayız."
+
+personalPayWithiyzico:
+  title: "iyzico ile Öde"
+  subTitle: "Vakit Kaybetme"
+  description: "iyzico ile Öde seçeneği sayesinde kredi kartı, banka kartı veya Korumalı Havale/EFT ile ödemeni gerçekleştirebilirsin. Eğer kart kullanmak istemiyorsan da iyzico bakiyen ile kolay ve güvenli bir şekilde ödemeni yapabilirsin."
+  bulletOne: "iyzico hesabına anında iade imkanı"
+  bulletTwo: "Tek adımda ödeme yapma kolaylığı"
+  bulletThree: "17.000’in üzerinde websitesinde güvenle alışveriş"
+  bulletFour: "Tamamen ücretsiz"
+  bulletFive: "7/24 Canlı Destek"
+
+pressCarousel:
+  title: "Basında hakkımızda çıkan haberlere buradan ulaşabilirsiniz."
+
+pressLandingPage:
+  heroTitle: "Basın Duyuruları ve Haberlerde iyzico"
+  desc: "Her türlü görsel ve bilgi talebiniz için marketing@iyzico.com adresinden bizimle iletişime geçebilirsiniz."
+  button: "Bülteni Görüntüle"
+  contentButton: "Raporun tamamı için tıklayın."
+  boxTitle : "Finansal teknolojilerle Türkiye’nin dijitalleşmesi hızlanıyor: iyzico Türkiye’nin e-ihracat menzilini 1,5 katına çıkardı"
+
+privacyPolicyHeader:
+  title: "Gizlilik & Kişisel Veri Politikası"
+
+screens:
+  boxOneTitle: "Müşterilerinize Nasıl Bir Ödeme Ekranı Sunacaksınız?"
+  boxOneBulletOne: "Mobil Sistemlerle Uyumlu"
+  boxOneBulletTwo: "Farklı Arayüzlerle Uyumlu"
+  boxOneBulletThree: "Açık Kaynak Altyapılarla Uyumlu"
+  boxOneBulletFour: "Wallet Sistemi İle Uyumlu"
+  boxOneBulletFive: "Kredi/Debit Kart İle Uyumlu"
+  boxOneBulletSix: "Yurt Dışı Ödeme Sistemleri İle Uyumlu"
+  boxTwoTitle: "Ödeme Alma Esnasında Sizin için Neler Yapıyoruz?"
+  boxTwoBulletOne: "Yapay Zeka İle Sahtecilik Engelleme"
+  boxTwoBulletTwo: "3D Secure"
+  boxTwoBulletThree: "iyzico Korumalı Alışveriş"
+  boxTwoBulletFour: "Kolay İade İşlemi"
+  boxThreeTitle: "Ödeme Sonrası İşlemlerinizi Nasıl Yönetebilirsiniz?"
+  boxThreeBulletOne: "Satış Raporları"
+  boxThreeBulletTwo: "Para Gönderim Raporları"
+  boxThreeBulletThree: "Destek Ekibi"
+
+whoAreWeContent:
+  title: "iyzico Kimdir?"
+  contentOne: "iyzico, 2012 yılında, farklı alanlarda hizmet veren çeşitli büyüklüklerdeki e-ticaret şirketlerine, kolay ve güvenli ödeme yönetim platformu sunma amacıyla Barbaros Özbuğutu ve Tahsin Isın tarafından İstanbul’da kuruldu. Avrupa’nın saygın şirketlerinde uzun yıllar önemli pozisyonlarında görev alan Özbuğutu ve Isın, bu alandaki tecrübelerini iyzico ile Türkiye pazarına taşıdılar ve tamamen bu pazara adapte olmuş inovatif bir platform oluşturdular."
+  contentTwo: "2010 yılında Almanya’da başlayan bir dostluk, bir sene sonra bir akşam yemeğinde tamamen şekillenerek iş ortaklığına dönüşeceğinin sinyallerini verdi. Ne istediğimizi, ne yapacağımızı ve hepsinden önemlisi nerede yapacağımızı biliyorduk. İyi olacak, işimizi iyi yapacak, iyi insanlarla bir arada olacak, iyi bilinecek ve en güzel hali ile Türkiye’de devam edecektik! 2012 yılının Ekim ayı bizim için ortak hayallerimizin ve bugünkü iyzico’nun başlangıcı oldu."
+
+teamJoinUs:
+  title: "Ekibimize katılmak"
+  sTitle: "ister misin?"
+  desc: "Açık pozisyonlarımıza göz at ve CV’ni bize ulaştır!"
+  button: "Açık Pozisyonları Gör"
+
+successFailPopup:
+  description: "En kısa zamanda sizinle iletişime geçeceğiz. Teşekkürler"
+  button: "TAMAM"
+
+onlineProceedsTestimonial:
+  contentOne: "Link ile ödeme alma yöntemi sayesinde misafirlerimiz ödemelerini güvenli bir şekilde tamamlayabiliyorlar. Bu durum da rezervasyon oranlarımızın artışındaki en önemli etkenlerden biri."
+  contentOneTitle: "Sibel Kartal | Büyükada Mavi Otel"
+  contentTwo: "Online satışlarımızın ödemelerini, alıcılarımızla paylaştığımız link üzerinden istediğimiz zamanda ve istediğimiz yerde alabiliyoruz."
+  contentTwoTitle: "Alper Olcay | Sevgilibebek"
+  contentThree: "Stant satışlarımıza klasik POS cihazları kullanarak başladık fakat süreci yönetmek oldukça zor ve karışıktı. iyzico Link Yöntemi'nin pratikliği, marka bilinirliği ve karşı tarafa güven vermesi sayesinde hızlı bir şekilde ödeme almaya başladık."
+
+businessSocialMediaTestimonial:
+  contentOneName: "Burçin Demir | Art’n Smile"
+  contentOne: "Sosyal medya üzerinden gerçekleştirdiğim satışlarımın ödemelerini taksitli veya peşin olarak alabilmek, iş süreçlerimde bana büyük bir kolaylık sağlıyor."
+  contentTwoName: "Melis Ekin | Pinkylola Design"
+  contentTwo: "Sosyal medya satışlarımızın ödemelerini entegrasyona ihtiyaç duymadan tek bir link üzerinden alabilmemiz, bizi daha ulaşılabilir kıldı ve satışlarımızı gözle görülür derecede artırdı."
+  contentThreeName: "Özlem Erarslan | Ravla Gurme"
+  contentThree: "Özenle hazırladığımız ürünlerimizi müşterilerimize sunarken, iyzico’nun profesyonel, güvenli ve kolay altyapısı ile tüm dünyaya ulaşıyoruz."
+
+businessStandSalesTestimonial:
+  contentOne: "Stant satışlarımızda iyzico işim için mobil uygulaması üzerinden ürünün ismini ve fiyatını sisteme girerek, telefonumuzu bir POS cihazına dönüştürüyoruz ve ödemelerimizi saniyeler içerisinde alabiliyoruz."
+  contentTwo: "Saha satışlarında en fazla ihtiyaç duyduğumuz şeyler kolaylık ve hız. iyzico, saha satışlarımızda adeta ekibimizin bir üyesi gibi çalışıyor ve ödemelerimizi kısa sürede alabilmemiz için bize büyük bir destek sunuyor."
+
+businessBuyerProtectionTestimonial:
+  contentOne: "iyzico Korumalı Alışveriş’in sunduğu gerçek zamanlı kargo takibi ve 7/24 canlı destek hizmeti, müşterilerimizle iletişimimizi güçlendirdi ve markamızı daha ulaşılabilir kıldı."
+  contentTwo: "iyzico Korumalı Alışveriş’in sitemizde yer alması müşterilerimizin alışveriş yaparken kendini güvende hissetmesini sağlıyor. Bu da satışlarımızı kısa süre içinde artırmamızı sağladı."
+  contentThree: "iyzico Korumalı Alışveriş’in kart saklama özelliği sayesinde, müşterilerimiz ödeme işlemlerini birkaç saniyede tamamlayabiliyor. iyzico’nun tüketiciler üzerindeki güven algısı, bize büyük bir avantaj sunuyor."
+  contentFour: "iyzico, her adımda bize sunduğu destek ile operasyonel yükümüzü ciddi oranda azalttı. iyzico web sitesinde Korumalı Alışveriş Yapabileceğiniz Siteler sayfasında yer almamız, birçok yeni müşteri kazanmamızı sağladı."
+
+businessReferencessHeaderContent:
+  titleBold: "Başarı Hikayelerini Beraber Büyütüyoruz"
+  description: "Üye iş yerlerimiz, onlara sunduğumuz destek ve avantajlarla işini büyütüyor. Gelin onlar gibi düşünerek, onlar için sunduğumuz çözümleri bir de kendilerinden dinleyelim."
+  qOne: "iyzico altyapısını ikinci el ve sıfır alışveriş kategorimizde kredi kartı ile yapılan ödemelerde kullanıyoruz. iyzico ile olan işbirliğimiz sayesinde müşterilerimize güvenilir ödeme ve para aktarım süreçlerinde pozitif bir deneyim sunabiliyoruz."
+  qTwo: "iyzico ile çalışmanın güvenli bir şekilde kredi kartı saklama imkanı, hem kullanıcılara hem de bizlere çok kolay ve akıcı bir deneyim yaşatması gibi pek çok değerli avantajı var. iyzico, müşterilerine kolay ve hızlı bir ürün deneyimi yaşatmak isteyen bizim gibi markalar için güvenilir bir yol arkadaşı."
+  qThree: "Herhangi bir sorun yaşandığında iyzico bunu geliştirip daha hızlı dönüş yapabiliyor. Yeni bir hizmete ihtiyacım olduğu zaman bunu iyzico’ya söylüyorum; ekiplerimiz onlarla entegre çalışıyor ve sorunu çözüyor. Kendi ürünlerini müşteri talebine göre sürekli geliştiriyorlar. iyzico içinde muhatabımız var; bankalarda bunu yapmak, muhatap bulmak imkansız."
+  qFour: "Şu anda 180 kişilik bir ekibiz ama hayatımızda iyzico olmasaydı, kesinlikle daha çok çalışana ihtiyaç duyardık. Çünkü bankalarla görüşmeler, süreçlerin yönetilmesi, işlemlerin takibi, fraud kontrolü, posların entegre edilmesi ve denetlenmesi gibi yapılması zorunlu işler bu operasyonun bir parçası. Üstelik, maliyeti yüksek ve iş gücü gerektiren işler. iyzico, maliyetlerimizi düşürerek çalışmalarımızı verimli hale getiriyor. Bu sayede, enerjimizi asıl işimiz olan alanlara aktarabiliyoruz."
+  qFive: "Müşterilerimiz ile daha güvenli ve kuvvetli bir bağ kurmamıza destek olan, çözüm ve sonuç odaklı yaklaşımlarıyla hızlı ve kolay çözümler üreten iş ortağımız."
+  qSix: "Önceki çalıştığım şirketle bir yenileme yapmak istediğimizde 30 sayfalık bir belgeyi doldurmamızı istediler, bunu yapmak istemediğim için iyzico’yu aradım. iyzico yaklaşık 5 saat içinde gereken her şeyi hazırladı ve ödeme kabul edebilecek noktaya geldik."
+  qSeven: "Yurtdışı satışlarda hep 3D engeline takılıyorduk, iyzico ile bu sorunu aştık. Yaptığımız cironun yüzde 10 seviyesinde bir kısmı yurtdışından geliyor."
+
+contactUsForms:
+  titleOne: "Yardım Konusu"
+  select: "Seçiniz"
+  eposta: "E-posta Adresi"
+  epostaPlaceHolder: "mail@adresiniz.com"
+  nameSurname: "İsim Soyisim"
+  nameSurnamePlaceHolder: "İsim Soyisim"
+  message: "Mesajınız"
+  messagePlaceHolder: "Mesajınız"
+  button: "Gönder"
+  selectOne: "Başvuru & Fiyatlandırma"
+  selectTwo: "Ürünler & Çözümler"
+  selectThree: "Öneri & Şikayet"
+  selectFour: "Teknoloji & Entegrasyon"
+  selectFive: "Korumalı Alışveriş"
+  selectSix: "Ödeme & Fatura"
+
+careerItems:
+  kadriyeDogan: "&#147;Büyük düşün, küçük başla, hızla ölçekle mantığıyla çalışan bir ekibiz.&#148;"
+  enginOzsozgun: "&#147;Üye işyerlerimiz, son kullanıcılarımız ve iyzinatörlerimizle bir orkestra içerisindeki farklı enstrümanlar gibiyiz.&#148;"
+  cansuKahyaoglu: "&#147;iyzico’da, alınan kararların altında yatan nedenler her zaman tartışmaya açıktır ve sorgulanır. Ortak bir vizyon ışığında kararlarımızı aksiyona çeviririz.&#148;"
+  yaseminBalpinar: "&#147;Gerçek değerimizin temelinde çeşitliliğe olan saygımız yatıyor. iyzico’da kadın, erkek hepimiz eşit olarak temsil ediliyoruz. Burada herkesin kendini geliştirmesi için gerekli imkanlar sağlanır.&#148;"
+  burakCamli: "&#147;Her zaman ulaşılabilen ekibimizle üye iş yerlerimizin hızlı, kolay ve güvenli ödeme almalarını sağlıyoruz.&#148;"
+  serkanKaraduman: "&#147;Sektör paydaşlarımızla uyum içinde çalışıyor, birlikte geliştirdiğimiz yenilikçi projeler ile fark yaratıyoruz.&#148;"
+
+iyziStatic:
+  phoneNumber: "+90 216 599 01 00"
+  phoneDescription: "7/24 canlı telefon ve iyzico mobil uygulaması üzerinden chat desteği"
+  merhantPanelUrl: "https://merchant.iyzipay.com/auth/login"
+  infoMail: "destek@iyzico.com"
+
+dynamic3dsHeaderContent:
+  titleBold: "Ödemeleriniz 3DS Doğrulamasına "
+  titleLight: "Takılmasın"
+  desc: "iyzico Dynamic 3DS sistemi, yapay zeka teknolojisiyle yalnızca riskli bulduğu ödemeleri 3DS doğrulamasına yönlendirerek müşterilerinize daha iyi bir ödeme deneyimi sunmanızı sağlar ve size daha fazlasını kazandırır."
+
+dynamic3dsProgress:
+  title: "iyzico Dynamic 3DS <br>Nasıl Daha Fazla Kazanmanızı Sağlıyor?"
+  desc: "3DS doğrulaması, harcama itirazı gibi durumların önüne geçebilmek için alınan bir güvenlik önlemi olarak görülse de ödemelerin başarı oranını olumsuz anlamda etkilemektedir ve müşterilerinize daha kötü bir ödeme deneyimi sunmanıza sebep olmaktadır. Her 5 geçerli ödemeden 1’i, 3DS doğrulama aşamasında kaybediliyor. Peki çözüm ne? iyzico Dynamic 3DS sistemi, yalnızca riskli gördüğü ödemeleri doğrulama aşamasına yönlendirir. Güvenli ödemeleriniz ise saniyeler içerisinde tek tıkla başarılı bir şekilde sonuçlanır."
+
+dynamic3dsPrivileges:
+  secOneTitleColor: "Yeni Nesil Ödeme Teknolojileriyle "
+  secOneTitle: "Daha Fazla Kazanın"
+  secOneDesc: "iyzico Dynamic 3DS sistemi sayesinde ödemeler artık çok daha kolay ve hızlı. iyzico’nun yapay zeka tabanlı ödeme teknolojileriyle müşterilerinize daha iyi bir deneyim sunun ve daha fazla kazanın.<br><br>Üye iş yerlerimizden küresel bir spor ürünleri markasının, 5 aylık bir süreçte Dynamic 3DS Sistemi ile satış dönüşüm oranlarında %10’luk bir artış sağladığını biliyor muydunuz?"
+
+smartPaymentHeaderContent:
+  titleBold: "Akıllı Ödeme Yönlendirme ile "
+  titleLight: "Daha Fazla Kazanın"
+  desc: "iyzico Akıllı Ödeme Yönlendirme Servisi, başarısız olabilecek ödemelerinizi milisaniyeler içerisinde farklı bir banka POS’undan geçirerek başarılı işleme dönüştürür ve size ekstra kazanç sağlar. Siz de şimdi iyzico üye iş yeri olun ve iyzico Akıllı Ödeme Yönlendirme Servisi’nden ücretsiz yararlanın."
+
+smartPaymentProgress:
+  title: "iyzico Akıllı Ödeme Yönlendirme Servisi Size Nasıl Daha Fazla Kazandırıyor?"
+  desc: "Zaman zaman farklı altyapısal sebeplerle ödemeler başarısız olabilir. Ancak bir iyzico üye iş yeriyseniz, bu ödemeleri kaybetmezsiniz. iyzico Akıllı Ödeme Yönlendirme Servisi, hiçbir aksiyon almanıza gerek kalmadan başarısız olabilecek ödemelerinizi milisaniyeler içerisinde otomatik olarak farklı bir banka POS’undan geçirerek başarılı işleme dönüştürür ve size ekstra kazanç sağlar."
+
+smartPaymentPrivileges:
+  secOneTitleColor: "Geçerli Ödemelerinizi "
+  secOneTitle: "Kaybetmeyin"
+  secOneDesc: "iyzico Akıllı Ödeme Yönlendirme Servisi ile geçerli ödemelerinizi kaybetmeden işlerinizi büyütmeye devam edin! iyzico’nun yapay zeka tabanlı ödeme teknolojileriyle müşterilerinize daha iyi bir deneyim sunun, yeni nesil ödeme teknolojileriyle daha fazlasını kazanın."
+
+campaignLP:
+  subDescription: "*Yukarıdaki hizmetlerden yararlanmak istediğinizde email adresiniz ilgili çözüm ortağımız ile paylaşılmaktadır. Kişisel verilerinizin işlenmesi hakkındaki diğer bilgilere <a href='/gizlilik-politikasi'>Gizlilik & Kişisel Veri Politikası</a>’ndan ulaşabilirsiniz."
+
+subscriptionHeaderContent:
+  titleBold: "Düzenli Ödemelerinizi "
+  titleLight: "iyzico ile Alın"
+  desc: "Üye iş yerlerimiz abonelik, üyelik ve aidat gibi düzenli ödemelerini iyzico teknolojisiyle alıyorlar ve işlerini daha hızlı büyütüyorlar. Siz yalnızca ödeme tutarını ve periyodunu belirleyin, gerisini bize bırakın!"
+
+iyzicoOfferModal:
+  IslemBasariliMesaji: "Sizinle en kısa sürede iletişime geçeceğiz!"
+  IslemHataliMesaji: "Başvuru alınırken bir sorun oluştu. Yükleyebileceğiniz CV formatları: (JPG, PNG, PDF, DOCX)"
+
+subscriptionForm:
+  title: "İlk 3 Ay Ücretsiz"
+  subTitle: "Hemen İletişime Geçelim"
+  phoneNumber: "Telefon Numaranız"
+  placeHolder: "+90 5__ ___ __ __"
+
+subscriptionOfferModal:
+  IslemBasariliMesaji: "Başvurunuz başarıyla alınmıştır."
+  IslemHataliMesaji: "Başvuru alınırken bir sorun oluştu. Yükleyebileceğiniz CV formatları: (JPG, PNG, PDF, DOCX)"
+
+aboutSalesSubscription:
+  title: "Abonelik Yöntemi İşlerinizi Nasıl Kolaylaştıracak?"
+  secOneTitleColor: "Tüm Ödemelerinizi "
+  secOneTitle: "Tek Bir Panelden Yönetin"
+  secOneDesc: "Başarılı ve başarısız tüm düzenli ödemelerinizi tek bir panel üzerinden görebileceksiniz."
+  secTwoTitleColor: "Müşterileriniz Limit Problemi "
+  secTwoTitle: "Yaşamasın"
+  secTwoDesc: "Müşterilerinizin kart limitlerinden yalnızca belirlediğiniz periyodun tutarı düşülecek ve limit problemi yaşamayacaklar."
+  secThreeTitleColor: "Link ile "
+  secThreeTitle: "Düzenli Ödeme Alın"
+  secThreeDesc: "Link üzerinden abonelik yöntemiyle tekrarlı ödemelerinizi almanız artık mümkün!"
+  secFourTitleColor: "Tek Entegrasyonla "
+  secFourTitle: "Hazır"
+  secFourDesc: "Sadece tek bir entegrasyonun ardından tüm düzenli ödemelerinizi rahatlıkla alabileceksiniz."
+
+whySubscription:
+  title: "Abonelik Yöntemi <br>Hayatınızda Neleri Değiştirecek?"
+  secOneTitleColor: "Günlük, Haftalık, Aylık veya Yıllık: "
+  secOneTitle: "Seçim Sizin"
+  secOneDesc: "Ödeme alma periyodunuzu belirleyin ve arkanıza yaslanın. Tüm ödemeleriniz günü geldiğinde otomatik olarak tahsil edilecek ve hesabınıza yansıyacak."
+  secTwoTitleColor: "Müşterilerinize Deneme "
+  secTwoTitle: "Süresi Sunun"
+  secTwoDesc: "Müşterilerinize “İlk 15 gün ücretsiz deneme, daha sonra X TL” gibi farklı alternatifler sunabileceksiniz."
+  secThreeTitleColor: "Sınırsız Ürün Ekleme "
+  secThreeTitle: "Avantajıyla Ödeme Alın"
+  secThreeDesc: "Abonelik yöntemiyle dilediğiniz sayıda hizmet veya ürün satabilecek ve hiçbir ek ücret ödemeyeceksiniz."
+  secFourTitleColor: "Müşterilerinizin Kart Bilgilerini "
+  secFourTitle: "Güvenle Saklayın"
+  secFourDesc: "Artık düzenli ödemelerinizi almak için müşterilerinizin kart bilgilerini nasıl saklayacağınızı düşünmenize gerek yok. Abonelik yöntemi ile müşterilerinizin tüm bilgileri iyzico güvencesinde!"
+
+whichSectorsSubscription:
+  title: "Abonelik Yönteminden <br>Hangi Sektörlerde Yararlanabilirsiniz?"
+  secOneTitleColor: "Eğitim Sektörü"
+  secTwoTitleColor: "E-Ticaret - Pazaryerleri - SaaS"
+  secThreeTitleColor: "Vakıflar"
+  secFourTitleColor: "Hizmet Sektörü"
+  secFiveTitleColor: "Spor Salonları-Kulüpler"
+  secSixTitleColor: "Araç - Cihaz Kiralama Otoparklar"
+
+subscriptionPricing:
+  title: "Abonelik Yöntemi<br>Ücretleri ve Komisyon Oranları"
+  boxTitle: "Aylık Ücret"
+  boxSubTitle: "199 TL"
+  boxDescription: "*İlk 3 ay sadece başarılı işlem başına komisyon uygulanır. 3 ayın sonunda iyzico komisyonun yanı sıra paket ücreti de devreye girer."
+  formTitle: "Hemen Teklif Alın"
+
+bPBankTransferHeader:
+  titleBold: "Korumalı Havale/EFT Yöntemi ile"
+  titleLight: "Şimdi Kolay"
+  desc: "Havale/EFT yönteminde operasyonel maliyetler ve “Ödeme hesabıma geldi mi?” problemi sizi zorluyor mu? Çözüm iyzico! Hemen birden fazla bankayla çalışmaya başlayın, tüm işlemlerinizi tek panelden yönetin ve iyzico Korumalı Alışveriş avantajlarından yararlanın."
+
+bPBankTransferProgress:
+  title: "Müşterileriniz için;"
+  titleTwo: "iyzico Korumalı Havale/EFT Yöntemi Nasıl Çalışır?"
+  secOneNum: "01."
+  secOneDesc: "Müşterilerinize havale/EFT yapabilecekleri farklı banka seçenekleri sunulur."
+  secTwoNum: "02."
+  secTwoDesc: "iyzico, müşterilerinizin tercih ettiği banka bilgilerini onlara SMS ve e-posta olarak gönderir."
+  secThreeNum: "03."
+  secThreeDesc: "Müşterinizin, hesap bilgileri ile kendi bankasından 3 iş günü içerisinde para transferi yapması beklenir."
+  secFourNum: "04."
+  secFourDesc: "Müşterileriniz herhangi bir desteğe ihtiyaç duyduğunda, iyzico Canlı Destek Servisi’ne chat veya telefon üzerinden 7/24 ulaşabilirler."
+
+bPBankTransferHowTo:
+  title: "Korumalı Havale/EFT Yöntemi <br>Hayatınızda Neleri Değiştirecek?"
+  secOneTitle: "Birden Fazla Bankayla "
+  secOneTitleColor: "Çalışın"
+  secOneDesc: "Yalnızca hesabınızın olduğu banka üzerinden havale ve EFT ödemelerinizi almak eskide kaldı. iyzico Korumalı Havale/EFT Yöntemi sayesinde tek entegrasyon ile Garanti, Türkiye İş Bankası ve Akbank üzerinden havale/EFT ödemelerinizi alacaksınız."
+  secTwoTitle: "Tüm İşlemlerinizi Tek "
+  secTwoTitleColor: "Panelden Yönetin"
+  secTwoDesc: "Artık havale ve EFT ödemelerinizi farklı platformlarda takip etmek zorunda değilsiniz. iyzico Kontrol Paneliniz üzerinden ödemelerinizin durumunu anlık olarak görecek ve operasyonel maliyetlerinizi azaltacaksınız."
+  secThreeTitle: "Müşterilerinize iyzico Korumalı "
+  secThreeTitleColor: "Alışveriş Avantajlarını Sunun"
+  secThreeDesc: "iyzico Korumalı Alışveriş’in 7/24 canlı destek avantajıyla müşterilerinize daha iyi bir ödeme deneyimi sunacaksınız."
+  secFourTitle: "Yepyeni Bir Tüketici Kitlesiyle "
+  secFourTitleColor: "Buluşun"
+  secFourDesc: "Tüketicilerin %7’si internet alışverişlerinde havale ve EFT yöntemi ile ödeme yapmayı tercih ediyor. Korumalı Havale/EFT Yöntemi sayesinde bu kitleye ödeme imkanı sunacak ve satışlarınızı artıracaksınız."
+
+bPBankTransferCta:
+  title: "iyzico Korumalı Havale/EFT Yöntemini "
+  subTitle: "Kullanmak için Hemen Başvur"
+  desc: "Yalnızca hesabınızın olduğu banka üzerinden havale ve EFT ödemelerinizi almak eskide kaldı. iyzico Korumalı Havale/EFT Yöntemi sayesinde birden fazla bankayla ödeme alın."
+
+iyziBadge:
+  newBadge: "YENİ"
+
+consumerQuickRegisterOtp:
+  title: "Üyeliğini Tamamla"
+  description: "Lütfen cep telefonunuza gönderdiğimiz 6 haneli doğrulama kodunu girin."
+  inputTitle: "SMS Kodu"
+  reSendButtonText: "Tekrar Gönderin"
+  checkButtonText: "Doğrula"
+
+consumerOfferModal:
+  title: "Hemen Üye Ol"
+  descriptionNew: "Ödeme yapmanın en kolay ve güvenli haline hoş geldin! Hemen üye ol, iyzico mobil uygulamasını indir. 7/24 canlı destek ile yanındayız."
+  name: "Adın"
+  surName: "Soyadın"
+  email: "E-Posta Adresin"
+  phone: "Telefon Numaran"
+  password: "Şifren"
+  kvkk: "<a href='/gizlilik-politikasi/kisisel-verilerin-islenmesine-iliskin-riza-metni' target='_blank'>KVKK Açık Rıza Metni</a>’ni okudum, onaylıyorum."
+  corporate: "<a href='/gizlilik-politikasi/ticari-iletisim-riza-metni' target='_blank'>İletişim izni</a>’ni okudum, onaylıyorum."
+  useragrrement: "<a href='/kendim-icin/kullanici-sozlesmesi/iyzico-mobil-kullanici-sozlesmesi' target='_blank'>Kullanıcı Sözleşmesi</a>’ni okudum, onaylıyorum."
+  agreement: "<a href='/gizlilik-politikasi#kiisel-verilerin-lenmesine-likin-rza-metni' target='_blank'>KVKK Aydınlatma Metni</a>’ni  okuduğumu ve onayladığımı kabul ediyorum."
+
+consumerRegisterSuccess:
+  title: "Ödeme yapmanın en kolay ve güvenli hali iyzico’ya hoş geldin!"
+  description: "Bakiyeni oluşturmak ve on binlerce web sitesinden kolayca alışveriş yapmak için uygulamamızı şimdi indir."
+  subTitle: "iyzico her alışverişinde 7/24 seninle!"
+  buttonTextTryAgain: "Tekrar Dene"
+  buttonTextBack: "Geri Dön"
+  subDescription: "iyzico uygulamasını QR kodu okutarak hızlı bir şekilde indirebilirsin."
+
+massPayOutHeader:
+  titleBold: "Ödemenin En Pratik Yolu: "
+  titleLight: "iyzico Çoklu Para Gönderimi"
+  desc: "İş ortaklarınıza hak edişlerini göndermenin, sizin için fazlasıyla efor gerektiren bir süreç olduğunu biliyoruz. Global çapta yüzlerce iş ortağınıza yalnızca tek tıkla ödeme yapabileceğinizi söylesek, ne dersiniz? iyzico Çoklu Para Gönderimi işte bu kadar kolay!"
+
+massPayOutAdvantage:
+  title: "iyzico Çoklu Para Gönderimi’nin <br>Avantajları Neler?"
+  secOneTitleColor: "Zaman ve Efor "
+  secOneTitle: "Tasarrufu"
+  secOneDesc: "Tüm ödemeleriniz tek bir platformdan kolayca yapın."
+  secTwoTitleColor: "Güvenli "
+  secTwoTitle: "Platform"
+  secTwoDesc: "Tüm ödemeleriniz iyzico güvencesinde!"
+  secThreeTitleColor: "Tek Tıkla "
+  secThreeTitle: "Ödeme"
+  secThreeDesc: "Hiçbir teknik bilgiye ihtiyacınız yok. Yalnızca Excel dosyanızı sisteme yükleyin ve ödemenizi yapın."
+  secFourTitleColor: "7/24 Canlı "
+  secFourTitle: "Destek"
+  secFourDesc: "Destek servisimize dilediğiniz zaman, dilediğiniz yerden ulaşın."
+  secFiveTitleColor: "Dünya Çapında "
+  secFiveTitle: "Ödeme Kolaylığı"
+  secFiveDesc: "Dünyanın her yerine kolayca ve güvenle ödeme yapın."
+  secSixTitleColor: "En Düşük "
+  secSixTitle: "Risk"
+  secSixDesc: "Uzman risk ekibimiz tüm olası riskleri inceler ve sizi olası risklere karşı her zaman korur."
+
+massPayOutLeadWidget:
+  title: "Çoklu Para Gönderimi’ni "
+  subTitle: "kullanmak için hemen başvur."
+  phoneNumber: "Telefon Numaranız"
+  placeHolder: "+90"
+
+massPayOutHowWork:
+  title: "iyzico Çoklu Para Gönderimi Nasıl Çalışır?"
+  bulletOne: "CSV dosyasını sisteme yükleyin."
+  descOne: "Gönderim yapmak istediğiniz bireysel ya da kurumsal hesapların detaylarının bulunduğu CSV dosyasını sisteme yükleyin dosya format bilgilerini <a href='https://dev.iyzipay.com/tr/mass-payouts'>entegrasyon rehberimizde </a> bulabilirsiniz."
+  bulletTwo: "Ödeme işlemini onaylayın."
+  descTwo: "Tek tıkla ödemeleri başlatın. Ödemelerin durumunu dilediğinizde kontrol edin."
+  bulletThree: "Ödemeniz gönderildi!"
+  descThree: "iyzico, hızlı ve güvenli bir şekilde ödemelerinizi tamamlar. Artık çoklu para gönderimi yapmak çok kolay!"
+
+massPayOutPopup:
+  title: "iyzico Çoklu Para Gönderimi ile Ödeme Yapın"
+  descriptiom: "Şimdi iyzico Çoklu Para Gönderimi ile yepyeni, hızlı ve güvenli bir ödeme yapma deneyimi yaşayın. Siz de iyzico’nun yeni ödeme metodundan yararlanmak istiyorsanız iletişim bilgilerinizi bırakın, biz sizi arayalım."
+
+businessPwiPopup:
+  title: "iyzico ile Öde Ayrıcalıkları Sizi Bekliyor"
+  descriptiom: "Siz de şimdi iyzico ile Öde avantajlarıyla 22 milyon kişilik yeni müşteri kitlenizle tanışın ve daha fazla kazanın."
+
+buttonText:
+  signUpNow: "Hemen Üye Ol"
+  applyNow: "Hemen Başvur"
+  getDetailInfo: "Detaylı Bilgi Al"
+  sMButton: "Sosyal Medyadan Satış Yap"
+  eCollection: "E-Tahsilat Yapın"
+  documentation: "Dokümantasyon"
+  andTenThousands:  "ve onbinlercesi"
+  getYouriyzicoAccount : "iyzico Hesabını Aç"
+
+pWiRegister:
+  content: "iyzico ile Öde sayesinde<span class='gray-100'>daha fazla kazanmak için;</span>"
+
+pWi:
+  titleBold: "iyzico ile Öde: "
+  titleLight: "İşlerinizi Büyütmek Şimdi Kolay"
+  description: "Bankacılık hizmeti almayan milyonlarca potansiyel müşterinize alternatif ödeme yöntemleri sunarak kazancınızı artırmak, iyzico ile Öde varsa şimdi kolay! Siz de on binlerce üye iş yerimiz gibi iyzico ile Öde sayesinde işlerinizi kolayca büyütün."
+
+pwiWhat:
+  title: "iyzico ile Öde Nedir?"
+  description: "Henüz ulaşamadığınız bir tüketici kitlesi olan 22 milyon kişiden “iyzico ile Öde” sayesinde kolay ve güvenli bir yolla ödeme alırsınız. Müşterilerinize kredi kartı, Korumalı Havale/EFT ve iyzico bakiye gibi alternatif ödeme yöntemleri sunarken daha fazla satış yapar ve daha çok kazanırsınız."
+  oneTitle: "Bakiye ile Ödeme"
+  oneDesc: "Müşterileriniz alışverişlerinde iyzico hesaplarına yükledikleri iyzico bakiyeleri sayesinde kartsız ve anında tamamlanan ödeme deneyiminin tadını çıkartır."
+  twoTitle: "Saklı Kart ile Ödeme"
+  twoDesc: "Müşterilerinize tek adımda tamamlanan bir ödeme deneyimi sunmaya ne dersiniz? Kart saklama özelliği ile müşterileriniz dakikalarca kart bilgilerini girmeye uğraşmadan ödemelerini tamamlarlar."
+  threeTitle: "Korumalı Havale/EFT ile Ödeme"
+  threeDesc: "Müşterileriniz ödemeyi yapmak istedikleri banka bilgilerini seçer, siz de “Ödeme hesabıma geldi mi?” endişesi olmadan tüm işlemlerinizi tek bir panelden yönetirsiniz."
+
+oneClickPayment:
+  title: "iyzico ile Tek Adımda Ödemenin<br>Farkı Nedir?"
+  desc: "E-ticarette sayfa ziyaretlerini başarılı birer satışa dönüştürmenin en önemli faktörü kullanıcı dostu ödeme yöntemleri. Neden mi?"
+  onePercent: "%27"
+  oneDesc: "Kullanıcıların yüzde 27’si, uzun ve zorlu ödeme sayfaları sebebiyle ödemeyi tamamlamadan sayfayı terk ediyor."
+  oneTitle: "Dönüşüm Oranınızı Artırın"
+  oneSubDesc: "E-ticarette sayfa ziyaretlerini başarılı birer satışa dönüştürmenin en önemli faktörü kullanıcı dostu ödeme yöntemleri. Neden mi?"
+  twoPercent: "120"
+  twoDesc: "Bir ödeme deneyimi sırasında kullanıcıların ortalama 120 karakter girmesi gerekiyor."
+  twoTitle: "Tek Tıkla Ödeme Alın"
+  twoSubDesc: "Müşterileriniz ödemelerini iyzico sayesinde tek tıkla ve minimum eforla yapar, siz maksimum kazanç sağlarsınız."
+  threePercent: "%40"
+  threeDesc: "Kullanıcıların yüzde 40’ı, uzun ve karmaşık iade süreçlerinden dolayı mutsuz."
+  threeTitle: "Müşteri Memnuniyetinizi Artırın"
+  threeSubDesc: "Müşteriniz ödemesini iyzico aracılığıyla gerçekleştirdiğinde, para iadesi siz işlemi onayladıktan sonra müşterinizin iyzico hesabına anında yansır ve müşteri memnuniyetiniz artar."
+  threeSubDescMore: "*Para İade Süreçleri:<br/>Banka kartı: 7-14 Gün<br/>Kredi kartı: 1-3 Gün<br/>iyzico Bakiye: ANINDA (Üye İş Yeri Onayının Ardından)"
+
+pwiLeadWidget:
+  boldTitle: "iyzico ile Öde Yöntemini"
+  lightTitle: "Kullanmak için"
+
+pwiRefund:
+  title: "Bakiyeye Anında İade"
+  onePercent: "%40"
+  OneDescription: "Kullanıcıların yüzde 40’ı, uzun ve karmaşık iade süreçlerinden dolayı mutsuz."
+  subTitle: "Müşteri Memnuniyetinizi Artırın"
+  description: "iyzico ile öde yöntemlerinden birini tercih ettiğinizde,<br>para iadesi siz işlemi onayladıktan sonra müşterinizin<br>iyzico hesabına anında yansır, müşteri memnuniyetiniz artar."
+  descriptionTwo: "*Para İade Süreçleri:<br>Banka kartı: <strong>7-14 Gün</strong><br>Kredi kartı: <strong>1-3 Gün</strong><br>iyzico Bakiye: <strong>ANINDA</strong> (Üye İş Yeri Onayının Ardından)"
+
+pwiEveryOnePayment:
+  title: "iyzico ile Öde Herkes için Ödeme Metodu"
+  desc: "iyzico ile Ödeme seçeneğini sunan iyzicolu satıcılar daha çok kazanır, alternatif ödeme yöntemleriyle alışveriş yapmak isteyen kullanıcılara ulaşır, hızlı bir ödeme deneyimi sunar ve satışlarını artırır."
+  secOne: "Hesabında yeterli bakiyesi bulunmayan müşterilerinizden ödeme alın!"
+  secTwo: "Banka hesabı bulunmayan 22 milyon kişiye satış yapın!"
+  secThree: "Kartla ödeme yapmak istemeyen müşterilerinize alternatif sunun!"
+
+aboutUsHeader:
+  title: "iyzico Hakkında"
+  desc: "internetten alışveriş deneyimini hem alıcılar hem de satıcılar için kolaylaştıran bir finans teknolojileri şirketidir."
+  secOneTitle: "iyzico;"
+  secOneDesc: "2013’te farklı büyüklüklerdeki şirketlere e-ticaret dünyasında sanal POS hizmeti ve yapay zeka tabanlı ödeme teknolojileri sunmak amacıyla kuruldu. Basit ve güvenli platformu ile karmaşık ödeme alma süreçlerini kolaylaştıran iyzico, kısa süre içerisinde binlerce şirketin dijitalleşmesine katkı sağlayarak büyük başarılara imza attı ve 2019 yılında dünya ödeme devi <a href='https://corporate.payu.com' target='_blank' title='PayU'>PayU</a> tarafından satın alındı. iyzico, bu güçlü yapıyla birlikte şirketlere sunduğu hizmetlerin yanı sıra finansal hizmetleri demokratikleştirmek ve herkes için ulaşabilir kılmak amacıyla çalışmalarını sürdürüyor."
+  secTwoTitle: "iyzico Korumalı Alışveriş"
+  secTwoDesc: "Tüketicilerin internet alışverişlerine karşı duyduğu endişelere çözüm sunuluyor ve daha iyi bir deneyim yaşamaları sağlanıyor. iyzico mobil uygulaması üzerinden 7/24 canlı destek ve iptal/iade süreçlerindeki kolaylıklar ile kontrol tüketicilere geri veriliyor. Bugüne kadar 2 milyondan fazla tüketici, internet alışverişlerini iyzico Korumalı Alışveriş güvencesiyle gerçekleştirdi ve bu sayı her geçen gün artmaya devam ediyor. Karma bir ödeme çözümü olan iyzico ile Öde ürünüyle ise bankacılık hizmeti almayan milyonlarca tüketicinin, iyzico Korumalı Alışveriş güvencesiyle internetten alışveriş yapabilmesi sağlanıyor.<strong>iyzico; geliştirdiği kolay, erişilebilir ve yenilikçi teknolojilerle internet alışverişlerini hem tüketiciler hem de satıcılar için kolaylaştırmaya devam ediyor.</strong>"
+
+iyziLifeBusiness:
+  secOne: "<h3>Sanal POS ile<span class='orange-pink'> sitenizden ödeme alın.</span></h3><p>24 saat içerisinde web sitenizden ödeme almaya başlamak mı istiyorsunuz? Öyleyse iyzico Sanal POS ile tanışmanızın şimdi tam zamanı.</p>"
+  secTwo: "<h3>Entegrasyonsuz Link Yöntemi ile kolayca<span class='macaroni-and-cheese'> ödeme alın</span></h3><p>Şu ürünlerimizi internetten satalım da nasıl ödeme alacağız? diyorsanız, doğru yerdesiniz. Kurumsal ve bireysel binlerce satıcı iyzico Link Yöntemi ile ödemelerini kolayca ve güvenle alıyor. Üstelik bunun için hiçbir entegrasyona ihtiyacınız yok!</p>"
+  secThree: "<h3>iyzico Korumalı Alışveriş<span class='blueberry'> ile daha fazla kazanın</span></h3><p>Güvenli internet alışverişinin tanımı iyzico Korumalı Alışveriş ile müşterilerinize 7/24 canlı destek sunarak operasyonel yükünüzü azaltabilir ve kazancınızı artırabilirsiniz.</p>"
+  secFour: "<h3>iyzico ile Öde sayesinde<span class='clear-blue'> yeni müşterilerinizle tanışın</span></h3><p>iyzico ile Öde avantajlarıyla hiçbir bankacılık hizmetinden yararlanmayan tüketicilerden dahi ödeme alabilir ve yeni müşterilerinizle tanışabilirsiniz.</p>"
+
+cTAComponent:
+  titleOne: "Sen de binlerce kişi gibi iyzico hesabı aç;"
+  titleTwo: "internet alışverişlerini kolay ödemenin keyfini yaşa."
+  titleThree: "internetten satış yapmaya hemen başla."
+
+businessLPHeader:
+  content: "<h1><strong>iyzico ile</strong><span>E-Ticarete Başla</span></h1><p>iyzico ile dünyanın her yerinden kolayca ödeme alın; taksitli satışlar yapın. Siz işlerinize odaklanırken ödemelerinizi bize bırakın.</p>"
+
+openSourceContent:
+  title: "Hızlıca Entegrasyona Başlayın"
+  secOne: "Woocommerce, e-ticaret dünyasına hızlı bir giriş yapmak isteyenler için pratik ve kullanışlı bir çözümdür. Wordpress ile entegre çalışan Woocommerce, kurulduktan sonra e-ticaret yapmaya olanak sağlıyor."
+  secTwo: "OpenCart, anahtar teslim güçlü bir e-ticaret scriptidir. Opencart’ın hızlı kurulumu ve 6000′den fazla modülü sayesinde, işletmeler düşük bir maliyet ile hazır tema ve modülleri kendi web siteleri için kolaylıkla düzenleyebilir ve geliştirebilirler."
+  secThree: "Prestashop, 2007 yılında küçük ve orta ölçekli işletmelerin kullanabileceği bir e-ticaret yazılımı olarak piyasaya sürülmüştür. E-ticaret scriptleri arasında ücretsiz, kaliteli ve gelişmiş bir çözümdür. "
+  secFour: "Magento, açık kaynaklı ve özgür bir e-ticaret web uygulamasıdır. Binlerce çözüm ortağı tarafından desteklenen ve dünya çapında 150.000’den fazla işletme tarafından kullanılan açık kaynak kodlu e-ticaret platformudur."
+
+openSourceWhyiyzico:
+  secOne: "<h3><span class='clear-blue'>Hızlı</span> Entegrasyon</h3><p>E-ticaret modüllerine özel geliştirdiğimiz eklentilerle ödeme entegrasyonunuzu tamamlamak şimdi kolay! </p>"
+  secTwo: "<h3><span class='greyish-teal'>24 Saatte Ödeme</span> Almaya Başlayın</h3><p>Hızlı entegrasyon süreci ile ödemelerinizi 24 saat içinde iyzico ile almaya başlayabilirsiniz.</p>"
+  secThree: "<h3>Detaylı<span class='orange-pink'> Dokümantasyon</span></h3><p>Açık kaynaklı altyapılar için de güçlü bir entegrasyon desteği veren dokümantasyona buradan ulaşabilirsiniz.</p>"
+
+readyIntegrationHeaderContent:
+  title: "Gelişiminize En Büyük Destek!"
+  desc: "E-ticaret siteleriniz için birlikte çalıştığımız altyapı sağlayıcılarından birini tercih edin, farklı çözüm ve fırsatlar sunan çözüm ortaklarımız ile işinizi geliştirmede yardımcı olalım."
+
+iyziLifeBp:
+  title: "iyzico Korumalı Alışveriş Hizmetinden Nasıl Faydalanırım?"
+  secOne: "iyzico logosunu gördüğün sitelerde almak istediğin ürünleri seç ve ödeme sayfasında “iyzico Korumalı Alışveriş” seçeneğini işaretle."
+  secTwo: "Telefonuna veya mail adresine gelen linke tıklayarak iyzico mobil uygulamasını indir; güvenli ve kolay alışverişin keyfini yaşamaya başla!"
+
+pwiBrandsLP:
+  title : "Alışverişin <span>Şimdi Kolayı Var!</span>"
+  valentinesday: "Sevgililer Günü alışverişlerinde <br>macera yaşama, <span class='clear-blue'>iyzico ile Öde!</span>"
+  subTitle: "Geçerli Mağazalar"
+  categoryName: "Kategoriler"
+
+brandsLP:
+  description: "*Yukarıdaki hizmetlerden yararlanmak istediğinizde email adresiniz ilgili çözüm ortağımız ile paylaşılmaktadır. Kişisel verilerinizin işlenmesi hakkındaki diğer bilgilere <a href='/gizlilik-politikasi'>Gizlilik & Kişisel Veri Politikası</a>’ndan ulaşabilirsiniz."
+
+pwiBrandsLPpopup:
+  title: "iyzico ile <span>Nasıl Ödeme Yaparım?</span>"
+  secOne: "Ödeme adımında iyzico ile Öde’yi seç."
+  secTwo: "Mail ve telefon bilgilerini doğrula."
+  secThree: "iyzico bakiyen, kartın veya Korumalı Havale/EFT ile ödemeni kolayca tamamla."
+  secFour: "<span>Biliyor muydun?</span>iyzico ile Öde, Türkiye’nin en fazla sitede geçerli alternatif ödeme yöntemidir."
+  titleTwo: "Neden iyzico ile Öde?"
+  secFive: "Banka hesabın olmasa bile binlerce sitede alışveriş yap."
+  secSix: "Tüm alışverişlerinde 7/24 canlı destek al."
+  secSeven: "İadeni anında iyzico hesabında gör."
+  secEight: "<span>Biliyor muydun?</span>iyzico ile Öde, ödeme adımının <strong>%37</strong> daha hızlı tamamlanmasını sağlıyor."
+  buttonText: "Web Sitesine Git"
+
+pwiHowItMakesLifeEasier:
+  title: "iyzico ile Öde<br>Hayatı Nasıl Kolaylaştırıyor?"
+  desc: "iyzico ile Öde, internet alışverişlerinde farklı ödeme yöntemlerini tercih eden tüm tüketicilere çözüm sunar. iyzico bakiye ile ödeme, saklı kart ile ödeme ve Korumalı Havale/EFT sayesinde banka hesabı bulunmayan, internet alışverişlerinde kart bilgilerini kullanmak istemeyen ve tek tıkla ödeme yapmak isteyen milyonlarca tüketicinin beklentileri karşılanır.<br><br>iyzico ile Öde üzerinden yapılan tüm işlemler, iyzico Korumalı Alışveriş kapsamında gerçekleşir. Bu sayede tüketiciler 7/24 canlı destek ve iptal/iade süreçlerinde kolaylık avantajlarıyla alışverişini güvenle tamamlar."
+
+femaleHeaderContent:
+  title: "<h1><strong>Tüm Desteğimizle </strong><span>#KadınGirişimcinin Yanındayız</span></h1><p>Üreten kadınlara iş hayatına giriş aşamasında komisyon, eğitim ve tanıtım desteği sunuyoruz. E-ticaret dünyasında çok daha büyük işler başarabilmeleri için her adımda yanlarında oluyoruz!<br><br>Yeni başvuru dönemi pek yakında! Gelişmeler için sosyal medyada bizi takip edin.</p><span>Bu sırada <a href='#femaleGeneralinfo'>başvuru koşulları</a>na ve iş ortaklarımızın sunduğu <a href='#femalePrivilege'>avantajlar</a>a göz atabilirsiniz.</span>"
+
+femaleExplanation:
+  content: "<p class='heroDesc'>#KadınGirişimcininYanındayız avantajlarından faydalanabilmek için <strong>başvurunuzu yalnızca bu sayfa üzerinden</strong> gerçekleştirmelisiniz.</p><p class='title'>Finansal hizmetleri demokratikleştirme amacıyla çıktığımız bu yolda, tüm desteğimizle kadın girişimcilerin yanındayız!</p><p>Hayallerinin peşinden gitmek isteyen binlerce kadın girişimciye destek oluyoruz. Politika Analiz Laboratuvarı ile beraber hazırladığımız Dijital Finansal Kapsayıcılık Raporu’yla da ülkedeki kadın-erkek istihdam eşitsizliğinin altını çizdik ve ekonomik özgürlüğünün peşindeki kadınlara yönelik faydalar üretmeye odaklandık.<br><br>Üreten kadınlar her alanda varlar ve koşullar ne olursa olsun üretmeye de devam ediyorlar. İşte bu üretimi “İyiden İyiye” büyütmek ve kadın girişimcilerimizin geleceğe sağlam adımlar atabilmelerine destek olmak adına, onlara iş hayatlarına girişte komisyon, eğitim ve tanıtım desteği sunuyoruz.<br><br>Kadınların her alandaki varlığının güçlenmesiyle daha güzel günlerin geleceğine inanarak; eşitlik sağlanana kadar <strong>#KadınGirişimcininYanındayız</strong></p>"
+
+femalePrivilege:
+  title: "Kadın Girişimcileri Hangi Avantajlar Bekliyor?"
+  fb: "Kadın Girişimcileri Hangi Avantajlar Bekliyor?"
+  secOne: "<h3>İlk 6 Ay<span class='clear-blue'> 0 Komisyon</span></h3><p>Tek çekim ödemelerde 100.000 TL işlem hacmine kadar <strong>0 komisyon</strong> ile kadın girişimcilerimize finansal destek sunuyoruz.</p>"
+  secTwo: "<h3>Ücretsiz<span class='greyish-teal'> Eğitimler</span></h3><p>Partnerimiz Google ile birlikte kadın girişimcilerimize dijital pazarlama ve online satış alanlarında ücretsiz eğitimler veriyoruz.</p>"
+  secThree: "<h3>Tanıtım<span class='yellow-orange'> Desteği</span></h3><p>Programa dahil olan kadın girişimcilerimize tanıtım desteği sunuyoruz ve onlara binlerce yeni potansiyel müşteri kazandırıyoruz.</p>"
+  secFour: "<h3>İş Ortaklarımızdan<span class='orange-pink'> Özel İndirimler</span></h3><p>İş ortaklarımızın sunduğu özel indirimlerle kadın girişimcilerimizi her alanda destekliyoruz.</p>"
+
+femaleHowtoSupport:
+  title: "İş Ortaklarımız, Kadın Girişimcileri Nasıl Destekliyor?"
+  desc: "İş ortaklarımızın program dahilindeki kadın girişimcilere özel olarak sunduğu avantajlara göz atın."
+  heroDesc: "#KadınGirişimcininYanındayız başvuruları <strong>yalnızca bu sayfa üzerinden</strong> gerçekleştirilebilmektedir.<br>İş ortaklarımızın sunduğu avantajlar hakkında daha detaylı bilgi için web sitelerini ziyaret edebilirsiniz."
+
+femaleHowtoGrowYourBusiness:
+  title: "<span class='clear-blue'>iyzico ile Öde:</span>İşlerinizi Büyütmek Şimdi Kolay!"
+  secOne: "<h3>iyzico ile Öde Sayesinde Milyonlarca Yeni Müşteri</h3><p>Program dahilindeki tüm kadın girişimcilerimiz, iyzico ile Öde sayesinde müşterilerine farklı ödeme alternatifleri sunuyor.<br><br>iyzico bakiye sayesinde banka hesabı bulunmayan milyonlarca tüketiceye satış yapabilen girişimcilerimiz, internet alışverişlerinde kart bilgilerini kullanmak istemeyen müşterilerinin beklentilerini Korumalı Havale/EFT yöntemiyle karşılıyor.</p>"
+  secTwo: "<h3>iyzico Korumalı Alışveriş Güvencesi</h3><p>iyzico ile Öde üzerinden yapılan tüm işlemler, bugüne kadar <strong>4 milyon</strong>dan fazla tüketici tarafından tercih edilen iyzico Korumalı Alışveriş güvencesiyle gerçekleşiyor.<br><br>Tüm kadın girişimcilerimiz, müşterilerine 7/24 canlı destek ve iptal/iade süreçlerinde kolaylık sunuyor.</p>"
+  secThree: "<h3>iyzico Link Yöntemi ile Şirket Sahibi Olmadan Ödeme Almak Şimdi Kolay</h3><p>Şirket sahibi olmayan kadın girişimcilerimiz, iyzico Link Yöntemi sayesinde sosyal medya üzerinden ve tüm dijital platformlardan kolaylıkla ödeme alabiliyor.</p>"
+  buttonText: "Detaylı Bilgi"
+
+femaleAppealInformation:
+  title: "Başvuru Koşulları ve Genel Bilgiler"
+  secOne: "#KadınGirişimcininYanındayız başvuruları <strong>yalnızca bu sayfa üzerinden</strong> gerçekleştirilebilmektedir."
+  secTwo: "Bu program, yalnızca kadın girişimcilerin başvurularına açıktır. Başvuru yapacak olan limited şirketlerde şirket ortaklarının çoğunluğunun kadın olması gerekmektedir."
+  secThree: "Programa başvurmak isteyen şirket sahibi kadın girişimcilerin, şirket kuruluş tarihi <strong>01.06.2021 ve sonrası</strong> olmalıdır. Halihazırda şirket sahibi olmayan kadın girişimciler de programa dahil olabilir."
+  secFour: "Sıfır komisyon avantajı, tek çekim işlemlerde uygulanmaktadır. Taksitli işlemler program dahilinde değildir. Sıfır komisyon avantajı <strong>100.000 TL işlem hacmine kadar</strong> geçerlidir."
+  secFive: "Programa yapılan başvuruların değerlendirme süresi <strong>1-21 iş günü</strong>dür."
+  secSix: "İş modeline bağlı olarak program başvurusu dahilinde talep edilen evraklar değişkenlik gösterebilmektedir."
+  secSeven: "“iyzico ile Öde“ logosu, iyzico ile Öde bilgilendirmesi (infobox), APM entegrasyonu ve FAQ girdileri (entries) olacak şekilde, ödeme seçenekleri arasında ilk sırada ve varsayılan seçenek olarak gelecek şekilde eksiksiz olarak bulunmalıdır."
+
+femaleContact:
+  content: "Başvuru koşulları hakkında daha detaylı bilgi için <u><strong>Yardım Merkezi</strong></u> sayfamızı ziyaret edebilirsiniz.<br><br>Tüm sorularınız için bize <strong>0 216 599 01 00</strong> numarası veya <strong>basvuru@iyzico.com</strong> mail adresi üzerinden ulaşabilirsiniz."
+
+femaleiyziRegister:
+  title : "Yeni başvuru dönemi pek yakında!<br> Gelişmeler için<br>sosyal medyada <span class='gray-100'> bizi takip edin.</span>"
+  desc: "<span>Bu sırada <a href='#femaleGeneralinfo'>başvuru koşulları</a>na ve iş ortaklarımızın sunduğu <a href='#femalePrivilege'>avantajlar</a>a göz atabilirsiniz.</span>"
+  buttonText: "Şimdi Başvur"
+
+personalHeaderMenu:
+  title: "Tüm <br>kampanyalarımızı <br>senin için listeledik!"
+  desc: "<strong>Finish.com.tr</strong> alışverişini <strong>iyzico ile Öde</strong>, <br><strong>%10 iaden</strong> iyzico bakiyene gelsin. <br>Kazandığın tutarı binlerce mağazada <br><strong>iyzico ile Öde</strong> güvencesiyle dilediğin gibi harca!"
+  button: "Kampanyaları Gör"
+
+goodToGoodMenu:
+  secOne: "Neler Yapıyoruz?"
+  secTwo: "Neler Yaptık?"
+  notificationText: "<strong>İyiden İyiye;</strong> Toplum, Çevre ve Kültür İçin"
+  notificationButton: "Daha Fazla Bilgi"
+
+personalPwiShoplist:
+  title: "iyzico ile<span>Ödeyebileceğin Mağazalar</span>"
+  desc: "On binlerce mağazada “iyzico ile Öde” özelliğini kullanarak korumalı alışveriş deneyimini sen de yaşa!"
+  btnText: "Mağazalara Göz At"
+
+cardLpDesc:
+  cardDesc: "*Korumalı Alışveriş kapsamında bedel iadesi sadece seçili üye işyerleri ve cayma hakkının kullanılabildiği ürünler için geçerli olup, ürünün eksiksiz olarak satıcıya iade edilmesi ve Kullanıcı Sözleşmesindeki diğer koşulların gerçekleşmiş olması gerekmektedir. iyzico Korumalı Alışveriş kapsamında bedel iade garantisi taahhüt etmemektedir."
+
+personalHome:
+  popupOneTitle: "QR kodu okut, <br>uygulamayı indir. <br><span class='clear-blue'>Macerasız alışverişin<br>keyfini yaşa!</span>"
+  popupTwoTitle: "iyzico Kart’a sahip <br>olabilmen için uygulamaya <br>kayıt olman gerekiyor. <br><span class='clear-blue'>Uygulamayı indir,<br>Karta başvur!</span>"

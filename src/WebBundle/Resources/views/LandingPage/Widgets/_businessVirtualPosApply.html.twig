@@ -1,0 +1,33 @@
+<section class="whyiyzico">
+	<div class="container">
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<h2>
+				<span>{{ translations.businessWirtualPosApply.title }}</span>
+				{{ translations.businessWirtualPosApply.subTitle }}
+			</h2>
+		{% else %}
+			<h2>{{ translations.businessWirtualPosApply.subTitle }}</h2>
+		{% endif %}
+		<div class="whyiyzicoBoxWrap">
+			<div class="whyiyzicoBox">
+				<i class="icon icon--apply"></i>
+				<div class="description">{{ translations.businessWirtualPosApply.boxOneDescription }}</div>
+			</div>
+			<div class="whyiyzicoBox">
+				<i class="icon icon--mail"></i>
+				<div class="description">{{ translations.businessWirtualPosApply.boxTwoDescription }}</div>
+			</div>
+			<div class="whyiyzicoBox">
+				<i class="icon icon--certificate"></i>
+				<div class="description">{{ translations.businessWirtualPosApply.boxThreeDescription }}</div>
+			</div>
+			<div class="whyiyzicoBox">
+				<i class="icon icon--contract"></i>
+				<div class="description">{{ translations.businessWirtualPosApply.boxFourDescription }}</div>
+			</div>
+		</div>
+		<div class="buttonGroup">
+			<a href="{{ path('hesap_olustur_landing_page') }}" class="button default">{{ translations.buttonText.signUpNow }}</a>
+		</div>
+	</div>
+</section>

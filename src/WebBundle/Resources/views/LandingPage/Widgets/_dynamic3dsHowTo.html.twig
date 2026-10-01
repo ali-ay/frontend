@@ -1,0 +1,14 @@
+<section class="personalBuyerProtectionHowTo">
+	<div class="container">
+		<div class="widgetTitle">{{ translations.dynamic3dsHowToWidget.title }}</div>
+		<h2>{{ translations.dynamic3dsHowToWidget.subTitle }}</h2>
+		<p>{{ translations.dynamic3dsHowToWidget.description }}</p>
+
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<div class="dynamic3dsProgress"></div>
+		{% else %}
+			<div class="dynamic3dsProgressEN"></div>
+		{% endif %}
+
+	</div>
+</section>

@@ -1,0 +1,26 @@
+<section class="readyIntegration">
+	<div class="container">
+		<h3>{{ translations.footer.solutionPartners }}</h3>
+		<ul>
+			{% for partner in pageContents.partners.list %}
+			<li>
+				<div class="image">
+					<img src="{{ partner.image.file }}@2x.{{ partner.image.extension }}" alt="partner" />
+				</div>
+				<div class="description">{{ partner.content|raw }}</div>
+				<div class="buttonGroup">
+					<a href="https://dev.iyzipay.com/tr/hazir-altyapi" class="button basic clear-blue" target="_blank">
+						<span class="questionSvg"></span>
+						{{ translations.buttonText.documentation }}
+					</a>
+					<div class="circleButton">
+						<a href="{{ partner.link|raw }}" target="_blank">
+							<img src="{{ asset('assets/images/icons/icn-web.svg')}}"/>
+						</a>
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

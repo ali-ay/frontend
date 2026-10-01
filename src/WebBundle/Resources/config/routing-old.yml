@@ -1,0 +1,156 @@
+homepage:
+    locales:  { tr: "/", en: "/en" }
+    defaults: { _controller: WebBundle:LandingPage:mainLandingPage }
+iyzipos_landing_page:
+    locales:  { tr: "/iyzipos", en: "/en/iyzipos" }
+    defaults: { _controller: WebBundle:LandingPage:iyziPosLandingPage }
+iyzibazaar_landing_page:
+    locales:  { tr: "/iyzibazaar", en: "/en/iyzibazaar" }
+    defaults: { _controller: WebBundle:LandingPage:iyziBazaarLandingPage }
+iyzilink_landing_page:
+    locales:  { tr: "/iyzilink", en: "/en/iyzilink" }
+    defaults: { _controller: WebBundle:LandingPage:iyziLinkLandingPage }
+
+buyer_protection_landing_page:
+    locales:  { tr: "/korumali-alisveris", en: "/en/buyer-protection" }
+    defaults: { _controller: WebBundle:LandingPage:buyerProtectionLandingPageNew }
+
+international:
+    locales:  { en: "/international" }
+    defaults: { _controller: WebBundle:LandingPage:internationalPage }
+europe:
+    locales:  { en: "/eu" }
+    defaults: { _controller: WebBundle:LandingPage:europePage }
+register_page:
+    locales:  { tr: "/kayit-ol", en: "/en/register" }
+    defaults: { _controller: WebBundle:LandingPage:registerPage }
+iyzilink_apply_page:
+    locales:  { tr: "/iyzilink-basvur", en: "/en/iyzilink-apply" }
+    defaults: { _controller: WebBundle:LandingPage:iyzilinkApplyPage }
+iyzilink_campaign_page:
+    locales:  { tr: "/yaz-kampanyasi", en: "/en/summer-campaign" }
+    defaults: { _controller: WebBundle:LandingPage:iyzilinkCampaignPage }
+eihracat_landing_page:
+    locales:  { tr: "/e-ihracat", en: "/en/e-ihracat" }
+    defaults: { _controller: WebBundle:LandingPage:eIhracatLandingPage }
+who_we_are:
+    locales:  { tr: "/hakkimizda/biz-kimiz", en: "/en/about-us/who-we-are" }
+    defaults: { _controller: WebBundle:Company:whoWeAre }
+team:
+    locales:  { tr: "/hakkimizda/ekip", en: "/en/about-us/team" }
+    defaults: { _controller: WebBundle:Company:Team }
+references:
+    locales:  { tr: "/hakkimizda/referanslar", en: "/en/about-us/references" }
+    defaults: { _controller: WebBundle:Company:references }
+career:
+    locales:  { tr: "/hakkimizda/kariyer", en: "/en/about-us/career" }
+    defaults: { _controller: WebBundle:Company:career }
+career_detail:
+    locales:  { tr: "/hakkimizda/kariyer/{detailId}", en: "/en/about-us/career/{detailId}" }
+    defaults: { _controller: WebBundle:Company:careerDetail }
+press:
+    locales:  { tr: "/hakkimizda/basin", en: "/en/about-us/press" }
+    defaults: { _controller: WebBundle:Company:press }
+case_studies:
+    locales:  { tr: "/hakkimizda/case-studies", en: "/en/about-us/case-studies" }
+    defaults: { _controller: WebBundle:Company:caseStudies }
+culture:
+    locales:  { tr: "/hakkimizda/kultur", en: "/en/about-us/culture" }
+    defaults: { _controller: WebBundle:Company:culture }
+
+open_source:
+    locales:  { tr: "/acik-kaynak", en: "/en/open-source" }
+    defaults: { _controller: WebBundle:Company:openSource }
+ready_to_use_infrastructure:
+    locales:  { tr: "/hazir-altyapi", en: "/en/ready-to-use-infrastructure" }
+    defaults: { _controller: WebBundle:Company:readyToUse }
+
+help_center:
+    locales:  { tr: "/yardim-merkezi", en: "/en/help-center" }
+    defaults: { _controller: WebBundle:Support:helpCenterMain }
+help_center_search:
+    locales:  { tr: "/yardim-merkezi-arama", en: "/en/help-center-search" }
+    defaults: { _controller: WebBundle:Support:helpCenterSearch }
+help_center_category:
+    locales:  { tr: "/yardim-merkezi/{categorySlug}", en: "/en/help-center/{categorySlug}" }
+    defaults: { _controller: WebBundle:Support:helpCenterCategory }
+help_center_sub_category:
+    locales:  { tr: "/yardim-merkezi/{categorySlug}/{subCategorySlug}", en: "/en/help-center/{categorySlug}/{subCategorySlug}" }
+    defaults: { _controller: WebBundle:Support:helpCenterSubCategory }
+contact_us:
+    locales:  { tr: "/iletisim", en: "/en/contact-us" }
+    defaults: { _controller: WebBundle:Support:contactUs }
+terms_of_application:
+    locales:  { tr: "/basvuru-kosullari", en: "/en/terms-of-application" }
+    defaults: { _controller: WebBundle:Support:termsOfApplication }
+general_terms:
+    locales:  { tr: "/genel-sartlar", en: "/en/general-conditions" }
+    defaults: { _controller: WebBundle:Support:generalTerms }
+privacy_policy:
+    locales:  { tr: "/gizlilik-politikasi", en: "/en/privacy-policy" }
+    defaults: { _controller: WebBundle:Support:privacyPolicy }
+gdpr:
+    locales:  { tr: "/en/personal-data-processing-policy", en: "/en/personal-data-processing-policy" }
+    defaults: { _controller: WebBundle:Support:personalDataProcessingPolicy }
+kvkk:
+    locales:  { tr: "/kisiel-verileri-koruma-kanunu", en: "/en/personal-data-policy" }
+    defaults: { _controller: WebBundle:Support:kvkk }
+
+
+form_join_us:
+    locales:  { tr: "/forms/join-us", en: "/en/forms/join-us" }
+    defaults: { _controller: WebBundle:Forms:joinUs }
+form_contact_us:
+    locales:  { tr: "/forms/contact-us", en: "/en/forms/contact-us" }
+    defaults: { _controller: WebBundle:Forms:contactUs }
+form_international_contact_us:
+    locales:  { tr: "/forms/international-contact-us", en: "/en/forms/international-contact-us" }
+    defaults: { _controller: WebBundle:Forms:internationalContactUs }
+form_become_a_partner:
+    locales:  { tr: "/forms/become-a-partner", en: "/en/forms/become-a-partner" }
+    defaults: { _controller: WebBundle:Forms:becomeAPartner }
+form_sign_up:
+    locales:  { tr: "/forms/sign-up", en: "/en/forms/sign-up" }
+    defaults: { _controller: WebBundle:Forms:signup }
+form_iyzilink_lead:
+    locales:  { tr: "/forms/iyzilink", en: "/en/forms/iyzilink" }
+    defaults: { _controller: WebBundle:Forms:iyzilink }
+form_get_offer:
+    locales:  { tr: "/forms/offer", en: "/en/forms/offer" }
+    defaults: { _controller: WebBundle:Forms:offer }
+form_campaign:
+    locales:  { tr: "/forms/campaign", en: "/en/forms/campaign" }
+    defaults: { _controller: WebBundle:Forms:campaign }
+
+switch_region:
+    locales:  { tr: "/change-region/{toRegion}", en: "/en/change-region/{toRegion}" }
+    defaults: { _controller: WebBundle:LandingPage:changeRegion }
+service_status:
+    locales:  { tr: "/destek/servis-durumu", en: "/en/support/service-status" }
+    defaults: { _controller: WebBundle:ServerStatus:index }
+service_status_logs:
+    locales:  { tr: "/destek/servis-ay/{ruleName}", en: "/en/support/service-month/{ruleName}" }
+    defaults: { _controller: WebBundle:ServerStatus:getLog }
+service_status_days:
+    locales:  { tr: "/destek/servis-gun/{ruleName}/{datetime}", en: "/en/support/service-day/{ruleName}/{datetime}" }
+    defaults: { _controller: WebBundle:ServerStatus:getDay }
+campaign_page:
+    locales:  { tr: "/kampanyalar", en: "/en/campaigns" }
+    defaults: { _controller: WebBundle:LandingPage:campaignPage }
+
+
+iyziglobe_landing_page:
+    locales:  { tr: "/iyziglobe", en: "/en/iyziglobe" }
+    defaults: {
+        _controller: FrameworkBundle:Redirect:redirect,
+        route:  iyzibazaar_landing_page,
+        permanent: true
+        }
+
+
+remove_trailing_slash:
+    path: /{url}
+    defaults: { _controller: WebBundle:Redirecting:removeTrailingSlash }
+    requirements:
+        url: .*/$
+    methods: [GET]

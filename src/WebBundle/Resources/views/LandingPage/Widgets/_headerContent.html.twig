@@ -1,0 +1,28 @@
+<div class="forBusiness">
+  <div class="container">
+    <div class="headerContent">
+      <h1>
+        <strong>{{ headerWidget.boldTitle }}</strong>{{ headerWidget.lightTitle }}
+      </h1>
+      <p>
+        {% if headerWidget.description|length > 0 %}
+          {{ headerWidget.description }}
+        {% endif %}
+      </p>
+      <div class="buttonGroup">
+        {% if headerWidget.firstCallToActionUrl|length > 0 %}
+          <a href="{{ headerWidget.firstCallToActionUrl }}" class="button {{ headerWidget.firstButtonClass }}">{{ headerWidget.firstCallToActionTitle }}</a>
+        {% endif %}
+        {% if headerWidget.secondCallToActionUrl|length > 0 %}
+          <a href="{{ headerWidget.secondCallToActionUrl }}" class="button {{ headerWidget.secondButtonClass }}">{{ headerWidget.secondCallToActionTitle }}</a>
+        {% endif %}
+      </div>
+        {% if headerWidget.subDescription|length > 0 %}
+          <span class="mobileHidden">{{ headerWidget.subDescription }}</span>
+        {% endif %}
+    </div>
+    <div class="headerImage">
+      <img src="https://media.iyzico.com/b/2019/01/iyzico-aras-kargo-kampanya-header-banner.png" srcset="https://media.iyzico.com/b/2019/01/iyzico-aras-kargo-kampanya-header-banner@2x.png" alt="{{ headerWidget.backgroundImageAlt }}"/>
+    </div>
+  </div>
+</div>

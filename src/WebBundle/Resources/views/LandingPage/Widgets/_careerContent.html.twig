@@ -1,0 +1,42 @@
+<section class="careerContent {% if limited is defined %}otherJobsCareerContent{% endif %}">
+	{% if limited is defined %}
+	<div class="otherJobsHeader">
+		<div class="title">{{ translations.careerContent.title }}</div>
+		<div class="description">{{ translations.careerContent.description }}</div>
+	</div>
+	{% endif %}
+	<div class="container">
+		<ul>
+			{% for openPositions in pageContents.positions %}
+				{% if limited is defined %}
+					{% if loop.index < 3 %}
+						<li>
+							<div class="title">{{ openPositions.title }}</div>
+							<div class="description">{{ openPositions.summary }}</div>
+							<div class="subGroup">
+								<a href="{{ path('career_detail',{'detailId':openPositions.id}) }}" class="button primary">{{ translations.careerContent.buttonOne }}</a>
+								{% if openPositions.linkedinUrl %}
+								<a href="{{ openPositions.linkedinUrl }}" target='_blank'><i class="icon icon--linkedin-job-advert"></i></a>
+								{% endif %}
+							</div>
+						</li>
+					{% endif %}
+				{% else %}
+					<li>
+						<div class="title">{{ openPositions.title }}</div>
+						<div class="description">{{ openPositions.summary }}</div>
+						<div class="subGroup">
+							<a href="{{ path('career_detail',{'detailId':openPositions.id}) }}" class="button primary">{{ translations.careerContent.buttonTwo }}</a>
+							{% if openPositions.linkedinUrl %}
+							<a href="{{ openPositions.linkedinUrl }}" target='_blank'><i class="icon icon--linkedin-job-advert"></i></a>
+							{% endif %}
+						</div>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	{% if limited is defined %}
+			<a href="{{ path('career') }}" class="button default">{{ translations.careerContent.buttonThree }}</a>
+		{% endif %}
+</section>

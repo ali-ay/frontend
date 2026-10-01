@@ -1,0 +1,24 @@
+<section class="newiyziCards multipleCards">
+	<div class="iyzi-container">
+		<div class="header">
+			<div class="arrowIcon">
+				<img src="{{ asset('assets/images/icons/newArrow.svg')}}">
+			</div>
+			<div class="title">
+				<h2>{{ translations.businessMarketPlaceProgress.title|raw }}</h2>
+				<p>{{ translations.businessMarketPlaceProgress.desc }}</p>
+			</div>
+		</div>
+		<div class="cardWrap">
+			<div class="cardBox">
+
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<div class="marketPlaceProgress"></div>
+		{% else %}
+			<div class="marketPlaceProgressEN"></div>
+		{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section>

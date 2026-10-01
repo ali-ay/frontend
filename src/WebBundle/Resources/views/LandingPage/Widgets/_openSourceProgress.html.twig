@@ -1,0 +1,21 @@
+<section class="newiyziCards multipleCards">
+	<div class="iyzi-container">
+		<div class="header">
+			<div class="title">
+				<h2>{{ translations.openSourceHeaderContent.titleLight }}</h2>
+				<p>{{ translations.openSourceHeaderContent.description|raw }}</p>
+			</div>
+		</div>
+		<div class="cardWrap">
+			<div class="cardBox">
+
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<div class="openSourceProgress"></div>
+		{% else %}
+			<div class="openSourceProgressEN"></div>
+		{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,16 @@
+<section class="newiyziCards multipleCards">
+	<div class="iyzi-container">
+		{% for items in cardfeatures.features | batch(3) %}
+			<div class="cardWrap">
+				{% for item in items %}
+					<div class="cardBox">
+						<img src="{{ item.image.file }}.{{ item.image.extension }}" alt="iyzico"/>
+						<h3>{{ item.title }} <span class="{{ item.class }}">{{ item.colorTitle }}</span></h3>
+						<p>{{ item.content }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+		<span>{{ translations.cardLpDesc.cardDesc }}</span>
+	</div>
+</section>

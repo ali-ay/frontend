@@ -1,0 +1,19 @@
+<section class="teamContent">
+	<div class="container">
+		<ul>
+			{% for teamMember in pageContents.teamMembers %}
+			<li>
+				<img src="{{ teamMember.image.file }}.{{ teamMember.image.extension }}" srcset="{{ teamMember.image.file }}@2x.{{ teamMember.image.extension }} 2x" alt="{{ teamMember.name }} {{ teamMember.surname }}" />
+				<div class="itemWrap">
+					<div class="itemContent">
+						<div class="itemBox">
+							<div class="name">{{ teamMember.name }} {{ teamMember.surname }}</div>
+							<div class="department">{{ teamMember.team|raw }}</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

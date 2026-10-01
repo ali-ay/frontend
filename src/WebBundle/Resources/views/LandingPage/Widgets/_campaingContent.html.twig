@@ -1,0 +1,19 @@
+<section class="readyIntegration">
+	<div class="container">
+		<ul>
+			{% for partner in pageContents.partners.list %}
+			<li>
+				<div class="containerWrap">
+					<div class="image">
+						<img src="{{ partner.image.file }}@2x.{{ partner.image.extension }}" alt="partner" />
+					</div>
+					<div class="title">{{ partner.title|raw }}</div>
+					<div class="description">{{ partner.content|raw }}</div>
+				</div>
+				<a href="{{partner.link}}" class="button basic">{{partner.linkTitle|raw}}</a>
+			</li>
+			{% endfor %}
+		</ul>
+		<p class="subDescription">{{ translations.campaignLP.subDescription|raw }}</p>
+	</div>
+</section>

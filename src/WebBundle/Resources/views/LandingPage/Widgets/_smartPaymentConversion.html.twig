@@ -1,0 +1,16 @@
+<section class="widget widgetBgBlue etsyIntegration">
+	<div class="container">
+		<div class="contentImage">
+			{% if app.request.attributes.get('_locale') == "tr" %}
+				<img src="{{ asset('assets/images/content/gecerli-odemenizi-kaybetmeyin.png')}}" srcset="{{ asset('assets/images/content/gecerli-odemenizi-kaybetmeyin@2x.png')}} 2x" alt="Geçerli Ödemelerinizi Kaybetmeyin!" />
+			{% else %}
+				<img src="{{ asset('assets/images/content/gecerli-odemenizi-kaybetmeyin-en.png')}}" srcset="{{ asset('assets/images/content/gecerli-odemenizi-kaybetmeyin-en@2x.png')}} 2x" alt="Geçerli Ödemelerinizi Kaybetmeyin!" />
+			{% endif %}
+		</div>
+		<div class="content">
+			<div class="widgetTitle">{{ translations.smartSucsessPayment.title }}</div>
+			<div class="widgetSubTitle">{{ translations.smartSucsessPayment.subTitle }}</div>
+			<p>{{ translations.smartSucsessPayment.description }}</p>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,24 @@
+<section class="newiyziCards multipleCards">
+	<div class="iyzi-container">
+		<div class="header">
+			<div class="arrowIcon">
+				<img src="{{ asset('assets/images/icons/newArrow.svg')}}">
+			</div>
+			<div class="title">
+				<h2>{{ translations.dynamic3dsProgress.title|raw }}</h2>
+				<p>{{ translations.dynamic3dsProgress.desc }}</p>
+			</div>
+		</div>
+		<div class="cardWrap">
+			<div class="cardBox">
+
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<div class="dynamic3dsProgress"></div>
+		{% else %}
+			<div class="dynamic3dsProgressEN"></div>
+		{% endif %}
+
+			</div>
+		</div>
+	</div>
+</section>

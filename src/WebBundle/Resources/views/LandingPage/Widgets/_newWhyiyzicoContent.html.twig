@@ -1,0 +1,69 @@
+{% set mainCategorySlug = app.request.get('categorySlug') %}
+{% set subCategorySlug = app.request.get('subCategorySlug') %}
+
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			<ul>
+				<li>
+					<a href="{{ path('who_we_are') }}">{{ translations.aboutUsSubMenu.whoIsiyzico }}</a>
+				</li>
+				<li class="active">
+					<a href="{{ path('whyiyzico') }}">{{ translations.aboutUsSubMenu.whyiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('career') }}">{{ translations.aboutUsSubMenu.career }}</a>
+				</li>
+				<li>
+					<a href="{{ path('culture') }}">{{ translations.aboutUsSubMenu.culture }}</a>
+				</li>
+				<li>
+					<a href="{{ path('press') }}">{{ translations.aboutUsSubMenu.pressiyzico }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="newWhoWeAreContent">
+				<li>
+					<div class="title">{{ translations.whyiyzicoContent.title }}</div>
+					<p>
+						{{ translations.whyiyzicoContent.desc }}
+					</p>
+				<div class="brands">
+					<img src="{{ asset('assets/images/content/references/img-merchant-sahibinden.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-sahibinden@2x.png')}} 2x" alt="iyzico Referanslar Sahibinden"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-h-m.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-h-m@2x.png')}} 2x" alt="iyzico Referanslar H&M"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-decathlon.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-decathlon@2x.png')}} 2x" alt="iyzico Referanslar Decathlon"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-letgo.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-letgo@2x.png')}} 2x" alt="iyzico Referanslar Letgo"/>
+				</div>
+				<div class="buttonGroup">
+					<a href="{{path('business')}}" class="button primary" title="Kurumsal">{{ translations.iyzicoOnlineShop.buttonOne }}</a>
+					<a href="{{path('personal')}}" class="button default" title="Bireysel">{{ translations.iyzicoOnlineShop.buttonTwo }}</a>
+				</div>
+				</li>
+			</ul>
+			<ul class="newWhoWeAreContent">
+				<li>
+					<div class="title">{{ translations.whyiyzicoContent.subtitle }}</div>
+					<ul>
+						<li>
+							<i class="icon icon--no-bank"></i>
+							{{ translations.whyiyzicoContent.figureOne|raw }}
+						</li>
+						<li>
+							<i class="icon icon--contact-724"></i>
+							{{ translations.whyiyzicoContent.figureTwo|raw }}
+						</li>
+						<li>
+							<i class="icon icon--easy-refund"></i>
+							{{ translations.whyiyzicoContent.figureThree|raw }}
+						</li>
+					</ul>
+					<p>
+						<strong>{{ translations.whyiyzicoContent.subDesc }}</strong>
+					</p>
+					<a href="{{path('hesap_olustur_landing_page')}}" class="button primary" title="Kurumsal">{{ translations.whyiyzicoContent.button }}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

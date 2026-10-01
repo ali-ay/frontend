@@ -1,0 +1,16 @@
+<div class="forBusiness">
+  <div class="container">
+    <div class="headerContent">
+      <div class="businessVirtualPosTitle">
+        <strong>{{ translations.businessVirtualPosHeaderContent.titleBold|raw }}</strong>{{ translations.businessVirtualPosHeaderContent.titleLight }}
+      </div>
+      <p>{{ translations.businessVirtualPosHeaderContent.description }}</p>
+      <div class="buttonGroup">
+        <a href="{{ path('hesap_olustur_landing_page') }}" class="button primary">{{ translations.buttonText.signUpNow }}</a>
+      </div>
+    </div>
+    <div class="headerImage">
+      <img src="{{ asset('assets/images/content/sanal-pos-header-banner.png')}}" srcset="{{ asset('assets/images/content/sanal-pos-header-banner@2x.png')}} 2x" alt="iyzico Sanal POS"/>
+    </div>
+  </div>
+</div>

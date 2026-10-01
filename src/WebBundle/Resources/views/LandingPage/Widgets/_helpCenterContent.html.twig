@@ -1,0 +1,19 @@
+<section class="careerContent helpCenterContent">
+	<div class="container">
+		<ul>
+		 	{% for questionRootCategory in pageContents.questionCategories %}
+			<li>
+				<div class="title">
+					<a href="{{ path('help_center_category',{'categorySlug':questionRootCategory.Slug}) }}">{{ questionRootCategory.Name }}</a>
+				</div>
+				{% if questionRootCategory.children is defined %}
+					{% for questionSubCategory in questionRootCategory.children %}
+						<div class="subTitle">
+							<a href="{{ path('help_center_sub_category',{'categorySlug':questionRootCategory.Slug,'subCategorySlug':questionSubCategory.Slug}) }}">{{ questionSubCategory.Name }}</a>
+						</div>
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</section>

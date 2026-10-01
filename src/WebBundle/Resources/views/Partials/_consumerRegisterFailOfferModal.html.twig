@@ -1,0 +1,23 @@
+<div class="modal fade fail-modal consumer-register-fail-offer-modal" tabindex="-1" role="dialog" id="flash-modal" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog fail-modal__wrapper" role="document">
+        <div class="modal-content">
+            <div class="row full-height text-center">
+                <button type="button" class="modal-close mR-auto" data-dismiss="modal">
+                    <i class="icon icon--popup-close" aria-hidden="true"></i>
+                </button>
+                <i class="icon icon--contactus-fail"></i>
+                <h2><strong>{{ translations.newiyzicoNotifications.newBirHataOlustu }}</strong></h2>
+                {% for flashMessage in consumerRegisterFailMessages %}
+                    <p>
+                        {{ flashMessage|raw }}
+                    </p>
+                {% endfor %}
+                <div class="buttonGroup">
+                    <button type="button" class="button primary" data-dismiss="modal">
+                        {{ translations.newiyzicoNotifications.newKapat }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

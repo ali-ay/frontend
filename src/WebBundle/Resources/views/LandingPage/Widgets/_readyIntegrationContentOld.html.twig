@@ -1,0 +1,14 @@
+<section class="readyIntegration">
+	<div class="container">
+		<ul>
+			{% for partner in pageContents.partners.list %}
+			<li>
+				<div class="image">
+					<img src="{{ partner.image.file }}@2x.{{ partner.image.extension }}" alt="partner" />
+				</div>
+				<div class="description">{{ partner.content|raw }}</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

@@ -1,0 +1,22 @@
+<section class="pressCarouselHeader">
+	<div class="container">
+		<div class="title">{{ translations.pressCarousel.title }}</div>
+	</div>
+</section>
+<section class="press--boxes">
+	<div class="press-carousel">
+		{% for onPressItem in pageContents.data.contents.onPress.items %}
+			<a href="{{ onPressItem.url }}" target="_blank" class="press--boxes__item">
+				<div class="press--boxes__item__photo" style="background:url({{ onPressItem.image.file }}@2x.{{ onPressItem.image.extension }});background-size:cover;"></div>
+				<div class="press--boxes__item__content">
+					<p>
+						{{ onPressItem.content|raw }}
+					</p>
+				</div>
+				<div class="press--boxes__item__logo">
+					<img src="{{ onPressItem.logo.file }}.{{ onPressItem.logo.extension }}" alt="" />
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</section>

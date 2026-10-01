@@ -1,0 +1,103 @@
+<div class="navigationHeaderMenu">
+	<div class="d-flex mr-auto">
+		<a href="{{ path('homepage') }}"><img src="{{ asset('assets/images/content/logo.svg')}}" alt="iyzico Logo"/></a>
+		<ul class="desktop-navigation-components">
+			<li><a href="{{ path('business') }}">{{ translations.supportHeader.forBusiness }}</a></li>
+			<li><a href="{{ path('personal') }}">{{ translations.supportHeader.forPersonal }}</a></li>
+		</ul>
+	</div>
+	<div class="hamburgerMenu mobile-navigation-components">
+		<i class="icon icon--variable-hamburger"></i>
+	</div>
+	<div class="d-flex desktop-navigation-components">
+		<ul>
+			<li><i class="icon icon--contact-phone"></i></li>
+			<li class="pL-5 toolTip">
+				<ul>
+					<li class="pL-10">{{ translations.iyziStatic.phoneNumber }}</li>
+				</ul>
+			</li>
+			<li><i class="icon icon--flag-gray"></i></li>
+			<li class="pL-5 toolTip">
+				<ul>
+					{% if app.request.attributes.get('_locale') == "tr" %}
+						<li class="pL-10"><a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageEnglish }}</a></li>
+					{% else %}
+						<li class="pL-10"><a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageTurkish }}</a></li>
+					{% endif %}
+				</ul>
+			</li>
+			<!--
+			<li><i class="icon icon--pin-gray"></i></li>
+			<li class="pL-5 toolTip">Türkiye
+				<div class="toolTipContent topRight">
+					<ul>
+						<li><a href="">Afghanistan.</a></li>
+						<li><a href="">Albania.</a></li>
+						<li><a href="">Algeria.</a></li>
+						<li><a href="">Andorra.</a></li>
+						<li><a href="">Angola.</a></li>
+						<li><a href="">Argentina.</a></li>
+						<li><a href="">Armenia.</a></li>
+					</ul>
+					<ul>
+						<li><a href="">Maldives.</a></li>
+						<li><a href="">Mali.</a></li>
+						<li><a href="">Malta.</a></li>
+						<li><a href="">Martinique.</a></li>
+						<li><a href="">Türkiye.</a></li>
+						<li><a href="">Mauritius.</a></li>
+					</ul>
+				</div>
+			</li>
+			-->
+			<li><a href="{{ path('help_center') }}">{{ translations.supportHeader.support }}</a></li>
+		</ul>
+	</div>
+</div>
+<nav class="mainNavigation">
+		<div class="navMenu desktop-navigation-components">
+			<div class="d-flex mr-auto">
+				<ul>
+					<li><a class="{{ activeMenu(['help_center','help_center_category','help_center_sub_category']) }}" href="{{ path('help_center') }}">{{ translations.supportHeader.helpCenter }}</a></li>
+					<li><a class="{{ activeMenu(['contact_us']) }}" href="{{ path('contact_us') }}">{{ translations.supportHeader.contactUs }}</a></li>
+				</ul>
+			</div>
+			<div class="d-flex">
+				<a href="{{ path('hesap_olustur_landing_page') }}" class="button default mR-15">{{ translations.supportHeader.signIn }}</a>
+				<a href="{{ translations.iyziStatic.merhantPanelUrl }}" class="button basic">{{ translations.supportHeader.logIn }}</a>
+			</div>
+		</div>
+
+		<div class="mobileNavigationMenu mobile-navigation-components">
+			<ul>
+				<li>
+					<div class="mobileMenuWrap">
+						<a href="/?menuopen=true"><i class="icon icon--right-arrow"></i> {{ translations.supportHeader.forPersonal }}</a>
+						<div class="mobileMenuSubMenu">
+							<a href="{{ path('help_center') }}">{{ translations.supportHeader.helpCenter }}</a>
+						</div>
+
+						<div class="mobileMenuSubMenu">
+							<a href="{{ path('contact_us') }}">{{ translations.supportHeader.contactUs }}</a>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mobileNavigationMenuContact mobile-navigation-components">
+			<ul>
+				<li class="subTitle">{{ translations.mainHeader.contact }}</li>
+				<li class="description">{{ translations.mainHeader.contactDescription }}</li>
+				<li>
+					<div class="mobileNavigationMenuContactContent">
+						<i class="icon icon--contact-phone"></i><a href="tel:+90-216-599-0100">{{ translations.iyziStatic.phoneNumber }}</a>
+					</div>
+					<div class="mobileNavigationMenuContactContent">
+						<i class="icon icon--contact-mail"></i><a href="mailto:{{ translations.iyziStatic.infoMail }}">{{ translations.iyziStatic.infoMail }}</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+</nav>

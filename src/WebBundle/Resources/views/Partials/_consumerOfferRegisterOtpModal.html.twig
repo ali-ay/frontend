@@ -1,0 +1,65 @@
+<script type="text/javascript">
+
+{% set memberUserId = app.session.get('memberUserId') %}
+{% set referenceCode = app.session.get('referenceCode') %}
+{% set loginChannel = app.session.get('loginChannel') %}
+{% set clientIp = app.session.get('clientIp') %}
+
+
+var memberUserId = "{{ memberUserId }}";
+var referenceCode = "{{ referenceCode }}";
+var loginChannel = "{{ loginChannel }}";
+var clientIp = "{{ clientIp }}";
+
+</script>
+
+
+<div class="iyziModal consumer-offer-register-otp-modal otpPopup modal">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<button type="button" class="modal-close" data-dismiss="modal">
+				<i class="icon icon--popup-close" aria-hidden="true"></i>
+			</button>
+			<div class="iyziModalContent">
+				<div class="contentWrap">
+					<div class="content">
+						<h2><strong>{{ translations.consumerQuickRegisterOtp.title }}</strong></h2>
+						<p>{{ translations.consumerQuickRegisterOtp.description }}</p>
+					</div>
+				</div>
+				<div class="formWrap">
+				  <button type="button" class="modal-close" data-dismiss="modal" style="display:none;">
+          	<i class="icon icon--popup-close" aria-hidden="true"></i>
+          </button>
+					<div class="newForm">
+						<div class="offerForm">
+							<div class="">
+								<form name="consumer-otp-popup" id="consumer-app-form" class="consumer-otp-popup" action="{{ path('consumer_otp_check') }}" method="POST">
+									<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('consumer-otp-check') }}">
+									<div class="inputWrap">
+										<input type="tel" pattern="[0-9]*" name="phone" minlength="6" autocomplete="off" id="otpPhone" placeholder="{{ translations.consumerQuickRegisterOtp.inputTitle }}" class="input-form input-form--large" required />
+										<label id="otpError" ></label>
+									</div>
+									<div class="reSend">
+										<div class="countdown">
+											<i id="countdown-icon" class="icon icon--icon-clock" style="display:none;"></i>
+											<span id="countdown"></span>
+										</div>
+										<a href="javascript:void(0);" id="reSend" title="" class="">{{ translations.consumerQuickRegisterOtp.reSendButtonText }}</a>
+									</div>
+									<div class="messagebox">
+										<div id="alertMessage"></div>
+									</div>
+									<div class="buttonGroup">
+										<button onclick="javascript:$('.consumer-otp-popup')" type="submit" title="" class="button primary">{{ translations.consumerQuickRegisterOtp.checkButtonText }}</button>
+									</div>
+									<input type="submit" class="g-recaptcha" data-sitekey="6LcdQz4UAAAAAC2WQlZInj-6cmv3GwZR1bGg4S8J" data-size="invisible" data-callback="formSubmit"  style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div class="newHeaderComponent">
+  <div class="iyzi-container">
+    <div class="content">
+      <div class="businessVirtualPosTitle">
+        {{ translations.businessVirtualPosHeaderContent.titleBold|raw }}
+      </div>
+      <p>{{ translations.businessVirtualPosHeaderContent.description }}</p>
+      <div class="buttonGroup">
+        <a href="{{ path('hesap_olustur_landing_page') }}" class="button primary">{{ translations.buttonText.signUpNow }}</a>
+      </div>
+    </div>
+    <div class="imgResp">
+      <img src="{{ asset('assets/images/content/iyzico-sanal-pos-heder.png')}}" srcset="{{ asset('assets/images/content/iyzico-sanal-pos-heder@2x.png')}} 2x" alt="iyzico Sanal Pos"/>
+    </div>
+  </div>
+</div>

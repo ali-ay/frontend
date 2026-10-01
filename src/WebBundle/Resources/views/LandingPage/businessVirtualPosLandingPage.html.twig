@@ -1,0 +1,38 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+	<meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+	<meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+	<meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business businessVirtualPos virtualPosTablet{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_businessVirtualPosHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_referancessBrandsNew.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_businessVirtualPosPricing.html.twig' %}
+	{% if app.request.attributes.get('_locale') == "tr" %}
+		{% include '@root/LandingPage/Widgets/_businessVirtualPosVideo.html.twig' %}
+	{% endif %}
+  {% include '@root/LandingPage/Widgets/_howToSalesIncrease.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessVirtualPosWork.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_businessVirtualPosApply.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessVirtualPosIntegration.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_businessSupport.html.twig' %}
+	{% include '@root/LandingPage/Widgets/_businessVirtualPosWhyiyzico.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_screens.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+	<script>
+		window.lazyLoadOptions = {
+			threshold: 50
+		};
+		window.addEventListener('LazyLoad::Initialized', function (e) {
+			console.log(e.detail.instance);
+		}, false);
+	</script>
+{% endblock %}

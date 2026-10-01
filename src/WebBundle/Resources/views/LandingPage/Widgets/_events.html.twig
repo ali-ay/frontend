@@ -1,0 +1,22 @@
+<section class="easyFastHappy events">
+	<div class="container">
+		<div class="title">{{ translations.events.title }}</div>
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<p>{{ translations.events.description }}</p>
+		{% else %}
+			<p>{{ translations.events.description }}</p>
+		{% endif %}
+		<ul>
+			<li>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/i3pnf6Beogs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<div class="subTitle">{{ translations.events.boxOneTitle }}</div>
+				<p>{{ translations.events.boxOneDescription }}</p>
+			</li>
+			<li>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ky4JB3Iog0U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<div class="subTitle">{{ translations.events.boxTwoTitle }}</div>
+				<p>{{ translations.events.boxTwoDescription }}</p>
+			</li>
+		</ul>
+	</div>
+</section>

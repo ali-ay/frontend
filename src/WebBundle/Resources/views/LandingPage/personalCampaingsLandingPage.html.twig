@@ -1,0 +1,39 @@
+{% extends "::personalLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}whoWeAre campaignLP mainMenu personalCampaign{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block main %}
+
+    {% if pageContents.campaign.activeCampaign|length < 1 %}
+        {% include '@root/LandingPage/Widgets/_personalCampaignEmptyStateHeaderContent.html.twig' %}
+    {% else %}
+    {% include '@root/LandingPage/Widgets/_personalCampaingHeaderContent.html.twig' %}
+    {% endif %}
+
+  {% include '@root/LandingPage/Widgets/_personalCampaingContent.html.twig' with {'allbrand':widgets.buyerprotectionfeaturelistwidget} %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

@@ -1,0 +1,26 @@
+<section class="appWidget">
+  <div class="container">
+    <div class="contentImage">
+      <img src="{{ asset('assets/images/content/iyzico-bakiye-detay-yeni.png')}}" srcset="{{ asset('assets/images/content/iyzico-bakiye-detay-yeni@2x.png')}} 2x" alt="iyzico App İndir"/>
+    </div>
+    <div class="content">
+      <h2>{{ translations.consumerAppWidget.title }}</h2>
+      <ul>
+        <li><i class="icon icon--pricing-check"></i>{{ translations.consumerAppWidget.bulletOne }}</li>
+        <li><i class="icon icon--pricing-check"></i>{{ translations.consumerAppWidget.bulletTwo }}</li>
+        <li><i class="icon icon--pricing-check"></i>{{ translations.consumerAppWidget.bulletThree }}</li>
+        <li><i class="icon icon--pricing-check"></i>{{ translations.consumerAppWidget.bulletFour }}</li>
+      </ul>
+      <div class="appDownload">
+
+		{% if app.request.attributes.get('_locale') == "tr" %}
+      <a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store"></i></a>
+      <a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play"></i></a>
+		{% else %}
+      <a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank"><i class="icon icon--app-store-en"></i></a>
+      <a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank"><i class="icon icon--google-play-en"></i></a>
+		{% endif %}
+      </div>
+    </div>
+  </div>
+</section>

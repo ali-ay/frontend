@@ -1,0 +1,23 @@
+<section class="readyIntegration">
+	<div class="container">
+		<ul>
+			{% for partner in pageContents.partners.list %}
+			<li>
+				<div class="containerWrap">
+					{% if partner.image.file == null %}
+
+					{% else %}
+						<div class="image">
+							<img src="{{ partner.image.file }}@2x.{{ partner.image.extension }}" alt="partner" />
+						</div>
+					{% endif %}
+
+					<div class="title">{{ partner.title|raw }}</div>
+					<div class="description">{{ partner.content|raw }}</div>
+				</div>
+				<a href="{{partner.link}}" class="button default">{{partner.linkTitle}}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

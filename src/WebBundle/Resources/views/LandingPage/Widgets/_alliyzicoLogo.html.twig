@@ -1,0 +1,32 @@
+<section class="alliyzicoLogo">
+	<div class="iyzi-container">
+
+		<div class="content">
+
+		{% for items in brandkit.downloadKit %}
+			<div class="header">
+					<h4>{{ items.title }}</h4>
+					<a href="{{ items.buttonUrl }}" class="button basic">{{ items.buttonText }}</a>
+			</div>
+			<ul>
+
+				{% for item in items.logos %}
+
+						<li>
+							<div class="img {{ item.classname }}">
+								<img src="{{ item.image.file }}.{{ item.image.extension }}" srcset="{{ item.image.file }}@2x.{{ item.image.extension }} 2x" alt="">
+							</div>
+							<p>{{ item.titlename }}</p>
+							<span>{{ item.desc }}</span>
+							<a href="{{ item.url }}" class="button basic">{{ item.buttontext }}</a>
+						</li>
+
+				{% endfor %}
+
+			</ul>
+
+		{% endfor %}
+			<p>{{ translations.brandsLP.description|raw }}</p>
+		</div>
+	</div>
+</section>

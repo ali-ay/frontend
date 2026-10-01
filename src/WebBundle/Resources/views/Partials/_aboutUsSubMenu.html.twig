@@ -1,0 +1,15 @@
+<section class="whoWeAreTabs">
+	<div class="container">
+		<ul>
+			<li class="{{ activeMenu(['who_we_are']) }}"><a href="{{ path('who_we_are') }}">{{ translations.aboutUsSubMenu.whoIsiyzico }}</a></li>
+      {% if app.request.attributes.get('_locale') == "tr" %}
+        			<li class="{{ activeMenu(['whyiyzico']) }}"><a href="{{ path('whyiyzico') }}">{{ translations.aboutUsSubMenu.whyiyzico }}</a></li>
+      {% else %}
+
+      {% endif %}
+			<li class="{{ activeMenu(['career','career_detail']) }}"><a href="{{ path('career') }}">{{ translations.aboutUsSubMenu.career }}</a></li>
+			<li class="{{ activeMenu(['culture']) }}"><a href="{{ path('culture') }}">{{ translations.aboutUsSubMenu.culture }}</a></li>
+			<li class="{{ activeMenu(['press']) }}"><a href="{{ path('press') }}">{{ translations.aboutUsSubMenu.press }}</a></li>
+		</ul>
+	</div>
+</section>

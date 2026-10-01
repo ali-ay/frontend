@@ -1,0 +1,28 @@
+<section class="merchantType">
+  <div class="iyzi-container">
+    <div class="title">{{ translations.iyzicoMerchantType.title|raw }}</div>
+    <div class="sectionBox">
+      <a href="{{ path('kurumsal_hesap_landing_page') }}">
+        <div class="mBox-title">{{ translations.iyzicoMerchantType.corparateTitle|raw }}</div>
+        <ul>
+          <li>{{ translations.iyzicoMerchantType.corparateContentOne|raw }}<span>{{ translations.iyzicoMerchantType.corparateContentOneDesc|raw }}</span></li>
+          <li>{{ translations.iyzicoMerchantType.corparateContentTwo|raw }}</li>
+        </ul>
+        <span class="button primary">{{ translations.iyzicoMerchantType.corparateButtonText|raw }}</span>
+      </a>
+      <a href="{{ path('bireysel_hesap_landing_page') }}">
+        <div class="mBox-title">{{ translations.iyzicoMerchantType.personalTitle|raw }}</div>
+        <ul>
+          <li>{{ translations.iyzicoMerchantType.personalContent|raw }}<span>{{ translations.iyzicoMerchantType.personalContentDesc|raw }}</span></li>
+        </ul>
+        <span class="button default">{{ translations.iyzicoMerchantType.personalButtonText|raw }}</span>
+      </a>
+    </div>
+    <div class="haveAccount">
+      <span>{{ translations.iyzicoNewMerchant.newFormLoginButton }}</span>
+      <div class="buttonGroup">
+        <a href="{{ translations.iyzicoNewMerchant.newFormLoginUrl }}" class="button basic"><i class="icon icon--icn-shop"></i> {{ translations.businessHeaderNavigation.login }}</a>
+      </div>
+    </div>
+  </div>
+</section>

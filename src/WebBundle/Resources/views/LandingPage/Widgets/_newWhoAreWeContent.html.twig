@@ -1,0 +1,46 @@
+{% set mainCategorySlug = app.request.get('categorySlug') %}
+{% set subCategorySlug = app.request.get('subCategorySlug') %}
+
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			<ul>
+				<li class="active">
+					<a href="{{ path('who_we_are') }}">{{ translations.aboutUsSubMenu.whoIsiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('whyiyzico') }}">{{ translations.aboutUsSubMenu.whyiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('career') }}">{{ translations.aboutUsSubMenu.career }}</a>
+				</li>
+				<li>
+					<a href="{{ path('culture') }}">{{ translations.aboutUsSubMenu.culture }}</a>
+				</li>
+				<li>
+					<a href="{{ path('press') }}">{{ translations.aboutUsSubMenu.pressiyzico }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="newWhoWeAreContent">
+				<li>
+					<div class="title">{{ translations.aboutUsHeader.secOneTitle }}</div>
+					<p>{{ translations.aboutUsHeader.secOneDesc|raw }}</p>
+				<div class="brands">
+					<img src="{{ asset('assets/images/content/references/img-merchant-sahibinden.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-sahibinden@2x.png')}} 2x" alt="iyzico Referanslar Sahibinden"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-h-m.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-h-m@2x.png')}} 2x" alt="iyzico Referanslar H&M"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-decathlon.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-decathlon@2x.png')}} 2x" alt="iyzico Referanslar Decathlon"/>
+					<img src="{{ asset('assets/images/content/references/img-merchant-letgo.png')}}" srcset="{{ asset('assets/images/content/references/img-merchant-letgo@2x.png')}} 2x" alt="iyzico Referanslar Letgo"/>
+				</div>
+				</li>
+			</ul>
+			<ul class="newWhoWeAreContent">
+				<li>
+					<div class="title lastChild">{{ translations.aboutUsHeader.secTwoTitle }}</div>
+					<p>{{ translations.aboutUsHeader.secTwoDesc|raw }}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

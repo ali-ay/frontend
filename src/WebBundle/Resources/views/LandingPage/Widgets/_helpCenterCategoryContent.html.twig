@@ -1,0 +1,68 @@
+{% set mainCategorySlug = app.request.get('categorySlug') %}
+{% set subCategorySlug = app.request.get('subCategorySlug') %}
+
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			{% for questionRootCategory in pageContents.questionCategories %}
+				 {% if questionRootCategory.children is defined %}
+				 	<ul>
+						<div class="title">
+							<a href="{{ path('help_center_category',{'categorySlug':questionRootCategory.Slug}) }}">
+								{{ questionRootCategory.Name }}
+							</a>
+						</div>
+				 	    {% for questionSubCategory in questionRootCategory.children %}
+							<li class="{% if subCategorySlug == questionSubCategory.Slug %}active{% endif %}">
+								<a href="{{ path('help_center_sub_category',{'categorySlug':questionRootCategory.Slug,'subCategorySlug':questionSubCategory.Slug}) }}">
+									{{ questionSubCategory.Name }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				 {% endif %}
+			{% endfor %}
+		</div>
+    <div class="dropdownMenu">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ translations.personalContractedSitesHeaderContent.button }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			{% for questionRootCategory in pageContents.questionCategories %}
+				<div class="title">
+					<a href="{{ path('help_center_category',{'categorySlug':questionRootCategory.Slug}) }}">
+						{{ questionRootCategory.Name }}
+					</a>
+				</div>
+				 {% if questionRootCategory.children is defined %}
+				 	<ul>
+				 	    {% for questionSubCategory in questionRootCategory.children %}
+							<li class="{% if subCategorySlug == questionSubCategory.Slug %}active{% endif %}">
+								<a href="{{ path('help_center_sub_category',{'categorySlug':questionRootCategory.Slug,'subCategorySlug':questionSubCategory.Slug}) }}">
+									{{ questionSubCategory.Name }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				 {% endif %}
+			{% endfor %}
+        </div>
+      </div>
+    </div>
+		<div class="content">
+			<ul>
+				{% for category in pageContents.categoryQuestions %}
+					{% for questions in category.Children %}
+						<li>
+							<div class="title">{{ questions.Question }}</div>
+							<p>
+								{{ questions.Answer|raw }}
+							</p>
+						</li>
+					{% endfor %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

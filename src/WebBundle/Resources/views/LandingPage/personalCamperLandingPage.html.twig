@@ -1,0 +1,36 @@
+{% extends "::personalLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}personalBuyerProtection camperCampaign{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block headContent %}
+    {% include '@root/Partials/_personalHeader.html.twig' %}
+{% endblock %}
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_camperHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_camperGeneralConditions.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_camperHowToUse.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_deercaseAppDownload.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_deercaseSss.html.twig' with {'personalBPSss':widgets.personaldeercasessswidget} %}
+{% endblock %}
+{% block footerContent %}
+    {% include '@root/Partials/_footer.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

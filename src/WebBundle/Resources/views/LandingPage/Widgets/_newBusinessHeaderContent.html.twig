@@ -1,0 +1,15 @@
+<div class="newHeaderComponent">
+  <div class="iyzi-container">
+    <div class="content">
+        {{ translations.businessLPHeader.content|raw }}
+
+      <div class="buttonGroup">
+        <a href="{{ path('hesap_olustur_landing_page') }}" class="button primary">{{ translations.buttonText.signUpNow }}</a>
+        <a href="{{ translations.iyzicoNewMerchant.newFormLoginUrl }}" class="button basic"><i class="icon icon--icn-shop"></i> {{ translations.businessHeaderNavigation.login }}</a>
+      </div>
+    </div>
+    <div class="imgResp">
+      <img src="{{ asset('assets/images/content/business-hero.png')}}" srcset="{{ asset('assets/images/content/business-hero@2x.png')}} 2x" alt="iyzico Korumalı Alışveriş"/>
+    </div>
+  </div>
+</div>

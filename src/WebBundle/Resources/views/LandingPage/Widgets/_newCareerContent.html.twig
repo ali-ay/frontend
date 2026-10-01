@@ -1,0 +1,53 @@
+{% set mainCategorySlug = app.request.get('categorySlug') %}
+{% set subCategorySlug = app.request.get('subCategorySlug') %}
+
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="content">
+			<ul class="newWhoWeAreContent">
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/burak-camli.png')}}" srcset="{{ asset('assets/images/content/burak-camli@2x.png')}} 2x" alt="iyzico Burak Çamlı Operation"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.burakCamli|raw }}</h4>
+						<p>Burak Çamlı | Operation</p>
+					</div>
+				</li>
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/cansu-kahyaoglu.png')}}" srcset="{{ asset('assets/images/content/cansu-kahyaoglu@2x.png')}} 2x" alt="iyzico Cansu Kahyaoğlu Compliance"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.cansuKahyaoglu|raw }}</h4>
+						<p>Cansu Kahyaoğlu | Compliance</p>
+					</div>
+				</li>
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/engin-ozsozgun.png')}}" srcset="{{ asset('assets/images/content/engin-ozsozgun@2x.png')}} 2x" alt="iyzico Engin Özsözgün Integration"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.enginOzsozgun|raw }}</h4>
+						<p>Engin Özsözgün | Integrations</p>
+					</div>
+				</li>
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/kadriye-dogan.png')}}" srcset="{{ asset('assets/images/content/kadriye-dogan@2x.png')}} 2x" alt="iyzico Kadriye Doğan Software Development"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.kadriyeDogan|raw }}</h4>
+						<p>Kadriye Doğan | Software Development</p>
+					</div>
+				</li>
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/serkan-karaduman.png')}}" srcset="{{ asset('assets/images/content/serkan-karaduman@2x.png')}} 2x" alt="iyzico Serkan Karaduman Business Development"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.serkanKaraduman|raw }}</h4>
+						<p>Serkan Karaduman | Business Development</p>
+					</div>
+				</li>
+				<li class="shadow">
+					<img src="{{ asset('assets/images/content/yasemin-balpinar.png')}}" srcset="{{ asset('assets/images/content/yasemin-balpinar@2x.png')}} 2x" alt="iyzico Yasemin Balpınar Infrastructure"/>
+					<div class="content">
+						<h4>{{ translations.careerItems.yaseminBalpinar|raw }}</h4>
+						<p>Yasemin Balpınar | Infrastructure</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

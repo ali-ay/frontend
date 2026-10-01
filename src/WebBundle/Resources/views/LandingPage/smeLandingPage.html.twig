@@ -1,0 +1,44 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+    <meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+    <meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+    <meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business businessHomePage {% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+
+{% block main %}
+  {% include '@root/LandingPage/Widgets/_smeHeaderContent.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_smeReferancessBrands.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_smeMarketPlaceProgress.html.twig' %}
+  {% include '@root/LandingPage/Widgets/_smePrivileges.html.twig' %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+    <script>
+
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    setCookie('iyzicosection','kobi',1000)
+
+
+      window.lazyLoadOptions = {
+  			threshold: 50
+  		};
+  		window.addEventListener('LazyLoad::Initialized', function (e) {
+  			console.log(e.detail.instance);
+  		}, false);
+    </script>
+{% endblock %}

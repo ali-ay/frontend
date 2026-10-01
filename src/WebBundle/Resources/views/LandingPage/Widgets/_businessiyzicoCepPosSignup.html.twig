@@ -1,0 +1,14 @@
+<section class="iyziRegister">
+	<div class="container">
+      {% for items in appdownload.headers %}
+
+			<h2>{{ items.colorTitle|raw }} <span class="gray-100">{{ items.title|raw }}</span></h2>
+			<p>{{ items.subDesc|raw }}</p>
+
+			<a href="{{ items.buttonOneUrl }}" id="Button_Lead_Hacim" class="button default">{{ items.buttonOneText }}</a>
+    {% endfor %}
+
+	</div>
+</section>
+
+

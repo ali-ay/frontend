@@ -1,0 +1,27 @@
+<section class="iyzicoSss" id="sss">
+	<div class="container">
+		<div class="title">{{ cardsss.title }}</div>
+		<div class="description">{{ cardsss.desc }}</div>
+		<div class="sssWrap">
+			<ul>
+				{% for items in cardsss.buyerSss %}
+				{% if loop.index == 1 %}
+					{% set activeClass = "menuOpen" %}
+				{% else %}
+					{% set activeClass = "" %}
+				{% endif %}
+
+				<li class="accordion hasSub {{ activeClass }}" onclick="ga('send', 'event', 'Button', 'Click', 'sss{{loop.index}}');">
+					<div class="sssHeader">
+						<div class="title">{{ items.title }}</div>
+						<i class="icon icon--variable"></i>
+					</div>
+					<div class="description">{{ items.content|raw }}</div>
+				</li>
+
+				{% endfor %}
+
+			</ul>
+		</div>
+	</div>
+</section>

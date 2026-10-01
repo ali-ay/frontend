@@ -1,0 +1,86 @@
+<div class="gTGFullBox">
+
+  <div class="iyziTabs">
+    <div class="iyzi-container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#menu1">{{ translations.goodToGoodMenu.secOne }}</a></li>
+        <li><a data-toggle="tab" href="#menu2">{{ translations.goodToGoodMenu.secTwo }}</a></li>
+      </ul>
+      <div class="tab-content">
+        <ul id="menu1" class="tab-pane fade in active">
+          <li>
+            {% for items in socialGroupVideo.social %}
+              {% if items.socialStatus == "active" %}
+                <div class="boxWrap">
+                  <div class="imgWrap">
+                    {% if items.videoUrl|length > 0 %}
+                      <div class="container">
+                        <div class="video-responsive">
+                          {{ items.videoUrl|raw }}
+                        </div>
+                      </div>
+                    {% else %}
+                    <div class="container">
+                      <img src="{{ items.image.file }}.{{ items.image.extension }}" srcset="{{ items.image.file }}@2x.{{ items.image.extension }} 2x" alt=""/>
+                    </div>
+                    {% endif %}
+                    <div class="bundle">
+                      <img src="{{ items.logo.file }}.{{ items.logo.extension }}" srcset="{{ items.logo.file }}@2x.{{ items.logo.extension }} 2x" alt=""/>
+                    </div>
+                  </div>
+                  <h4>{{ items.title|raw }}</h4>
+                  <p>
+                    {{ items.content|raw }}
+                  </p>
+                  {% if items.buttonUrl|length > 0 %}
+                    <div class="buttonBox">
+                      <a href="{{ items.buttonUrl }}" target="_blank" class="button basic clear-blue">{{ items.buttonText }}</a>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+        <ul id="menu2" class="tab-pane fade">
+          <li>
+            {% for items in socialGroupVideo.social %}
+              {% if items.socialStatus == "passive" %}
+                  <div class="boxWrap">
+                    <div class="imgWrap">
+
+                      {% if items.videoUrl|length > 0 %}
+                        <div class="container">
+                          <div class="video-responsive">
+                            {{ items.videoUrl|raw }}
+                          </div>
+                        </div>
+                      {% else %}
+                        <img src="{{ items.image.file }}.{{ items.image.extension }}" srcset="{{ items.image.file }}@2x.{{ items.image.extension }} 2x" alt=""/>
+                      {% endif %}
+
+                      <div class="bundle">
+                        <img src="{{ items.logo.file }}.{{ items.logo.extension }}" srcset="{{ items.logo.file }}@2x.{{ items.logo.extension }} 2x" alt=""/>
+                      </div>
+                    </div>
+                    <h4>{{ items.title|raw }}</h4>
+                    <p>
+                      {{ items.content|raw }}
+                    </p>
+                  {% if items.buttonUrl|length > 0 %}
+                    <div class="buttonBox">
+                      <a href="{{ items.buttonUrl }}" target="_blank" class="button basic clear-blue">{{ items.buttonText }}</a>
+                    </div>
+                  {% endif %}
+
+                  </div>
+              {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+</div>

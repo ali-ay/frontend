@@ -1,0 +1,37 @@
+<div class="newHeaderComponent">
+  <div class="iyzi-container">
+    {% for items in header.headers %}
+    <div class="content">
+      <h1>
+        <strong>{{ items.title }}</strong>
+        <span>{{ items.colorTitle }}</span>
+      </h1>
+      <p>
+        {{ items.content }}
+      </p>
+      <div class="buttonGroup">
+        <div class="appDownload">
+          {% if app.request.attributes.get('_locale') == "tr" %}
+            <a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank">
+              <img src="{{ asset('assets/images/content/new-app-store-en.png')}}" srcset="{{ asset('assets/images/content/new-app-store-en@2x.png')}} 2x" alt="iyzico ios app"/>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank">
+              <img src="{{ asset('assets/images/content/new-google-play-en.png')}}" srcset="{{ asset('assets/images/content/new-google-play-en@2x.png')}} 2x" alt="iyzico android app"/>
+            </a>
+          {% else %}
+            <a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&mt=8" target="_blank">
+              <img src="{{ asset('assets/images/content/new-app-store-en.png')}}" srcset="{{ asset('assets/images/content/new-app-store-en@2x.png')}} 2x" alt="iyzico ios app"/>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank">
+              <img src="{{ asset('assets/images/content/new-google-play-en.png')}}" srcset="{{ asset('assets/images/content/new-google-play-en@2x.png')}} 2x" alt="iyzico android app"/>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="imgResp">
+      <img src="{{ items.image.file }}.{{ items.image.extension }}" srcset="{{ items.image.file }}@2x.{{ items.image.extension }} 2x" alt="{{items.imgalt}}" />
+    </div>
+    {% endfor %}
+  </div>
+</div>

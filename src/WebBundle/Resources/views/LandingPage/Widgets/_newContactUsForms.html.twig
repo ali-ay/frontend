@@ -1,0 +1,31 @@
+<form id="contact" action="{{ path('form_contact_us') }}" method="POST">
+<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('contact-us') }}">
+<section class="contactUsForms">
+		<div class="title">{{ translations.contactUsForms.titleOne }}</div>
+		<div class="formWrap">
+			<div class="dropdownMenu">
+				<input type="hidden" name="reason" id="subject" />
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ translations.contactUsForms.titleOne }}
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						{% for key,value in pageContents.contactAdresses %}
+							<a class="dropdown-item {% if loop.last %}borderNone{% endif %}" href="#" data-value="{{key}}">{{value}}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="formWrap">
+			<input name="email" type="email" placeholder="{{ translations.contactUsForms.epostaPlaceHolder }}">
+		</div>
+		<div class="formWrap">
+			<input name="name" type="text" placeholder="{{ translations.contactUsForms.nameSurnamePlaceHolder }}">
+		</div>
+		<div class="formWrap">
+			<textarea placeholder="{{ translations.contactUsForms.messagePlaceHolder }}" name="message"></textarea>
+		</div>
+		<button type="button" id="contact-submit" class="button primary">{{ translations.contactUsForms.button }}</button>
+</section>
+</form>

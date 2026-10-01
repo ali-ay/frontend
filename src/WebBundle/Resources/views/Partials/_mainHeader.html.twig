@@ -1,0 +1,84 @@
+<div class="navigationHeaderMenu d-flex">
+<div class="container">
+	<div class="navLeftMenu">
+		<a href="{{ path('homepage') }}"><img src="{{ asset('assets/images/content/logo.svg')}}" alt="iyzico Logo"/></a>
+		<ul class="desktop-navigation-components-left">
+			<li><a href="{{ path('personal') }}">{{ translations.mainHeader.forPersonal }}</a></li>
+			<li><a href="{{ path('business') }}">{{ translations.mainHeader.forBusiness }}</a></li>
+		</ul>
+	</div>
+	<div class="hamburgerMenu tablet-navigation-components">
+		<a href="{{ path('help_center') }}" class="support">{{ translations.mainHeader.support }}</a>
+		<i class="icon icon--contact-phone"></i>
+		<span class="mView">|</span>
+			{% if app.request.attributes.get('_locale') == "tr" %}
+				<a href="#" id="other-language" class="lang-switcher user-action__languages--item mView">{{ translations.businessHeaderNavigation.languageEnglish }}</a>
+			{% else %}
+				<a href="#" id="other-language" class="lang-switcher user-action__languages--item mView">{{ translations.businessHeaderNavigation.languageTurkish }}</a>
+			{% endif %}
+		<i class="icon icon--variable-hamburger"></i>
+	</div>
+	<div class="d-flex desktop-navigation-components-right">
+		<ul>
+			<li><a href="{{ path('help_center') }}" class="support">{{ translations.mainHeader.support }}</a></li>
+			<li><i class="icon icon--contact-phone"></i></li>
+			<li class="pL-5 toolTip">
+				<ul>
+					<li class="pL-10 phoneNumber">{{ translations.iyziStatic.phoneNumber }}</li>
+				</ul>
+			</li>
+			<li>|</li>
+			<li class="pL-5 toolTip">
+					{% if app.request.attributes.get('_locale') == "tr" %}
+						<a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageEnglish }}</a>
+					{% else %}
+						<a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageTurkish }}</a>
+					{% endif %}
+			</li>
+		</ul>
+	</div>
+	</div>
+</div>
+<nav class="mainNavigation">
+	<div class="mobileNavigationMenu mobile-navigation-components">
+		<ul>
+			<li>
+				<div class="mobileMenuSubMenu">
+					<a href="{{ path('business') }}">{{ translations.mainHeader.forBusiness }}<i class="icon icon--variable"></i></a>
+				</div>
+				<div class="mobileMenuSubMenu">
+					<a href="{{ path('personal') }}">{{ translations.mainHeader.forPersonal }}<i class="icon icon--variable"></i></a>
+				</div>
+				<div class="mobileMenuSubMenu">
+					<a href="{{ path('help_center') }}">{{ translations.mainHeader.support }}</a>
+				</div>
+				<div class="mobileMenuSubMenu hasSub">
+					<a href="#" class="menuToggler">{{ translations.mainHeader.aboutUs }}<i class="icon icon--variable"></i></a>
+					<div class="mobileMenuBox">
+						<ul>
+							<li><a href="{{ path('who_we_are') }}">{{ translations.mainHeader.whoIsiyzico }}</a></li>
+							<li><a href="{{ path('business_references') }}">{{ translations.mainHeader.referencess }}</a></li>
+							<li><a href="{{ path('career') }}">{{ translations.mainHeader.career }}</a></li>
+							<li><a href="{{ path('culture') }}">{{ translations.mainHeader.culture }}</a></li>
+							<li><a href="{{ path('press') }}">{{ translations.mainHeader.press }}</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="mobileNavigationMenuContact mobile-navigation-components">
+		<ul>
+			<li class="subTitle">{{ translations.mainHeader.contact }}</li>
+			<li class="description">{{ translations.mainHeader.contactDescription }}</li>
+			<li>
+				<div class="mobileNavigationMenuContactContent">
+					<i class="icon icon--contact-phone"></i><a href="tel:+90-216-599-0100">{{ translations.iyziStatic.phoneNumber }}</a>
+				</div>
+				<div class="mobileNavigationMenuContactContent">
+					<i class="icon icon--contact-mail"></i><a href="mailto:{{ translations.iyziStatic.infoMail }}">{{ translations.iyziStatic.infoMail }}</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>

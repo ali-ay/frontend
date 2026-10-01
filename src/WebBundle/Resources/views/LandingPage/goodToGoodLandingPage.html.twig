@@ -1,0 +1,31 @@
+{% extends "::businessLandingPage.html.twig" %}
+
+{% block pageTitle %}{{ pageContents.data.seo.title }}{% endblock %}
+{% block description %}{{ pageContents.data.seo.description }}{% endblock %}
+{% block openGraph %}
+	<meta property="og:title" content="{{ pageContents.data.seo.ogTitle }}" />
+	<meta property="og:image" content="{{ pageContents.data.seo.ogImage }}" />
+	<meta property="og:description" content="{{ pageContents.data.seo.ogDescription }}" />
+{% endblock %}
+{% block bodyClass %}business businessVirtualPos goodToGood{% endblock %}
+{% block headerClasses %}{% endblock %}
+{% block footerClass %}{% endblock %}
+{% block main %}
+	{% include '@root/LandingPage/Widgets/_gTGHeaderContent.html.twig' with {'header':widgets.iyideniyiyeheaderwidget } %}
+	{% include '@root/LandingPage/Widgets/_newGTGWhoIsiyzico.html.twig' with {'social':widgets.iyideniyiyesocialwidget } %}
+	{% include '@root/LandingPage/Widgets/_gTGRegisterG4T.html.twig' with {'femaleentrepreneur':widgets.iyideniyiyefemalewidget } %}
+	{% include '@root/LandingPage/Widgets/_gTGFullBoxOne.html.twig' with {'socialGroupVideo':widgets.iyideniyiyesocialgroupvideowidget } %}
+	{% include '@root/LandingPage/Widgets/_gTGRegister.html.twig' with {'iyzicostart':widgets.iyideniyiyeiyzicostartwidget } %}
+	{% include '@root/LandingPage/Widgets/_personalPwiSss.html.twig' with {'pwiSss':widgets.personalpwissswidget} %}
+{% endblock %}
+
+{% block bodyBottomScripts %}
+	<script>
+		window.lazyLoadOptions = {
+			threshold: 50
+		};
+		window.addEventListener('LazyLoad::Initialized', function (e) {
+			console.log(e.detail.instance);
+		}, false);
+	</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+<section class="widget widgetBgBlue etsyIntegration">
+	<div class="container">
+		<div class="contentImage">
+		{% if app.request.attributes.get('_locale') == "tr" %}
+			<img src="{{ asset('assets/images/content/iyzico-odeme-sistemleri.png')}}" srcset="{{ asset('assets/images/content/iyzico-odeme-sistemleri@2x.png')}} 2x" alt="iyzico Yeni Nesil Ödeme Teknolojileri" />
+		{% else %}
+			<img src="{{ asset('assets/images/content/iyzico-odeme-sistemleri-en.png')}}" srcset="{{ asset('assets/images/content/iyzico-odeme-sistemleri-en@2x.png')}} 2x" alt="iyzico Yeni Nesil Ödeme Teknolojileri" />
+		{% endif %}
+		</div>
+		<div class="content">
+			<div class="widgetTitle">{{ translations.dynamic3dsPaymentTech.title }}</div>
+			<div class="widgetSubTitle">{{ translations.dynamic3dsPaymentTech.subTitle }}</div>
+			<p>{{ translations.dynamic3dsPaymentTech.description|raw }}</p>
+		</div>
+	</div>
+</section>

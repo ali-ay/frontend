@@ -1,0 +1,17 @@
+<section class="teamJoinUs">
+	<form id="join-us-form" action="{{ path('form_join_us') }}" method="POST" enctype="multipart/form-data">
+		<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('join-us') }}">
+		<div class="container">
+			<div class="leftContent">
+				<div class="title">LIKE WHAT YOU’VE SEEN?</div>
+				<div class="description">Make your choice, business or engineering, and submit your application to become an iyzinator.</div>
+			</div>
+			<div class="rightContent">
+				<div class="buttonGroup">
+					<a href="https://iyzico.recruitee.com/o/new-graduate-program-iyzicoder" class="button primary" target="_blank" title="Kurumsal">Engineering</a>
+					<a href="https://iyzico.recruitee.com/o/new-graduate-program-business" class="button default" target="_blank" title="Bireysel">Business</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>

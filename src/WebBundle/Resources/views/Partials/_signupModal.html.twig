@@ -1,0 +1,67 @@
+<div class="modal fade signup-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog signup-modal__wrapper" role="document">
+        <button type="button" class="modal-close" data-dismiss="modal">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="modal-content">
+            <div class="row full-height">
+                <div class="col-md-7 col-xs-12 no-gutter">
+                    <div class="signup-modal__info">
+                        <h2 class="signup-modal--title">{{ translations.iyzicoSignupModal.SignupModalTitle|raw }}</h2>
+                        <p class="signup-modal--content">
+                            {{ translations.iyzicoSignupModal.SignupModalDescription|raw }}
+                        </p>
+                        <a target="_blankk" href="https://merchant.iyzipay.com/login" title="login"><span class="signup-modal--link">{{ translations.iyzicoSignupModal.SingupModalAlreadyMember|raw }} {{ translations.iyzicoSignupModal.SignupModalLogin|raw }} <i class="fa fa-arrow-circle-right"></i></span></a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-xs-12 no-gutter full-height">
+                    <div class="signup-modal__form">
+                        <form name="signup-form" id="Popup_UyeOl_Form" class="signup-form-popup" action="{{ path('form_sign_up') }}" method="POST">
+                            <input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('sign-up') }}">
+                            <div class="row m-b-20">
+                                <input type="email" name="email" id="email" class="input-form input-form--large" placeholder="{{ translations.iyzicoSignupModal.SignupModalEmail }}" required />
+                            </div>
+
+                            <div class="row m-b-20">
+                                <input type="text" name="phone" id="phone" class="input-form input-form--large" placeholder="{{ translations.iyzicoSignupModal.SignupModalPhone }}" required />
+                            </div>
+
+                            <div class="row m-b-20">
+                                <input type="text" name="website" id="website" class="input-form input-form--large" placeholder="{{ translations.iyzicoSignupModal.SignupModalWebsite }}" required />
+                            </div>
+
+                            <div class="row m-b-20 password-field-holder">
+                                <div class="tooltiptext">
+                                    <span class="pass-length">{{ translations.iyzicoSignupModal.SekizKarakter }}</span>
+                                    <span class="pass-lower">{{ translations.iyzicoSignupModal.BirKucukHarf }}</span>
+                                    <span class="pass-upper">{{ translations.iyzicoSignupModal.BirBuyukHarf }}</span>
+                                    <span class="pass-number">{{ translations.iyzicoSignupModal.BirRakam }}</span>
+                                </div>
+                                <input type="password" name="password" id="passwordPopup" class="input-form input-form--large password-input" placeholder="{{ translations.iyzicoSignupModal.SignupModalPassword }}" required />
+                            </div>
+
+                            <div class="row m-b-20">
+                                <input type="password" name="passwordRepeat" id="passwordRepeat" class="input-form input-form--large" placeholder="{{ translations.iyzicoSignupModal.SignupModalPasswordRepeat }}" required />
+                            </div>
+                            <input type="submit"
+                                   style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+                                   tabindex="-1" />
+                            {% if shouldShowCaptcha %}
+                                <div class="row" id="submit-button-holder-signup" style="display:none;">
+                                    <input type="hidden" name="recaptcha-response" value="" id="recaptcha-value-signup" />
+                                    <button onclick="javascript:$('.signup-form-popup')" type="submit" title="" class="button button__calltoaction button__full-width">{{ translations.iyzicoSignupModal.SignupModalStartMembership }}</button>
+                                </div>
+                                <div class="row" id="recaptcha-holder-signup"></div>
+                            {% else %}
+                                <div class="row" id="submit-button-holder-signup">
+                                    <button onclick="javascript:$('.signup-form-popup')" type="submit" title="" class="button button__calltoaction button__full-width">{{ translations.iyzicoSignupModal.SignupModalStartMembership }}</button>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

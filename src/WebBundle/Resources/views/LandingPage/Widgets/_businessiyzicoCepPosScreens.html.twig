@@ -1,0 +1,47 @@
+<section class="iyziLife">
+	<div class="iyzi-container">
+	{% for items in cardfeaturesscreen.features %}
+		<ul>
+
+		{% set itemIndex = 1 %}
+		{% for item in items.logos %}
+			{% if itemIndex is divisible by(2) %}
+
+			{% if item.appdownload == "True" %}
+			<li class="{{ item.class }}">
+			{% else %}
+			<li>
+			{% endif %}
+				<div class="itemContent">
+					{{ item.title|raw }}
+					{{ item.alt|raw }}
+					{{ item.content|raw }}
+				</div>
+				<div class="itemimg">
+					<img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="{{item.desktopimgalt}}" />
+				</div>
+			</li>
+
+			{% else %}
+
+			<li>
+				<div class="itemimg">
+					<img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="{{item.desktopimgalt}}" />
+				</div>
+				<div class="itemContent">
+					{{ item.title|raw }}
+					{{ item.alt|raw }}
+					{{ item.content|raw }}
+
+				</div>
+			</li>
+
+			{% endif %}
+			{% set itemIndex = itemIndex + 1 %}
+		{% endfor %}
+
+		</ul>
+		{% endfor %}
+	</div>
+</section>
+

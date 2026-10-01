@@ -1,0 +1,17 @@
+<section class="teamJoinUs">
+	<form id="join-us-form" action="{{ path('form_join_us') }}" method="POST" enctype="multipart/form-data">
+		<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('join-us') }}">
+		<div class="container">
+			<div class="leftContent">
+				<div class="title">{{ translations.teamJoinUs.title }}</div>
+				<div class="subTitle">{{ translations.teamJoinUs.subTitle }}</div>
+				<div class="description">{{ translations.teamJoinUs.description }}</div>
+			</div>
+			<div class="rightContent">
+				<div class="buttonGroup">
+					<a href="https://jobs.eu.lever.co/payu?location=Istanbul%2C%20Turkey" class="button primary" target="_blank" title="Kurumsal">{{ translations.teamJoinUs.button }}</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>

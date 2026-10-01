@@ -1,0 +1,63 @@
+<div class="modal fade offer-modal-cash-package" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog signup-modal__wrapper" role="document">
+
+        <div class="modal-content">
+        <button type="button" class="modal-close" data-dismiss="modal">
+            <i class="icon icon--popup-close" aria-hidden="true"></i>
+        </button>
+            <div class="row full-height cashPackage">
+                <div class="offerContent">
+                    <div class="signup-modal__info">
+                        <h2><strong>{{ translations.cashPackagePopup.newtitle|raw }}</strong></h2>
+                        <p>
+                            {{ translations.cashPackagePopup.newdescription|raw }}
+                        </p>
+                        <div class="description">{{ translations.cashPackagePopup.newsubDescription }}</div>
+                    </div>
+                </div>
+
+                <div class="offerForm">
+                    <div class="signup-modal__form">
+                        <form name="offer-form" id="Popup_Lead_Form" class="cash-package-offer-form-popup" action="{{ path('form_get_cash_package_offer') }}" method="POST">
+                            <input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('cash-package-offer') }}">
+
+                            <div class="row m-b-20">
+                            <span>{{ translations.popupFormField.nameSurname }}</span>
+                                <input type="text" name="last_name"  minlength="2" autocomplete="off" id="name" class="input-form input-form--large" required />
+                            </div>
+                            <div class="row m-b-20">
+                            <span>{{ translations.popupFormField.email }}</span>
+                                <input type="email" name="emailCash" autocomplete="off" id="email" class="input-form input-form--large" required />
+                            </div>
+                            <div class="row m-b-20">
+                            <span>{{ translations.popupFormField.phone }}</span>
+                                <input type="tel" pattern="[0-9]*" name="mobile" minlength="7" autocomplete="off" id="phone" class="input-form input-form--large" required />
+                            </div>
+                            <div class="row m-b-20">
+                            <span>{{ translations.popupFormField.webSite }}</span>
+                                <input type="text" name="url" autocomplete="off" id="website" class="input-form input-form--large" required />
+                            </div>
+
+
+                            {% if shouldShowCaptcha %}
+                                <div class="row" id="submit-button-holder-offer" style="display:none;">
+                                    <input type="hidden" name="recaptcha-response" value="" id="recaptcha-value-offer" />
+                                    <button onclick="javascript:$('.cash-package-offer-form-popup')" type="submit" title="" class="button primary">{{ translations.iyzicoOM.oMGonder }}</button>
+                                </div>
+                                <div class="row" style="margin-left:-20px !important;" id="recaptcha-holder-offer">
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <button onclick="javascript:$('.cash-package-offer-form-popup')" type="submit" title="" class="button primary">{{ translations.iyzicoOM.oMGonder }}</button>
+                                </div>
+                            {% endif %}
+                            <input type="submit"
+                                   style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+                                   tabindex="-1" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

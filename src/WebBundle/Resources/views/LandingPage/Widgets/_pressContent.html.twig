@@ -1,0 +1,45 @@
+<section class="generalConditionsContent">
+	<div class="container">
+		<div class="leftMenu">
+			<ul>
+				<li>
+					<a href="{{ path('who_we_are') }}">{{ translations.aboutUsSubMenu.whoIsiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('whyiyzico') }}">{{ translations.aboutUsSubMenu.whyiyzico }}</a>
+				</li>
+				<li>
+					<a href="{{ path('career') }}">{{ translations.aboutUsSubMenu.career }}</a>
+				</li>
+				<li>
+					<a href="{{ path('culture') }}">{{ translations.aboutUsSubMenu.culture }}</a>
+				</li>
+				<li class="active">
+					<a href="{{ path('press') }}">{{ translations.aboutUsSubMenu.pressiyzico }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content">
+			<ul class="newWhoWeAreContent">
+				<li>
+					{% set itemIndex = 1 %}
+					{% for pressCenterYear,pressCenterItems in dateBasedPressCenterItems %}
+
+							{% for pressCenterItem in pressCenterItems %}
+								<div class="pressItem">
+									<span>{{ pressCenterItem.date|raw }} {{ pressCenterYear }}</span>
+									<h3>{{ pressCenterItem.title|raw }}</h3>
+									<p>{{ pressCenterItem.content|raw }}</p>
+									{% if pressCenterItem.buttonLink != null %}
+										<a href="{{ pressCenterItem.buttonLink|raw }}" target="_blank" class="button basic">{{ translations.pressLandingPage.button }}</a>
+									{% endif %}
+								</div>
+								{% set itemIndex = itemIndex + 1 %}
+							{% endfor %}
+
+					{% endfor %}
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

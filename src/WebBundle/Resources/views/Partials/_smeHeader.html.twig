@@ -1,0 +1,377 @@
+<div class="navigationHeaderMenu">
+	<div class="d-flex mr-auto">
+		<a href="{{ path('homepage') }}"><img src="{{ asset('assets/images/content/logo.svg')}}" alt="iyzico Logo"/></a>
+		<ul class="desktop-navigation-components">
+			<li><a href="{{ path('business') }}">{{ translations.businessHeaderNavigation.forBusiness }}</a></li>
+			<li><a href="{{ path('personal') }}">{{ translations.businessHeaderNavigation.forPersonal }}</a></li>
+		</ul>
+	</div>
+	<a href="{{ translations.iyziStatic.merhantPanelUrl }}" class="button basic">{{ translations.businessHeaderNavigation.login }}</a>
+	<div class="hamburgerMenu mobile-navigation-components">
+		<i class="icon icon--variable-hamburger"></i>
+	</div>
+	<div class="d-flex desktop-navigation-components">
+		<ul>
+			<li><i class="icon icon--contact-phone"></i></li>
+			<li class="pL-5 toolTip">
+				<ul>
+					<li class="pL-10">{{ translations.iyziStatic.phoneNumber }}</li>
+				</ul>
+			</li>
+			<li><i class="icon icon--flag-gray"></i></li>
+			<li class="pL-5 toolTip">
+				<ul>
+					{% if app.request.attributes.get('_locale') == "tr" %}
+						<li class="pL-10"><a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageEnglish }}</a></li>
+					{% else %}
+						<li class="pL-10"><a href="#" id="other-language" class="lang-switcher user-action__languages--item">{{ translations.businessHeaderNavigation.languageTurkish }}</a></li>
+					{% endif %}
+				</ul>
+			</li>
+			<li><a href="{{ path('help_center') }}">{{ translations.businessHeaderNavigation.support }}</a></li>
+		</ul>
+	</div>
+</div>
+<nav class="mainNavigation">
+		<div class="navMenu desktop-navigation-components">
+			<div class="d-flex mr-auto">
+				<ul>
+					<li>
+						<a href="#" class="dropdown custom-submenu-toggle {{ activeMenu(['business_virtual_pos', 'business_marketplace','business_receive_payment','business_online_proceeds_payment','business_etsy','business_social_media','business_stand_sales']) }}" data-target="odeme-alma-yollari-submenu">
+							{{ translations.businessHeaderNavigation.rPMainTitle }}
+						</a>
+					</li>
+					<li><a href="#" class="dropdown custom-submenu-toggle {{ activeMenu(['business_fraud', 'business_buyer_protection']) }}" data-target="ayricaliklar-submenu">{{ translations.businessHeaderNavigation.privileges }}</a></li>
+					<li><a href="{{ path('business_references') }}" class="{{ activeMenu(['business_references']) }}">{{ translations.businessHeaderNavigation.referancess }}</a></li>
+					<li><a href="#" class="dropdown custom-submenu-toggle" data-target="gelistirici-submenu">{{ translations.businessHeaderNavigation.developer }}</a></li>
+				</ul>
+			</div>
+			<div class="d-flex iHMenuHidden">
+				<a href="{{ path('hesap_olustur_landing_page') }}" class="button default mR-15">{{ translations.businessHeaderNavigation.signUp }}</a>
+				<a href="{{ translations.iyziStatic.merhantPanelUrl}}" class="button basic">{{ translations.businessHeaderNavigation.login }}</a>
+			</div>
+		</div>
+
+		<div class="container odeme-alma-yollari-submenu custom-submenu desktop-navigation-components">
+			<div class="navMenuContent">
+				<ul style="flex:1; border-left:none;">
+					<li>
+						<div class="title pL-50"><a href="{{ path('pay_with_iyzico_landingpage') }}">{{ translations.businessHeaderNavigation.businessPwi }}</a></div>
+					</li>
+					<li class="threeColumn">
+						<ul>
+							<li>
+								<a href="{{ path('pay_with_iyzico_landingpage') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.businessPwiSubTitle }}<span class="newBadge">{{ translations.iyziBadge.newBadge }}</span></div>
+									<div class="content">{{ translations.businessHeaderNavigation.businessPwiDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="pT50" style="padding-top:70px;">
+						<div class="title pL-50"><a href="{{ path('mass_pay_out_landingpage') }}">{{ translations.businessHeaderNavigation.massPayoutTitle }}</a></div>
+					</li>
+					<li class="threeColumn">
+						<ul>
+							<li>
+								<div>
+									<a href="{{ path('mass_pay_out_landingpage') }}">
+										<div class="subTitle">{{ translations.businessHeaderNavigation.massPayoutSubTitle }}<span class="newBadge">{{ translations.iyziBadge.newBadge }}</span></div>
+										<div class="content">{{ translations.businessHeaderNavigation.massPayOutDescription }}</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul style="flex:1; min-height:440px;">
+					<li>
+						<ul>
+							<li>
+								<div class="title"><a href="{{ path('business') }}">{{ translations.businessHeaderNavigation.rPSubTitle }}</a></div>
+							</li>
+							<li class="threeColumn">
+								<a href="{{ path('business_virtual_pos') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.virtualPos }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.virtualPosDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-20">
+								<a href="{{ path('business_marketplace') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.marketPlace }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.marketPlaceDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-20">
+								<a href="{{ path('subscription_landing_page') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.subscription }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.subscriptionDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-20">
+								<a href="{{ path('business_bank_transfer') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.businessBuyerProtectedMoneyTransfer }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.businessBuyerProtectedMoneyTransferDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul style="flex:1; min-height:440px;">
+					<li>
+						<div class="title pL-50"><a href="{{ path('business_receive_payment') }}">{{ translations.businessHeaderNavigation.paymentForLink }}</a></div>
+					</li>
+					<li class="threeColumn">
+						<ul>
+							<li class="pT-20">
+								<a href="{{ path('business_stand_sales') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.stantSales }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.stantSalesDescription }}</div>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="{{ path('business_social_media') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.socialMedia }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.socialMediaDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-20">
+								<a href="{{ path('business_online_proceeds_payment') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.onlineProceeds }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.onlineProceedsDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container ayricaliklar-submenu custom-submenu desktop-navigation-components">
+			<div class="navMenuContent navMenuFlex">
+				<ul style="border-left:none;">
+					<li>
+						<div class="title pL-50"><div class="title"><a href="{{ path('privileges_landing_page') }}">{{ translations.businessHeaderNavigation.iyzicoTechnology }}</a></div></div>
+					</li>
+					<li class="d-flex">
+						<ul>
+							<li>
+								<a href="{{ path('business_fraud') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.fraud }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.fraudDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-20">
+								<a href="{{ path('dynamic3ds_landing_page') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.dynamic3DS }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.dynamic3DSDescription }}</div>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="{{ path('smart_payment_landing_page') }}">
+									<div class="subTitle">{{ translations.businessHeaderNavigation.smartPayment }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.smartPaymentDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="borderRightNone">
+					<li>
+						<ul>
+							<li class="navMaxWidth">
+								<a href="{{ path('business_buyer_protection') }}">
+									<div class="title">{{ translations.businessHeaderNavigation.businessBuyerProtection }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.businessBuyerProtectionDescription }}</div>
+								</a>
+							</li>
+							<li class="navMaxWidth pT-40">
+								<a href="{{ path('campaign_landing_page') }}">
+									<div class="title">{{ translations.businessHeaderNavigation.campaginTitle }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.campaginDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container gelistirici-submenu custom-submenu desktop-navigation-components">
+			<div class="navMenuContent">
+				<ul style="border-left:none;">
+					<li>
+						<ul>
+							<li>
+								<a href="https://dev.iyzipay.com/tr" target="_blank">
+									<div class="title">{{ translations.businessHeaderNavigation.developerPage }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.developerPageDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-40">
+								<a href="{{ path('ready_integration_landing_page') }}">
+									<div class="title">{{ translations.businessHeaderNavigation.solutionsParner }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.solutionsParnerDescription }}</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="borderRightNone">
+					<li class="d-flex">
+						<ul>
+							<li>
+								<a href="https://sandbox-merchant.iyzipay.com/" target="_blank">
+									<div class="title">{{ translations.businessHeaderNavigation.sandBox }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.sandBoxDescription }}</div>
+								</a>
+							</li>
+							<li class="pT-40">
+								<a href="https://iyzico.engineering/" target="_blank">
+									<div class="title">{{ translations.businessHeaderNavigation.engineeringBlog }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.engineeringBlogDescription }}</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="contact">
+							<li>
+								<a href="{{ path('contact_us') }}">
+									<div class="title">{{ translations.businessHeaderNavigation.help }}</div>
+									<div class="subTitle">{{ translations.businessHeaderNavigation.contactUs }}</div>
+									<div class="content">{{ translations.businessHeaderNavigation.contactUsDescription }}</div>
+								</a>
+							</li>
+							<li>
+								<div class="contactFooter">
+									<div class="phone">
+										<i class="icon icon--contact-phone"></i> <a href="tel:+90-216-599-0100">{{ translations.businessHeaderNavigation.contactUsPhone }}</a>
+									</div>
+									<div class="mail">
+										<i class="icon icon--contact-mail"></i> <a href="mailto:{{ translations.iyziStatic.infoMail }}">{{ translations.businessHeaderNavigation.contactUsEmail }}</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mobileNavigationMenu mobile-navigation-components">
+			<ul>
+				<li>
+					<div class="mobileMenuWrap">
+						<div class="buttonGroup">
+							<a href="{{ path('business') }}">{{ translations.businessHeaderNavigation.forBusiness }}</a>
+							<a href="{{ path('personal') }}">{{ translations.businessHeaderNavigation.forPersonal }}</a>
+						</div>
+						<div class="mobileMenuSubMenu hasSub">
+							<a href="#" class="menuToggler">{{ translations.businessHeaderNavigation.rPMainTitle }} <i class="icon icon--variable"></i></a>
+							<div class="mobileMenuBox">
+								<ul>
+									<li class="listTitle"><a href="{{ path('pay_with_iyzico_landingpage') }}">{{ translations.businessHeaderNavigation.businessPwi }}</a></li>
+									<li><a href="{{ path('pay_with_iyzico_landingpage') }}">{{ translations.businessHeaderNavigation.businessPwiSubTitle }} <span class="newBadge">{{ translations.iyziBadge.newBadge }}</span></a></li>
+									<li class="listTitle"><a href="{{ path('mass_pay_out_landingpage') }}">{{ translations.businessHeaderNavigation.massPayoutTitle }}</a></li>
+									<li><a href="{{ path('mass_pay_out_landingpage') }}">{{ translations.businessHeaderNavigation.massPayoutSubTitle }} <span class="newBadge">{{ translations.iyziBadge.newBadge }}</span></a></li>
+									<li class="listTitle"><a href="{{ path('business') }}">{{ translations.businessHeaderNavigation.rPSubTitle }}</a></li>
+									<li><a href="{{ path('business_virtual_pos') }}">{{ translations.businessHeaderNavigation.virtualPos }}</a></li>
+									<li><a href="{{ path('business_marketplace') }}">{{ translations.businessHeaderNavigation.marketPlace }}</a></li>
+									<li><a href="{{ path('subscription_landing_page') }}">{{ translations.businessHeaderNavigation.subscription }}</a></li>
+									<li><a href="{{ path('business_bank_transfer') }}">{{ translations.businessHeaderNavigation.businessBuyerProtectedMoneyTransfer }}</a></li>
+									<li class="listTitle"><a href="{{ path('business_receive_payment') }}">{{ translations.businessHeaderNavigation.paymentForLink }}</a></li>
+									<li><a href="{{ path('business_stand_sales') }}">{{ translations.businessHeaderNavigation.stantSales }}</a></li>
+									<li><a href="{{ path('business_social_media') }}">{{ translations.businessHeaderNavigation.socialMedia }}</a></li>
+									<li><a href="{{ path('business_online_proceeds_payment') }}">{{ translations.businessHeaderNavigation.onlineProceeds }}</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="mobileMenuSubMenu hasSub">
+							<a href="#" class="menuToggler">{{ translations.businessHeaderNavigation.privileges }}<i class="icon icon--variable"></i></a>
+							<div class="mobileMenuBox mobileBoxClose">
+								<ul>
+									<li class="listTitle"><div class="title"><a href="{{ path('privileges_landing_page') }}">{{ translations.businessHeaderNavigation.iyzicoTechnology }}</a></div></li>
+									<li><a href="{{ path('business_fraud') }}">{{ translations.businessHeaderNavigation.fraud }}</a></li>
+									<li><a href="{{ path('dynamic3ds_landing_page') }}">{{ translations.businessHeaderNavigation.dynamic3DS }}</a></li>
+									<li><a href="{{ path('smart_payment_landing_page') }}">{{ translations.businessHeaderNavigation.smartPayment }}</a></li>
+									<li class="listTitle"><a href="{{ path('business_buyer_protection') }}">{{ translations.businessHeaderNavigation.businessBuyerProtection }}</a></li>
+									<li class="listTitle"><a href="{{ path('campaign_landing_page') }}">{{ translations.businessHeaderNavigation.campaginTitle }}</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="mobileMenuSubMenu hasSub">
+							<a href="#" class="menuToggler">{{ translations.businessHeaderNavigation.developer }}<i class="icon icon--variable"></i></a>
+							<div class="mobileMenuBox mobileBoxClose">
+								<ul>
+									<li class="listTitle"><a href="https://dev.iyzipay.com/tr" target="_blank">{{ translations.businessHeaderNavigation.developerPage }}</a></li>
+									<li class="listTitle"><a href="{{ path('ready_integration_landing_page') }}">{{ translations.businessHeaderNavigation.solutionsParner }}</a></li>
+									<li class="listTitle"><a href="https://sandbox-merchant.iyzipay.com/" target="_blank">{{ translations.businessHeaderNavigation.sandBox }}</a></li>
+									<li class="listTitle"><a href="https://iyzico.engineering/" target="_blank">{{ translations.businessHeaderNavigation.engineeringBlog }}</a></li>
+									<li class="listTitle supportMenuMobile">
+										<div class="mobileNavigationMenuContact mobile-navigation-components">
+											<ul>
+												<li class="listTitle">{{ translations.businessHeaderNavigation.help }}</li>
+												<li class="subTitle">{{ translations.businessHeaderNavigation.contactUs }}</li>
+												<li class="description">{{ translations.businessHeaderNavigation.contactUsDescription }}</li>
+												<li>
+													<div class="mobileNavigationMenuContactContent">
+														<i class="icon icon--contact-phone"></i><a href="tel:{{ translations.businessHeaderNavigation.contactUsPhone }}">{{ translations.businessHeaderNavigation.contactUsPhone }}</a>
+													</div>
+													<div class="mobileNavigationMenuContactContent">
+														<i class="icon icon--contact-mail"></i><a href="mailto:{{ translations.businessHeaderNavigation.contactUsEmail }}">{{ translations.businessHeaderNavigation.contactUsEmail }}</a>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="mobileMenuSubMenu">
+							<a href="{{ path('business_references') }}">{{ translations.businessHeaderNavigation.referancess }}</a>
+						</div>
+
+						<div class="mobileMenuSubMenu">
+							<a href="{{ path('help_center') }}">{{ translations.businessHeaderNavigation.support }}</a>
+						</div>
+
+						<div class="mobileMenuSubMenu hasSub">
+							<a href="#" class="menuToggler">{{ translations.businessHeaderNavigation.aboutUs }}<i class="icon icon--variable"></i></a>
+							<div class="mobileMenuBox">
+								<ul>
+									<li><a href="{{ path('who_we_are') }}">{{ translations.businessHeaderNavigation.whoIs }}</a></li>
+									<li><a href="{{ path('business_references') }}">{{ translations.businessHeaderNavigation.referancess }}</a></li>
+									<li><a href="{{ path('career') }}">{{ translations.businessHeaderNavigation.career }}</a></li>
+									<li><a href="{{ path('culture') }}">{{ translations.businessHeaderNavigation.culture }}</a></li>
+									<li><a href="{{ path('press') }}">{{ translations.businessHeaderNavigation.press }}</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mobileNavigationMenuContact mobile-navigation-components">
+							<ul>
+								<li class="subTitle">{{ translations.mainHeader.contact }}</li>
+								<li class="description">{{ translations.mainHeader.contactDescription }}</li>
+								<li>
+									<div class="mobileNavigationMenuContactContent">
+										<i class="icon icon--contact-phone"></i><a href="tel:+90-216-599-0100">{{ translations.iyziStatic.phoneNumber }}</a>
+									</div>
+									<div class="mobileNavigationMenuContactContent">
+										<i class="icon icon--contact-mail"></i><a href="mailto:{{ translations.iyziStatic.infoMail }}">{{ translations.iyziStatic.infoMail }}</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="mobileMenuButtonGroup">
+							<a href="{{ path('hesap_olustur_landing_page') }}" class="button default mR-15">{{ translations.businessHeaderNavigation.signUp }}</a>
+							<a href="{{ translations.iyziStatic.merhantPanelUrl }}" class="button basic">{{ translations.businessHeaderNavigation.login }}</a>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+		</div>
+</nav>

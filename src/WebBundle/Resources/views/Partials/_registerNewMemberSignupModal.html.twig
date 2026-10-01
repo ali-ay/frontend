@@ -1,0 +1,89 @@
+<div class="iyziModal offer-modal-consumer modal">
+	<div class="iyziModalWrap">
+		<div class="iyziModalContainer">
+			<div class="iyziModalContent">
+				<div class="contentWrap">
+					<div class="content">
+						<h2><strong>{{ translations.consumerOfferModal.title }}</strong></h2>
+						<p>{{ translations.consumerOfferModal.descriptionNew }} 🤩</p>
+						<div class="imageWrap">
+							<img src="{{ asset('assets/images/content/new-pay-with-iyzico-app-popup.png')}}" srcset="{{ asset('assets/images/content/new-pay-with-iyzico-app-popup@2x.png')}} 2x" alt="" />
+						</div>
+					</div>
+				</div>
+				<div class="formWrap">
+				<button type="button" class="modal-close" data-dismiss="modal">
+            <i class="icon icon--popup-close" aria-hidden="true"></i>
+        </button>
+					<div class="newForm">
+						<div class="offerForm">
+							<div class="">
+								<form name="register-new-member-signup-popup" id="consumer-app-form" class="register-new-member-signup-popup" action="{{ path('register_new_member_signup') }}" method="POST">
+									<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('register-new-member-signup') }}">
+									<div class="inputWrap">
+										<span>{{ translations.consumerOfferModal.name }}</span>
+										<input type="text" name="name"  minlength="2" autocomplete="off" id="name" class="input-form input-form--large" value="" required />
+									</div>
+
+									<div class="inputWrap">
+										<span>{{ translations.consumerOfferModal.surName }}</span>
+										<input type="text" name="surname"  minlength="2" autocomplete="off" id="surname" class="input-form input-form--large" value="" required />
+									</div>
+
+
+
+									<div class="inputWrap">
+										<span>{{ translations.consumerOfferModal.phone }}</span>
+											<input type="tel" pattern="[0-9]*" name="phone" minlength="7" autocomplete="off" id="phone" class="input-form input-form--large" required />
+									</div>
+
+									<div class="inputWrap">
+										<span>{{ translations.consumerOfferModal.password }}</span>
+										<input type="password" name="password" value="" class="input-form input-form--large password-input" autocomplete="off" id="password" required onkeypress="return isNumeric(event)" maxlength="6">
+										<div class="pass-eye">
+											<img src="{{ asset('assets/images/pass-eye.svg') }}">
+											<img src="{{ asset('assets/images/pass-eye-off.svg') }}">
+										</div>
+										<div class="tooltiptext">
+											<span class="sixDigit">{{ translations.iyzicoSignupModal.isSixDigit }}</span>
+											<span class="hasTwoConsecutiveNumbers">{{ translations.iyzicoSignupModal.hasUniqueNumbers }}</span>
+											<span class="hasThreeTimesRepeatedOneBlock">{{ translations.iyzicoSignupModal.hasThreeTimesRepeatedOneBlock }}</span>
+											<span class="hasThreeTimesRepeatedTwoBlock">{{ translations.iyzicoSignupModal.hasThreeTimesRepeatedTwoBlock }}</span>
+											<span class="hasTreeUniqNumbers">{{ translations.iyzicoSignupModal.isFirstThreeAndLastThreeSame }}</span>
+											<span class="isFirstThreeAndLastThreeSame">{{ translations.iyzicoSignupModal.hasConsecutiveNumbers }}</span>
+										</div>
+									</div>
+
+									<div class="inputWrap">
+										<div class="checkBoxWrap">
+											<input type="checkbox" name="kvkk" id="kvkk" />
+											<label for="kvkk">{{ translations.consumerOfferModal.kvkk|raw }}</label>
+										</div>
+									</div>
+									<div class="inputWrap">
+										<div class="checkBoxWrap">
+											<input type="checkbox" name="corporate" id="corporate" />
+											<label for="corporate">{{ translations.consumerOfferModal.corporate|raw }}</label>
+										</div>
+									</div>
+
+									<div class="messagebox">
+										<div id="alertMessage"></div>
+									</div>
+
+									<div class="buttonGroup">
+										<button onclick="javascript:$('.register-new-member-signup-popup')" type="submit" title="" class="button default">{{ translations.buttonText.signUpNow }}</button>
+										<div class="contractText">{{ translations.consumerOfferModal.agreement|raw }}</div>
+									</div>
+
+									<input type="submit" class="g-recaptcha" data-sitekey="6LcdQz4UAAAAAC2WQlZInj-6cmv3GwZR1bGg4S8J" data-size="invisible" data-callback="formSubmit"  style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<section class="brandCategory" id="myHeader">
+	<div class="iyzi-container" id="listCategory">
+		<div class="title">{{ translations.pwiBrandsLP.categoryName }}</div>
+		<ul id="top-menu" class="listItem">
+			{% for items in allbrand.features %}
+			<li class="categoryItem">
+				<a href="#{{ items.buttonUrl }}" onclick="ga('send', 'event', 'KategoriClick', 'Click', 'Kategori: {{ items.title }}');">
+					<div class="categoryImg">
+						<svg class="icon">
+							<use xlink:href="/assets/images/sprite/icons.svg#{{ items.buttonUrl }}"></use>
+						</svg>
+					</div>
+					<p>{{ items.title }}</p>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

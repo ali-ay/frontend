@@ -1,0 +1,22 @@
+{% for items in sliderList.features %}
+<div class="personalMobileAppSliderWrap">
+<h3>{{ items.title|raw }}</h3>
+<section class="personalMobileAppSlider">
+
+	<div class="sliderContainer personalCampaignSlider">
+  {% for item in items.logos %}
+      <div class="campaignSliderBox">
+          <div class="campaignSliderImgBox">
+            <img src="{{ item.desktopimg.file }}.{{ item.desktopimg.extension }}" srcset="{{ item.desktopimg.file }}@2x.{{ item.desktopimg.extension }} 2x" alt="iyzico" />
+          </div>
+          <div class="campaignSliderContent">
+            <p class="title">{{ item.title|raw }}</p>
+          </div>
+        </div>
+    {% endfor %}
+
+	</div>
+</section>
+
+</div>
+{% endfor %}

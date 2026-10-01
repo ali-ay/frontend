@@ -1,0 +1,76 @@
+<div class="iyziTabs">
+  <div class="iyzi-container">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#menu1">{{ pageContents.campaignTitle.buttonText|raw }} ( {{ pageContents.campaign.activeCampaign|length }} )</a></li>
+      <li><a data-toggle="tab" href="#menu2">{{ pageContents.campaignTitle.buttonUrl|raw }} ( {{ pageContents.campaign.passiveCampaign|length }} )</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+			<ul id="menu1" class="tab-pane fade in active">
+				{% if pageContents.campaign.activeCampaign|length > 0 %}
+					{% for item in pageContents.campaign.activeCampaign %}
+						<li>
+							<div class="containerWrap">
+								<div class="image">
+									<img src="{{ item.image.file }}@2x.{{ item.image.extension }}" alt="partner" />
+								</div>
+								<div class="title">{{ item.title|raw }}</div>
+								<div class="description">{{ item.content|raw }}</div>
+								<div class="subDesc">{{ item.endDate|raw }}</div>
+							</div>
+							<a href="{{item.link}}" class="button basic">{{item.linkTitle}}</a>
+						</li>
+					{% endfor %}
+				{% else %}
+						<li class="emptystate">
+							<div class="emptyicon">
+							 <img src="{{ asset('assets/images/content/campaign-icon.png')}}" srcset="{{ asset('assets/images/content/campaign-icon@2x.png')}} 2x" />
+								<span>Yeni kampanyalar için<br><strong>beklemede kalın!</strong></span>
+							</div>
+							<div class="campaignNews">
+								<div class="newsWrap">
+									<img src="{{ asset('assets/images/content/mp-mobile-4.png')}}" srcset="{{ asset('assets/images/content/mp-mobile-4@2x.png')}} 2x" class="isDesktop"/>
+									<img src="{{ asset('assets/images/content/mp-mobile-4-m.png')}}" srcset="{{ asset('assets/images/content/mp-mobile-4-m@2x.png')}} 2x" class="isMobile"/>
+									<div class="content">
+										<h3>Kampanyalardan haberdar ol!</h3>
+										<p>On binlerce web sitesinden kolayca alışveriş yapmak için<br>uygulamamızı şimdi indir.</p>
+										<div class="appDownload">
+											<a href="https://itunes.apple.com/us/app/iyzico/id1436467445?ls=1&amp;mt=8" target="_blank">
+												<img src="/assets/images/content/new-app-store-en.png" srcset="/assets/images/content/new-app-store-en@2x.png 2x" alt="iyzico ios app">
+											</a>
+											<a href="https://play.google.com/store/apps/details?id=com.iyzico.assistant" target="_blank">
+												<img src="/assets/images/content/new-google-play-en.png" srcset="/assets/images/content/new-google-play-en@2x.png 2x" alt="iyzico android app">
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					{% endif %}
+
+			</ul>
+
+			<ul id="menu2" class="tab-pane fade">
+				{% for partner in pageContents.campaign.passiveCampaign %}
+					{% if partner.campaignStatus == "passive" %}
+						<li>
+							<div class="containerWrap">
+								<div class="image">
+									<img src="{{ partner.image.file }}@2x.{{ partner.image.extension }}" alt="partner" />
+								</div>
+								<div class="title">{{ partner.title|raw }}</div>
+								<div class="description">{{ partner.content|raw }}</div>
+								<div class="subDesc">{{ partner.endDate|raw }}</div>
+							</div>
+							<a href="{{partner.link}}" class="button basic">{{partner.linkTitle}}</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+
+
+
+    </div>
+  </div>
+</div>

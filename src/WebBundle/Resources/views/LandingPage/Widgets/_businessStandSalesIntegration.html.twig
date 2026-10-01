@@ -1,0 +1,19 @@
+<section class="widget widgetBgPink widgetPaddingUl">
+	<div class="container">
+		<div class="content">
+			{% if app.request.attributes.get('_locale') == "tr" %}
+				<div class="widgetTitle">{{ translations.businessStandSalesIntegration.title }}</div>
+			{% endif %}
+			<h2>{{ translations.businessStandSalesIntegration.subTitle }}</h2>
+			<ul>
+				<li><span>1</span>{{ translations.businessStandSalesIntegration.content }}</li>
+			</ul>
+				<div class="buttonGroup">
+					<a href="#" class="downloadApp merchant button buttonText align-items-center" target="_blank">{{ translations.businessStandSalesIntegration.button }}<i class="icon icon--left-arrow"></i></a>
+				</div>
+		</div>
+		<div class="contentImage">
+			<img src="{{ asset('assets/images/content/nasil-hizli-odeme-alabilirim.png')}}" srcset="{{ asset('assets/images/content/nasil-hizli-odeme-alabilirim@2x.png')}} 2x" alt="Nasıl Hızlı Ödeme Alabilirim?" />
+		</div>
+	</div>
+</section>

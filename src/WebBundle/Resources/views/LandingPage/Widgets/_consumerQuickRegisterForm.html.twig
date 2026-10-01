@@ -1,0 +1,54 @@
+<section class="brandweekForm">
+	<div class="container">
+		<div class="newForm">
+			<div class="offerForm">
+				<form name="consumer-new-member-signup-popup" id="consumer-app-form" class="consumer-new-member-signup-popup" action="{{ path('consumer_new_member_signup') }}" method="POST">
+					<input type="hidden" id="csrf-token" name="_csrf_token" value="{{ csrf_token('consumer-new-member-signup') }}">
+					<div class="inputWrap">
+						<span>{{ translations.brandweekForm.name }}</span>
+						<input type="text" name="name"  minlength="2" autocomplete="off" id="name" class="input-form input-form--large" value="" required />
+					</div>
+
+					<div class="inputWrap">
+						<span>{{ translations.brandweekForm.surname }}</span>
+						<input type="text" name="surname"  minlength="2" autocomplete="off" id="surname" class="input-form input-form--large" value="" required />
+					</div>
+
+					<div class="inputWrap">
+						<span>{{ translations.brandweekForm.email }}</span>
+							<input type="email" name="email" autocomplete="off" id="email" class="input-form input-form--large" required />
+					</div>
+
+					<div class="inputWrap">
+						<span>{{ translations.brandweekForm.phone }}</span>
+							<input type="tel" pattern="[0-9]*" name="phone" minlength="7" autocomplete="off" id="phone" class="input-form input-form--large" required />
+					</div>
+					<div class="inputWrap">
+						<div class="checkBoxWrap">
+							<input type="checkbox" name="kvkk" id="kvkk" required/>
+							<label for="kvkk"><a href="/gizlilik-politikasi#kiisel-verilerin-lenmesine-likin-rza-metni" target="_blank">{{ translations.brandweekForm.kvkkurl }}</a> {{ translations.brandweekForm.kvkkText }}</label>
+						</div>
+					</div>
+					<div class="inputWrap">
+						<div class="checkBoxWrap">
+							<input type="checkbox" name="ticari" id="ticari" />
+							<label for="ticari"><a href="/gizlilik-politikasi#ticari-letiim-rza-metni" target="_blank">{{ translations.brandweekForm.corporateUrl }}</a> {{ translations.brandweekForm.corporateText }}</label>
+						</div>
+					</div>
+					<div class="contractText"><a href="/gizlilik-politikasi#kisisel-verilerin-islenmesine-iliskin-aydinlatma-metni" target="_blank">{{ translations.brandweekForm.agreementOne }}</a>{{ translations.brandweekForm.agreementTwo }} <a href="" target="_blank">{{ translations.brandweekForm.agreementThree }}</a>{{ translations.brandweekForm.agreementFour }}</div>
+					<div class="messagebox">
+						<div id="alertMessage"></div>
+					</div>
+
+					<div class="buttonGroup">
+						<button onclick="javascript:$('.consumer-new-member-signup-popup')" type="submit" title="" class="button default">{{ translations.brandweekForm.buttonText }}</button>
+					</div>
+
+					<input type="submit" class="g-recaptcha" data-sitekey="6LcdQz4UAAAAAC2WQlZInj-6cmv3GwZR1bGg4S8J" data-size="invisible" data-callback="formSubmit"  style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<i>{{ translations.brandweekForm.subDescription }}</i>
+</section>

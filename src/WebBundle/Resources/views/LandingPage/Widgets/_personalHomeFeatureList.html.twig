@@ -1,0 +1,12 @@
+<section class="newiyziCards multipleCards">
+	<div class="iyzi-container">
+			<div class="cardWrap">
+				{% for item in featureList.features %}
+					<div class="cardBox">
+						<img src="{{ item.image.file }}.{{ item.image.extension }}" alt="iyzico"/>
+						<h3>{{ item.title }} <span class="{{ item.class }}">{{ item.colorTitle }}</span></h3>
+					</div>
+				{% endfor %}
+			</div>
+	</div>
+</section>
