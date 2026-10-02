@@ -308,3 +308,13 @@ c3c854,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3D
 857160,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_businessPwiModalAction,1790899003,c811a5,200,request
 fe0894,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_notificationsAction,1790899003,c811a5,200,request
 c811a5,::1,GET,http://localhost:8000/isim-icin/sanal-pos,1790899003,,200,request
+6ca760,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_cookieNotificationAction,1790899255,2e6548,200,request
+667f14,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_signupModalAction,1790899255,2e6548,200,request
+026bf3,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_offerModalAction,1790899255,2e6548,200,request
+fba5e3,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_cepPosOfferModalAction,1790899255,2e6548,200,request
+a42880,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_cashPackageOfferModalAction,1790899255,2e6548,200,request
+3b6934,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_buyerProtectedMoneyTransferModalAction,1790899255,2e6548,200,request
+3b3fc9,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_massPayOutModalAction,1790899255,2e6548,200,request
+06632f,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_businessPwiModalAction,1790899255,2e6548,200,request
+f34a90,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dtr%26_controller%3DApp%255CController%255CPartialsController%253A%253A_notificationsAction,1790899255,2e6548,200,request
+2e6548,::1,GET,http://localhost:8000/isim-icin/sanal-pos,1790899255,,200,request
