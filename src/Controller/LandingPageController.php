@@ -34,6 +34,7 @@ class LandingPageController extends BaseController
     public function mainLandingPageAction(Request $request){
 
         $consumer = $this->getConsumer();
+        
         $cookies = $request->cookies;
         $translations = $this->getTranslations();
         $locale = $this->get("session")->get('_locale');

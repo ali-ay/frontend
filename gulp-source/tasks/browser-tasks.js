@@ -10,7 +10,7 @@ const bs = browserSync.create();
 export const createServerTask = (done) => {
   bs.init(
     {
-      proxy: '127.0.0.1:8000',
+      proxy: 'localhost:8000',
       startPath: '/',
     },
     done
